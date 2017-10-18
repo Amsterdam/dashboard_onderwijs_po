@@ -20,16 +20,15 @@ services:
       DATABASE_NAME: dashboard_onderwijs_po
       DATABASE_USER: dashboard_onderwijs_po
       DATABASE_PASSWORD: insecure
-      #      UWSGI_HTTP: ":8000"
-      #      UWSGI_MODULE: "nap_meetbouten.wsgi:application"
-      #      UWSGI_MASTER: 1
-      #      UWSGI_PROCESSES: 4
-      #      UWSGI_MASTER: 1
-      #      UWSGI_STATIC_MAP: "/static=/static"
+      UWSGI_HTTP: ":8000"
+      UWSGI_MODULE: "dashboard_onderwijs_po.wsgi:application"
+      UWSGI_MASTER: 1
+      UWSGI_PROCESSES: 4
+      UWSGI_MASTER: 1
+      UWSGI_STATIC_MAP: "/static=/static"
     volumes:
       - ./web/:/app/
-    command: python manage.py runserver 0.0.0.0:8000
-        #     command: >
-        #       bash -c "/app/docker-wait.sh \
-        #               && /app/docker-migrate.sh \
-        #               && /app/docker-run.sh"
+    command: >
+        bash -c "/app/docker-wait.sh \
+                && /app/docker-migrate.sh \
+                && /app/docker-run.sh"
