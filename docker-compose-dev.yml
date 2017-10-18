@@ -1,0 +1,35 @@
+version: '3.0'
+services:
+  database:
+    image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: dashboard_onderwijs_po
+      POSTGRES_USER: dashboard_onderwijs_po
+      POSTGRES_PASSWORD: insecure
+
+  web:
+    build: ./web
+    ports:
+      - "8000:8000"
+    links:
+      - database
+    environment:
+      SECRET_KEY: insecure
+      DATABASE_NAME: dashboard_onderwijs_po
+      DATABASE_USER: dashboard_onderwijs_po
+      DATABASE_PASSWORD: insecure
+      #      UWSGI_HTTP: ":8000"
+      #      UWSGI_MODULE: "nap_meetbouten.wsgi:application"
+      #      UWSGI_MASTER: 1
+      #      UWSGI_PROCESSES: 4
+      #      UWSGI_MASTER: 1
+      #      UWSGI_STATIC_MAP: "/static=/static"
+    volumes:
+      - ./web/:/app/
+    command: python manage.py runserver 0.0.0.0:8000
+        #     command: >
+        #       bash -c "/app/docker-wait.sh \
+        #               && /app/docker-migrate.sh \
+        #               && /app/docker-run.sh"
