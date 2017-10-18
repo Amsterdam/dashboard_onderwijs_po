@@ -1,1 +1,14 @@
-Django==1.11
+django==1.11
+django-debug-toolbar==1.7
+djangorestframework
+djangorestframework-gis
+django-rest-swagger
+drf-extensions
+markdown
+django-filter
+psycopg2
+requests
+
+pytest
+pytest-flake8
+pytest-django
