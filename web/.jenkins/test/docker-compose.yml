@@ -2,17 +2,13 @@ version: '3.0'
 services:
   database:
     image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_DB: dashboard_onderwijs_po
       POSTGRES_USER: dashboard_onderwijs_po
       POSTGRES_PASSWORD: insecure
 
-  web:
-    build: ./web
-    ports:
-      - "8000:8000"
+  tests:
+    build: ../../
     links:
       - database
     environment:
@@ -26,10 +22,7 @@ services:
       UWSGI_PROCESSES: 4
       UWSGI_MASTER: 1
       UWSGI_STATIC_MAP: "/static=/static"
-    volumes:  # for development we use source mounts
-      - ./web/app/:/app/
-      - ./web/support/:/support/
     command: >
-        bash -c "/support/docker-wait.sh \
-                && /support/docker-migrate.sh \
-                && /support/docker-run.sh"
+        bash -c "/support/docker-wait.sh && \
+                 python /app/manage.py test && \
+                 flake8 /app/"

@@ -21,11 +21,12 @@ COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 USER datapunt
-COPY . /app/
+COPY ./app/ /app/
+COPY ./support/ /support/
 
 # COPY .jenkins-import /.jenkins-import/
-#
-# RUN python manage.py collectstatic --noinput
+
+RUN python manage.py collectstatic --noinput
 #
 # # Production no waits / migrates etc.
 # CMD ["/app/docker-run.sh"]
