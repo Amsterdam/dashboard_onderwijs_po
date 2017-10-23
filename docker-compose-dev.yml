@@ -28,8 +28,8 @@ services:
       UWSGI_STATIC_MAP: "/static=/static"
     volumes:  # for development we use source mounts
       - ./web/app/:/app/
-      - ./web/support/:/support/
+      - ./web/deploy/:/deploy/
     command: >
-        bash -c "/support/docker-wait.sh \
-                && /support/docker-migrate.sh \
-                && /support/docker-run.sh"
+        bash -c "/deploy/docker-wait.sh \
+                && /deploy/docker-migrate.sh \
+                && /deploy/docker-run.sh"

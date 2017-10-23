@@ -23,6 +23,6 @@ services:
       UWSGI_MASTER: 1
       UWSGI_STATIC_MAP: "/static=/static"
     command: >
-        bash -c "/support/docker-wait.sh && \
+        bash -c "/deploy/docker-wait.sh && \
                  python /app/manage.py test && \
                  flake8 /app/"

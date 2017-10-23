@@ -22,11 +22,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 USER datapunt
 COPY ./app/ /app/
-COPY ./support/ /support/
+COPY ./deploy/ /deploy/
 
 COPY .jenkins/import /.jenkins-import/
 
 RUN python manage.py collectstatic --noinput
 #
 # # Production no waits / migrates etc.
-# CMD ["/app/docker-run.sh"]
+# CMD ["/deploy/docker-run.sh"]
