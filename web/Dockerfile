@@ -24,7 +24,7 @@ USER datapunt
 COPY ./app/ /app/
 COPY ./deploy/ /deploy/
 
-COPY .jenkins/import /.jenkins-import/
+COPY ./deploy/import /.jenkins-import/
 
 RUN python manage.py collectstatic --noinput
 #
