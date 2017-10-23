@@ -24,10 +24,10 @@ node {
 
     stage('Test') {
         tryStep "test", {
-            sh "docker-compose -p dashboard_onderwijs_po -f web/.jenkins/test/docker-compose.yml build && " +
-                    "docker-compose -p dashboard_onderwijs_po -f web/.jenkins/test/docker-compose.yml run -u root --rm tests"
+            sh "docker-compose -p dashboard_onderwijs_po -f web/deploy/test/docker-compose.yml build && " +
+                    "docker-compose -p dashboard_onderwijs_po -f web/deploy/test/docker-compose.yml run -u root --rm tests"
         }, {
-            sh "docker-compose -p dashboard_onderwijs_po -f web/.jenkins/test/docker-compose.yml down"
+            sh "docker-compose -p dashboard_onderwijs_po -f web/deploy/test/docker-compose.yml down"
         }
     }
 
