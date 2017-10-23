@@ -3,7 +3,7 @@ import os
 from onderwijs.settings_common import * # noqa F403
 from onderwijs.settings_common import INSTALLED_APPS, DEBUG # noqa F401
 from onderwijs.settings_databases import LocationKey,\
-    get_dockerst,\
+    get_docker_host,\
     get_database_key,\
     OVERRIDE_HOST_ENV_VAR,\
     OVERRIDE_PORT_ENV_VAR
