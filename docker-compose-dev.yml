@@ -5,8 +5,8 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: dashboard_onderwijs_po
-      POSTGRES_USER: dashboard_onderwijs_po
+      POSTGRES_DB: onderwijs
+      POSTGRES_USER: onderwijs
       POSTGRES_PASSWORD: insecure
 
   web:
@@ -17,11 +17,11 @@ services:
       - database
     environment:
       SECRET_KEY: insecure
-      DATABASE_NAME: dashboard_onderwijs_po
-      DATABASE_USER: dashboard_onderwijs_po
+      DATABASE_NAME: onderwijs
+      DATABASE_USER: onderwijs
       DATABASE_PASSWORD: insecure
       UWSGI_HTTP: ":8000"
-      UWSGI_MODULE: "dashboard_onderwijs_po.wsgi:application"
+      UWSGI_MODULE: "onderwijs.wsgi:application"
       UWSGI_MASTER: 1
       UWSGI_PROCESSES: 4
       UWSGI_MASTER: 1

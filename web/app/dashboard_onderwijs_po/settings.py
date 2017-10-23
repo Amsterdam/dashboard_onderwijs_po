@@ -1,9 +1,9 @@
 import os
 
-from dashboard_onderwijs_po.settings_common import * # noqa F403
-from dashboard_onderwijs_po.settings_common import INSTALLED_APPS, DEBUG # noqa F401
-from dashboard_onderwijs_po.settings_databases import LocationKey,\
-    get_docker_host,\
+from onderwijs.settings_common import * # noqa F403
+from onderwijs.settings_common import INSTALLED_APPS, DEBUG # noqa F401
+from onderwijs.settings_databases import LocationKey,\
+    get_dockerst,\
     get_database_key,\
     OVERRIDE_HOST_ENV_VAR,\
     OVERRIDE_PORT_ENV_VAR
@@ -12,32 +12,32 @@ INSTALLED_APPS += [
     'rest_framework_swagger',
 ]
 
-ROOT_URLCONF = 'dashboard_onderwijs_po.urls'
+ROOT_URLCONF = 'onderwijs.urls'
 
 
-WSGI_APPLICATION = 'dashboard_onderwijs_po.wsgi.application'
+WSGI_APPLICATION = 'onderwijs.wsgi.application'
 
 DATABASE_OPTIONS = {
     LocationKey.docker: {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('DATABASE_NAME', 'dashboard_onderwijs_po'),
-        'USER': os.getenv('DATABASE_USER', 'dashboard_onderwijs_po'),
+        'NAME': os.getenv('DATABASE_NAME', 'onderwijs'),
+        'USER': os.getenv('DATABASE_USER', 'onderwijs'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'insecure'),
         'HOST': 'database',
         'PORT': '5432'
     },
     LocationKey.local: {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('DATABASE_NAME', 'dashboard_onderwijs_po'),
-        'USER': os.getenv('DATABASE_USER', 'dashboard_onderwijs_po'),
+        'NAME': os.getenv('DATABASE_NAME', 'onderwijs'),
+        'USER': os.getenv('DATABASE_USER', 'onderwijs'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'insecure'),
         'HOST': get_docker_host(),
         'PORT': '5412'
     },
     LocationKey.override: {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('DATABASE_NAME', 'dashboard_onderwijs_po'),
-        'USER': os.getenv('DATABASE_USER', 'dashboard_onderwijs_po'),
+        'NAME': os.getenv('DATABASE_NAME', 'onderwijs'),
+        'USER': os.getenv('DATABASE_USER', 'onderwijs'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'insecure'),
         'HOST': os.getenv(OVERRIDE_HOST_ENV_VAR),
         'PORT': os.getenv(OVERRIDE_PORT_ENV_VAR, '5432')
