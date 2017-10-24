@@ -24,7 +24,7 @@ def health(request):
         with connection.cursor() as cursor:
             cursor.execute("select 1")
             assert cursor.fetchone()
-    except:
+    except:  # noqa E722
         logger.exception("Database connectivity failed")
         return HttpResponse(
             "Database connectivity failed",
