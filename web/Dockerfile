@@ -27,6 +27,6 @@ COPY ./deploy/ /deploy/
 COPY ./deploy/import /.jenkins-import/
 
 RUN python manage.py collectstatic --noinput
-#
-# # Production no waits / migrates etc.
-# CMD ["/deploy/docker-run.sh"]
+
+# Production no waits / migrates etc.
+CMD ["/deploy/docker-run.sh"]
