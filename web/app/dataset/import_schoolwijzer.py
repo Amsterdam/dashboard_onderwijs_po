@@ -1,3 +1,4 @@
+# noqa
 import json
 
 import requests

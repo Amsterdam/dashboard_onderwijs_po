@@ -1,6 +1,8 @@
 """
 Models for various external data sources.
 """
+# noqa
+
 # TODO items:
 # * How far will we go in modelling our data, how to re-use what is
 #   available already in API form at Datapunt (regarding adres and

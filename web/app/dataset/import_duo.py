@@ -1,6 +1,8 @@
 """
 Import code for DUO data sets.
 """
+# noqa
+
 # TODO items:
 # * consider using DRF serializers for creating new Model instances
 # * investigate whether JSON-LD can be used directly to validate received data
