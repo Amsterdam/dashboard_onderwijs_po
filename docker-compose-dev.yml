@@ -29,7 +29,12 @@ services:
     volumes:  # for development we use source mounts
       - ./web/app/:/app/
       - ./web/deploy/:/deploy/
+    # Note we are using manage.py runserver for local dev, because UWSGI does
+    # not reload automatically when a file is changed (and we do not want to
+    # continually rebuild the docker images).
     command: >
         bash -c "/deploy/docker-wait.sh \
                 && /deploy/docker-migrate.sh \
-                && /deploy/docker-run.sh"
+                && python manage.py runserver 0.0.0.0:8000"
+
+
