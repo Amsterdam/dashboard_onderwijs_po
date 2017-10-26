@@ -10,7 +10,8 @@ from onderwijs.settings_databases import LocationKey,\
 
 INSTALLED_APPS += [
     'rest_framework_swagger',
-    'health',
+    'health',  # health checks for deployment
+    'dataset',  # import code
 ]
 
 ROOT_URLCONF = 'onderwijs.urls'
