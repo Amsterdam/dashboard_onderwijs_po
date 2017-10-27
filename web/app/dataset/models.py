@@ -1,7 +1,7 @@
 """
 Models for various external data sources.
 """
-# noqa
+# flake8: noqa
 
 # TODO items:
 # * How far will we go in modelling our data, how to re-use what is

@@ -1,7 +1,7 @@
 """
 Import code for DUO data sets.
 """
-# noqa
+# flake8: noqa
 
 # TODO items:
 # * consider using DRF serializers for creating new Model instances
