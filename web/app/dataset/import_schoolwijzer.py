@@ -9,7 +9,9 @@ from dataset.models import Vestiging, Adres
 
 
 def _handle_vestiging_adres(json_dict):
-    return Adres(**json_dict)
+    adres = Adres(**json_dict)
+    adres.save()
+    return adres
 
 
 def _handle_vestiging(json_dict):
@@ -41,6 +43,11 @@ def get_vestigingen():
 
     # TODO: do the json-schema validation here
 
+    instances = []
     for entry in data['results']:
-        instance = _handle_vestiging(entry)
+        instances.append(_handle_vestiging(entry))
+
+    Vestiging.objects.bulk_create(instances)
     print('Number of vestigingen', len(data['results']))
+    print('  Number of vestigingen in DB', Vestiging.objects.count())
+

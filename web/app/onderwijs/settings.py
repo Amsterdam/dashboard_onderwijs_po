@@ -12,6 +12,7 @@ INSTALLED_APPS += [
     'rest_framework_swagger',
     'health',  # health checks for deployment
     'dataset',  # import code
+    'api',  # REST API code
 ]
 
 ROOT_URLCONF = 'onderwijs.urls'
@@ -52,3 +53,12 @@ DATABASES = {
 
 # Directory for raw test data:
 TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data') # noqa F405
+
+# Settings for onderwijs dashboard imports
+ONDERWIJS = {
+    'YEARS': [
+        2014,
+        2015,
+        2016
+    ],
+}

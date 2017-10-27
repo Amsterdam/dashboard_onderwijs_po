@@ -14,6 +14,7 @@ from django.db import models
 
 
 # -- from schoolwijzer --
+
 class Adres(models.Model):
     """Shadow the adress as defined by schoolwijzer.amsterdam.nl"""
     adres = models.CharField(max_length=255)
@@ -39,7 +40,7 @@ class Vestiging(models.Model):
     naam = models.CharField(max_length=255)
     onderwijsconcept = models.CharField(max_length=255, null=True)
     schoolwijzer_url = models.URLField()
-    vestigingsnummer = models.IntegerField()
+    vestigingsnummer = models.IntegerField(null=True)
 
 
 # -- from DUO web APIs and CSV dump
@@ -98,6 +99,6 @@ class LeerlingLeraarRatio(models.Model):
     brin = models.CharField(max_length=4)
 #    vestigingsnummer = models.IntegerField()  # Not present in source
 
-    #
+    # the ratio (to be calculated)
     ratio = models.FloatField()
 

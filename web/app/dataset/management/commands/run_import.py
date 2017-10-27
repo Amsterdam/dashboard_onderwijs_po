@@ -16,8 +16,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('Grabbing data'))
         get_vestigingen()
-        get_leerlingen_naar_gewicht()
-        get_school_adviezen()
-        get_cito_scores()
-        get_leerling_leraar_ratios()
+        get_leerlingen_naar_gewicht(2014)
+        get_school_adviezen(2013)
+        get_cito_scores(2014)
+        get_leerling_leraar_ratios(2014)
         self.stdout.write(self.style.SUCCESS('Done !!!'))
