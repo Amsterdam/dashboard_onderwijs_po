@@ -15,9 +15,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write(self.style.SUCCESS('Grabbing data'))
-        get_vestigingen()
-        get_leerlingen_naar_gewicht(2014)
-        get_school_adviezen(2013)
-        get_cito_scores(2014)
+        get_vestigingen()  # Years?
+
+        for year in [2011, 2012, 2013, 2014, 2015, 2016]:
+            print('For year {}'.format(year))
+            get_leerlingen_naar_gewicht(year)
+            get_school_adviezen(year)
+            get_cito_scores(year)
         get_leerling_leraar_ratios(2014)
         self.stdout.write(self.style.SUCCESS('Done !!!'))
