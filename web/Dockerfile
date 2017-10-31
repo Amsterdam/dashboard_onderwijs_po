@@ -5,11 +5,13 @@ ENV PYTHONUNBUFFERED 1
 
 EXPOSE 8000
 
-RUN apt-get install -y \
-		gdal-bin \
-		libgeos-dev \
-		netcat \
-	&& apt-get clean \
+RUN apt update \
+	&& apt -y upgrade \
+	&& apt -y install \
+			gdal-bin \
+			libgeos-dev \
+			netcat \
+	&& apt clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 	&& adduser --system datapunt \
 	&& mkdir -p /static \
