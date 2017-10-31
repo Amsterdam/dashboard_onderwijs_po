@@ -26,7 +26,7 @@ services:
       UWSGI_PROCESSES: 4
       UWSGI_MASTER: 1
       UWSGI_STATIC_MAP: "/static=/static"
-    volumes:  # for development we use source mounts
+    volumes:  # for development we use bind mounts
       - ./web/app/:/app/
       - ./web/deploy/:/deploy/
     # Note we are using manage.py runserver for local dev, because UWSGI does
