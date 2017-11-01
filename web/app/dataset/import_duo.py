@@ -9,6 +9,7 @@ Import code for DUO data sets.
 # * remove debug prints, replace with logging where needed
 
 import json
+import logging
 
 import requests
 import pandas
@@ -20,6 +21,10 @@ from dataset.models import CitoScores
 from dataset.models import Vestiging
 from django.conf import settings
 
+
+LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
+logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 _BASE_API_URL = 'https://api.duo.nl/v0/datasets/'
 
@@ -49,7 +54,7 @@ def _download_json(dataset, year):
 
     # Retrieve the JSON encoded data:
     result = requests.get(API_URL, PARAMETERS)
-    print('Retrieved:', result.url)
+    logger.info('Retrieved: %s', result.url)
     assert result.status_code == 200
 
     return json.loads(result.text)
@@ -81,25 +86,4 @@ def get_cito_scores(year):
     else:
         CitoScores.objects.from_duo_api_json(data, year)
 
-# -- leerling leraar ratio --
 
-
-def get_leerling_leraar_ratios(year):
-    DATA_SET_URL = 'https://duo.nl/open_onderwijsdata/images/01.-po-personen-owtype-bestuur-brin-functie.csv'
-
-    # Style: process full datafile in memory, than drop clean data in database.
-    # TODO: seems to be availabel per BRIN, not vestiging -> check
-
-    df = pandas.read_csv(DATA_SET_URL, delimiter=';', decimal='.')
-
-    brin_nummers = Vestiging.objects.values_list('brin', flat=True).distinct()
-    print('Brin nummers', brin_nummers)
-    print('Aantal BRIN nummers in Amsterdam', len(brin_nummers))
-    relevant = df.loc[df['BRIN NUMMER'].isin(brin_nummers)]
-
-    brin_nummers_duo = set(df['BRIN NUMMER'])
-
-    print('Alleen in Amsterdamse data:')
-    print(set(brin_nummers) - brin_nummers_duo)
-
-    vestigingen = list(Vestiging.objects.all())

@@ -1,11 +1,14 @@
 # flake8: noqa
 import json
+import logging
 
 import requests
 from jsonschema import validate
 from dataset.models import Vestiging, Adres
 
-# hit schoolwijzer URL, download the vestigingen
+LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
+logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 def _handle_vestiging_adres(json_dict):

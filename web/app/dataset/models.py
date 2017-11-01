@@ -29,9 +29,16 @@ class Adres(models.Model):
     website = models.URLField()
 
 
+class VestigingManager(models.Manager):
+    def _from_schoolwijzer_json_enty(self, json_dict):
+        pass
+
+
 class Vestiging(models.Model):
     """Shadow the Vestiging as defined by schoolwijzer.amsterdam.nl"""
-    # TODO: talk to experts; how are moves/openings/closings handled?
+    class Meta:
+        unique_together = ('brin', 'vestigingsnummer')
+
     adres = models.ForeignKey(Adres)
     brin = models.CharField(max_length=4)
     lat = models.FloatField()
@@ -69,6 +76,7 @@ class LeerlingenNaarGewichtManager(models.Manager, DUOAPIManagerMixin):
             gewicht_0=json_dict['GEWICHT_0'],
             gewicht_0_3=json_dict['GEWICHT_0.3'],
             gewicht_1_2=json_dict['GEWICHT_1.2'],
+            totaal=json_dict['TOTAAL'],
 
             jaar=year,
             peildatum=peildatum,
@@ -79,6 +87,9 @@ class LeerlingenNaarGewichtManager(models.Manager, DUOAPIManagerMixin):
 class LeerlingenNaarGewicht(models.Model):
     """Shadow relevant part of Leerling naar gewicht dataset of DUO."""
     # TODO: base links on the following (or build a BRIN 6 code)
+    class Meta:
+        unique_together = ('brin', 'vestigingsnummer', 'jaar')
+
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
@@ -87,6 +98,7 @@ class LeerlingenNaarGewicht(models.Model):
     gewicht_0 = models.FloatField()
     gewicht_0_3 = models.FloatField()
     gewicht_1_2 = models.FloatField()
+    totaal = models.FloatField()
 
     # TODO: add peildatum (also jaar seperately)
     jaar = models.IntegerField()
@@ -130,6 +142,9 @@ class SchoolAdviezenManager(models.Manager, DUOAPIManagerMixin):
 class SchoolAdviezen(models.Model):
     """Shadow relevant parst of School Adviezen dataset of DUO."""
     # TODO: base links on the following (or build a BRIN 6 code)
+    class Meta:
+        unique_together = ('brin', 'vestigingsnummer', 'jaar')
+
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
@@ -175,6 +190,9 @@ class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
 class CitoScores(models.Model):
     """Shadow relevant parst of CITO Scores dataset of DUO."""
     # TODO: base links on the following (or build a BRIN 6 code)
+    class Meta:
+        unique_together = ('brin', 'vestigingsnummer', 'jaar')
+
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
@@ -190,8 +208,19 @@ class CitoScores(models.Model):
 
 class LeerlingLeraarRatio(models.Model):
     """Model to contain derived number Leerling Leraar Ratio"""
+    class Meta:
+        unique_together = ('brin', 'jaar')
     # Only BRIN code is present, not vestigingsnummer.
     brin = models.CharField(max_length=4)
 
-    # the ratio (to be calculated)
-    ratio = models.FloatField()
+    # extracted from Vestigingen table
+    n_leerling = models.FloatField(null=True)
+
+    # extracted from DUO CSV file
+    n_directie = models.FloatField(null=True)
+    n_onderwijzend = models.FloatField(null=True)
+    n_ondersteunend = models.FloatField(null=True)
+    n_inopleiding = models.FloatField(null=True)
+    n_onbekend = models.FloatField(null=True)
+
+    jaar = models.IntegerField()
