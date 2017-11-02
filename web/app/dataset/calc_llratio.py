@@ -79,7 +79,7 @@ def get_leerling_leraar_ratios(years):
                 logger.info(
                     'DUO BRIN {} not in Schoolwijzer'.format(brin))
 
-            kwargs = {'brin': brin, 'jaar': year}
+            kwargs = {'brin': brin, 'jaar': year, 'n_leerling': brin_leerlingen.get(brin, None)}
             for _, entry in group.iterrows():
                 raw = entry[_N_PERSONEN_COLUMNS[year]]
 

@@ -9,6 +9,8 @@ from dataset.import_duo import get_school_adviezen
 from dataset.import_duo import get_cito_scores
 from dataset.calc_llratio import get_leerling_leraar_ratios
 
+_YEARS = [2011, 2012, 2013, 2014, 2015, 2016]
+
 
 class Command(BaseCommand):
     help = 'Retrieve onderwijs data.'
@@ -17,10 +19,10 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('Grabbing data'))
         get_vestigingen()  # Years?
 
-        for year in [2011, 2012, 2013, 2014, 2015, 2016]:
+        for year in _YEARS:
             print('For year {}'.format(year))
             get_leerlingen_naar_gewicht(year)
             get_school_adviezen(year)
             get_cito_scores(year)
-        get_leerling_leraar_ratios([2015])
+        get_leerling_leraar_ratios(_YEARS)
         self.stdout.write(self.style.SUCCESS('Done !!!'))
