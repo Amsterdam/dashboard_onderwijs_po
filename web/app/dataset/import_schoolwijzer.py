@@ -20,6 +20,17 @@ def _handle_vestiging_adres(json_dict):
 def _handle_vestiging(json_dict):
     adres = _handle_vestiging_adres(json_dict['adres'])
 
+    if json_dict['vestigingsnummer'] is None:
+        print('Vestiging "{}" zonder vestigingsnummer wordt overgeslagen.'.format(
+            json_dict['naam']
+        ))
+        print('Vestiging "{}" heeft BRIN nummer: {}'.format(
+            json_dict['naam'], json_dict['brin']
+        ))
+        return
+
+    brin6 = json_dict['brin'] + '{:02d}'.format(int(json_dict['vestigingsnummer']))
+
     vestiging = Vestiging(
         adres=adres,
         brin=json_dict['brin'],
@@ -32,7 +43,8 @@ def _handle_vestiging(json_dict):
         naam=json_dict['naam'],
         onderwijsconcept=json_dict['onderwijsconcept'],
         schoolwijzer_url=json_dict['schoolwijzer_url'],
-        vestigingsnummer=json_dict['vestigingsnummer']
+        vestigingsnummer=json_dict['vestigingsnummer'],
+        brin6=brin6,
     )
 
     return vestiging
@@ -50,7 +62,7 @@ def get_vestigingen():
     for entry in data['results']:
         instances.append(_handle_vestiging(entry))
 
-    Vestiging.objects.bulk_create(instances)
+    Vestiging.objects.bulk_create([x for x in instances if x is not None])
     print('Number of vestigingen', len(data['results']))
     print('  Number of vestigingen in DB', Vestiging.objects.count())
 

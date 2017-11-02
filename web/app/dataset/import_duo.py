@@ -60,30 +60,30 @@ def _download_json(dataset, year):
     return json.loads(result.text)
 
 
-def get_leerlingen_naar_gewicht(year):
+def get_leerlingen_naar_gewicht(year, brin6s):
     try:
         data = _download_json(_LEERLINGEN_NAAR_GEWICHT, year)
     except KeyError:
         pass
     else:
-        LeerlingenNaarGewicht.objects.from_duo_api_json(data, year)
+        LeerlingenNaarGewicht.objects.from_duo_api_json(data, year, brin6s)
 
 
-def get_school_adviezen(year):
+def get_school_adviezen(year, brin6s):
     try:
         data = _download_json(_SCHOOL_ADVIEZEN, year)
     except KeyError:
         pass
     else:
-        SchoolAdviezen.objects.from_duo_api_json(data, year)
+        SchoolAdviezen.objects.from_duo_api_json(data, year, brin6s)
 
 
-def get_cito_scores(year):
+def get_cito_scores(year, brin6s):
     try:
         data = _download_json(_CITO_SCORES, year)
     except KeyError:
         pass
     else:
-        CitoScores.objects.from_duo_api_json(data, year)
+        CitoScores.objects.from_duo_api_json(data, year, brin6s)
 
 

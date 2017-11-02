@@ -52,20 +52,25 @@ class Vestiging(models.Model):
     schoolwijzer_url = models.URLField()
     vestigingsnummer = models.IntegerField(null=True)
 
+    brin6 = models.CharField(max_length=6, primary_key=True)
+
 
 # -- from DUO web APIs and CSV dump
 
 class DUOAPIManagerMixin:
-    def from_duo_api_json(self, data, year):
+    def from_duo_api_json(self, data, year, brin6s):
         instances = []
         for entry in data['results']:
-            instances.append(self._from_duo_api_json_entry(entry, year))
+            instances.append(self._from_duo_api_json_entry(entry, year, brin6s))
         self.bulk_create(instances)
 
 
 class LeerlingenNaarGewichtManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year):
+    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
         # Note: somehow self.create( ... ) leads to problems with bulk_create.
+
+        brin6 = brin=json_dict['BRIN_NUMMER'] + \
+            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
 
         peildatum = datetime.strptime(json_dict['PEILDATUM'], '%Y%m%d')
 
@@ -81,6 +86,7 @@ class LeerlingenNaarGewichtManager(models.Manager, DUOAPIManagerMixin):
             jaar=year,
             peildatum=peildatum,
         )
+        obj.vestiging_id = brin6 if brin6 in brin6s else None
         return obj
 
 
@@ -105,10 +111,15 @@ class LeerlingenNaarGewicht(models.Model):
     peildatum = models.DateField()
 
     objects = LeerlingenNaarGewichtManager()
+    vestiging = models.ForeignKey(
+        Vestiging, related_name='leerlingen_naar_gewicht', null=True)
 
 
 class SchoolAdviezenManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year):
+    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
+
+        brin6 = brin=json_dict['BRIN_NUMMER'] + \
+            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
 
         if 'PEILDATUM_ADVIEZEN' in json_dict:
             peildatum_adviezen = datetime.strptime(
@@ -120,7 +131,7 @@ class SchoolAdviezenManager(models.Manager, DUOAPIManagerMixin):
             json_dict['PEILDATUM_LEERLINGEN'], '%Y%m%d')
 
 
-        return SchoolAdviezen(
+        obj = SchoolAdviezen(
             brin=json_dict['BRIN_NUMMER'],
             vestigingsnummer=json_dict['VESTIGINGSNUMMER'],
 
@@ -137,6 +148,8 @@ class SchoolAdviezenManager(models.Manager, DUOAPIManagerMixin):
             peildatum_adviezen=peildatum_adviezen,
             peildatum_leerlingen=peildatum_leerlingen,
         )
+        obj.vestiging_id = brin6 if brin6 in brin6s else None
+        return obj
 
 
 class SchoolAdviezen(models.Model):
@@ -165,10 +178,15 @@ class SchoolAdviezen(models.Model):
 
     # TODO: ga na wat 'PRO' betekend; school advies?
     objects = SchoolAdviezenManager()
+    vestiging = models.ForeignKey(
+        Vestiging, related_name='school_adviezen', null=True)
 
 
 class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year):
+    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
+        brin6 = brin=json_dict['BRIN_NUMMER'] + \
+            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
+
         # Usage of case is not consistent over the years (in the data).
         upper = {key.upper(): key for key in json_dict}
 
@@ -178,13 +196,15 @@ class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
         # CITO scores can be missing
         cet_gem = raw.replace(',', '.') if raw else None
 
-        return CitoScores(
+        obj = CitoScores(
             brin=json_dict['BRIN_NUMMER'],
             vestigingsnummer=json_dict['VESTIGINGSNUMMER'],
             cet_gem=cet_gem,
             leerjaar_8=leerjaar8,
             jaar=year,
         )
+        obj.vestiging_id = brin6 if brin6 in brin6s else None
+        return obj
 
 
 class CitoScores(models.Model):
@@ -204,6 +224,8 @@ class CitoScores(models.Model):
 
     jaar = models.IntegerField()
     objects = CitoScoresManager()
+    vestiging = models.ForeignKey(
+        Vestiging, related_name='cito_scores', null=True)
 
 
 class LeerlingLeraarRatio(models.Model):
