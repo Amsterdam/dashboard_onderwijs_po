@@ -13,6 +13,7 @@ INSTALLED_APPS += [
     'health',  # health checks for deployment
     'dataset',  # import code
     'api',  # REST API code
+    'corsheaders',  # CORS headers for dashboard development purposes
 ]
 
 ROOT_URLCONF = 'onderwijs.urls'

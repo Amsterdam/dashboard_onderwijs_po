@@ -37,4 +37,11 @@ services:
                 && /deploy/docker-migrate.sh \
                 && python manage.py runserver 0.0.0.0:8000"
 
-
+  viz:
+    build: ./viz
+    ports:
+      - "8007:8000"
+    volumes:
+      - ./viz/app/:/app/
+      - ./viz/deploy/:/deploy/
+    command: "python -m http.server 8000"

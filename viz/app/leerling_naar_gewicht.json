@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "height": 100,
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+    "url": "http://127.0.0.1:8000/onderwijs/viz/leerlingen_naar_gewicht/?vestiging=04LA00"
+  },
+  "title": "Leerlingen naar gewicht",
+  "mark": "bar",
+  "encoding": {
+    "column": {"field": "gewicht", "type": "ordinal"},
+    "y": {"field": "totaal", "type": "quantitative"},
+    "x": {"field": "jaar", "type": "nominal"},
+    "color": {"field": "jaar", "type": "nominal"}
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domainWidth": 1}
+  }
+}

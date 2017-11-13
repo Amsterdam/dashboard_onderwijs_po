@@ -6,6 +6,9 @@ django-rest-swagger
 drf-extensions
 markdown
 django-filter
+
+django-cors-headers
+
 psycopg2
 requests
 pandas
@@ -15,3 +18,5 @@ pytest-flake8
 pytest-django
 
 jsonschema
+
+coreapi
