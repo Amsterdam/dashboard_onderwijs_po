@@ -10,11 +10,17 @@
   "encoding": {
     "column": {"field": "gewicht", "type": "ordinal"},
     "y": {"field": "totaal", "type": "quantitative"},
-    "x": {"field": "jaar", "type": "nominal"},
+    "x": {
+      "field": "jaar",
+      "type": "nominal"
+    },
     "color": {"field": "jaar", "type": "nominal"}
   },
   "config": {
     "view": {"stroke": "transparent"},
-    "axis": {"domainWidth": 1}
+    "axis": {
+      "domainWidth": 1,
+      "labelAngle": -45
+    }
   }
 }
