@@ -53,6 +53,7 @@ class Vestiging(models.Model):
     vestigingsnummer = models.IntegerField(null=True)
 
     brin6 = models.CharField(max_length=6, primary_key=True)
+    gebiedscode = models.CharField(max_length=4)
 
 
 # -- from DUO web APIs and CSV dump
