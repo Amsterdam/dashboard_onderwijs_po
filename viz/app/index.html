@@ -21,7 +21,6 @@
     <div class="container">
     <div id="vis"></div>
     <div id="vis2"></div>
-    
       <script>
         const spec = "http://127.0.0.1:8007/leerling_naar_gewicht.json";
         vegaEmbed('#vis', spec, {
@@ -29,8 +28,10 @@
         }).catch(console.error);
 
         vegaEmbed('#vis2', "http://127.0.0.1:8007/schooladviezen.json", {
-          "actions": {"export": false, "source": false, "editor": false}
+          "actions": {"export": false, "source": false, "editor": false},
+	  "renderer": "svg"
         }).catch(console.error);
+
       </script>
 
     </div>

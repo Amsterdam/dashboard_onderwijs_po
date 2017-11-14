@@ -6,19 +6,24 @@
   "data": {
     "url": "http://127.0.0.1:8000/onderwijs/viz/school_adviezen/?vestiging=04LA00"
   },
-  "title": "SchoolAdviezen",
+  "title": "School adviezen",
   "mark": "bar",
   "encoding": {
-    "column": {"field": "jaar", "type": "ordinal"},
+    "column": {"field": "advies", "type": "ordinal"},
     "y": {"field": "totaal", "type": "quantitative"},
-    "x": {"field": "advies", "type": "nominal"},
-    "color": {"field": "advies", "type": "nominal"}
+    "x": {
+      "field": "jaar",
+      "type": "nominal",
+      "axis": {
+        "title": "", "labelAngle": -45
+      }
+    },
+    "color": {"field": "jaar", "type": "nominal"}
   },
   "config": {
     "view": {"stroke": "transparent"},
     "axis": {
-      "domainWidth": 1,
-      "labelAngle": -45
+      "domainWidth": 1
     }
 
   }

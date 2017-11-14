@@ -12,15 +12,15 @@
     "y": {"field": "totaal", "type": "quantitative"},
     "x": {
       "field": "jaar",
-      "type": "nominal"
+      "type": "nominal",
+      "axis": {"labelAngle": -45, "title": ""}
     },
     "color": {"field": "jaar", "type": "nominal"}
   },
   "config": {
     "view": {"stroke": "transparent"},
     "axis": {
-      "domainWidth": 1,
-      "labelAngle": -45
+      "domainWidth": 1
     }
   }
 }
