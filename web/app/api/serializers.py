@@ -104,7 +104,6 @@ class SchoolAdviezenViz(serializers.Serializer):
 
 #  -- custom serializers for "Leerlingen naar gewicht" --
 
-#  TODO: mark as read only
 #  TODO: rename
 #  TODO: check that all the select / prefetch related is active here
 #  TODO: consider caching results ...
@@ -132,7 +131,7 @@ def lng_to_representation(instance):
     ]
 
 
-class TempListSerializer(serializers.ListSerializer):
+class LNGVizListSerializer(serializers.ListSerializer):
     def to_representation(self, data):
         out = []
         for instance in data.all():
@@ -141,10 +140,10 @@ class TempListSerializer(serializers.ListSerializer):
         return out
 
 
-class TempSerializer(serializers.Serializer):
+class LNGVizSerializer(serializers.Serializer):
     class Meta:
         models = models.LeerlingenNaarGewicht
-        list_serializer_class = TempListSerializer
+        list_serializer_class = LNGVizListSerializer
 
     def to_representation(self, instance):
         # entries in database are not fully normalized, vega-lite does expect that
@@ -172,6 +171,7 @@ class CitoScoresVizSerializer(serializers.ModelSerializer):
 
 
 class VestigingVizSerializer(serializers.ModelSerializer):
+    # TODO: consider removing (not needed at the moment)
     leerlingen_naar_gewicht = LeerlingenNaarGewichtVizSerializer(
         many=True, read_only=True)
     school_adviezen = SchoolAdviezenVizSerializer(

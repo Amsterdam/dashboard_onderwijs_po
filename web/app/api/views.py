@@ -5,7 +5,7 @@ from dataset.models import Vestiging, LeerlingenNaarGewicht
 from dataset.models import SchoolAdviezen
 from api.serializers import VestigingSerializer, VestigingVizSerializer
 
-from api.serializers import TempSerializer, SchoolAdviezenViz
+from api.serializers import LNGVizSerializer, SchoolAdviezenViz
 
 
 class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
@@ -16,6 +16,9 @@ class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class VestigingVizViewSet(viewsets.ReadOnlyModelViewSet):
+    # TODO: consider removing this endpoint for now (Something like this is
+    # needed by a future JavaScript front-end that can cache the whole data
+    # set at the client side for performance).
     queryset = (
         Vestiging.objects.all()
         .order_by('brin')
@@ -36,23 +39,23 @@ class OnderwijsAPIRouter(routers.DefaultRouter):
     APIRootView = OnderwijsAPIView
 
 
-class VizAPIView(routers.APIRootView):
-    """
-    Custom API endpoints used for visualization purposes.
-    """
-
-
-class VizAPIRouter(routers.DefaultRouter):
-    APIRootView = VizAPIView
-
-
 class LeerlingenNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint voor "Leerlingen naar gewicht" visualisatie.
+
+    Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
+    """
     queryset = LeerlingenNaarGewicht.objects.all()
-    serializer_class = TempSerializer
+    serializer_class = LNGVizSerializer
     filter_fields = ('vestiging',)
 
 
 class SchoolAdviezenViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint voor "School adviezen" visualisatie.
+
+    Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
+    """
     queryset = SchoolAdviezen.objects.all()
     serializer_class = SchoolAdviezenViz
     filter_fields = ('vestiging',)
