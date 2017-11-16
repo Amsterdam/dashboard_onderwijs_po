@@ -38,8 +38,8 @@ _SCHOOL_ADVIEZEN = {
     2011: 'https://api.duo.nl/v0/datasets/04.-leerlingen-bo-sbo-schooladviezen-2011-2012/search',
     2012: 'https://api.duo.nl/v0/datasets/04.-leerlingen-bo-sbo-schooladviezen-2012-2013/search',
     2013: 'https://api.duo.nl/v0/datasets/04.-leerlingen-bo-sbo-schooladviezen-2013-2014/search',
-    2014: 'https://api.duo.nl/v0/datasets/04.-adviezen-2014-2015-inclusief-herziening/search',
-    2015: 'https://api.duo.nl/v0/datasets/04.-adviezen-2015-2016-inclusief-herziening/search'
+#    2014: 'https://api.duo.nl/v0/datasets/04.-adviezen-2014-2015-inclusief-herziening/search',  # ENDPOINT REMOVED ...
+#    2015: 'https://api.duo.nl/v0/datasets/04.-adviezen-2015-2016-inclusief-herziening/search'  # ENDPOINT REMOVED ...
 }
 
 _CITO_SCORES = {
