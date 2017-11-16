@@ -25,4 +25,6 @@ services:
     command: >
         bash -c "/deploy/docker-wait.sh && \
                  python /app/manage.py test && \
+                 python /app/manage.py migrate && \
+                 python /app/manage.py run_import && \
                  flake8 /app/"
