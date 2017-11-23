@@ -2,14 +2,12 @@
 Models for various external data sources.
 """
 # flake8: noqa
-
 # TODO items:
-# * How far will we go in modelling our data, how to re-use what is
-#   available already in API form at Datapunt (regarding adres and
-#   gebiedscode).
-# * Figure out how to handle peildatum
 # * consider DecimalField s
-# * make brin+vestigingsnummer a proper relation to Vestiging
+# * once information model is settled, refactor
+import collections
+import requests
+import pandas
 
 from datetime import datetime
 
@@ -116,41 +114,96 @@ class LeerlingenNaarGewicht(models.Model):
         Vestiging, related_name='leerlingen_naar_gewicht', null=True)
 
 
-class SchoolAdviezenManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
+_SCHOOLADVIEZEN_CSV_COLUMNS = collections.OrderedDict([
+    ('PEILDATUM_LEERLINGEN', str),
+    ('PEILDATUM_ADVIEZEN', str),  # old
+    ('PRIKDATUM_ADVIEZEN', str),  # recent
+    ('BRIN_NUMMER', str),
+    ('VESTIGINGSNUMMER', int),
+    ('INSTELLINGSNAAM_VESTIGING', str),
+    ('POSTCODE_VESTIGING', str),
+    ('PLAATSNAAM', str),
+    ('GEMEENTENUMMER', int),
+    ('GEMEENTENAAM', str),
+    ('PROVINCIE', str),
+    ('SOORT_PO', str),
+    ('DENOMINATIE_VESTIGING', str),
+    ('BEVOEGD_GEZAG_NUMMER', int),
 
-        brin6 = brin=json_dict['BRIN_NUMMER'] + \
-            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
+    ('VSO', int),
+    ('PRO', int),
+    ('VMBO_BL', int),
+    ('VMBO_BL_KL', int),
+    ('VMBO_KL', int),
+    ('VMBO_KL_GT', int),
+    ('VMBO_GT', int),
+    ('VMBO_GT_HAVO', int),
+    ('HAVO', int),
+    ('HAVO_VWO', int),
+    ('VWO', int),
+    ('ADVIES_NIET_MOGELIJK', int),
+    ('TOTAAL_ADVIES', int),
+])
 
-        if 'PEILDATUM_ADVIEZEN' in json_dict:
-            peildatum_adviezen = datetime.strptime(
-                json_dict['PEILDATUM_ADVIEZEN'], '%Y%m%d')
-        else:
-            peildatum_adviezen = None
 
-        peildatum_leerlingen = datetime.strptime(
-            json_dict['PEILDATUM_LEERLINGEN'], '%Y%m%d')
-
-
-        obj = SchoolAdviezen(
-            brin=json_dict['BRIN_NUMMER'],
-            vestigingsnummer=json_dict['VESTIGINGSNUMMER'],
-
-            vmbo_bl=json_dict['VMBO_BL'],
-            vmbo_bl_kl=json_dict['VMBO_BL_KL'],
-            vmbo_gt=json_dict['VMBO_GT'],
-            vmbo_gt_havo=json_dict['VMBO_GT_HAVO'],
-            vmbo_kl=json_dict['VMBO_KL'],
-            vmbo_kl_gt=json_dict['VMBO_KL_GT'],
-            vso=json_dict['VSO'],
-            vwo=json_dict['VWO'],
-
-            jaar=year,
-            peildatum_adviezen=peildatum_adviezen,
-            peildatum_leerlingen=peildatum_leerlingen,
+class SchoolAdviezenManager(models.Manager):
+    def _from_duo_csv(self, uri, year, brin6s):
+        df = pandas.read_csv(
+            uri,
+            delimiter=';',
+            dtype=_SCHOOLADVIEZEN_CSV_COLUMNS,
+            encoding='cp1252'  # probable, not sure ... (at least not UTF8)
         )
-        obj.vestiging_id = brin6 if brin6 in brin6s else None
-        return obj
+        mask = df['GEMEENTENUMMER'] == 363  # only Amsterdam is relevant
+
+        # Deal with rename of school types between 2013 and 2014:
+        RENAMES = dict([
+            ('VMBO_B', 'VMBO_BL'),
+            ('VMBO_B_K', 'VMBO_BL_KL'),
+            ('VMBO_K', 'VMBO_KL'),
+            ('VMBO_K_GT', 'VMBO_KL_GT'),
+            ('PRIKDATUM_ADVIEZEN', 'PEILDATUM_ADVIEZEN'),
+        ])
+
+        for column_name in df.columns:
+            if column_name in RENAMES:
+                df[RENAMES[column_name]] = df[column_name]
+
+        # Cretae model instances and save them to database:
+        instances = []
+        for i, row in df[mask].iterrows():
+            brin6 = row['BRIN_NUMMER'] + '{:02d}'.format(int(row['VESTIGINGSNUMMER']))
+            peildatum_adviezen =  datetime.strptime(
+                str(row['PEILDATUM_ADVIEZEN']), '%Y%m%d')
+            peildatum_leerlingen = datetime.strptime(
+                row['PEILDATUM_LEERLINGEN'], '%Y%m%d')
+
+            obj = SchoolAdviezen(
+                brin=row['BRIN_NUMMER'],
+                vestigingsnummer=row['VESTIGINGSNUMMER'],
+
+                vmbo_bl=row['VMBO_BL'],
+                vmbo_bl_kl=row['VMBO_BL_KL'],
+                vmbo_gt=row['VMBO_GT'],
+                vmbo_gt_havo=row['VMBO_GT_HAVO'],
+                vmbo_kl=row['VMBO_KL'],
+                vmbo_kl_gt=row['VMBO_KL_GT'],
+                vso=row['VSO'],
+                vwo=row['VWO'],
+
+                # new fields:
+                havo = row['HAVO'],
+                havo_vwo = row['HAVO_VWO'],
+                pro = row['PRO'],
+
+                jaar=year,
+                peildatum_adviezen=peildatum_adviezen,
+                peildatum_leerlingen=peildatum_leerlingen,
+            )
+            obj.vestiging_id = brin6 if brin6 in brin6s else None
+            instances.append(obj)
+
+        self.bulk_create(instances)
 
 
 class SchoolAdviezen(models.Model):
@@ -171,6 +224,11 @@ class SchoolAdviezen(models.Model):
     vmbo_kl_gt = models.IntegerField()
     vso = models.IntegerField()
     vwo = models.IntegerField()
+
+    # new:
+    havo = models.IntegerField()
+    havo_vwo = models.IntegerField()
+    pro = models.IntegerField()
 
     jaar = models.IntegerField()
     # Recent data sets do not have the peildatum_adviezen (allow null)
