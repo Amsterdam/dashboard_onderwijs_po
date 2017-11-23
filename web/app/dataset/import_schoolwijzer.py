@@ -5,7 +5,7 @@ import logging
 import requests
 from jsonschema import validate
 from dataset.models import Vestiging, Adres
-from dataset.gebiedscode import find_gebiedscode
+from dataset.gebiedscode import find_gebiedscode, GEBIEDSGERICHT_WERKEN
 
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
@@ -34,9 +34,10 @@ def _handle_vestiging(json_dict):
     brin6 = json_dict['brin'] + '{:02d}'.format(int(json_dict['vestigingsnummer']))
 
     gc = find_gebiedscode(
-        json_dict['coordinaten']['lat'],
-        json_dict['coordinaten']['lng'],
-        adres.adres
+        lat=json_dict['coordinaten']['lat'],
+        lon=json_dict['coordinaten']['lng'],
+        adres=adres.adres,
+        _type=GEBIEDSGERICHT_WERKEN
     )
 
     vestiging = Vestiging(
