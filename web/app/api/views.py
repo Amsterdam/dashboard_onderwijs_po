@@ -56,6 +56,8 @@ class SchoolAdviezenViewSet(viewsets.ReadOnlyModelViewSet):
 
     Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
     """
-    queryset = SchoolAdviezen.objects.all()
+    # The filter is needed for SchoolAdviezen whose ForeignKey is null (we
+    # cannot meaningfully display these).
+    queryset = SchoolAdviezen.objects.filter(vestiging__isnull=False)
     serializer_class = SchoolAdviezenViz
     filter_fields = ('vestiging',)

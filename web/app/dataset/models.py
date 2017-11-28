@@ -8,6 +8,7 @@ Models for various external data sources.
 import collections
 import requests
 import pandas
+from openpyxl import load_workbook
 
 from datetime import datetime
 
@@ -305,3 +306,57 @@ class LeerlingLeraarRatio(models.Model):
     n_onbekend = models.FloatField(null=True)
 
     jaar = models.IntegerField()
+
+
+# -- datasets from onderwijs --
+
+class SchoolWisselaarsManager(models.Manager):
+    def _from_excel_file(self, file_name, brin6s):
+        """
+        Load Excel file of "schoolwisselaars", save to db.
+        """
+        # Load the Excel workbook, convert to Pandas DataFrame
+        ws = load_workbook(file_name)['schoolwisseling in 2016 perc']
+        data = ws.values
+        columns = next(data)
+        df = DataFrame(data, columns)
+
+        # Report duplicated BRIN 6 codes:
+        mask = df.duplicated(subset=['brin6'])
+        duplicated_brin6s = set(df[mask]['brin6'])
+        for brin6 in duplicated_brin6s:
+            # TODO: proper logging
+            print('Gedupliceerde BRIN6 {} wordt overgeslagen'.format(brin6))
+            for i, row in df[df['brin6'] == brin6]:
+                print('  {}: {}'.format(row['brin6'], row['schoolnaam']))
+
+        instances = []
+        for i, row in df.iterrows():
+            if row['brin6'] in duplicated_brin6s:
+                continue  # Skip records with duplicated BRIN 6 codes
+
+            brin = row['brin6'][:4]
+            vestigingsnummer = int(row['brin6'][4:])
+
+            obj = SchoolWisselaars(
+                brin=brin,
+                vestigingsnummer=vestigingsnummer,
+                naam=row['schoolnaam'],  # potential duplicate of Vestiging naam
+                wisseling_uit=row['wisseling_uit'],
+                wisseling_in=row['wisseling_in']
+            )
+            obj.vestiging_id = brin6 if brin6 in brin6s else None
+            instances.append(obj)
+
+        self.bulk_create(instances)
+
+class SchoolWisselaars(models.Model):
+    brin = models.CharField(max_length=4)
+    vestigingsnummer = models.IntegerField()
+
+    naam = models.CharField(max_length=255)
+    wisseling_uit = models.FloatField()
+    wisseling_in = models.FloatField()
+
+    vestiging = models.ForeignKey(
+        Vestiging, related_name='schoolwisselaars', null=True)

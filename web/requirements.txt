@@ -20,3 +20,7 @@ pytest-django
 jsonschema
 
 coreapi
+openpyxl
+
+# -e git+git://github.com/Amsterdam/objectstore.git#egg=objectstore
+-e git+https://github.com/Amsterdam/objectstore.git#egg=datapunt-objectstore
