@@ -9,7 +9,14 @@ from api.serializers import LNGVizSerializer, SchoolAdviezenViz
 
 
 class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Vestiging.objects.all().order_by('brin').prefetch_related()
+    queryset = (
+        Vestiging.objects
+        .select_related('adres')
+        .prefetch_related('school_adviezen')
+        .prefetch_related('cito_scores')
+        .prefetch_related('leerlingen_naar_gewicht')
+        .order_by('brin')
+    )
     serializer_class = VestigingSerializer
 
     filter_fields = ('brin6', 'naam', 'adres__stadsdeel')
@@ -22,8 +29,10 @@ class VestigingVizViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
         Vestiging.objects.all()
         .order_by('brin')
-        .prefetch_related()
-        .select_related()
+        .select_related('adres')
+        .prefetch_related('school_adviezen')
+        .prefetch_related('cito_scores')
+        .prefetch_related('leerlingen_naar_gewicht')
     )
     serializer_class = VestigingVizSerializer
     filter_fields = ('brin6', 'naam', 'adres__stadsdeel')
@@ -45,7 +54,10 @@ class LeerlingenNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
 
     Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
     """
-    queryset = LeerlingenNaarGewicht.objects.all()
+    queryset = (
+        LeerlingenNaarGewicht.objects
+        .select_related('vestiging')
+    )
     serializer_class = LNGVizSerializer
     filter_fields = ('vestiging',)
 
@@ -58,6 +70,10 @@ class SchoolAdviezenViewSet(viewsets.ReadOnlyModelViewSet):
     """
     # The filter is needed for SchoolAdviezen whose ForeignKey is null (we
     # cannot meaningfully display these).
-    queryset = SchoolAdviezen.objects.filter(vestiging__isnull=False)
+    queryset = (
+        SchoolAdviezen.objects
+        .select_related('vestiging')
+        .filter(vestiging__isnull=False)
+    )
     serializer_class = SchoolAdviezenViz
     filter_fields = ('vestiging',)
