@@ -2,17 +2,18 @@ from rest_framework import viewsets
 from rest_framework import routers
 
 from dataset.models import Vestiging, LeerlingenNaarGewicht
-from dataset.models import SchoolAdviezen
+from dataset.models import SchoolAdvies
 from api.serializers import VestigingSerializer, VestigingVizSerializer
 
-from api.serializers import LNGVizSerializer, SchoolAdviezenViz
+from api.serializers import LNGVizSerializer, SchoolAdviesSerializer
 
 
+# TODO: grab school advies
 class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
         Vestiging.objects
         .select_related('adres')
-        .prefetch_related('school_adviezen')
+        .prefetch_related('advies')
         .prefetch_related('cito_scores')
         .prefetch_related('leerlingen_naar_gewicht')
         .order_by('brin')
@@ -62,18 +63,16 @@ class LeerlingenNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
     filter_fields = ('vestiging',)
 
 
-class SchoolAdviezenViewSet(viewsets.ReadOnlyModelViewSet):
+class SchoolAdviesViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint voor "School adviezen" visualisatie.
-
-    Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
+    SchoolAdvies endpoint.
     """
     # The filter is needed for SchoolAdviezen whose ForeignKey is null (we
     # cannot meaningfully display these).
     queryset = (
-        SchoolAdviezen.objects
+        SchoolAdvies.objects
         .select_related('vestiging')
         .filter(vestiging__isnull=False)
     )
-    serializer_class = SchoolAdviezenViz
+    serializer_class = SchoolAdviesSerializer
     filter_fields = ('vestiging',)

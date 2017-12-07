@@ -4,7 +4,7 @@
   "height": 100,
   "description": "Bar chart van schooladviezen",
   "data": {
-    "url": "http://127.0.0.1:8000/onderwijs/viz/school_adviezen/?vestiging=04LA00"
+    "url": "http://127.0.0.1:8000/onderwijs/schooladvies/?vestiging=04LA00"
   },
   "title": "School adviezen",
   "mark": "bar",

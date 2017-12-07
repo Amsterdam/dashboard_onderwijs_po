@@ -15,7 +15,7 @@ import requests
 import pandas
 from jsonschema import validate
 from dataset.models import LeerlingenNaarGewicht
-from dataset.models import SchoolAdviezen
+from dataset.models import SchoolAdvies
 from dataset.models import CitoScores
 
 from dataset.models import Vestiging
@@ -79,11 +79,13 @@ _CSV_SCHOOL_ADVIEZEN = {
 }
 
 
-def get_school_adviezen_from_csv(year, brin6s):
+def get_school_advies(year, brin6s):
     try:
         url = _CSV_SCHOOL_ADVIEZEN[year]
     except KeyError:
         pass
     else:
-        SchoolAdviezen.objects._from_duo_csv(url, year, brin6s)
+        SchoolAdvies.objects.import_csv(url, year, brin6s)
+
+
 

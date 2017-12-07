@@ -15,10 +15,10 @@ class LeerlingenNaarGewichtSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SchoolAdviezenSerializer(serializers.ModelSerializer):
+class SchoolAdviesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.SchoolAdviezen
-        fields = '__all__'
+        model = models.SchoolAdvies
+        exclude = ('id', 'brin', 'vestigingsnummer')
 
 
 class CitoScoresSerializer(serializers.ModelSerializer):
@@ -37,7 +37,7 @@ class VestigingSerializer(serializers.ModelSerializer):
     adres = AdresSerializer()
     leerlingen_naar_gewicht = LeerlingenNaarGewichtSerializer(
         many=True, read_only=True)
-    school_adviezen = SchoolAdviezenSerializer(
+    advies = SchoolAdviesSerializer(
         many=True, read_only=True)
     cito_scores = CitoScoresSerializer(
         many=True, read_only=True)
@@ -47,18 +47,7 @@ class VestigingSerializer(serializers.ModelSerializer):
         exclude = ('_id',)
 
 
-# -- custom serializers for "Adviezen" bar chart --
-
-def normalize(instance, fields, name_target, value_target):
-    out = []
-    for field in fields:
-        out.append({
-            name_target: field,
-            value_target: getattr(instance, field)
-        })
-    return out
-
-
+# TODO: move this math to the serializer for SchoolAdvies
 def school_advies_to_representation(instance):
     """
     Generate normalized
@@ -90,24 +79,6 @@ def school_advies_to_representation(instance):
     for record in out:
         record.update(standard_fields)
     return out
-
-
-class SchoolAdviezenListViz(serializers.ListSerializer):
-    def to_representation(self, data):
-        out = []
-        for instance in data.all():
-            out.extend(school_advies_to_representation(instance))
-
-        return out
-
-
-class SchoolAdviezenViz(serializers.Serializer):
-    class Meta:
-        model = models.SchoolAdviezen
-        list_serializer_class = SchoolAdviezenListViz
-
-    def to_representation(self, instance):
-        return school_advies_to_representation(instance)
 
 
 #  -- custom serializers for "Leerlingen naar gewicht" --
@@ -166,12 +137,6 @@ class LeerlingenNaarGewichtVizSerializer(serializers.ModelSerializer):
         fields = ('gewicht_0', 'gewicht_0_3', 'gewicht_1_2', 'totaal', 'jaar', 'vestiging')
 
 
-class SchoolAdviezenVizSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.SchoolAdviezen
-        exclude = ('id', 'brin', 'vestigingsnummer', 'vestiging')
-
-
 class CitoScoresVizSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CitoScores
@@ -182,7 +147,7 @@ class VestigingVizSerializer(serializers.ModelSerializer):
     # TODO: consider removing (not needed at the moment)
     leerlingen_naar_gewicht = LeerlingenNaarGewichtVizSerializer(
         many=True, read_only=True)
-    school_adviezen = SchoolAdviezenVizSerializer(
+    school_adviezen = SchoolAdviesSerializer(
         many=True, read_only=True)
     cito_scores = CitoScoresVizSerializer(
         many=True, read_only=True)

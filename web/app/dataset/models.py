@@ -13,7 +13,32 @@ from openpyxl import load_workbook
 from datetime import datetime
 
 from django.db import models
+from django.core.exceptions import ValidationError
 
+# School types that we save to the database, anything else will fail.
+SCHOOL_TYPES = [
+    'VMBO_BL',
+    'VMBO_BL_KL',
+    'VMBO_GT',
+    'VMBO_GT_HAVO',
+    'VMBO_KL',
+    'VMBO_KL_GT',
+    'VSO',
+    'VWO',
+    'HAVO',
+    'HAVO_VWO',
+    'PRO'
+]
+
+# Mapping from school types that we do not store to those we do:
+# (There was a slight rename in the data between 2013 and 2014).
+SCHOOL_TYPE_MAPPING = collections.OrderedDict([
+    ('VMBO_B', 'VMBO_BL'),
+    ('VMBO_B_K', 'VMBO_BL_KL'),
+    ('VMBO_K', 'VMBO_KL'),
+    ('VMBO_K_GT', 'VMBO_KL_GT'),
+    ('PRIKDATUM_ADVIEZEN', 'PEILDATUM_ADVIEZEN'),
+])
 
 # -- from schoolwijzer --
 
@@ -114,6 +139,15 @@ class LeerlingenNaarGewicht(models.Model):
     vestiging = models.ForeignKey(
         Vestiging, related_name='leerlingen_naar_gewicht', null=True)
 
+# class LeerlingGewicht(models.Model):
+#     class Meta:
+#         unique_together = ('brin', 'vestigingsnummer', 'jaar', 'gewicht')
+#
+#     brin = models.rField(max_length=4)
+#     vestigingsnummer = models.IntegerField()
+#
+#     gewicht = models.
+
 
 _SCHOOLADVIEZEN_CSV_COLUMNS = collections.OrderedDict([
     ('PEILDATUM_LEERLINGEN', str),
@@ -147,28 +181,46 @@ _SCHOOLADVIEZEN_CSV_COLUMNS = collections.OrderedDict([
 ])
 
 
-class SchoolAdviezenManager(models.Manager):
-    def _from_duo_csv(self, uri, year, brin6s):
+class SchoolTypeManager(models.Manager):
+    def create_known(self):
+        '''
+        Initialize the SchoolType table, no need to manually create more entries.
+        '''
+        instances = []
+        for name in SCHOOL_TYPES:
+            instances.append(SchoolType(name=name))
+        self.bulk_create(instances)
+
+
+class SchoolType(models.Model):
+    name = models.CharField(max_length=16, primary_key=True)
+
+    objects = SchoolTypeManager()
+
+    def clean(self):
+        if self.name not in SCHOOL_TYPES:
+            msg = '{} not a valid schooltype'.format(self.name)
+            raise ValidationError(msg)
+
+
+class SchoolAdviesManager(models.Manager):
+    def import_csv(self, uri, year, brin6s):
+        """
+        Retrieve CSV data from uri create SchoolAdvies entries.
+        """
+        # TODO: Check encoding='cp1252' with source.
         df = pandas.read_csv(
             uri,
             delimiter=';',
             dtype=_SCHOOLADVIEZEN_CSV_COLUMNS,
-            encoding='cp1252'  # probable, not sure ... (at least not UTF8)
+            encoding='cp1252'
         )
         mask = df['GEMEENTENUMMER'] == 363  # only Amsterdam is relevant
 
         # Deal with rename of school types between 2013 and 2014:
-        RENAMES = dict([
-            ('VMBO_B', 'VMBO_BL'),
-            ('VMBO_B_K', 'VMBO_BL_KL'),
-            ('VMBO_K', 'VMBO_KL'),
-            ('VMBO_K_GT', 'VMBO_KL_GT'),
-            ('PRIKDATUM_ADVIEZEN', 'PEILDATUM_ADVIEZEN'),
-        ])
-
         for column_name in df.columns:
-            if column_name in RENAMES:
-                df[RENAMES[column_name]] = df[column_name]
+            if column_name in SCHOOL_TYPE_MAPPING:
+                df[SCHOOL_TYPE_MAPPING[column_name]] = df[column_name]
 
         # Cretae model instances and save them to database:
         instances = []
@@ -179,67 +231,37 @@ class SchoolAdviezenManager(models.Manager):
             peildatum_leerlingen = datetime.strptime(
                 row['PEILDATUM_LEERLINGEN'], '%Y%m%d')
 
-            obj = SchoolAdviezen(
-                brin=row['BRIN_NUMMER'],
-                vestigingsnummer=row['VESTIGINGSNUMMER'],
+            # Make an SchoolAdvies entry for each type of school.
+            for school_type in SCHOOL_TYPES:
+                obj = SchoolAdvies(
+                    brin=row['BRIN_NUMMER'],
+                    vestigingsnummer=row['VESTIGINGSNUMMER'],
 
-                vmbo_bl=row['VMBO_BL'],
-                vmbo_bl_kl=row['VMBO_BL_KL'],
-                vmbo_gt=row['VMBO_GT'],
-                vmbo_gt_havo=row['VMBO_GT_HAVO'],
-                vmbo_kl=row['VMBO_KL'],
-                vmbo_kl_gt=row['VMBO_KL_GT'],
-                vso=row['VSO'],
-                vwo=row['VWO'],
-
-                # new fields:
-                havo = row['HAVO'],
-                havo_vwo = row['HAVO_VWO'],
-                pro = row['PRO'],
-
-                jaar=year,
-                peildatum_adviezen=peildatum_adviezen,
-                peildatum_leerlingen=peildatum_leerlingen,
-            )
-            obj.vestiging_id = brin6 if brin6 in brin6s else None
-            instances.append(obj)
+                    advies_id=school_type,
+                    totaal=row[school_type],
+                    jaar=year,
+                )
+                obj.vestiging_id = brin6 if brin6 in brin6s else None
+                instances.append(obj)
 
         self.bulk_create(instances)
 
 
-class SchoolAdviezen(models.Model):
-    """Shadow relevant parst of School Adviezen dataset of DUO."""
-    # TODO: base links on the following (or build a BRIN 6 code)
+class SchoolAdvies(models.Model):
     class Meta:
-        unique_together = ('brin', 'vestigingsnummer', 'jaar')
+        unique_together = ('brin', 'vestigingsnummer', 'jaar', 'advies')
 
+    # for internal bookkeeping (keep track of missing vestigingen)
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
-    # relevant (subset) of properties
-    vmbo_bl = models.IntegerField()
-    vmbo_bl_kl = models.IntegerField()
-    vmbo_gt = models.IntegerField()
-    vmbo_gt_havo = models.IntegerField()
-    vmbo_kl = models.IntegerField()
-    vmbo_kl_gt = models.IntegerField()
-    vso = models.IntegerField()
-    vwo = models.IntegerField()
-
-    # new:
-    havo = models.IntegerField()
-    havo_vwo = models.IntegerField()
-    pro = models.IntegerField()
-
+    # to expose to outside
+    advies = models.ForeignKey(SchoolType, related_name='school_type')
+    totaal = models.IntegerField()
     jaar = models.IntegerField()
-    # Recent data sets do not have the peildatum_adviezen (allow null)
-    peildatum_adviezen = models.DateField(null=True)
-    peildatum_leerlingen = models.DateField()
+    vestiging = models.ForeignKey(Vestiging, null=True, related_name='advies')
 
-    # TODO: ga na wat 'PRO' betekend; school advies?
-    objects = SchoolAdviezenManager()
-    vestiging = models.ForeignKey(
-        Vestiging, related_name='school_adviezen', null=True)
+    objects = SchoolAdviesManager()
 
 
 class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
@@ -310,8 +332,24 @@ class LeerlingLeraarRatio(models.Model):
 
 # -- datasets from onderwijs --
 
+def _detect_duplicate_brin6(dataframe):
+    """
+    Detect duplicated BRIN 6 codes (with different school names).
+    """
+    # TODO: proper logging
+    mask = dataframe.duplicated(subset=['brin6'])
+    duplicated_brin6s = set(dataframe[mask]['brin6'])
+
+    for brin6 in duplicated_brin6s:
+        print('Gedupliceerde BRIN6 {} wordt overgeslagen'.format(brin6))
+        for i, row in dataframe[dataframe['brin6'] == brin6]:
+            print('  {}: {}'.format(row['brin6'], row['schoolnaam']))
+
+    return duplicated_brin6s
+
+
 class SchoolWisselaarsManager(models.Manager):
-    def _from_excel_file(self, file_name, brin6s):
+    def _from_excel_file(self, file_name, year, brin6s):
         """
         Load Excel file of "schoolwisselaars", save to db.
         """
@@ -321,15 +359,10 @@ class SchoolWisselaarsManager(models.Manager):
         columns = next(data)
         df = DataFrame(data, columns)
 
-        # Report duplicated BRIN 6 codes:
-        mask = df.duplicated(subset=['brin6'])
-        duplicated_brin6s = set(df[mask]['brin6'])
-        for brin6 in duplicated_brin6s:
-            # TODO: proper logging
-            print('Gedupliceerde BRIN6 {} wordt overgeslagen'.format(brin6))
-            for i, row in df[df['brin6'] == brin6]:
-                print('  {}: {}'.format(row['brin6'], row['schoolnaam']))
+        # Detect / report duplicate BRIN 6 codes.
+        duplicated_brin6s = _detect_duplicate_brin6(df)
 
+        # Create instances
         instances = []
         for i, row in df.iterrows():
             if row['brin6'] in duplicated_brin6s:
@@ -343,12 +376,14 @@ class SchoolWisselaarsManager(models.Manager):
                 vestigingsnummer=vestigingsnummer,
                 naam=row['schoolnaam'],  # potential duplicate of Vestiging naam
                 wisseling_uit=row['wisseling_uit'],
-                wisseling_in=row['wisseling_in']
+                wisseling_in=row['wisseling_in'],
+                jaar=year,
             )
             obj.vestiging_id = brin6 if brin6 in brin6s else None
             instances.append(obj)
 
         self.bulk_create(instances)
+
 
 class SchoolWisselaars(models.Model):
     brin = models.CharField(max_length=4)
@@ -358,5 +393,57 @@ class SchoolWisselaars(models.Model):
     wisseling_uit = models.FloatField()
     wisseling_in = models.FloatField()
 
+    jaar = models.IntegerField()
     vestiging = models.ForeignKey(
         Vestiging, related_name='schoolwisselaars', null=True)
+
+
+class SubsidieManager(models.Manager):
+    def _from_excel(self, file_name, year, brin6s):
+        # Load the Excel workbook, convert to Pandas DataFrame
+        ws = load_workbook(filename=file_name)['Blad1']
+        columns = [x.value for x in ws[4]]
+        data = ([x.value for x in row] for row in ws.iter_rows(min_row=5))
+        df = pandas.DataFrame(data, columns=columns)
+        df.rename({
+            'School brin': 'brin6',
+            'School naam': 'schoolnaam',
+        })  # for consistency with other data sets
+        df.drop('Eindtotaal', axis=1, inplace=True)
+
+        duplicated_brin6s = _detect_duplicate_brin6(df)
+        instances = []
+        for i, row in df.iterrows():
+            if row['brin6'] in duplicated_brin6s:
+                continue  # Skip records with duplicated BRIN 6 codes
+
+            brin = row['brin6'][:4]
+            vestigingsnummer = int(row['brin6'][4:])
+
+            for key, value in row[2:].iteritems():
+                if not pandas.isnull(value):
+                    # for now only awarded subsidies are stored
+                    obj = Subsidie(
+                        brin=brin,
+                        vestigingsnummer=vestigingsnummer,
+                        jaar=year,
+                        naam=key,
+                    )
+                    obj.vestiging_id = brin6 if brin6 in brin6s else None
+                    instances.append(obj)
+
+        self.bulk_create(instances)
+
+
+# The names and available subsidies may vary over the years, so each individual
+# subsidy has an entry.
+class Subsidie(models.Model):
+    brin = models.CharField(max_length=4)
+    vestigingsnummer = models.IntegerField()
+
+    jaar = models.IntegerField()
+    naam = models.CharField(max_length=255)
+    vestiging = models.ForeignKey(
+        Vestiging, related_name='subsidies', null=True)
+
+# TODO: VVE data set
