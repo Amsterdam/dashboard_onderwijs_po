@@ -4,7 +4,6 @@ Models for various external data sources.
 # flake8: noqa
 # TODO items:
 # * consider DecimalField s
-# * once information model is settled, refactor
 import collections
 import requests
 import pandas
@@ -90,63 +89,59 @@ class DUOAPIManagerMixin:
         self.bulk_create(instances)
 
 
-class LeerlingenNaarGewichtManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
-        # Note: somehow self.create( ... ) leads to problems with bulk_create.
+_LEERLING_GEWICHT = {
+    'GEWICHT_0': '0',
+    'GEWICHT_0.3': '0.3',
+    'GEWICHT_1.2': '1.2',
+}
 
-        brin6 = brin=json_dict['BRIN_NUMMER'] + \
-            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
 
-        peildatum = datetime.strptime(json_dict['PEILDATUM'], '%Y%m%d')
-
-        obj = LeerlingenNaarGewicht(
-            brin=json_dict['BRIN_NUMMER'],
-            vestigingsnummer=json_dict['VESTIGINGSNUMMER'],
-
-            gewicht_0=json_dict['GEWICHT_0'],
-            gewicht_0_3=json_dict['GEWICHT_0.3'],
-            gewicht_1_2=json_dict['GEWICHT_1.2'],
-            totaal=json_dict['TOTAAL'],
-
-            jaar=year,
-            peildatum=peildatum,
+class LeerlingNaarGewichtManager(models.Manager):
+    def import_csv(self, uri, year, brin6s):
+        df = pandas.read_csv(
+            uri,
+            delimiter=';',
+            # dtype=_SCHOOLADVIEZEN_CSV_COLUMNS,  # TODO: add this extra safety
+            encoding='cp1252'
         )
-        obj.vestiging_id = brin6 if brin6 in brin6s else None
-        return obj
+        mask = df['GEMEENTENUMMER'] == 363  # only Amsterdam is relevant
 
 
-class LeerlingenNaarGewicht(models.Model):
-    """Shadow relevant part of Leerling naar gewicht dataset of DUO."""
-    # TODO: base links on the following (or build a BRIN 6 code)
+        instances = []
+        for i, row in df[mask].iterrows():
+            brin6 = row['BRIN_NUMMER'] + '{:02d}'.format(int(row['VESTIGINGSNUMMER']))
+
+            # voor ieder gewicht maken we een entry
+            for column, value in _LEERLING_GEWICHT.items():  # py3!
+                obj = LeerlingNaarGewicht(
+                    brin=row['BRIN_NUMMER'],
+                    vestigingsnummer=row['VESTIGINGSNUMMER'],
+
+                    gewicht=value,
+                    totaal=row[column],
+                    jaar=year,
+                )
+
+                obj.vestiging_id = brin6 if brin6 in brin6s else None
+                instances.append(obj)
+
+        self.bulk_create(instances)
+
+
+class LeerlingNaarGewicht(models.Model):
     class Meta:
-        unique_together = ('brin', 'vestigingsnummer', 'jaar')
+        unique_together = ('brin', 'vestigingsnummer', 'jaar', 'gewicht')
 
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
-    # relevant (subset) of properties
-    # TODO: consider DecimalField
-    gewicht_0 = models.FloatField()
-    gewicht_0_3 = models.FloatField()
-    gewicht_1_2 = models.FloatField()
-    totaal = models.FloatField()
-
-    # TODO: add peildatum (also jaar seperately)
+    gewicht = models.CharField(max_length=3)
+    totaal = models.IntegerField()
     jaar = models.IntegerField()
-    peildatum = models.DateField()
+    vestiging = models.ForeignKey(Vestiging, null=True, related_name='leerling_naar_gewicht')
 
-    objects = LeerlingenNaarGewichtManager()
-    vestiging = models.ForeignKey(
-        Vestiging, related_name='leerlingen_naar_gewicht', null=True)
-
-# class LeerlingGewicht(models.Model):
-#     class Meta:
-#         unique_together = ('brin', 'vestigingsnummer', 'jaar', 'gewicht')
-#
-#     brin = models.rField(max_length=4)
-#     vestigingsnummer = models.IntegerField()
-#
-#     gewicht = models.
+    # peildatum = models.DateField()  # TODO: see whether we need peildatum
+    objects = LeerlingNaarGewichtManager()
 
 
 _SCHOOLADVIEZEN_CSV_COLUMNS = collections.OrderedDict([
@@ -291,24 +286,19 @@ class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
 
 class CitoScores(models.Model):
     """Shadow relevant parst of CITO Scores dataset of DUO."""
-    # TODO: base links on the following (or build a BRIN 6 code)
+    # TODO: peildatum  / prikdatum
     class Meta:
         unique_together = ('brin', 'vestigingsnummer', 'jaar')
 
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
-    # relevant:
-    # TODO: talk to experts about meaning of fields in DUO data
-    # TODO: peildatum  / prikdatum
     cet_gem = models.FloatField(null=True)
     leerjaar_8 = models.IntegerField(null=True)
-
     jaar = models.IntegerField()
-    objects = CitoScoresManager()
-    vestiging = models.ForeignKey(
-        Vestiging, related_name='cito_scores', null=True)
+    vestiging = models.ForeignKey(Vestiging, related_name='cito_scores', null=True)
 
+    objects = CitoScoresManager()
 
 class LeerlingLeraarRatio(models.Model):
     """Model to contain derived number Leerling Leraar Ratio"""

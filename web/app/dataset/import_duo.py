@@ -14,7 +14,7 @@ import logging
 import requests
 import pandas
 from jsonschema import validate
-from dataset.models import LeerlingenNaarGewicht
+from dataset.models import LeerlingNaarGewicht
 from dataset.models import SchoolAdvies
 from dataset.models import CitoScores
 
@@ -28,15 +28,23 @@ logger = logging.getLogger(__name__)
 
 _BASE_API_URL = 'https://api.duo.nl/v0/datasets/'
 
-_LEERLINGEN_NAAR_GEWICHT = {
-    2014: 'https://api.duo.nl/v0/datasets/02.leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2014-2015/search',
-    2015: 'https://api.duo.nl/v0/datasets/02.-leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2015-2016/search',
-    2016: 'https://api.duo.nl/v0/datasets/02.leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2016-2017/search'
-}
-
 _CITO_SCORES = {
     2014: 'https://api.duo.nl/v0/datasets/05.-gemiddelde-eindscores-bo-sbo-2014-2015/search',
     2015: 'https://api.duo.nl/v0/datasets/05.-gemiddelde-eindscores-bo-sbo-2015-2016/search'
+}
+
+_LEERLING_NAAR_GEWICHT_CSV = {
+    2014: 'https://duo.nl/open_onderwijsdata/images/02.leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2014-2015.csv',
+    2015: 'https://duo.nl/open_onderwijsdata/images/02.-leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2015-2016.csv',
+    2016: 'https://duo.nl/open_onderwijsdata/images/02.leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2016-2017.csv',
+}
+
+_CSV_SCHOOL_ADVIEZEN = {
+    2011: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2011-2012.csv',
+    2012: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2012-2013.csv',
+    2013: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2013-2014.csv',
+    2014: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2014-2015.csv',  # different columns as above earlier data
+    2015: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2015-2016.csv',
 }
 
 
@@ -52,15 +60,6 @@ def _download_json(dataset, year):
     return json.loads(result.text)
 
 
-def get_leerlingen_naar_gewicht(year, brin6s):
-    try:
-        data = _download_json(_LEERLINGEN_NAAR_GEWICHT, year)
-    except KeyError:
-        pass
-    else:
-        LeerlingenNaarGewicht.objects.from_duo_api_json(data, year, brin6s)
-
-
 def get_cito_scores(year, brin6s):
     try:
         data = _download_json(_CITO_SCORES, year)
@@ -68,15 +67,6 @@ def get_cito_scores(year, brin6s):
         pass
     else:
         CitoScores.objects.from_duo_api_json(data, year, brin6s)
-
-
-_CSV_SCHOOL_ADVIEZEN = {
-    2011: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2011-2012.csv',
-    2012: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2012-2013.csv',
-    2013: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2013-2014.csv',
-    2014: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2014-2015.csv',  # different columns as above earlier data
-    2015: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2015-2016.csv',
-}
 
 
 def get_school_advies(year, brin6s):
@@ -88,4 +78,11 @@ def get_school_advies(year, brin6s):
         SchoolAdvies.objects.import_csv(url, year, brin6s)
 
 
+def get_leerling_naar_gewicht(year, brin6s):
+    try:
+        url = _LEERLING_NAAR_GEWICHT_CSV[year]
+    except KeyError:
+        pass
+    else:
+        LeerlingNaarGewicht.objects.import_csv(url, year, brin6s)
 

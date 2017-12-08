@@ -1,41 +1,25 @@
 from rest_framework import viewsets
 from rest_framework import routers
 
-from dataset.models import Vestiging, LeerlingenNaarGewicht
+from dataset.models import Vestiging, LeerlingNaarGewicht, CitoScores
 from dataset.models import SchoolAdvies
-from api.serializers import VestigingSerializer, VestigingVizSerializer
+from api.serializers import VestigingSerializer
+from api.serializers import CitoScoresSerializer
 
-from api.serializers import LNGVizSerializer, SchoolAdviesSerializer
+from api.serializers import SchoolAdviesSerializer, LeerlingNaarGewichtSerializer
 
 
-# TODO: grab school advies
 class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
         Vestiging.objects
         .select_related('adres')
         .prefetch_related('advies')
         .prefetch_related('cito_scores')
-        .prefetch_related('leerlingen_naar_gewicht')
+        .prefetch_related('leerling_naar_gewicht')
         .order_by('brin')
     )
     serializer_class = VestigingSerializer
 
-    filter_fields = ('brin6', 'naam', 'adres__stadsdeel')
-
-
-class VestigingVizViewSet(viewsets.ReadOnlyModelViewSet):
-    # TODO: consider removing this endpoint for now (Something like this is
-    # needed by a future JavaScript front-end that can cache the whole data
-    # set at the client side for performance).
-    queryset = (
-        Vestiging.objects.all()
-        .order_by('brin')
-        .select_related('adres')
-        .prefetch_related('school_adviezen')
-        .prefetch_related('cito_scores')
-        .prefetch_related('leerlingen_naar_gewicht')
-    )
-    serializer_class = VestigingVizSerializer
     filter_fields = ('brin6', 'naam', 'adres__stadsdeel')
 
 
@@ -49,30 +33,44 @@ class OnderwijsAPIRouter(routers.DefaultRouter):
     APIRootView = OnderwijsAPIView
 
 
-class LeerlingenNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint voor "Leerlingen naar gewicht" visualisatie.
-
-    Dit endpoint is filterbaar op 'vestiging' veld (BRIN6).
-    """
+class LeerlingNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
-        LeerlingenNaarGewicht.objects
+        LeerlingNaarGewicht.objects
         .select_related('vestiging')
+        .filter(vestiging__isnull=False)
     )
-    serializer_class = LNGVizSerializer
+    serializer_class = LeerlingNaarGewichtSerializer
     filter_fields = ('vestiging',)
 
 
 class SchoolAdviesViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    SchoolAdvies endpoint.
+    School advies endpoint.
+
+    Filterbaar op "vestiging".
     """
     # The filter is needed for SchoolAdviezen whose ForeignKey is null (we
     # cannot meaningfully display these).
     queryset = (
         SchoolAdvies.objects
         .select_related('vestiging')
+        .select_related('advies')
         .filter(vestiging__isnull=False)
     )
     serializer_class = SchoolAdviesSerializer
+    filter_fields = ('vestiging',)
+
+
+class CitoScoresViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    Cito scores endpoint.
+
+    Filterbaar op "vestiging".
+    """
+    queryset = (
+        CitoScores.objects
+        .select_related('vestiging')
+        .filter(vestiging__isnull=False)
+    )
+    serializer_class = CitoScoresSerializer
     filter_fields = ('vestiging',)

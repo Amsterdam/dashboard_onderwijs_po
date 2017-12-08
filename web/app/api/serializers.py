@@ -9,10 +9,10 @@ class AdresSerializer(serializers.ModelSerializer):
         exclude = ('id',)
 
 
-class LeerlingenNaarGewichtSerializer(serializers.ModelSerializer):
+class LeerlingNaarGewichtSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.LeerlingenNaarGewicht
-        fields = '__all__'
+        model = models.LeerlingNaarGewicht
+        exclude = ('id', 'brin', 'vestigingsnummer')
 
 
 class SchoolAdviesSerializer(serializers.ModelSerializer):
@@ -24,7 +24,7 @@ class SchoolAdviesSerializer(serializers.ModelSerializer):
 class CitoScoresSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CitoScores
-        fields = '__all__'
+        exclude = ('id', 'brin', 'vestigingsnummer')
 
 
 class LeerlingLeraarRatio(serializers.ModelSerializer):
@@ -35,7 +35,7 @@ class LeerlingLeraarRatio(serializers.ModelSerializer):
 
 class VestigingSerializer(serializers.ModelSerializer):
     adres = AdresSerializer()
-    leerlingen_naar_gewicht = LeerlingenNaarGewichtSerializer(
+    leerling_naar_gewicht = LeerlingNaarGewichtSerializer(
         many=True, read_only=True)
     advies = SchoolAdviesSerializer(
         many=True, read_only=True)
@@ -79,80 +79,3 @@ def school_advies_to_representation(instance):
     for record in out:
         record.update(standard_fields)
     return out
-
-
-#  -- custom serializers for "Leerlingen naar gewicht" --
-
-#  TODO: rename
-#  TODO: check that all the select / prefetch related is active here
-#  TODO: consider caching results ...
-
-def lng_to_representation(instance):
-    return [
-        {
-            "gewicht": "0.0",
-            "totaal": instance.gewicht_0,
-            "jaar": instance.jaar,
-            "vestiging": instance.vestiging.brin6 if instance.vestiging else None
-        },
-        {
-            "gewicht": "0.3",
-            "totaal": instance.gewicht_0_3,
-            "jaar": instance.jaar,
-            "vestiging": instance.vestiging.brin6 if instance.vestiging else None
-        },
-        {
-            "gewicht": "1.2",
-            "totaal": instance.gewicht_1_2,
-            "jaar": instance.jaar,
-            "vestiging": instance.vestiging.brin6 if instance.vestiging else None
-        }
-    ]
-
-
-class LNGVizListSerializer(serializers.ListSerializer):
-    def to_representation(self, data):
-        out = []
-        for instance in data.all():
-            out.extend(lng_to_representation(instance))
-
-        return out
-
-
-class LNGVizSerializer(serializers.Serializer):
-    class Meta:
-        models = models.LeerlingenNaarGewicht
-        list_serializer_class = LNGVizListSerializer
-
-    def to_representation(self, instance):
-        # entries in database are not fully normalized, vega-lite does expect that
-        return lng_to_representation(instance)
-
-
-# -- full data set at once: --
-
-class LeerlingenNaarGewichtVizSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.LeerlingenNaarGewicht
-        fields = ('gewicht_0', 'gewicht_0_3', 'gewicht_1_2', 'totaal', 'jaar', 'vestiging')
-
-
-class CitoScoresVizSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.CitoScores
-        exclude = ('id', 'brin', 'vestigingsnummer', 'vestiging')
-
-
-class VestigingVizSerializer(serializers.ModelSerializer):
-    # TODO: consider removing (not needed at the moment)
-    leerlingen_naar_gewicht = LeerlingenNaarGewichtVizSerializer(
-        many=True, read_only=True)
-    school_adviezen = SchoolAdviesSerializer(
-        many=True, read_only=True)
-    cito_scores = CitoScoresVizSerializer(
-        many=True, read_only=True)
-
-    class Meta:
-        model = models.Vestiging
-        fields = ('brin6', 'naam', 'leerlingen', 'leerlingen_naar_gewicht',
-                  'school_adviezen', 'cito_scores')
