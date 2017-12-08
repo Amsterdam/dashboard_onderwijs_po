@@ -5,7 +5,6 @@ from django.core.management.base import BaseCommand
 
 from dataset.models import Vestiging
 from dataset.import_schoolwijzer import get_vestigingen
-from dataset.import_duo import get_leerlingen_naar_gewicht
 from dataset.import_duo import get_leerling_naar_gewicht
 from dataset.import_duo import get_school_advies
 from dataset.import_duo import get_cito_scores

@@ -75,6 +75,7 @@ def get_school_advies(year, brin6s):
     except KeyError:
         pass
     else:
+        logger.info('Accessing: %s', url)
         SchoolAdvies.objects.import_csv(url, year, brin6s)
 
 
@@ -84,5 +85,6 @@ def get_leerling_naar_gewicht(year, brin6s):
     except KeyError:
         pass
     else:
+        logger.info('Accessing: %s', url)
         LeerlingNaarGewicht.objects.import_csv(url, year, brin6s)
 
