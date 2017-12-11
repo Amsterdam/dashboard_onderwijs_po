@@ -2,9 +2,11 @@ from rest_framework import viewsets
 from rest_framework import routers
 
 from dataset.models import Vestiging, LeerlingNaarGewicht, CitoScores
-from dataset.models import SchoolAdvies
+from dataset.models import SchoolAdvies, SchoolWisselaars, Subsidie
 from api.serializers import VestigingSerializer
 from api.serializers import CitoScoresSerializer
+from api.serializers import SchoolWisselaarsSerializer
+from api.serializers import SubsidieSerializer
 
 from api.serializers import SchoolAdviesSerializer, LeerlingNaarGewichtSerializer
 
@@ -73,4 +75,24 @@ class CitoScoresViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
     )
     serializer_class = CitoScoresSerializer
+    filter_fields = ('vestiging',)
+
+
+class SubsidieViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = (
+        Subsidie.objects
+        .select_related('vestiging')
+        .filter(vestiging__isnull=False)
+    )
+    serializer_class = SubsidieSerializer
+    filter_fields = ('vestiging',)
+
+
+class SchoolWisselaarsViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = (
+        SchoolWisselaars.objects
+        .select_related('vestiging')
+        .filter(vestiging__isnull=False)
+    )
+    serializer_class = SchoolWisselaarsSerializer
     filter_fields = ('vestiging',)

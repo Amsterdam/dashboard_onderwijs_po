@@ -18,3 +18,14 @@ onderwijs_router.register(
     'cito-score', views.CitoScoresViewSet,
     base_name='cito-score'
 )
+
+onderwijs_router.register(
+    'subdsidie', views.SubsidieViewSet,
+    base_name='subsidie'
+)
+
+onderwijs_router.register(
+    'schoolwisselaars', views.SchoolWisselaarsViewSet,
+    base_name='schoolwisselaars'
+)
+

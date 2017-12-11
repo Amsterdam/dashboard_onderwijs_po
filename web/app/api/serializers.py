@@ -33,6 +33,18 @@ class LeerlingLeraarRatio(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class SubsidieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Subsidie
+        exclude = ('id', 'brin', 'vestigingsnummer')
+
+
+class SchoolWisselaarsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SchoolWisselaars
+        exclude = ('id', 'brin', 'vestigingsnummer')
+
+
 class VestigingSerializer(serializers.ModelSerializer):
     adres = AdresSerializer()
     leerling_naar_gewicht = LeerlingNaarGewichtSerializer(
