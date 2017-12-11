@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Vestigingen</h1>
+<ul>
+{% for vestiging in object_list %}
+<li><a href="/onderwijs/dash/vestiging/{{vestiging.brin6}}/">{{vestiging.brin6}}</a></li>
+{% endfor %}
+</ul>
+<script>
+  // brin6 is injected through the Django template system
+  var brin6 = "{{object.brin6}}";
+</script>
+{% endblock content %}

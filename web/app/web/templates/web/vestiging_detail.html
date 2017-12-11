@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{object.naam}} ({{object.brin6}})</h1>
+<div id="vis"></div>
+<div id="vis2"></div>
+<script>
+  // brin6 is injected through the Django template system
+  var brin6 = "{{object.brin6}}";
+
+  // The individual JSON vega-lite specs:
+  var specUrlAdvies = location.origin + '/static/web/schooladviezen.json';
+  var specUrlLeerlingNaarGewicht = location.origin + '/static/web/leerling_naar_gewicht.json';
+
+  // Parse all JSON specs, then render the visualizations:
+  var queue = d3.queue()
+    .defer(d3.json, specUrlAdvies)
+    .defer(d3.json, specUrlLeerlingNaarGewicht)
+    .await(function(error, specAdvies, specLeerlingNaarGewicht){
+      var vizOptions = {"actions": {"export": false, "source": false, "editor": true}}
+      console.log(location);
+
+      // For each visualization, set override the data url and then render:
+      specAdvies.data.url = '/onderwijs/schooladvies/?vestiging=' + brin6;
+      vegaEmbed('#vis', specAdvies, vizOptions).catch(console.error);
+
+      specLeerlingNaarGewicht.data.url = '/onderwijs/leerling-naar-gewicht/?vestiging=' + brin6;
+      vegaEmbed('#vis2', specLeerlingNaarGewicht, vizOptions).catch(console.error);
+    }
+  )
+</script>
+{% endblock content %}
