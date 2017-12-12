@@ -2,7 +2,8 @@ import os
 import logging
 # import objectstore
 
-from .models import Subsidie
+from .models.subsidie import subsidie_import_helper
+from .models import Subsidie, ToegewezenSubsidie
 from .models import SchoolWisselaars
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
@@ -58,5 +59,4 @@ def get_subsidies(year, brin6s):
         raise NotImplementedError('object store support TBD')
 
     file_name = os.path.join(_CACHE_DIR, _file)
-    Subsidie.objects._from_excel(file_name, year, brin6s)
-
+    subsidie_import_helper(file_name, year, brin6s)

@@ -29,3 +29,7 @@ onderwijs_router.register(
     base_name='schoolwisselaars'
 )
 
+onderwijs_router.register(
+    'toegewezen-subsidie', views.ToegewezenSubsidieViewSet,
+    base_name='toegewezen-subsidie'
+)

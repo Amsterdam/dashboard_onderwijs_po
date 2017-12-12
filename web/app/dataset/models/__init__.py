@@ -5,4 +5,4 @@ from .school_advies import SchoolType, SchoolAdvies
 from .cito_scores import CitoScores
 from .llratio import LeerlingLeraarRatio
 from .school_wisselaars import SchoolWisselaars
-from .subsidie import Subsidie
+from .subsidie import Subsidie, ToegewezenSubsidie

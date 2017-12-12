@@ -36,7 +36,18 @@ class LeerlingLeraarRatio(serializers.ModelSerializer):
 class SubsidieSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Subsidie
-        exclude = ('id', 'brin', 'vestigingsnummer')
+        exclude = ('id',)
+
+
+class ToegewezenSubsidieSerializer(serializers.ModelSerializer):
+    subsidie = serializers.SerializerMethodField()
+
+    def get_subsidie(self, obj):
+        return obj.subsidie.naam
+
+    class Meta:
+        model = models.ToegewezenSubsidie
+        exclude = ('id',)
 
 
 class SchoolWisselaarsSerializer(serializers.ModelSerializer):
