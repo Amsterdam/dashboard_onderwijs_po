@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <h1>{{object.naam}} ({{object.brin6}})</h1>
@@ -9,8 +10,8 @@
   var brin6 = "{{object.brin6}}";
 
   // The individual JSON vega-lite specs:
-  var specUrlAdvies = location.origin + '/static/web/schooladviezen.json';
-  var specUrlLeerlingNaarGewicht = location.origin + '/static/web/leerling_naar_gewicht.json';
+var specUrlAdvies = location.origin + '{% static '/web/schooladviezen.json' %}';
+var specUrlLeerlingNaarGewicht = location.origin + '{% static '/web/leerling_naar_gewicht.json' %}';
 
   // Parse all JSON specs, then render the visualizations:
   var queue = d3.queue()
