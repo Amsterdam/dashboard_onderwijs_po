@@ -6,7 +6,7 @@ from openpyxl import load_workbook
 import pandas
 
 from .vestiging import Vestiging
-from .school_wisselaars import _detect_duplicate_brin6, _is_brin6
+from .school_wisselaars import _detect_duplicate_brin6
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
 logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
