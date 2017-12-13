@@ -61,15 +61,15 @@ class SchoolWisselaarsManager(models.Manager):
             brin = row['brin6'][:4]
             vestigingsnummer = int(row['brin6'][4:])
 
-            wisseling_in = row['wisseling in'] if not pandas.isnull(row['wisseling in']) else None
-            wisseling_uit = row['wisseling uit'] if not pandas.isnull(row['wisseling uit']) else None
+            wi = row['wisseling in'] if not pandas.isnull(row['wisseling in']) else None
+            wu = row['wisseling uit'] if not pandas.isnull(row['wisseling uit']) else None
 
             obj = SchoolWisselaars(
                 brin=brin,
                 vestigingsnummer=vestigingsnummer,
                 naam=row['schoolnaam'],  # potential duplicate of Vestiging naam
-                wisseling_uit=wisseling_uit,
-                wisseling_in=wisseling_in,
+                wisseling_uit=wu,
+                wisseling_in=wi,
                 jaar=year,
             )
 

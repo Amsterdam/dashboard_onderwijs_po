@@ -3,7 +3,6 @@ import logging
 # import objectstore
 
 from .models.subsidie import subsidie_import_helper
-from .models import Subsidie, ToegewezenSubsidie
 from .models import SchoolWisselaars
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
