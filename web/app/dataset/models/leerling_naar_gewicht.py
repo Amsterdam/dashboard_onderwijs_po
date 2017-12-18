@@ -54,7 +54,12 @@ class LeerlingNaarGewicht(models.Model):
     gewicht = models.CharField(max_length=3)
     totaal = models.IntegerField()
     jaar = models.IntegerField()
-    vestiging = models.ForeignKey(Vestiging, null=True, related_name='leerling_naar_gewicht')
+    vestiging = models.ForeignKey(
+        Vestiging,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='leerling_naar_gewicht',
+    )
 
     # peildatum = models.DateField()  # TODO: see whether we need peildatum
     objects = LeerlingNaarGewichtManager()

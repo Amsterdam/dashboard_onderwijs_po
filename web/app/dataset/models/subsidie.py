@@ -105,7 +105,11 @@ class ToegewezenSubsidie(models.Model):
     brin = models.CharField(max_length=4)
     vestigingsnummer = models.IntegerField()
 
-    subsidie = models.ForeignKey(Subsidie)
+    subsidie = models.ForeignKey(Subsidie, on_delete=models.CASCADE)
 
     vestiging = models.ForeignKey(
-        Vestiging, related_name='subsidies', null=True)
+        Vestiging,
+        on_delete=models.SET_NULL,
+        related_name='subsidies',
+        null=True
+    )

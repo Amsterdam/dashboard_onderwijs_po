@@ -33,3 +33,8 @@ onderwijs_router.register(
     'toegewezen-subsidie', views.ToegewezenSubsidieViewSet,
     base_name='toegewezen-subsidie'
 )
+
+onderwijs_router.register(
+    'testtest', views.AggregatedAdviesAPIView,
+    base_name='testtest'
+)

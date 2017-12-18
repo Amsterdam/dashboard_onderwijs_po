@@ -141,9 +141,14 @@ class SchoolAdvies(models.Model):
     vestigingsnummer = models.IntegerField()
 
     # to expose to outside
-    advies = models.ForeignKey(SchoolType, related_name='school_type')
+    advies = models.ForeignKey(
+        SchoolType, on_delete=models.CASCADE, related_name='school_type')
     totaal = models.IntegerField()
     jaar = models.IntegerField()
-    vestiging = models.ForeignKey(Vestiging, null=True, related_name='advies')
+    vestiging = models.ForeignKey(
+        Vestiging, on_delete=models.SET_NULL,
+        null=True,
+        related_name='advies'
+    )
 
     objects = SchoolAdviesManager()

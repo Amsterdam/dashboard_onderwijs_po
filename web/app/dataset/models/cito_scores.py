@@ -51,6 +51,11 @@ class CitoScores(models.Model):
     cet_gem = models.FloatField(null=True)
     leerjaar_8 = models.IntegerField(null=True)
     jaar = models.IntegerField()
-    vestiging = models.ForeignKey(Vestiging, related_name='cito_scores', null=True)
+    vestiging = models.ForeignKey(
+        Vestiging,
+        on_delete=models.SET_NULL,
+        related_name='cito_scores',
+        null=True
+    )
 
     objects = CitoScoresManager()

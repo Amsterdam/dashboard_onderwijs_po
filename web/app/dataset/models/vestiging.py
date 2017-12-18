@@ -22,7 +22,7 @@ class Vestiging(models.Model):
     class Meta:
         unique_together = ('brin', 'vestigingsnummer')
 
-    adres = models.ForeignKey(Adres)
+    adres = models.ForeignKey(Adres, on_delete=models.CASCADE)
     brin = models.CharField(max_length=4)
     lat = models.FloatField()
     lon = models.FloatField()

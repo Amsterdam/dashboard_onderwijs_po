@@ -29,6 +29,7 @@ services:
     volumes:  # for development we use bind mounts
       - ./web/app/:/app/
       - ./web/deploy/:/deploy/
+    # - ./web/data/:/data/
     # Note we are using manage.py runserver for local dev, because UWSGI does
     # not reload automatically when a file is changed (and we do not want to
     # continually rebuild the docker images).

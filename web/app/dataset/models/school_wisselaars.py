@@ -90,6 +90,10 @@ class SchoolWisselaars(models.Model):
 
     jaar = models.IntegerField()
     vestiging = models.ForeignKey(
-        Vestiging, related_name='schoolwisselaars', null=True)
+        Vestiging,
+        on_delete=models.SET_NULL,
+        related_name='schoolwisselaars',
+        null=True
+    )
 
     objects = SchoolWisselaarsManager()
