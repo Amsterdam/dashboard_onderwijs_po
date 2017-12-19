@@ -1,9 +1,10 @@
+from django.conf.urls import url, include
 from api import views
-
 
 onderwijs_router = views.OnderwijsAPIRouter()
 onderwijs_router.register(
-    'vestigingen', views.VestigingViewSet, base_name='vestigingen')
+    'vestigingen', views.VestigingViewSet, base_name='vestigingen'
+)
 
 onderwijs_router.register(
     'schooladvies', views.SchoolAdviesViewSet,
@@ -34,7 +35,7 @@ onderwijs_router.register(
     base_name='toegewezen-subsidie'
 )
 
-onderwijs_router.register(
-    'testtest', views.AggregatedAdviesAPIView,
-    base_name='testtest'
-)
+urlpatterns = [
+    url(r'^special/', views.SpecialView.as_view()),
+    url(r'^', include(onderwijs_router.urls)),
+]

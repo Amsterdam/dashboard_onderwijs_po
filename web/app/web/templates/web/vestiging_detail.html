@@ -18,11 +18,16 @@ var specUrlLeerlingNaarGewicht = location.origin + '{% static '/web/leerling_naa
     .defer(d3.json, specUrlAdvies)
     .defer(d3.json, specUrlLeerlingNaarGewicht)
     .await(function(error, specAdvies, specLeerlingNaarGewicht){
-      var vizOptions = {"actions": {"export": false, "source": false, "editor": true}}
+      var vizOptions = {
+//        "actions": {"export": true, "source": true, "editor": true},
+        "actions": {"export": false, "source": false, "editor": false},
+        "renderer": "svg"
+      }
       console.log(location);
 
       // For each visualization, set override the data url and then render:
-      specAdvies.data.url = '/onderwijs/schooladvies/?vestiging=' + brin6;
+//      specAdvies.data.url = '/onderwijs/schooladvies/?vestiging=' + brin6;
+      specAdvies.data.url = '/onderwijs/special/?vestiging=' + brin6;
       vegaEmbed('#vis', specAdvies, vizOptions).catch(console.error);
 
       specLeerlingNaarGewicht.data.url = '/onderwijs/leerling-naar-gewicht/?vestiging=' + brin6;

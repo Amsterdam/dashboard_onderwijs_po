@@ -1,5 +1,9 @@
+from collections import defaultdict
+
 from rest_framework import viewsets
 from rest_framework import routers
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from dataset.models import Vestiging, LeerlingNaarGewicht, CitoScores
 from dataset.models import SchoolAdvies, SchoolWisselaars, Subsidie, ToegewezenSubsidie
@@ -104,3 +108,39 @@ class SchoolWisselaarsViewSet(viewsets.ReadOnlyModelViewSet):
     )
     serializer_class = SchoolWisselaarsSerializer
     filter_fields = ('vestiging',)
+
+
+class SpecialView(APIView):
+    def get(self, request, format=None):
+        """
+        For a given Vestiging (identified by BRIN6) aggregate the adviezen as specified.
+        """
+        brin6 = request.query_params.get('vestiging', None)
+        if brin6 is None:
+            return Response([])
+
+        # add select_related (TODO)
+        qs = SchoolAdvies.objects.filter(vestiging=brin6)
+
+        mapping = defaultdict(dict)
+        for obj in qs.all():
+            mapping[obj.jaar][obj.advies.name] = obj.totaal
+
+        out = []
+        for jaar, adviezen in mapping.items():
+            adviezen
+            vmbo_bk = adviezen.get('VMBO_BL_KL', 0) + adviezen.get('VMBO_KL', 0) + adviezen.get('VMBO_BL', 0)
+            pro_vso = adviezen.get('PRO', 0) + adviezen.get('VSO', 0)
+
+            q, r = divmod(adviezen.get('VMBO_GT_HAVO', 0), 2)
+            vmbo_gt = adviezen.get('VMBO_GT', 0) + adviezen.get('VMBO_KL_GT', 0) + q + r
+            havo_vwo = adviezen.get('HAVO_VWO', 0) + adviezen.get('HAVO', 0) + adviezen.get('VWO', 0) + q
+
+            out.extend([
+                {'advies': 'vmbo b,k', 'totaal': vmbo_bk, 'jaar': jaar, 'vestiging': brin6},
+                {'advies': 'h/v', 'totaal': havo_vwo, 'jaar': jaar, 'vestiging': brin6},
+                {'advies': 'pro & vso', 'totaal': pro_vso, 'jaar': jaar, 'vestiging': brin6},
+                {'advies': 'vmbo g,t', 'totaal': vmbo_gt, 'jaar': jaar, 'vestiging': brin6},
+            ])
+
+        return Response(out)
