@@ -2,37 +2,85 @@
 {% load static %}
 
 {% block content %}
-<h1>{{object.naam}} ({{object.brin6}})</h1>
-<div id="vis"></div>
-<div id="vis2"></div>
+<div class="row">
+  <div class="col-6">
+<h3 style="text-align: left">{{object.naam}} ({{object.brin6}})</h3>
+  </div>
+  <div class="row-6">
+    <div class="col">
+<h3 style="text-align: left">Buurt</h3>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4" style="background-color:yellow">
+    <div id="vis"></div>
+  </div>
+  <div class="col-2" style="background-color:orange">
+    <div id="vis4"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <div id="vis2"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4" style="background-color:orange">
+    <div id="vis3"></div>
+  </div>
+</div>
 <script>
   // brin6 is injected through the Django template system
   var brin6 = "{{object.brin6}}";
 
-  // The individual JSON vega-lite specs:
-var specUrlAdvies = location.origin + '{% static '/web/schooladviezen.json' %}';
-var specUrlLeerlingNaarGewicht = location.origin + '{% static '/web/leerling_naar_gewicht.json' %}';
+  // The individual JSON vega-lite specs (served as static files):
+  var specUrlAdvies = location.origin + '{% static '/web/schooladviezen.json' %}';
+  var specUrlLeerlingNaarGewicht = '{% static '/web/leerling_naar_gewicht.json' %}';
 
-  // Parse all JSON specs, then render the visualizations:
-  var queue = d3.queue()
-    .defer(d3.json, specUrlAdvies)
-    .defer(d3.json, specUrlLeerlingNaarGewicht)
-    .await(function(error, specAdvies, specLeerlingNaarGewicht){
-      var vizOptions = {
-//        "actions": {"export": true, "source": true, "editor": true},
-        "actions": {"export": false, "source": false, "editor": false},
-        "renderer": "svg"
-      }
-      console.log(location);
+  // Some Vega-embed options:
+  var vizOptions = {
+    // "actions": {"export": true, "source": true, "editor": true}, // for debugging vega-lite specs
+    "actions": {"export": false, "source": false, "editor": false},
+    "renderer": "svg"
+  }
 
-      // For each visualization, set override the data url and then render:
-//      specAdvies.data.url = '/onderwijs/schooladvies/?vestiging=' + brin6;
-      specAdvies.data.url = '/onderwijs/special/?vestiging=' + brin6;
-      vegaEmbed('#vis', specAdvies, vizOptions).catch(console.error);
+  // Schooladviezen bar chart
+  d3.json(specUrlAdvies, function(error, specAdvies){
+    specAdvies.data.url = document.location.origin + '/onderwijs/aggregated-advies/?vestiging=' + brin6;
+    vegaEmbed('#vis', specAdvies, vizOptions);
+  });
 
-      specLeerlingNaarGewicht.data.url = '/onderwijs/leerling-naar-gewicht/?vestiging=' + brin6;
-      vegaEmbed('#vis2', specLeerlingNaarGewicht, vizOptions).catch(console.error);
-    }
-  )
+  // Leerlingen naar gewicht bar chart
+  d3.json(specUrlLeerlingNaarGewicht, function(error, specLeerlingNaarGewicht){
+    specLeerlingNaarGewicht.data.url = document.location.origin + '/onderwijs/leerling-naar-gewicht/?vestiging=' + brin6;
+    vegaEmbed('#vis2', specLeerlingNaarGewicht, vizOptions);
+  });
+
+  // Subsidies (TODO: make this a proper table)
+  var subdidieDataUrl = "/onderwijs/toegewezen-subsidie/?vestiging=" + brin6 + "&subsidie__jaar=2017";
+  d3.json(subdidieDataUrl, function(error, subsidieData){
+    var tmp = d3.select('#vis3')
+    tmp.selectAll('div')
+      .data(subsidieData).enter()
+	.append('div')
+	.style('font-size', '12px')
+	.text(function(d, i){
+	  return d.subsidie + " " + d.aantal;
+	});
+  });
+
+  // Schoolwisselaars, VVE-indicaties, Leerling-leraar ratio
+  var schoolWisselaarsDataUrl = '/onderwijs/schoolwisselaars/?vestiging=' + brin6 + '&jaar=2015';
+  // TBD: var vveDataUrl = '/onderwijs/vve-indictaties/?vestiging=' + brin6 + '&jaar=';
+  var llrDataUrl = '/onderwijs/leerling-naar-gewicht/?vestiging=' + brin6 + '&jaar=2015';
+  var q = d3.queue()
+    .defer(d3.json, schoolWisselaarsDataUrl)
+    .defer(d3.json, llrDataUrl)
+    .await(function(error, schoolWisselaarsData, llrData){
+      console.log(llrData);
+      console.log(schoolWisselaarsData);
+    });
+
 </script>
 {% endblock content %}

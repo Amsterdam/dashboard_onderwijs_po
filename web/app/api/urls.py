@@ -35,7 +35,12 @@ onderwijs_router.register(
     base_name='toegewezen-subsidie'
 )
 
+onderwijs_router.register(
+    'leerling-leraar-ratio', views.LeerlingLeraarRatioViewSet,
+    base_name='leerling-leraar-ratio'
+)
+
 urlpatterns = [
-    url(r'^special/', views.SpecialView.as_view()),
+    url(r'^aggregated-advies/', views.AggregatedAdviesView.as_view()),
     url(r'^', include(onderwijs_router.urls)),
 ]

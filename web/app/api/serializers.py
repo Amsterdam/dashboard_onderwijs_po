@@ -68,3 +68,9 @@ class VestigingSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Vestiging
         exclude = ('_id',)
+
+
+class LeerlingLeraarRatioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.LeerlingLeraarRatio
+        exclude = ('id',)

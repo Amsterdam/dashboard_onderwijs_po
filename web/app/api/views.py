@@ -7,10 +7,12 @@ from rest_framework.response import Response
 
 from dataset.models import Vestiging, LeerlingNaarGewicht, CitoScores
 from dataset.models import SchoolAdvies, SchoolWisselaars, Subsidie, ToegewezenSubsidie
+from dataset.models import LeerlingLeraarRatio
 from api.serializers import VestigingSerializer
 from api.serializers import CitoScoresSerializer
 from api.serializers import SchoolWisselaarsSerializer
 from api.serializers import SubsidieSerializer, ToegewezenSubsidieSerializer
+from api.serializers import LeerlingLeraarRatioSerializer
 
 from api.serializers import SchoolAdviesSerializer, LeerlingNaarGewichtSerializer
 
@@ -59,9 +61,9 @@ class SchoolAdviesViewSet(viewsets.ReadOnlyModelViewSet):
     # cannot meaningfully display these).
     queryset = (
         SchoolAdvies.objects
+        .filter(vestiging__isnull=False)
         .select_related('vestiging')
         .select_related('advies')
-        .filter(vestiging__isnull=False)
     )
     serializer_class = SchoolAdviesSerializer
     filter_fields = ('vestiging',)
@@ -97,7 +99,7 @@ class ToegewezenSubsidieViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
     )
     serializer_class = ToegewezenSubsidieSerializer
-    filter_fields = ('vestiging',)
+    filter_fields = ('vestiging', 'subsidie__jaar')
 
 
 class SchoolWisselaarsViewSet(viewsets.ReadOnlyModelViewSet):
@@ -107,10 +109,16 @@ class SchoolWisselaarsViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
     )
     serializer_class = SchoolWisselaarsSerializer
-    filter_fields = ('vestiging',)
+    filter_fields = ('vestiging', 'jaar')
 
 
-class SpecialView(APIView):
+class LeerlingLeraarRatioViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = LeerlingLeraarRatio.objects.all()
+    serializer_class = LeerlingLeraarRatioSerializer
+    filter_fields = ('brin', 'jaar')
+
+
+class AggregatedAdviesView(APIView):
     def get(self, request, format=None):
         """
         For a given Vestiging (identified by BRIN6) aggregate the adviezen as specified.
@@ -120,7 +128,12 @@ class SpecialView(APIView):
             return Response([])
 
         # add select_related (TODO)
-        qs = SchoolAdvies.objects.filter(vestiging=brin6)
+        qs = (
+            SchoolAdvies.objects
+            .select_related('advies')
+            .select_related('vestiging')  # check this
+            .filter(vestiging=brin6)
+        )
 
         mapping = defaultdict(dict)
         for obj in qs.all():
@@ -128,19 +141,65 @@ class SpecialView(APIView):
 
         out = []
         for jaar, adviezen in mapping.items():
-            adviezen
-            vmbo_bk = adviezen.get('VMBO_BL_KL', 0) + adviezen.get('VMBO_KL', 0) + adviezen.get('VMBO_BL', 0)
-            pro_vso = adviezen.get('PRO', 0) + adviezen.get('VSO', 0)
+            if jaar not in [2014, 2015, 2016]:
+                continue  # for demo (which years to show is not yet specced)
+
+            vmbo_bk = (
+                adviezen.get('VMBO_BL_KL', 0) +
+                adviezen.get('VMBO_KL', 0) +
+                adviezen.get('VMBO_BL', 0)
+            )
+            pro_vso = (
+                adviezen.get('PRO', 0) +
+                adviezen.get('VSO', 0)
+            )
 
             q, r = divmod(adviezen.get('VMBO_GT_HAVO', 0), 2)
-            vmbo_gt = adviezen.get('VMBO_GT', 0) + adviezen.get('VMBO_KL_GT', 0) + q + r
-            havo_vwo = adviezen.get('HAVO_VWO', 0) + adviezen.get('HAVO', 0) + adviezen.get('VWO', 0) + q
+            vmbo_gt = (
+                adviezen.get('VMBO_GT', 0) +
+                adviezen.get('VMBO_KL_GT', 0) +
+                q +
+                r
+            )
+            havo_vwo = (
+                adviezen.get('HAVO_VWO', 0) +
+                adviezen.get('HAVO', 0) +
+                adviezen.get('VWO', 0) +
+                q
+            )
 
             out.extend([
-                {'advies': 'vmbo b,k', 'totaal': vmbo_bk, 'jaar': jaar, 'vestiging': brin6},
-                {'advies': 'h/v', 'totaal': havo_vwo, 'jaar': jaar, 'vestiging': brin6},
-                {'advies': 'pro & vso', 'totaal': pro_vso, 'jaar': jaar, 'vestiging': brin6},
-                {'advies': 'vmbo g,t', 'totaal': vmbo_gt, 'jaar': jaar, 'vestiging': brin6},
+                {
+                    'advies': 'vmbo b,k',
+                    'totaal': vmbo_bk,
+                    'jaar': jaar,
+                    'vestiging': brin6
+                },
+                {
+                    'advies': 'h/v',
+                    'totaal': havo_vwo,
+                    'jaar': jaar,
+                    'vestiging': brin6
+                },
+                {
+                    'advies': 'pro',
+                    'totaal': pro_vso,
+                    'jaar': jaar,
+                    'vestiging': brin6
+                },
+                {
+                    'advies': 'vmbo g,t',
+                    'totaal': vmbo_gt,
+                    'jaar': jaar,
+                    'vestiging': brin6},
+            ])
+
+            # For demo (see above)
+            out.extend([
+                {'advies': 'vmbo b,k', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
+                {'advies': 'h/v', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
+                {'advies': 'pro', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
+                {'advies': 'vmbo g,t', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
             ])
 
         return Response(out)

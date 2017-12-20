@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  "width": 100,
-  "height": 100,
+  "height": 60,
   "description": "Bar chart van schooladviezen",
   "data": {
     "url": "/onderwijs/schooladvies/?vestiging=04LA00"
@@ -18,7 +17,14 @@
         "title": "", "labelAngle": -45
       }
     },
-    "color": {"field": "jaar", "type": "nominal"}
+    "color": {
+      "field": "jaar",
+      "type": "nominal",
+      "legend": null,
+      "scale":{
+        "range": ["#3182bd", "#9ecae1", "#deebf7"]
+      }
+    }
   },
   "config": {
     "view": {"stroke": "transparent"},

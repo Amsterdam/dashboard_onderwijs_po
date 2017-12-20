@@ -47,6 +47,8 @@ def _excel_to_dataframe(file_name):
     )
     df.drop('Eindtotaal', axis=1, inplace=True)
 
+    df = df.fillna(0)  # DataFrame NaN means no data means zero awarded
+
     return df
 
 
@@ -83,6 +85,8 @@ def subsidie_import_helper(file_name, year, brin6s):
                     brin=brin,
                     vestigingsnummer=vestigingsnummer,
                     subsidie=_map[naam],
+                    # redundant, but not so if enclosing if is removed:
+                    aantal=toegewezen if toegewezen else 0,
                 )
                 obj.vestiging_id = brin6 if brin6 in brin6s else None
                 instances.append(obj)
@@ -93,6 +97,7 @@ def subsidie_import_helper(file_name, year, brin6s):
 class Subsidie(models.Model):
     class Meta:
         unique_together = ('jaar', 'naam')
+        ordering = ['naam']
 
     jaar = models.IntegerField()
     naam = models.CharField(max_length=255)
@@ -113,3 +118,4 @@ class ToegewezenSubsidie(models.Model):
         related_name='subsidies',
         null=True
     )
+    aantal = models.IntegerField()

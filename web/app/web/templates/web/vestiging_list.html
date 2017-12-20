@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Vestigingen</h1>
-<ul>
+<table class="table table-sm table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">School</th>
+      <th scope="col">BRIN6</th>
+    </tr>
+  </thead>
+  <tbody>
 {% for vestiging in object_list %}
-<li><a href="/onderwijs/dash/vestiging/{{vestiging.brin6}}/">{{vestiging.brin6}}</a></li>
+    <tr>
+      <td><a href="/onderwijs/dash/vestiging/{{vestiging.brin6}}/">{{vestiging.naam}}</a></td>
+      <td>{{vestiging.brin6}}</td>
+    </tr>
 {% endfor %}
-</ul>
+  </tbody>
+</table>
+
+
 <script>
   // brin6 is injected through the Django template system
   var brin6 = "{{object.brin6}}";
