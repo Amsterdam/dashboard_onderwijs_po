@@ -56,11 +56,10 @@ DATABASES = {
 # Directory for raw test data:
 TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data') # noqa F405
 
-# Settings for onderwijs dashboard imports
-ONDERWIJS = {
-    'YEARS': [
-        2014,
-        2015,
-        2016
-    ],
+
+def show_toolbar(request):
+    return DEBUG
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
 }
