@@ -21,7 +21,7 @@ class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
         Vestiging.objects
         .select_related('adres')
-        .prefetch_related('advies')
+        .prefetch_related('schooladvies_set')
         .prefetch_related('cito_scores')
         .prefetch_related('leerling_naar_gewicht')
         .order_by('brin')
