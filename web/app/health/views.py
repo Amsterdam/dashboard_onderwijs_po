@@ -47,28 +47,33 @@ def check_data(request):
     """
 
     # TODO: Add checks for priviliged data, once their handling is settled.
+    messages = []
+    status = 200
+
     if not Vestiging.objects.count():
-        msg = 'There are no "Vestiging" entries.'
+        messages.append('There are no "Vestiging" entries.')
         status = 500
-    elif not LeerlingNaarGewicht.objects.count():
-        msg = 'There are no "Leerling naar Gewicht" entries.'
+    if not LeerlingNaarGewicht.objects.count():
+        messages.append('There are no "Leerling naar Gewicht" entries.')
         status = 500
-    elif not SchoolAdvies.objects.count():
-        msg = 'There are no "School Advies" entries.'
+    if not SchoolAdvies.objects.count():
+        messages.append('There are no "School Advies" entries.')
         status = 500
-    elif not SchoolType.objects.count():
-        msg = 'There are no "School Type" entries.'
+    if not SchoolType.objects.count():
+        messages.append('There are no "School Type" entries.')
         status = 500
-    elif not CitoScores.objects.count():
-        msg = 'There are no "Cito Scores" entries.'
+    if not CitoScores.objects.count():
+        messages.append('There are no "Cito Scores" entries.')
         status = 500
-    elif not LeerlingLeraarRatio.objects.count():
-        msg = 'There are no "Leerling Leraar Ratio" entries.'
+    if not LeerlingLeraarRatio.objects.count():
+        messages.append('There are no "Leerling Leraar Ratio" entries.')
         status = 500
-    else:
-        msg = 'Public data are available - basic database check passes. ' \
-              'No guarantee about referential integrity.'
-        status = 200
+
+    if not messages:
+        messages.append(
+            'Public data are available - basic database check passes. '
+            'No guarantee about referential integrity.'
+        )
 
     return HttpResponse(
-        msg, content_type='text/plain', status=status)
+        ' '.join(messages), content_type='text/plain', status=status)
