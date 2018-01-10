@@ -1,9 +1,44 @@
 """
 Module met modellen voor Cito scores uit DUO data.
 """
+import pandas
 from django.db import models
 
 from .vestiging import Vestiging
+
+
+class UpperCaseKeyDict(dict):
+    def __getitem__(self, key):
+        return super(UpperCaseKeyDict, self).__getitem__(key.upper())
+
+
+_CITO_SCORES_CSV_COLUMNS = UpperCaseKeyDict([
+    ('PEILDATUM_LEERLINGEN', str),
+    ('PRIKDATUM_SCORES', str),
+    ('BRIN_NUMMER', str),
+    ('VESTIGINGSNUMMER', int),
+    ('INSTELLINGSNAAM_VESTIGING', str),
+    ('POSTCODE_VESTIGING', str),
+    ('PLAATSNAAM', str),
+    ('GEMEENTENUMMER', int),
+    ('GEMEENTENAAM', str),
+    ('PROVINCIE', str),
+    ('SOORT_PO', str),
+    ('DENOMINATIE_VESTIGING', str),
+    ('BEVOEGD_GEZAG_NUMMER', int),
+    ('LEERJAAR_8', int),
+    ('ONTHEFFING_REDEN_ND', int),
+    ('CET_AANTAL', int),
+    ('CET_GEM', float),
+    ('IEP_AANTAL', float),
+    ('ROUTE8_AANTAL', int),
+    ('ROUTE8_GEM', float),
+    ('DIA_AANTAL', int),
+    ('DIA_GEM', float),
+    ('CESAN_AANTAL', int),
+    ('AMN_AANTAL', int),
+    ('AMN_GEM', float),
+])
 
 
 class DUOAPIManagerMixin:
@@ -15,28 +50,32 @@ class DUOAPIManagerMixin:
 
 
 class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
-    def _from_duo_api_json_entry(self, json_dict, year, brin6s):
-        brin6 = json_dict['BRIN_NUMMER'] + \
-            '{:02d}'.format(int(json_dict['VESTIGINGSNUMMER']))
-
-        # Usage of case is not consistent over the years (in the data).
-        upper = {key.upper(): key for key in json_dict}
-
-        leerjaar8 = json_dict[upper['LEERJAAR_8']]
-        raw = json_dict[upper['CET_GEM']].strip()
-
-        # CITO scores can be missing
-        cet_gem = raw.replace(',', '.') if raw else None
-
-        obj = CitoScores(
-            brin=json_dict['BRIN_NUMMER'],
-            vestigingsnummer=json_dict['VESTIGINGSNUMMER'],
-            cet_gem=cet_gem,
-            leerjaar_8=leerjaar8,
-            jaar=year,
+    def import_csv(self, uri, year, brin6s):
+        df = pandas.read_csv(
+            uri,
+            delimiter=';',
+            dtype=_CITO_SCORES_CSV_COLUMNS,
+            encoding='cp1252',
+            decimal=',',
+            na_values=[' '],
         )
-        obj.vestiging_id = brin6 if brin6 in brin6s else None
-        return obj
+        df = df.rename(columns=str.upper)
+
+        mask = df['GEMEENTENUMMER'] == 363
+
+        instances = []
+        for i, row in df[mask].iterrows():
+            brin6 = row['BRIN_NUMMER'] + '{:02d}'.format(int(row['VESTIGINGSNUMMER']))
+            obj = CitoScores(
+                brin=row['BRIN_NUMMER'],
+                vestigingsnummer=row['VESTIGINGSNUMMER'],
+                cet_gem=row['CET_GEM'],
+                leerjaar_8=row['LEERJAAR_8'],
+                jaar=year,
+            )
+            obj.vestiging_id = brin6 if brin6 in brin6s else None
+            instances.append(obj)
+        self.bulk_create(instances)
 
 
 class CitoScores(models.Model):

@@ -3,11 +3,6 @@ Import code for DUO data sets.
 """
 # flake8: noqa
 
-# TODO items:
-# * consider using DRF serializers for creating new Model instances
-# * investigate whether JSON-LD can be used directly to validate received data
-# * remove debug prints, replace with logging where needed
-
 import json
 import logging
 
@@ -28,11 +23,6 @@ logger = logging.getLogger(__name__)
 
 _BASE_API_URL = 'https://api.duo.nl/v0/datasets/'
 
-_CITO_SCORES = {
-    2014: 'https://api.duo.nl/v0/datasets/05.-gemiddelde-eindscores-bo-sbo-2014-2015/search',
-    2015: 'https://api.duo.nl/v0/datasets/05.-gemiddelde-eindscores-bo-sbo-2015-2016/search'
-}
-
 _LEERLING_NAAR_GEWICHT_CSV = {
     2014: 'https://duo.nl/open_onderwijsdata/images/02.leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2014-2015.csv',
     2015: 'https://duo.nl/open_onderwijsdata/images/02.-leerlingen-bo-swv-vestiging%2C-gewicht%2C-impulsgebied%2C-schoolgewicht-2015-2016.csv',
@@ -45,6 +35,13 @@ _CSV_SCHOOL_ADVIEZEN = {
     2013: 'https://duo.nl/open_onderwijsdata/images/04.-leerlingen-bo-sbo-schooladviezen-2013-2014.csv',
     2014: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2014-2015.csv',  # different columns as above earlier data
     2015: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2015-2016.csv',
+    2016: 'https://duo.nl/open_onderwijsdata/images/04.-schooladviezen-2016-2017.csv',
+}
+
+_CSV_CITO_SCORES = {
+    2014: 'https://duo.nl/open_onderwijsdata/images/05.-gemiddelde-eindscores-bo-sbo-2014-2015.csv',
+    2015: 'https://duo.nl/open_onderwijsdata/images/05.-gemiddelde-eindscores-bo-sbo-2015-2016.csv',
+    2016: 'https://duo.nl/open_onderwijsdata/images/05.-gemiddelde-eindtoetsscores-2016-2017.csv',
 }
 
 
@@ -62,11 +59,12 @@ def _download_json(dataset, year):
 
 def get_cito_scores(year, brin6s):
     try:
-        data = _download_json(_CITO_SCORES, year)
+        url = _CSV_CITO_SCORES[year]
     except KeyError:
         pass
     else:
-        CitoScores.objects.from_duo_api_json(data, year, brin6s)
+        logger.info('Accessing: %s', url)
+        CitoScores.objects.import_csv(url, year, brin6s)
 
 
 def get_school_advies(year, brin6s):
@@ -87,4 +85,3 @@ def get_leerling_naar_gewicht(year, brin6s):
     else:
         logger.info('Accessing: %s', url)
         LeerlingNaarGewicht.objects.import_csv(url, year, brin6s)
-

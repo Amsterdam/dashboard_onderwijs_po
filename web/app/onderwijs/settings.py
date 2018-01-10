@@ -56,10 +56,12 @@ DATABASES = {
 # Directory for raw test data:
 TESTDATA_DIR = os.path.join(BASE_DIR, 'test_data') # noqa F405
 
+# Some browsable API pages are extremely slow when Django Debug Toolbar is active,
+# hence it is commented out:
 
-def show_toolbar(request):
-    return DEBUG
-
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
-}
+# def show_toolbar(request):
+#     return DEBUG
+#
+# DEBUG_TOOLBAR_CONFIG = {
+#     "SHOW_TOOLBAR_CALLBACK" : show_toolbar,
+# }
