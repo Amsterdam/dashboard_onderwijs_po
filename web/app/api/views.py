@@ -22,7 +22,6 @@ class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
         Vestiging.objects
         .select_related('adres')
         .prefetch_related('schooladvies_set')
-#        .prefetch_related('schooladviezen')
         .prefetch_related('cito_scores')
         .prefetch_related('leerling_naar_gewicht')
         .order_by('brin')
