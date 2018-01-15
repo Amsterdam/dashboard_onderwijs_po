@@ -60,7 +60,6 @@ class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
             na_values=[' '],
         )
         df = df.rename(columns=str.upper)
-
         mask = df['GEMEENTENUMMER'] == 363
 
         instances = []
@@ -69,7 +68,7 @@ class CitoScoresManager(models.Manager, DUOAPIManagerMixin):
             obj = CitoScores(
                 brin=row['BRIN_NUMMER'],
                 vestigingsnummer=row['VESTIGINGSNUMMER'],
-                cet_gem=row['CET_GEM'],
+                cet_gem=row['CET_GEM'] if not pandas.isna(row['CET_GEM']) else None,
                 leerjaar_8=row['LEERJAAR_8'],
                 jaar=year,
             )
