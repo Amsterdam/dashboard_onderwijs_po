@@ -30,8 +30,8 @@ _VVE_LEERLINGEN = {
 _OBJECT_STORE_SETTINGS = {
     'VERSION': '2.0',
     'AUTHURL': 'https://identity.stack.cloudvps.com/v2.0',
-    'TENANT_NAME': 'BGE000081_Onderwijs_storage',
-    'TENANT_ID': '4e1bd5ced4064ddeb2acff5bba874707',
+    # 'TENANT_NAME': 'BGE000081_Onderwijs_storage',
+    'TENANT_ID': 'c9089d4a49934890baf2569cdc587571',
     'USER': 'onderwijs',
     'PASSWORD': os.getenv('ONDERWIJS_OBJECTSTORE_PASSWORD'),
     'REGION_NAME': 'NL',

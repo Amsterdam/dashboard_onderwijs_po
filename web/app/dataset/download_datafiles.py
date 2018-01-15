@@ -30,7 +30,7 @@ OBJECTSTORE = {
     'AUTHURL': 'https://identity.stack.cloudvps.com/v2.0',
     'TENANT_NAME': 'BGE000081_Onderwijs_storage',
     'USER': 'onderwijs',
-    'TENANT_ID': '4e1bd5ced4064ddeb2acff5bba874707',
+    'TENANT_ID': 'c9089d4a49934890baf2569cdc587571',
     'REGION_NAME': 'NL',
     'PASSWORD': ONDERWIJS_OBJECTSTORE_PASSWORD,
 }
