@@ -6,6 +6,8 @@ ENV PYTHONUNBUFFERED 1
 EXPOSE 8000
 
 RUN mkdir -p /static \
+	&& mkdir /data \
+	&& chown datapunt /data \
 	&& chown datapunt /static
 
 WORKDIR /app

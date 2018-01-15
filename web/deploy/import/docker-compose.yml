@@ -16,6 +16,7 @@ services:
     links:
       - database
     environment:
+      ONDERWIJS_OBJECTSTORE_PASSWORD:
       SECRET_KEY: insecure
       DATABASE_NAME: onderwijs
       DATABASE_USER: onderwijs
