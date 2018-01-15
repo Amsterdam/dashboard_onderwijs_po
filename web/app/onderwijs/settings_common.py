@@ -84,6 +84,9 @@ REST_FRAMEWORK = dict(
 
     MAX_PAGINATE_BY=100,
 
+
+#    DEFAULT_PAGINATION_CLASS='rest_framework.pagination.PageNumberPagination',
+
     DEFAULT_RENDERER_CLASSES=(
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer'

@@ -142,7 +142,7 @@ class SchoolAdvies(models.Model):
 
     # to expose to outside
     advies = models.ForeignKey(
-        SchoolType, on_delete=models.CASCADE)
+        SchoolType, on_delete=models.CASCADE, related_name='schooladviezen')
     totaal = models.IntegerField()
     jaar = models.IntegerField()
     vestiging = models.ForeignKey(

@@ -10,7 +10,6 @@ from dataset.import_duo import get_school_advies
 from dataset.import_duo import get_cito_scores
 from dataset.calc_llratio import get_leerling_leraar_ratios
 
-# dev ...
 from dataset.models import SchoolType
 
 _YEARS = [2011, 2012, 2013, 2014, 2015, 2016]
@@ -23,7 +22,7 @@ class Command(BaseCommand):
         SchoolType.objects.create_known()
 
         self.stdout.write(self.style.SUCCESS('Grabbing data'))
-        get_vestigingen()  # TODO: Years?
+        get_vestigingen()  # TODO: Think about history (schoolwijzer keeps none)
 
         brin6s = set(Vestiging.objects.values_list('brin6', flat=True))
 

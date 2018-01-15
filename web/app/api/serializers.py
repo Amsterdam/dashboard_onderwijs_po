@@ -60,9 +60,9 @@ class VestigingSerializer(serializers.ModelSerializer):
     adres = AdresSerializer()
     leerling_naar_gewicht = LeerlingNaarGewichtSerializer(
         many=True, read_only=True)
-    advies = SchoolAdviesSerializer(
-        many=True, read_only=True)
     cito_scores = CitoScoresSerializer(
+        many=True, read_only=True)
+    schooladvies_set = SchoolAdviesSerializer(
         many=True, read_only=True)
 
     class Meta:

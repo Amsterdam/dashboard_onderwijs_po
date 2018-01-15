@@ -16,6 +16,7 @@ services:
     links:
       - database
     environment:
+      ONDERWIJS_OBJECTSTORE_PASSWORD:
       SECRET_KEY: insecure
       DATABASE_NAME: onderwijs
       DATABASE_USER: onderwijs
@@ -29,7 +30,7 @@ services:
     volumes:  # for development we use bind mounts
       - ./web/app/:/app/
       - ./web/deploy/:/deploy/
-    # - ./web/data/:/data/
+      - ./web/data/:/data/
     # Note we are using manage.py runserver for local dev, because UWSGI does
     # not reload automatically when a file is changed (and we do not want to
     # continually rebuild the docker images).

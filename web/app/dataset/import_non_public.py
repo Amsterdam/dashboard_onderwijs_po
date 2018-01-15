@@ -12,14 +12,17 @@ logger = logging.getLogger(__name__)
 # check local cache for needed files, then go to the object store
 _CACHE_DIR = '/data/'
 
+# schooljaar 2016/2017 is ook beschikbaar
 _SCHOOLWISSELAARS = {
-    2015: '/levering_20171122/schoolwisselaars_PO 2015.xlsx',
+    2016: '/levering_20171122/schoolwisselaars_PO 2015.xlsx',
 }
 
+# waarschijnlijk alleen 2017 (niet ouder)
 _SUBSIDIES = {
     2017: '/levering_20171122/subsidies_22-11-2017.xlsx',
 }
 
+# tbd
 _VVE_LEERLINGEN = {
     2016: '/levering_20171122/VVE leerlingen 2016.xlsx',
 }
