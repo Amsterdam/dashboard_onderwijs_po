@@ -30,6 +30,7 @@ dc run importer /deploy/docker-wait.sh
 echo "Downloading raw datafiles from object store"
 dc run --rm importer ls /data
 dc run --rm importer python manage.py download_data
+dc run --rm importer python manage.py migrate
 dc run --rm importer python manage.py run_import
 dc run --rm importer python manage.py import_non_public
 
