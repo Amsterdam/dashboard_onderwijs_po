@@ -20,10 +20,14 @@ services:
       DATABASE_NAME: onderwijs
       DATABASE_USER: onderwijs
       DATABASE_PASSWORD: insecure
+    volumes:
+      - gastransitie_import_cache:/data
     command: >
         bash -c "/deploy/docker-wait.sh \
                 && /deploy/docker-migrate.sh \
-                && python manage.py run_import"
+                && python manage.py run_import \
+                && python manage.py download_data \
+                && python manage.py import_non_public"
 
   db-backup:
     image: amsterdam/postgres
@@ -43,6 +47,5 @@ services:
                           -h db -p 5432 \
                           onderwijs > /tmp/backups/database.dump"
 
-
-
-# DOCKER COMPOSE FOR IMPORT
+volumes:
+  gastransitie_import_cache:

@@ -12,11 +12,29 @@ dc() {
 
 trap 'dc kill ; dc rm -f' EXIT
 
+# For database backups:
 rm -rf ${DIR}/backups
 mkdir -p ${DIR}/backups
 
-dc build
-dc up -d database
+echo "For debugging list volumes"
+dc down	-v
+docker volume ls
 
-dc run --rm importer
+echo "Building images"
+dc build
+
+echo "Bringing up and waiting for database"
+dc up -d database
+dc run importer /deploy/docker-wait.sh
+
+echo "Downloading raw datafiles from object store"
+dc run --rm importer ls /data
+dc run --rm importer python manage.py download_data
+dc run --rm importer python manage.py run_import
+dc run --rm importer python manage.py import_non_public
+
+echo "Running backups"
+# these are still "old style"
+
 dc run --rm db-backup
+echo "Done"

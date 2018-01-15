@@ -34,6 +34,7 @@ If the priviliged data is available running the following command will add that
 data to the service:
 
 ```bash
+docker-compose run --rm web python manage.py download_data
 docker-compose run --rm web python manage.py import_non_public
 ```
 

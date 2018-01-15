@@ -30,7 +30,6 @@ _VVE_LEERLINGEN = {
 _OBJECT_STORE_SETTINGS = {
     'VERSION': '2.0',
     'AUTHURL': 'https://identity.stack.cloudvps.com/v2.0',
-    # 'TENANT_NAME': 'BGE000081_Onderwijs_storage',
     'TENANT_ID': 'c9089d4a49934890baf2569cdc587571',
     'USER': 'onderwijs',
     'PASSWORD': os.getenv('ONDERWIJS_OBJECTSTORE_PASSWORD'),
@@ -38,16 +37,35 @@ _OBJECT_STORE_SETTINGS = {
 }
 
 
+def full_split(path, make_relative):
+    """
+    Return list of path elements. If make_relative then remove / (root).
+    """
+    reversed_chunks = []
+
+    start, end = os.path.split(path)
+    while end != '':
+        reversed_chunks.append(end)
+        start, end = os.path.split(start)
+
+    if start != '' and (start != '/' or (not make_relative)):
+        reversed_chunks.append(start)
+
+    return list(reversed(reversed_chunks))
+
+
 def get_schoolwisselaars(year, brin6s):
     if year not in _SCHOOLWISSELAARS:
         return
 
-    _path, _file = os.path.split(_SCHOOLWISSELAARS[year])
-    if _file not in os.listdir(_CACHE_DIR):
-        print('Need to grab file from objectstore')
-        raise NotImplementedError('object store support TBD')
+    file_name = os.path.join(
+        _CACHE_DIR,
+        *full_split(_SCHOOLWISSELAARS[year], make_relative=True)
+    )
 
-    file_name = os.path.join(_CACHE_DIR, _file)
+    if not os.path.exists(file_name):
+        raise Exception('Data file not present: {}'.format(file_name))
+
     SchoolWisselaars.objects._from_excel_file(file_name, year, brin6s)
 
 
@@ -55,10 +73,12 @@ def get_subsidies(year, brin6s):
     if year not in _SUBSIDIES:
         return
 
-    _path, _file = os.path.split(_SUBSIDIES[year])
-    if _file not in os.listdir(_CACHE_DIR):
-        print('Need to grab file from objectstore')
-        raise NotImplementedError('object store support TBD')
+    file_name = os.path.join(
+        _CACHE_DIR,
+        *full_split(_SUBSIDIES[year], make_relative=True)
+    )
 
-    file_name = os.path.join(_CACHE_DIR, _file)
+    if not os.path.exists(file_name):
+        raise Exception('Data file not present: {}'.format(file_name))
+
     subsidie_import_helper(file_name, year, brin6s)
