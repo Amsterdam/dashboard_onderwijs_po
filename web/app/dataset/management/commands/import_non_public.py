@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
 
 from dataset.models import Vestiging
+from dataset.models import report_rows
 from dataset.import_non_public import get_subsidies
 from dataset.import_non_public import get_schoolwisselaars
-from dataset.import_non_public import report_rows
 
 _YEARS = [2011, 2012, 2013, 2014, 2015, 2016, 2017]
 
@@ -23,3 +23,4 @@ class Command(BaseCommand):
             get_schoolwisselaars(year, brin6s)
 
         report_rows()
+        self.stdout.write('Done')
