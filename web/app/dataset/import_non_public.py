@@ -4,6 +4,7 @@ import logging
 
 from .models.subsidie import subsidie_import_helper
 from .models import SchoolWisselaars
+from .models import Subsidie, ToegewezenSubsidie
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
 logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
@@ -65,6 +66,7 @@ def get_schoolwisselaars(year, brin6s):
 
     if not os.path.exists(file_name):
         raise Exception('Data file not present: {}'.format(file_name))
+    logger.debug('Accessing: {}'.format(file_name))
 
     SchoolWisselaars.objects._from_excel_file(file_name, year, brin6s)
 
@@ -80,5 +82,16 @@ def get_subsidies(year, brin6s):
 
     if not os.path.exists(file_name):
         raise Exception('Data file not present: {}'.format(file_name))
+    logger.debug('Accessing: {}'.format(file_name))
 
     subsidie_import_helper(file_name, year, brin6s)
+
+
+def report_rows():
+    logger.debug('Telling voor de niet publieke data')
+    logger.debug('Telling Schoolwisselaars rijen: {}'.format(
+        SchoolWisselaars.objects.count()))
+    logger.debug('Telling Subsidies rijen: {}'.format(
+        Subsidie.objects.count()))
+    logger.debug('Telling Toegewezen Subsidies rijen: {}'.format(
+        ToegewezenSubsidie.objects.count()))
