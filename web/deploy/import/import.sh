@@ -37,5 +37,5 @@ dc run --rm importer python manage.py import_non_public
 echo "Running backups"
 # these are still "old style"
 
-dc run database backup-db.sh onderwijs
+dc exec -T database backup-db.sh onderwijs
 echo "Done"
