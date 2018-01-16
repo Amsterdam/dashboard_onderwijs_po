@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: insecure
 
   importer:
-    build: ../../
+    image: build.datapunt.amsterdam.nl:5000/datapunt/onderwijs:${ENVIRONMENT}
     ports:
       - "8000:8000"
     links:
