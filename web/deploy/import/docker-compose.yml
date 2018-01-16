@@ -4,6 +4,8 @@ services:
     image: amsterdam/postgres
     ports:
       - "5432:5432"
+    volumes:
+      - ./backups:/tmp/backups
     environment:
       POSTGRES_DB: onderwijs
       POSTGRES_USER: onderwijs
@@ -29,24 +31,6 @@ services:
                 && python manage.py run_import \
                 && python manage.py download_data \
                 && python manage.py import_non_public"
-
-  db-backup:
-    image: amsterdam/postgres
-    links:
-      - database:db
-    volumes:
-      - ./backups:/tmp/backups
-    command: >
-      bash -c "echo db:5432:onderwijs:onderwijs:insecure > ~/.pgpass \
-              && chmod 600 ~/.pgpass \
-              && pg_dump --clean \
-                          -Fc \
-                          -t dataset* \
-                          -t django_content_type \
-                          -t django_migrations \
-                          -U onderwijs \
-                          -h db -p 5432 \
-                          onderwijs > /tmp/backups/database.dump"
 
 volumes:
   gastransitie_import_cache:
