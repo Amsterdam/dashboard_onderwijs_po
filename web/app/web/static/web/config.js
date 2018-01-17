@@ -48,7 +48,7 @@ var onderwijsConfig = (function () {
             "axis": {
             "domainWidth": 1
             }
-        
+
         }
     }
 
@@ -92,8 +92,8 @@ var onderwijsConfig = (function () {
     };
 
     // Endpoint URLs for these plots:
-    var dataUrlSchooladviezen = document.location.origin + '/onderwijs/aggregated-advies/?vestiging=';
-    var dataUrlLeerlingenNaarGewicht = document.location.origin + '/onderwijs/leerling-naar-gewicht/?vestiging=';
+    var dataUrlSchooladviezen = document.location.origin + '/onderwijs/api/aggregated-advies/?vestiging=';
+    var dataUrlLeerlingenNaarGewicht = document.location.origin + '/onderwijs/api/leerling-naar-gewicht/?vestiging=';
 
     function generateConfig(brin6){
         specSchoolAdviezen.data.url = dataUrlSchooladviezen + brin6;

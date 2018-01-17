@@ -8,7 +8,7 @@ from health import urls as health_urls
 urlpatterns = [
     url(r'^status/', include(health_urls)),
     url(r'^onderwijs/dash/', include(web_urls)),
-    url(r'^onderwijs/', include(api_urls)),
+    url(r'^onderwijs/api/', include(api_urls)),
 ]
 
 if settings.DEBUG:
