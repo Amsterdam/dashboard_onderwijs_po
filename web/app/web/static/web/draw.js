@@ -54,14 +54,15 @@ function drawCitoScore(id){
     var citoScoresDataUrl = document.location.origin + '/onderwijs/api/cito-score/?vestiging=' + brin6 + '&jaar=2016';
 
     paginatedJson(citoScoresDataUrl, function(error, data){
-        console.log(data);
+        if (error) throw error;
+
         var target = d3.select(id);
         target.append('div')
             .style('font-weight', 'bold')
             .text('Cito score');
         target.append('div').append('h1')
             .style('text-align', 'center')
-            .text(data[0].cet_gem);
+            .text(Math.round(data[0].cet_gem));
         target.append('div')
             .style('text-align', 'right')
             .text('A\'dams gem = ' + Math.round(data[0].cet_gem_avg));

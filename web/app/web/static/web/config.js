@@ -56,6 +56,7 @@ var onderwijsConfig = (function () {
     var specLeerlingenNaarGewicht = {
         "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
         "height": 80,
+        "width": 100,
         "description": "A simple bar chart with embedded data.",
         "data": {"url": null}, // To be determined! "/onderwijs/leerling-naar-gewicht/?vestiging=04LA00"
         "title": "Leerlingen naar gewicht",
