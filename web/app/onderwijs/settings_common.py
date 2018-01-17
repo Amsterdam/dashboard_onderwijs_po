@@ -82,7 +82,7 @@ REST_FRAMEWORK = {
 REST_FRAMEWORK = dict(
     PAGE_SIZE=100,
     MAX_PAGINATE_BY=100,
-    # DEFAULT_PAGINATION_CLASS='rest_framework.pagination.PageNumberPagination',
+    DEFAULT_PAGINATION_CLASS='rest_framework.pagination.PageNumberPagination',
 
     DEFAULT_RENDERER_CLASSES=(
         'rest_framework.renderers.JSONRenderer',
