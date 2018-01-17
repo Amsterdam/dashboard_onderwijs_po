@@ -21,7 +21,9 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Dashboard Primair Onderwijs</span>
+        <span class="navbar-brand mb-0 h1">Dashboard Primair Onderwijs
+		{% block subtitle %}{% endblock subtitle %}
+	</span>
     </nav>
     <div class="container-fluid">
 {% block content %}{% endblock content %}

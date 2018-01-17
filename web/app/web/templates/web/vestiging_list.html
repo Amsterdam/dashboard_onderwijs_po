@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block subtitle %} - Vestigingen{% endblock subtitle %}
+
 {% block content %}
 <table class="table table-sm table-striped table-bordered">
   <thead>
@@ -17,10 +19,4 @@
 {% endfor %}
   </tbody>
 </table>
-
-
-<script>
-  // brin6 is injected through the Django template system
-  var brin6 = "{{object.brin6}}";
-</script>
 {% endblock content %}
