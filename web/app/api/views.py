@@ -81,7 +81,7 @@ class CitoScoresViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
     )
     serializer_class = CitoScoresSerializer
-    filter_fields = ('vestiging',)
+    filter_fields = ('vestiging', 'jaar')
 
 
 class SubsidieViewSet(viewsets.ReadOnlyModelViewSet):
@@ -176,7 +176,7 @@ class AggregatedAdviesView(APIView):
                     'vestiging': brin6
                 },
                 {
-                    'advies': 'h/v',
+                    'advies': 'havo / vwo',
                     'totaal': havo_vwo,
                     'jaar': jaar,
                     'vestiging': brin6
@@ -197,7 +197,7 @@ class AggregatedAdviesView(APIView):
             # For demo (see above)
             out.extend([
                 {'advies': 'vmbo b,k', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
-                {'advies': 'h/v', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
+                {'advies': 'havo / vwo', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
                 {'advies': 'pro', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
                 {'advies': 'vmbo g,t', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
             ])

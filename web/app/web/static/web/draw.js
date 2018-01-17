@@ -34,12 +34,15 @@ function paginatedVegaEmbed(id, vegaSpec, vegaEmbedOptions){
     });
 }
 
-function drawSubsidieTable(){
+function drawSubsidieTable(id){
     // TODO: make year filter configurable
-    var subdidieDataUrl = "/onderwijs/api/toegewezen-subsidie/?vestiging=" + brin6 + "&subsidie__jaar=2017";
+    var subdidieDataUrl = document.location.origin + "/onderwijs/api/toegewezen-subsidie/?vestiging=" + brin6 + "&subsidie__jaar=2017";
     paginatedJson(subdidieDataUrl, function(error, subsidieData){
-        var tmp = d3.select('#vis3')
-        tmp.selectAll('div')
+        var target = d3.select(id);
+        target.append('div')
+            .style('font-weight', 'bold')
+            .text('Subsidies')
+        target.selectAll('div')
             .data(subsidieData).enter()
             .append('div')
             .style('font-size', '12px')
@@ -47,7 +50,33 @@ function drawSubsidieTable(){
     });
 }
 
+function drawCitoScore(id){
+    var citoScoresDataUrl = document.location.origin + '/onderwijs/api/cito-score/?vestiging=' + brin6 + '&jaar=2016';
+
+    paginatedJson(citoScoresDataUrl, function(error, data){
+        console.log(data);
+        var target = d3.select(id);
+        target.append('div')
+            .style('font-weight', 'bold')
+            .text('Cito score');
+        target.append('div').append('h1')
+            .style('text-align', 'center')
+            .text(data[0].cet_gem);
+        target.append('div')
+            .style('text-align', 'right')
+            .text('A\'dams gem = ' + Math.round(data[0].cet_gem_avg));
+    });
+}
+
+function drawAggStatsTable(id){
+    var schoolWisselaarsDataUrl = document.location.origin + '/onderwijs/api/',
+        vveIndicatiesDataUrl = '',
+        leerlingLeraarRatioDataUrl = '';
+}
+
+
 var config = onderwijsConfig.generateConfig(brin6);
-vegaEmbed('#vis', config.specSchoolAdviezen, config.vegaEmbedOptions);
-paginatedVegaEmbed('#vis2', config.specLeerlingenNaarGewicht, config.vegaEmbedOptions);
-drawSubsidieTable();
+vegaEmbed('#vis2', config.specSchoolAdviezen, config.vegaEmbedOptions);
+paginatedVegaEmbed('#vis', config.specLeerlingenNaarGewicht, config.vegaEmbedOptions);
+drawSubsidieTable('#vis3');
+drawCitoScore('#vis6');

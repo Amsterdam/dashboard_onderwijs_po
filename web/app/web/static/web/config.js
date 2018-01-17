@@ -10,6 +10,7 @@ var onderwijsConfig = (function () {
     var specSchoolAdviezen = {
         "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
         "height": 60,
+        "width": 100,
         "description": "Bar chart van schooladviezen",
         "data": {
             //"url": "/onderwijs/schooladvies/?vestiging=04LA00"
@@ -31,7 +32,7 @@ var onderwijsConfig = (function () {
                 "type": "nominal",
                 "axis": {
                     "title": "",
-                    "labelAngle": -45
+                    "labelAngle": 0
                 }
             },
             "color": {

@@ -18,4 +18,7 @@ class LeerlingLeraarRatio(models.Model):
     n_inopleiding = models.FloatField(null=True)
     n_onbekend = models.FloatField(null=True)
 
+    # denormalized city wide averages:
+    n_onderwijzend_avg = models.FloatField(null=True)
+
     jaar = models.IntegerField()

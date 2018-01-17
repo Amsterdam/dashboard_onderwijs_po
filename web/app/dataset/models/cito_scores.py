@@ -96,4 +96,7 @@ class CitoScores(models.Model):
         null=True
     )
 
+    # denormalized city wide averages:
+    cet_gem_avg = models.FloatField(null=True)
+
     objects = CitoScoresManager()
