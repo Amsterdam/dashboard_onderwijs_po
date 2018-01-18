@@ -1,6 +1,6 @@
 <template>
   <div v-if="vestiging">
-    Vestiging {{ vestiging.brin6 }}
+    Vestiging {{ vestiging.naam }} - {{ vestiging.brin6 }}
   </div>
   <div v-else>
     Loading...
@@ -14,11 +14,10 @@ export default {
       vestiging: null
     }
   },
-  async created () {
-    // Set this.vestiging
-    this.vestiging = {
-      brin6: this.$route.params.id
-    }
+  created () {
+    let brin6 = this.$route.params.id
+    let vestigingen = this.$store.state.vestigingen
+    this.vestiging = vestigingen.find(v => v.brin6 === brin6)
   }
 }
 </script>

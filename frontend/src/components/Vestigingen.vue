@@ -32,22 +32,24 @@ export default {
     }
   },
   async created () {
-    let next = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
-    this.vestigingen = []
+    this.vestigingen = this.$store.state.vestigingen
 
-    while (next) {
-      try {
-        let response = await Vue.axios.get(next)
-        next = response.data.next
-        response.data.results.forEach(result => {
-          this.vestigingen.push({
-            naam: result.naam,
-            brin6: result.brin6
+    if (!this.vestigingen.length) {
+      let next = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
+
+      while (next) {
+        try {
+          let response = await Vue.axios.get(next)
+          next = response.data.next
+          response.data.results.forEach(result => {
+            this.vestigingen.push(result)
           })
-        })
-      } catch (e) {
-        next = null
+        } catch (e) {
+          next = null
+        }
       }
+
+      this.$store.commit('vestigingen', this.vestigingen)
     }
   }
 }
