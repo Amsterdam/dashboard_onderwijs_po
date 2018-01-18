@@ -11,5 +11,10 @@ export default new Vuex.Store({
     vestigingen (state, vestigingen) {
       state.vestigingen = vestigingen
     }
+  },
+  getters: {
+    vestigingen: state => {
+      return state.vestigingen
+    }
   }
 })

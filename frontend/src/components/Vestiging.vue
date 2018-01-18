@@ -3,21 +3,36 @@
     Vestiging {{ vestiging.naam }} - {{ vestiging.brin6 }}
   </div>
   <div v-else>
-    Loading...
+    Loading... {{brin6}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
+      brin6: null,
       vestiging: null
     }
   },
+  computed: {
+    ...mapGetters([
+      'vestigingen'
+    ])
+  },
+  watch: {
+    vestigingen: function (vestigingen) {
+      if (!this.vestiging) {
+        this.vestiging = vestigingen.find(v => v.brin6 === this.brin6)
+      }
+    }
+  },
   created () {
-    let brin6 = this.$route.params.id
+    this.brin6 = this.$route.params.id
     let vestigingen = this.$store.state.vestigingen
-    this.vestiging = vestigingen.find(v => v.brin6 === brin6)
+    this.vestiging = vestigingen.find(v => v.brin6 === this.brin6)
   }
 }
 </script>

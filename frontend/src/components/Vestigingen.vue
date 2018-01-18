@@ -23,34 +23,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   data () {
     return {
       vestigingen: []
     }
   },
-  async created () {
+  created () {
     this.vestigingen = this.$store.state.vestigingen
-
-    if (!this.vestigingen.length) {
-      let next = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
-
-      while (next) {
-        try {
-          let response = await Vue.axios.get(next)
-          next = response.data.next
-          response.data.results.forEach(result => {
-            this.vestigingen.push(result)
-          })
-        } catch (e) {
-          next = null
-        }
-      }
-
-      this.$store.commit('vestigingen', this.vestigingen)
-    }
   }
 }
 </script>
