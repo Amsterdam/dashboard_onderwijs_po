@@ -194,12 +194,4 @@ class AggregatedAdviesView(APIView):
                     'vestiging': brin6},
             ])
 
-            # For demo (see above)
-            out.extend([
-                {'advies': 'vmbo b,k', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
-                {'advies': 'havo / vwo', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
-                {'advies': 'pro', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
-                {'advies': 'vmbo g,t', 'totaal': 0, 'jaar': 2016, 'vestiging': brin6},
-            ])
-
         return Response(out)

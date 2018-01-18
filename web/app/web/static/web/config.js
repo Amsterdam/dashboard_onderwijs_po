@@ -9,83 +9,154 @@ var onderwijsConfig = (function () {
     // Vega-lite Configuration objects for the various plots:
     var specSchoolAdviezen = {
         "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-        "height": 60,
-        "width": 100,
         "description": "Bar chart van schooladviezen",
         "data": {
-            //"url": "/onderwijs/schooladvies/?vestiging=04LA00"
-            "url": null // TBD
+          "url": null
         },
-        "title": "School adviezen",
-        "mark": "bar",
-        "encoding": {
-            "column": {
-                "field": "advies",
-                "type": "ordinal"
-            },
-            "y": {
-                "field": "totaal",
-                "type": "quantitative"
-            },
-            "x": {
-                "field": "jaar",
-                "type": "nominal",
-                "axis": {
+        "title": {
+          "text": "School adviezen",
+          "offset": 12
+        },
+        "facet": {
+          "column": {
+            "field": "advies",
+            "type": "ordinal"
+          }
+        },
+        "spec": {
+          "height": 60,
+          "width": 100,
+          "layer": [
+            {
+              "mark": "bar", 
+              "encoding": {
+                "y": {
+                  "field": "totaal",
+                  "type": "quantitative"
+                },
+                "x": {
+                  "field": "jaar",
+                  "type": "nominal",
+                  "axis": {
                     "title": "",
-                    "labelAngle": 0
+                    "labelAngle": 1e-10
+                  }
+                },
+                "color": {
+                  "field": "jaar",
+                  "type": "nominal",
+                  "legend": null,
+                  "scale": {
+                    "range": [
+                      "#3182bd",
+                      "#9ecae1",
+                      "#deebf7"
+                    ]
+                  }
                 }
+              }
             },
-            "color": {
-                "field": "jaar",
-                "type": "nominal",
-                "legend": null,
-                "scale":{
-                    "range": ["#3182bd", "#9ecae1", "#deebf7"]
-                }
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -2
+              },
+              "encoding": {
+                "x": {
+                  "field": "jaar",
+                  "type": "nominal"
+                },
+                "y": {
+                  "field": "totaal",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "totaal",
+                  "type": "quantitative"
+                }     
+              }
             }
+          ]
         },
         "config": {
-            "view": {"stroke": "transparent"},
-            "axis": {
+          "view": {
+            "stroke": "transparent"
+          },
+          "axis": {
             "domainWidth": 1
-            }
-
+          }
         }
-    }
+      }
+
 
     var specLeerlingenNaarGewicht = {
         "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-        "height": 80,
-        "width": 100,
+
         "description": "A simple bar chart with embedded data.",
-        "data": {"url": null}, // To be determined! "/onderwijs/leerling-naar-gewicht/?vestiging=04LA00"
-        "title": "Leerlingen naar gewicht",
-        "mark": "bar",
-        "encoding": {
+        "data": {"url": null}, // TBD, see below
+        "title": {
+            "text": "Leerlingen naar gewicht",
+            "anchor": "start",
+            "offset": 12
+        },
+        "facet": {
             "column": {
-                "field": "gewicht",
-                "type": "ordinal"
+              "field": "gewicht",
+              "type": "ordinal"
+            }
+        },
+        "spec": {
+            "height": 80,
+            "width": 100,
+            "layer": [{
+                "mark": "bar",
+                "encoding": {
+                    "y": {
+                        "field": "totaal",
+                        "type": "quantitative"
+                    },
+                    "x": {
+                        "field": "jaar",
+                        "type": "nominal",
+                        "axis": {
+                            "labelAngle": 1e-10, // 0 or 360 are not accepted here, bug in vega lite?
+                            "title": ""
+                        }
+                    },
+                    "color": {
+                        "field": "jaar",
+                        "type": "nominal",
+                        "legend": null,
+                        "scale": {
+                            "range": ["#3182bd", "#9ecae1", "#deebf7"]
+                        }
+                    }
+                },
             },
-            "y": {
-                "field": "totaal",
-                "type": "quantitative"
-            },
-            "x": {
-                "field": "jaar",
-                "type": "nominal",
-                "axis": {
-                    "labelAngle": -45,
-                    "title": ""
-                }
-            },
-            "color": {
-                "field": "jaar",
-                "type": "nominal",
-                "legend": null,
-                "scale": {
-                    "range": ["#3182bd", "#9ecae1", "#deebf7"]
+            {
+                "mark": {
+                    "type": "text",
+                    "baseline": "bottom",
+                    "dy": -1
+                },
+                "encoding": {
+                    "y": {
+                        "field": "totaal",
+                        "type": "quantitative"
+                    },
+                    "x": {
+                        "field": "jaar",
+                        "type": "nominal"                        
+                    },
+                    "text": {
+                        "field": "totaal",
+                        "type": "quantitative"
+                    }
                 }
             }
+            
+        ]
         },
         "config": {
             "view": {"stroke": "transparent"},
