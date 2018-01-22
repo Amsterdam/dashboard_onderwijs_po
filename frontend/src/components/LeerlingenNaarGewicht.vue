@@ -6,7 +6,7 @@
 
 <script>
 import embed from 'vega-embed'
-import readPaginatedData from '../services/util'
+import util from '../services/util'
 // whatever
 const vegaEmbedOptions = {
   'actions': {
@@ -95,8 +95,9 @@ export default {
   async created () {
     let url = `https://data.amsterdam.nl/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
     try {
-      let values = await readPaginatedData(url)
+      let values = await util.readPaginatedData(url)
       vegaSpec.data.values = values
+      console.log('lng', values)
       embed('#leerlingengewicht', vegaSpec, vegaEmbedOptions)
     } catch (e) {
       console.error(`Error: Failed to load leerlingen naar gewicht data from url ${url}`)

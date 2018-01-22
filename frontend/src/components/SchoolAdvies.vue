@@ -1,12 +1,12 @@
 <template>
-  <div id="school-advies">
+  <div id="schooladvies">
     Loading...
   </div>
 </template>
 
 <script>
 import embed from 'vega-embed'
-import readData from '../services/util'
+import util from '../services/util'
 
 const vegaEmbedOptions = {
   'actions': {
@@ -103,10 +103,10 @@ export default {
   async created () {
     let url = `https://data.amsterdam.nl/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
     try {
-      let values = await readData(url)
+      let values = await util.readData(url)
       vegaSpec.data.values = values
-      console.log(values)
-      embed('#school-advies', vegaSpec, vegaEmbedOptions)
+      console.log('sa', values)
+      embed('#schooladvies', vegaSpec, vegaEmbedOptions)
     } catch (e) {
       console.error(`Error: Failed to load aggregated schooladviezen from url ${url}`)
     }

@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import { mapActions } from 'vuex'
-import readPaginatedData from './services/util'
+import util from './services/util'
 
 Vue.use(VueAxios, axios)
 
@@ -30,7 +30,7 @@ let main = new Vue({
       const url = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
       let vestigingen = this.$store.state.vestigingen
       if (!vestigingen.length) {
-        vestigingen = await readPaginatedData(url)
+        vestigingen = await util.readPaginatedData(url)
         this.registerVestigingen(vestigingen)
       }
     }
