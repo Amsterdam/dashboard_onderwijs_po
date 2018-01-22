@@ -23,14 +23,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  data () {
-    return {
-      vestigingen: []
-    }
-  },
-  created () {
-    this.vestigingen = this.$store.state.vestigingen
+  computed: {
+    ...mapGetters([
+      'vestigingen'
+    ])
   }
 }
 </script>

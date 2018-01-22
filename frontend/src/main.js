@@ -7,6 +7,9 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import { mapActions } from 'vuex'
+import readPaginatedData from './services/util'
+
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
@@ -19,25 +22,16 @@ let main = new Vue({
   components: { App },
   template: '<App/>',
   methods: {
+    ...mapActions({
+      registerVestigingen: 'registerVestigingen'
+    }),
+
     async init () {
-      this.vestigingen = this.$store.state.vestigingen
-
-      if (!this.vestigingen.length) {
-        let next = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
-
-        while (next) {
-          try {
-            let response = await Vue.axios.get(next)
-            next = response.data.next
-            response.data.results.forEach(result => {
-              this.vestigingen.push(result)
-            })
-          } catch (e) {
-            next = null
-          }
-        }
-
-        this.$store.commit('vestigingen', this.vestigingen)
+      const url = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
+      let vestigingen = this.$store.state.vestigingen
+      if (!vestigingen.length) {
+        vestigingen = await readPaginatedData(url)
+        this.registerVestigingen(vestigingen)
       }
     }
   }

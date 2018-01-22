@@ -16,6 +16,10 @@ it further a `docker-compose` setup is provided. By running the following
 commands you will get a locally running version of the webservice at HTTP port
 8000.
 
+Get the storage password from the password manager and set the corresponding environment variable:
+
+    export ONDERWIJS_OBJECTSTORE_PASSWORD=...
+
 ```bash
 docker-compose build
 docker-compose up -d database
