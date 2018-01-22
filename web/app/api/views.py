@@ -117,6 +117,8 @@ class LeerlingLeraarRatioViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = LeerlingLeraarRatioSerializer
     filter_fields = ('brin', 'jaar')
 
+# TODO: Move the aggregation logic below to the Vue.js presentation layer
+
 
 class AggregatedAdviesView(APIView):
     def get(self, request, format=None):

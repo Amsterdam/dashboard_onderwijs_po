@@ -3,6 +3,7 @@
     Vestiging {{ vestiging.naam }} - {{ vestiging.brin6 }}
 
     <leerlingen-naar-gewicht :id="id"></leerlingen-naar-gewicht>
+    <!--<school-advies :id="id"></school-advies>-->
   </div>
   <div v-else>
     Loading... {{id}}
@@ -12,6 +13,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import leerlingenNaarGewicht from './LeerlingenNaarGewicht'
+// import schoolAdvies from './SchoolAdvies'
 
 export default {
   data () {
@@ -22,6 +24,7 @@ export default {
   },
   components: {
     'leerlingen-naar-gewicht': leerlingenNaarGewicht
+    // 'school-advies': schoolAdvies
   },
   computed: {
     ...mapGetters([

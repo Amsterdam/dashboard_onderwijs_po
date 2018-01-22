@@ -17,4 +17,12 @@ async function readPaginatedData (url) {
   return results
 }
 
-export default readPaginatedData
+async function readData (url) {
+  let response = await Vue.axios.get(url)
+  return response.data
+}
+
+export default {
+  readPaginatedData,
+  readData
+}

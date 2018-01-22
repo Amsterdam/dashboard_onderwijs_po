@@ -7,7 +7,7 @@
 <script>
 import embed from 'vega-embed'
 import readPaginatedData from '../services/util'
-
+// whatever
 const vegaEmbedOptions = {
   'actions': {
     'export': false,
