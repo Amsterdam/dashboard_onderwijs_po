@@ -4,6 +4,7 @@
 
     <leerlingen-naar-gewicht :id="id"></leerlingen-naar-gewicht>
     <school-advies :id="id"></school-advies>
+    <d3-example></d3-example>
   </div>
   <div v-else>
     Loading... {{id}}
@@ -14,6 +15,7 @@
 import { mapGetters } from 'vuex'
 import leerlingenNaarGewicht from './LeerlingenNaarGewicht'
 import schoolAdvies from './SchoolAdvies'
+import d3Example from './D3Example'
 
 export default {
   data () {
@@ -24,7 +26,8 @@ export default {
   },
   components: {
     'leerlingen-naar-gewicht': leerlingenNaarGewicht,
-    'school-advies': schoolAdvies
+    'school-advies': schoolAdvies,
+    'd3-example': d3Example
   },
   computed: {
     ...mapGetters([
