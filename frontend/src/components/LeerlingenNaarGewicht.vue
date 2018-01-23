@@ -95,9 +95,7 @@ export default {
   async created () {
     let url = `https://data.amsterdam.nl/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
     try {
-      let values = await util.readPaginatedData(url)
-      vegaSpec.data.values = values
-      console.log('lng', values)
+      vegaSpec.data.values = await util.readPaginatedData(url)
       embed('#leerlingengewicht', vegaSpec, vegaEmbedOptions)
     } catch (e) {
       console.error(`Error: Failed to load leerlingen naar gewicht data from url ${url}`)

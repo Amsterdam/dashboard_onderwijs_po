@@ -103,9 +103,7 @@ export default {
   async created () {
     let url = `https://data.amsterdam.nl/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
     try {
-      let values = await util.readData(url)
-      vegaSpec.data.values = values
-      console.log('sa', values)
+      vegaSpec.data.values = await util.readData(url)
       embed('#schooladvies', vegaSpec, vegaEmbedOptions)
     } catch (e) {
       console.error(`Error: Failed to load aggregated schooladviezen from url ${url}`)

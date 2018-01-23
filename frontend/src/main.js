@@ -10,6 +10,8 @@ import VueAxios from 'vue-axios'
 import { mapActions } from 'vuex'
 import util from './services/util'
 
+require('../node_modules/bootstrap/dist/css/bootstrap.css')
+
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
