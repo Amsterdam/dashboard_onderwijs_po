@@ -46,6 +46,7 @@ class LeerlingNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
         LeerlingNaarGewicht.objects
         .select_related('vestiging')
         .filter(vestiging__isnull=False)
+        .order_by('id')
     )
     serializer_class = LeerlingNaarGewichtSerializer
     filter_fields = ('vestiging',)
@@ -79,6 +80,7 @@ class CitoScoresViewSet(viewsets.ReadOnlyModelViewSet):
         CitoScores.objects
         .select_related('vestiging')
         .filter(vestiging__isnull=False)
+        .order_by('id')
     )
     serializer_class = CitoScoresSerializer
     filter_fields = ('vestiging', 'jaar')
@@ -97,6 +99,7 @@ class ToegewezenSubsidieViewSet(viewsets.ReadOnlyModelViewSet):
         .select_related('vestiging')
         .select_related('subsidie')
         .filter(vestiging__isnull=False)
+        .order_by('id')
     )
     serializer_class = ToegewezenSubsidieSerializer
     filter_fields = ('vestiging', 'subsidie__jaar')
