@@ -10,5 +10,6 @@ export default {
 }
 </script>
 
+<!-- Global styling -->
 <style>
 </style>

@@ -14,7 +14,7 @@ var onderwijsConfig = (function () {
           "url": null
         },
         "title": {
-          "text": "School adviezen",
+          "text": "Schooladvies",
           "offset": 12
         },
         "facet": {
@@ -28,7 +28,7 @@ var onderwijsConfig = (function () {
           "width": 100,
           "layer": [
             {
-              "mark": "bar", 
+              "mark": "bar",
               "encoding": {
                 "y": {
                   "field": "totaal",
@@ -46,6 +46,9 @@ var onderwijsConfig = (function () {
                   "field": "jaar",
                   "type": "nominal",
                   "legend": null,
+			"axis": {
+				"title": "Aantal ll",
+			},
                   "scale": {
                     "range": [
                       "#3182bd",
@@ -74,7 +77,7 @@ var onderwijsConfig = (function () {
                 "text": {
                   "field": "totaal",
                   "type": "quantitative"
-                }     
+                }
               }
             }
           ]
@@ -147,7 +150,7 @@ var onderwijsConfig = (function () {
                     },
                     "x": {
                         "field": "jaar",
-                        "type": "nominal"                        
+                        "type": "nominal"
                     },
                     "text": {
                         "field": "totaal",
@@ -155,7 +158,7 @@ var onderwijsConfig = (function () {
                     }
                 }
             }
-            
+
         ]
         },
         "config": {

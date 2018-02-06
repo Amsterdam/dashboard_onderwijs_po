@@ -3,21 +3,26 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import BootstrapVue from 'bootstrap-vue'
 import { mapActions } from 'vuex'
+
+import store from './store'
 import util from './services/util'
 
-require('../node_modules/bootstrap/dist/css/bootstrap.css')
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'leaflet/dist/leaflet.css'
 
 Vue.use(VueAxios, axios)
+
+Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-let main = new Vue({
+let vueApp = new Vue({
   el: '#app',
   router,
   store,
@@ -39,4 +44,4 @@ let main = new Vue({
   }
 })
 
-main.init()
+vueApp.init()
