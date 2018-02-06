@@ -30,7 +30,7 @@ services:
     volumes:  # for development we use bind mounts
       - ./web/app/:/app/
       - ./web/deploy/:/deploy/
-      - ./web/data/:/data/
+      - onderwijs_import_cache:/data/
     # Note we are using manage.py runserver for local dev, because UWSGI does
     # not reload automatically when a file is changed (and we do not want to
     # continually rebuild the docker images).
@@ -38,3 +38,6 @@ services:
         bash -c "/deploy/docker-wait.sh \
                 && /deploy/docker-migrate.sh \
                 && python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  onderwijs_import_cache:
