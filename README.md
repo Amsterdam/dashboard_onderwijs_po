@@ -21,6 +21,7 @@ Get the storage password from the password manager and set the corresponding env
     export ONDERWIJS_OBJECTSTORE_PASSWORD=...
 
 ```bash
+docker-compose pull
 docker-compose build
 docker-compose up -d database
 docker-compose run --rm web python manage.py migrate

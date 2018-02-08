@@ -1,10 +1,8 @@
 <template>
   <div v-if="vestiging">
     Vestiging {{ vestiging.naam }} - {{ vestiging.brin6 }}
-
-    <leerlingen-naar-gewicht :id="id"></leerlingen-naar-gewicht>
-    <school-advies :id="id"></school-advies>
-    <d3-example></d3-example>
+    <vestigingscijfers :id="id"></vestigingscijfers>
+    <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
   </div>
   <div v-else>
     Loading... {{id}}
@@ -13,21 +11,20 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import leerlingenNaarGewicht from './LeerlingenNaarGewicht'
-import schoolAdvies from './SchoolAdvies'
-import d3Example from './D3Example'
+import vestigingscijfers from './Vestigingscijfers'
+import gebiedscijfers from './Gebiedscijfers'
 
 export default {
   data () {
     return {
       id: this.$route.params.id,
-      vestiging: null
+      vestiging: null,
+      gebiedscode: null
     }
   },
   components: {
-    'leerlingen-naar-gewicht': leerlingenNaarGewicht,
-    'school-advies': schoolAdvies,
-    'd3-example': d3Example
+    'vestigingscijfers': vestigingscijfers,
+    'gebiedscijfers': gebiedscijfers
   },
   computed: {
     ...mapGetters([
@@ -48,6 +45,9 @@ export default {
   methods: {
     setVestiging () {
       this.vestiging = this.vestigingen.find(v => v.brin6 === this.id)
+      if (this.vestiging) {
+        this.gebiedscode = this.vestiging.gebiedscode
+      }
     }
   },
   created () {
