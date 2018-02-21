@@ -10,7 +10,7 @@
 // Add subcomponent imports that display the various variables.
 import gebiedscijferOpleiding from './GebiedscijferOpleiding'
 import gebiedscijferHerkomst from './GebiedscijferHerkomst'
-import util from '../services/util'
+import util from '@/services/util'
 
 const bbgaCijferUrl = 'https://api.data.amsterdam.nl/bbga/cijfers/'
 const jaren = [2016, 2017]

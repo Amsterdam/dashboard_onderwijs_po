@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import util from '../services/util'
+import util from '@/services/util'
 
 export default {
   props: [

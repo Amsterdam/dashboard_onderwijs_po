@@ -6,7 +6,7 @@
 
 <script>
 import embed from 'vega-embed'
-import util from '../services/util'
+import util from '@/services/util'
 
 const vegaEmbedOptions = {
   'actions': {

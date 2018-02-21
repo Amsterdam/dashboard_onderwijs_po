@@ -11,8 +11,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import vestigingscijfers from './Vestigingscijfers'
-import gebiedscijfers from './Gebiedscijfers'
+import vestigingscijfers from './vestigingscijfers/Vestigingscijfers'
+import gebiedscijfers from './gebiedscijfers/Gebiedscijfers'
 
 export default {
   data () {
