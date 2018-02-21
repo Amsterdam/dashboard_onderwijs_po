@@ -21,6 +21,8 @@ Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
+let API_HOST = 'http://localhost:8000'
+
 /* eslint-disable no-new */
 let vueApp = new Vue({
   el: '#app',
@@ -34,7 +36,7 @@ let vueApp = new Vue({
     }),
 
     async init () {
-      const url = 'https://data.amsterdam.nl/onderwijs/api/vestigingen/'
+      const url = API_HOST + '/onderwijs/api/vestigingen/'
       let vestigingen = this.$store.state.vestigingen
       if (!vestigingen.length) {
         vestigingen = await util.readPaginatedData(url)

@@ -16,6 +16,8 @@ const vegaEmbedOptions = {
   'renderer': 'svg'
 }
 
+let API_HOST = 'http://localhost:8000'
+
 const vegaSpec = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
   'description': 'A simple bar chart with embedded data.',
@@ -93,7 +95,7 @@ export default {
     'id'
   ],
   async created () {
-    let url = `https://data.amsterdam.nl/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
+    let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
     try {
       vegaSpec.data.values = await util.readPaginatedData(url)
       embed('#leerlingengewicht', vegaSpec, vegaEmbedOptions)

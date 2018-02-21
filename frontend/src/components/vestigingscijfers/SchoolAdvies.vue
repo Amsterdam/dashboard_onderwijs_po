@@ -16,6 +16,8 @@ const vegaEmbedOptions = {
   'renderer': 'svg'
 }
 
+let API_HOST = 'http://localhost:8000'
+
 const vegaSpec = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',
   'description': 'Bar chart van schooladviezen',
@@ -101,7 +103,7 @@ export default {
     'id'
   ],
   async created () {
-    let url = `https://data.amsterdam.nl/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
+    let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
     try {
       vegaSpec.data.values = await util.readData(url)
       embed('#schooladvies', vegaSpec, vegaEmbedOptions)
