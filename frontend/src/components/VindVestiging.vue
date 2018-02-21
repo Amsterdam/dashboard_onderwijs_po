@@ -53,25 +53,21 @@ export default {
     jQuery(this.$el).find('.typeahead')
       .typeahead(null, {
         name: 'states',
-        source: this.vars.matcher
+        source: this.vars.matcher,
+        templates: {
+          header: '<strong>Scholen die overeenkomen</strong>'
+        }
       }).bind('typeahead:select', this.wasSelected)
 
-    if (this.vestigingen.length) {
-      console.log('Vestigingen data was available at mount time, setting typeahead data.')
-      this.setTypeaheadData(this.vestigingen)
-    }
+    if (this.vestigingen.length) { this.setTypeaheadData(this.vestigingen) }
   },
   methods: {
     wasSelected (event, suggestion) {
-      console.log('Selection: ', suggestion)
       let key = this.vars.matcher.findMatchId(suggestion)
-      console.log('Match key', key)
-      this.$router.push({name: 'Vestiging', params: {id: key}}) // router.push also takes a params object
+      this.$router.push({name: 'Vestiging', params: {id: key}})
     },
     setTypeaheadData (vestigingen) {
-      let map = new Map(
-        vestigingen.map(d => [d.naam, d.brin6])
-      )
+      let map = new Map(vestigingen.map(d => [d.naam, d.brin6]))
       this.vars.matcher.map(map)
     }
   },
@@ -83,7 +79,6 @@ export default {
   watch: {
     vestigingen (to, from) {
       if (to) {
-        console.log('Vestingen array changed resetting typeahead data.')
         this.setTypeaheadData(to)
       }
     }

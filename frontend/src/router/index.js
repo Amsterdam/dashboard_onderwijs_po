@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Vestigingen from '@/components/Vestigingen'
+import NewVestigingen from '@/components/NewVestigingen'
 import Vestiging from '@/components/Vestiging'
 import VindVestiging from '@/components/VindVestiging'
 
@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/vestigingen',
       name: 'Vestigingen',
-      component: Vestigingen
+      component: NewVestigingen
     },
     {
       path: '/vestiging/:id',
