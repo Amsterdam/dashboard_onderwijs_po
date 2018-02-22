@@ -43,11 +43,11 @@ export default {
         let queryString = `?gebiedcode15=${this.gebiedscode}&variabele=${variable}`
         let url = bbgaCijferUrl + queryString
         let data = await util.readPaginatedHalJsonData(url)
-        console.log(data)
+        // console.log(data)
 
         // here we error out
         for (let datum of data) {
-          console.log('Datum', datum)
+          // console.log('Datum', datum)
           let label = mappings[datum.variabele]
           out.push({
             label,
@@ -59,7 +59,7 @@ export default {
       return out
     },
     async setHerkomst () {
-      console.log('Running setHerkomst')
+      // console.log('Running setHerkomst')
       let variables = ['BEVSUR_P', 'BEVANTIL_P', 'BEVTURK_P', 'BEVMAROK_P', 'BEVOVNW_P', 'BEVWEST_P', 'BEVAUTOCH_P']
       let mappings = {
         BEVSUR_P: 'Surinaams',
@@ -71,11 +71,11 @@ export default {
         BEVAUTOCH_P: 'Autochtoon'
       }
       this.herkomst = await this.getBbgaData(variables, mappings, jaren)
-      console.log('Herkomst', this.herkomst)
+      // console.log('Herkomst', this.herkomst)
     }
   },
   created () {
-    console.log('ik besta')
+    // console.log('ik besta')
   },
   mounted () {
     this.setHerkomst()

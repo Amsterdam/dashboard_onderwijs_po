@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "height": 100,
+  "data": {
+    "name": "source"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "gebiedcode15",
+      "type": "nominal",
+      "scale": {
+        "rangeStep": 40
+      },
+      "axis": {
+        "title": null,
+        "labelAngle": 0
+      }
+    },
+    "y": {
+      "field": "waarde",
+      "type": "quantitative",
+      "axis": {
+        "grid": false,
+        "title": "percentage"
+      }
+    },
+    "column": {
+      "field": "variabele",
+      "type": "nominal",
+      "header": {
+        "title": null
+      }
+    },
+    "color": {
+      "field": "gebiedcode15",
+      "type": "nominal",
+      "legend": {
+        "title": null
+      }
+    }
+  },
+  "config": {
+    "overlay": {
+      "line": true
+    },
+    "scale": {
+      "useUnaggregatedDomain": true
+    }
+  }
+}

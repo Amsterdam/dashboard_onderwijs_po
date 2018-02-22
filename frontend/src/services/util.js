@@ -29,7 +29,7 @@ async function readPaginatedHalJsonData (url) {
       next = null
     }
   }
-  console.log('return value', results)
+  // console.log('return value', results)
   return results
 }
 
