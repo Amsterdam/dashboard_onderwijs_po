@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     async setOpleidingData () {
-      // TODO: facet order (extra property)
+      // TODO: facet "order" (extra property on data to order by)
       let plotData = await this.downloadBbgaData(
         ['O_OPLPO_L_P', 'O_OPLPO_M_P', 'O_OPLPO_P'],
         [this.gebiedscode, 'STAD']
