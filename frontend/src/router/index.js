@@ -6,8 +6,11 @@ import VindVestiging from '@/components/VindVestiging'
 
 Vue.use(Router)
 
+console.log('process.env.ROUTER_BASE', process.env.ROUTER_BASE)
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 export default new Router({
-  mode: 'history',
+  // mode: 'history', // we should use this, but more server settings are needed
+  base: process.env.ROUTER_BASE,
   routes: [
     {
       path: '/',
