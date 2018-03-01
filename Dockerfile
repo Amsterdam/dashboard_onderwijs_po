@@ -1,3 +1,6 @@
+# Jenkins workaround
+FROM amsterdam/python
+
 # Build one Docker container that servers both the Django application and
 # the Vue.js based frontend. Hence the location of this Dockerfile, it needs
 # access to source of both these services. We may split these out into their
@@ -12,7 +15,7 @@ FROM node:8.1-alpine as builder
 
 
 # Set up Django / static serving of JavaScript app
-FROM amsterdam/python AS server
+FROM amsterdam/python
 MAINTAINER datapunt@amsterdam.nl
 
 # Deal with the Django app
