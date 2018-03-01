@@ -6,7 +6,7 @@
 import * as d3 from 'd3'
 import util from '@/services/util'
 
-const API_HOST = 'http://localhost:8000'
+const API_HOST = process.env.API_HOST
 
 export default {
   props: [

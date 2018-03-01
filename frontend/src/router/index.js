@@ -8,6 +8,7 @@ Vue.use(Router)
 
 console.log('process.env.ROUTER_BASE', process.env.ROUTER_BASE)
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+console.log('process.env.API_HOST', process.env.API_HOST)
 export default new Router({
   // mode: 'history', // we should use this, but more server settings are needed
   base: process.env.ROUTER_BASE,

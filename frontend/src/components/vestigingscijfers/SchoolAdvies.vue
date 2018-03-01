@@ -16,7 +16,7 @@ const vegaEmbedOptions = {
   'renderer': 'svg'
 }
 
-let API_HOST = 'http://localhost:8000'
+let API_HOST = process.env.API_HOST
 
 const vegaSpec = {
   '$schema': 'https://vega.github.io/schema/vega-lite/v2.json',

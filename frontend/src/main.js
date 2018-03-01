@@ -21,7 +21,7 @@ Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
-let API_HOST = 'http://localhost:8000'
+let API_HOST = process.env.API_HOST
 
 /* eslint-disable no-new */
 let vueApp = new Vue({
