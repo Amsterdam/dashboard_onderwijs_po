@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "name": "source"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "gebiedcode15",
+      "type": "nominal",
+      "axis": false
+    },
+    "y": {
+      "field": "waarde",
+      "type": "quantitative",
+      "scale": {
+        "domain": [0, 100]
+      },
+      "axis": {
+        "title": "Percentage"
+      }
+    },
+    "column": {
+      "field": "_label",
+      "type": "nominal",
+      "header": {
+        "title": "Afkomst"
+      }
+    },
+    "color": {
+      "field": "gebiedcode15",
+      "type": "nominal",
+      "legend": {
+        "title": null
+      }
+    }
+  },
+  "width": 80,
+  "config": {
+    "view": {"stroke": "transparent"}
+  }
+}
