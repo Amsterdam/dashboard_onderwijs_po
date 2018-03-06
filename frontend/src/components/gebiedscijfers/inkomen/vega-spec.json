@@ -1,42 +1,74 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-    "width": 80,
-    "data": {
-      "name": "source"
-    },
-    "mark": "bar",
-    "encoding": {
-      "color": {
-        "field": "gebiedcode15",
-        "type": "nominal",
-        "legend": {
-            "title": null
-        }
-      },
-      "x": {
-        "field": "gebiedcode15",
-        "type": "nominal",
-        "axis": false
-      },
-      "y": {
-        "field": "waarde",
-        "type": "quantitative",
-        "scale": {
-            "domain": [0, 100]
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "name": "source"
+  },
+  "facet": {
+    "column": {
+      "field": "_label",
+      "type": "ordinal",        
+      "header": {
+        "title": null
+      }
+    }
+  },
+  "spec": {
+    "layer": [{
+      "width": 65,
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "gebiedcode15",
+          "type": "nominal",
+          "axis": null
         },
-        "axis": {
+        "y": {
+          "field": "waarde",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100]
+          },
+          "axis": {
             "title": "Percentage"
-        }
-      },
-      "column": {
-        "field": "_label",
-        "type": "nominal",
-        "header": {
-            "title": "Inkomen"
+          }
+        },
+        "color": {
+          "field": "gebiedcode15",
+          "type": "nominal",
+          "legend": {
+            "title": null
+          },
+          "scale": {
+            "range": ["#3182bd", "#9ecae1"]
+          }
         }
       }
     },
-    "config": {
-        "view": {"stroke": "transparent"}
-    }
+    {
+      "mark": {
+        "type": "text",
+        "baseline": "bottom",
+        "dy": -1
+      },
+      "encoding": {
+        "y": {
+          "field": "waarde",
+          "type": "quantitative",
+          "axis": null  
+        },
+        "x": {
+          "field": "gebiedcode15",
+          "type": "nominal",
+          "axis": null
+        },
+        "text": {
+          "field": "waarde",
+          "type": "quantitative"
+        }
+      }
+    }]
+  },
+  "config": {
+    "view": {"stroke": "transparent"}
   }
+}

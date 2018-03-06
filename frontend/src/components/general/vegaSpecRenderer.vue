@@ -9,9 +9,9 @@ import vegaEmbed from 'vega-embed'
 
 const vegaEmbedOptions = {
   'actions': {
-    'export': true,
-    'source': true,
-    'editor': true},
+    'export': false,
+    'source': false,
+    'editor': false},
   'renderer': 'svg'
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <data-download-link :data="data" text="Download afkomst cijfers JSON" filename="afkomst.json"></data-download-link>
     <vega-spec-render :data="data" :vegaspec="vegaspecAfkomst"></vega-spec-render>
+    <data-download-link :data="data" text="Download afkomst cijfers JSON" filename="afkomst.json"></data-download-link>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
 import vegaspecAfkomst from '@/components/gebiedscijfers/herkomst/vega-spec.json'
 
-let years = [2015, 2014, 2016] // TODO: make configurable (dev/prod) or latest data
+let years = [2016] // TODO: make configurable (dev/prod) or latest data
 
 export default {
   components: {

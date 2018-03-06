@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a v-if="linkdata && filename && text" v-bind:href="linkdata" v-bind:download="filename">{{text}}</a>
+    <a v-if="false && linkdata && filename && text" v-bind:href="linkdata" v-bind:download="filename">{{text}}</a>
   </div>
 </template>
 
