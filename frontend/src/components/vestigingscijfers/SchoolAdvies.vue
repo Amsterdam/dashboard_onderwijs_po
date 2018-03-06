@@ -33,7 +33,6 @@ const vegaSpec = {
     }
   },
   'spec': {
-    'height': 60,
     'width': 100,
     'layer': [
       {

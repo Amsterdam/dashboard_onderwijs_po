@@ -27,9 +27,7 @@ export default {
     },
     async drawSubsidieTabel () {
       var target = d3.select(this.$el)
-      target.append('div')
-        .style('font-weight', 'bold')
-        .text('Subsidies')
+
       target.selectAll('div')
         .data(this.subsidieData).enter()
         .append('div')

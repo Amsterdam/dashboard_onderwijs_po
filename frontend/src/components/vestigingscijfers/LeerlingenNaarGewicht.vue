@@ -34,7 +34,6 @@ const vegaSpec = {
     }
   },
   'spec': {
-    'height': 80,
     'width': 100,
     'layer': [{
       'mark': 'bar',

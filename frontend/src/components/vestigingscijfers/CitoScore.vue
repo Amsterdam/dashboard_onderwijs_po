@@ -31,9 +31,6 @@ export default {
       var target = d3.select(this.$el)
       target.selectAll('*').remove()
 
-      target.append('div')
-        .style('font-weight', 'bold')
-        .text('Cito score')
       target.append('div').append('h1')
         .style('text-align', 'center')
         .text(Math.round(this.citoScoreData[0].cet_gem))
