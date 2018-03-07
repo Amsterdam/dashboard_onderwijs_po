@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export const halNextAccessor = response => response.data._links.next.href
-export const nextAccessor = response => response.data.response.data.next
+export const nextAccessor = response => response.data.next
 
 export const HTTPStatus = {
   pending: 0,

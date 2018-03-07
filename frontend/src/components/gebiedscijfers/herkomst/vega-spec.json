@@ -14,7 +14,7 @@
   },
   "spec": {
     "layer": [{
-      "width": 65,
+      "width": 64,
       "mark": "bar",
       "encoding": {
         "x": {

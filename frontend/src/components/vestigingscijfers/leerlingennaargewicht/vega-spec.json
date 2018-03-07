@@ -1,0 +1,69 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "data": {
+      "name": "source"
+    },
+    "facet": {
+        "column": {
+          "field": "gewicht",
+          "type": "nominal",        
+          "header": {
+            "title": null
+          }
+        }
+      },
+    "spec": {
+        "layer": [{
+            "width": 96,
+            "mark": "bar",
+            "encoding": {
+              "x": {
+                "field": "jaar",
+                "type": "nominal",
+                "axis": null
+              },
+              "y": {
+                "field": "totaal",
+                "type": "quantitative",
+                "axis": {
+                    "title": "Aantal leerlingen"
+                }
+              },
+              "color": {
+                "field": "jaar",
+                "type": "nominal",
+                "scale": {
+                    "range": ["#3182bd", "#9ecae1", "#deebf7"]
+                }
+              }
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -1
+            },
+            "encoding": {
+              "x": {
+                "field": "jaar",
+                "type": "nominal",
+                "axis": null
+              },
+              "y": {
+                "field": "totaal",
+                "type": "quantitative",
+                "axis": null
+              },
+              "text": {
+                "field": "totaal",
+                "type": "quantitative"                  
+              }
+            }            
+        }
+    ]
+    },
+    "config": {
+      "view": {"stroke": "transparent"}
+    }
+  }

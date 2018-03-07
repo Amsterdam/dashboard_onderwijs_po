@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="row mb-sm-3">
-      <div class="col-md-12 col-lg-7">        
+      <div class="col-md-12 col-lg-7">
         <div class="card">
           <h5 class="card-header">Veiligheidsindex</h5>
           <div class="card-block">
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="col-md-12 col-lg-5">        
+      <div class="col-md-12 col-lg-5">
         <div class="card">
           <h5 class="card-header">Criminaliteitsindex</h5>
           <div class="card-block">

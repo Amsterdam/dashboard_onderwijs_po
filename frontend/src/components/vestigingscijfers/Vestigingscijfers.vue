@@ -1,11 +1,6 @@
 <!-- Left column in original design, contains Vestiging specific data -->
 <template>
   <div id="vestigingscijfers">
-    
-    
-    
-
-
     <h3>De vestiging</h3>
     <div class="row mb-sm-3">
       <div class="col-md-12 col-lg-7">
@@ -68,10 +63,11 @@
 </template>
 
 <script>
-import leerlingenNaarGewicht from './LeerlingenNaarGewicht'
-import schoolAdvies from './SchoolAdvies'
 import citoScore from './CitoScore'
 import subsidie from './Subsidie'
+
+import leerlingenNaarGewicht from './leerlingennaargewicht/VestigingscijferLeerlingenNaarGewicht.vue'
+import schoolAdvies from './schooladviezen/VestigingscijferSchoolAdvies.vue'
 
 export default {
   props: [
