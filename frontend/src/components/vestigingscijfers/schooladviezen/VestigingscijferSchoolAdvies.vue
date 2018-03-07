@@ -36,12 +36,9 @@ export default {
   methods: {
     async getData () {
       let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
-      console.log('whoopee', url)
 
       let data = await readData(url)
-      console.log('whoopee', data)
       this.data = data
-      console.log('Aggregated advies', this.data)
     }
   },
   watch: {
