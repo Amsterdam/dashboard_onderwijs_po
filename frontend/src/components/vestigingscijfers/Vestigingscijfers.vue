@@ -32,9 +32,9 @@
       </div>
       <div class="col-md-12 col-lg-5">
         <div class="card">
-          <h5 class="card-header"></h5>
+          <h5 class="card-header">SDQ (Strengths and Difficulties Questionnaire)</h5>
           <div class="card-block">
-            tbd
+            <sdq :gebiedcode="gebiedscode"></sdq>
           </div>
         </div>
       </div>
@@ -68,16 +68,19 @@ import subsidie from './Subsidie'
 
 import leerlingenNaarGewicht from './leerlingennaargewicht/VestigingscijferLeerlingenNaarGewicht.vue'
 import schoolAdvies from './schooladviezen/VestigingscijferSchoolAdvies.vue'
+import sdq from './sdq/SDQ.vue'
 
 export default {
   props: [
-    'id'
+    'id',
+    'gebiedscode'
   ],
   components: {
     'leerlingen-naar-gewicht': leerlingenNaarGewicht,
     'school-advies': schoolAdvies,
     'cito-score': citoScore,
-    'subsidie': subsidie
+    'subsidie': subsidie,
+    'sdq': sdq
   }
 }
 </script>

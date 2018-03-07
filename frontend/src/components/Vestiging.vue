@@ -1,7 +1,7 @@
 <template>
   <div v-if="vestiging">
-    Vestiging {{ vestiging.naam }} - {{ vestiging.brin6 }}
-    <vestigingscijfers :id="id"></vestigingscijfers>
+    <h3>{{ vestiging.naam }}</h3>
+    <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
     <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
   </div>
   <div v-else>

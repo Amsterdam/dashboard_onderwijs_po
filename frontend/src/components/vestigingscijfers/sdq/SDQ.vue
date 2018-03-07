@@ -1,0 +1,61 @@
+<template>
+  <div>
+    <vega-spec-render :data="data" :vegaspec="vegaspec"></vega-spec-render>
+    <data-download-link :data="data" text="Download inkomens cijfers JSON" filename="inkomen.json"></data-download-link>
+  </div>
+</template>
+
+<script>
+import { getBbgaVariables, annotate } from '@/services/bbgareader'
+
+import dataDownloadLink from '@/components/general/dataDownloadLink'
+import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
+import vegaspec from './vega-spec.json'
+
+let years = [2016] // TODO: make configurable (dev/prod) or latest data
+
+export default {
+  components: {
+    'data-download-link': dataDownloadLink,
+    'vega-spec-render': vegaSpecRenderer
+  },
+  props: [
+    'gebiedcode'
+  ],
+  data () {
+    return {
+      data: null,
+      vegaspec
+    }
+  },
+  async mounted () {
+    console.log('¡Hola!', this.gebiedcode)
+    if (this.gebiedcode) {
+      this.getData()
+    }
+  },
+  methods: {
+    async getData () {
+      let variables = ['OSDQ10_P']
+      let labelMapping = [
+        ['OSDQ10_P', 'SDQ-10']
+      ]
+
+      let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+      data = annotate(data, 'variabele', '_label', labelMapping)
+      // data = orderFacets(data, 'variabele', variables)
+      this.data = data
+    }
+  },
+  watch: {
+    gebiedcode (to, from) {
+      if (to) {
+        this.getData()
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+</style>
