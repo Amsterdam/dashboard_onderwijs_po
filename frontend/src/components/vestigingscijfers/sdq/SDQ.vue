@@ -29,7 +29,6 @@ export default {
     }
   },
   async mounted () {
-    console.log('¡Hola!', this.gebiedcode)
     if (this.gebiedcode) {
       this.getData()
     }

@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NewVestigingen from '@/components/NewVestigingen'
+import landingPage from '@/components/LandingPage'
 import Vestiging from '@/components/Vestiging'
-import VindVestiging from '@/components/VindVestiging'
 
 Vue.use(Router)
 
@@ -20,17 +19,12 @@ export default new Router({
     {
       path: '/vestigingen',
       name: 'Vestigingen',
-      component: NewVestigingen
+      component: landingPage
     },
     {
       path: '/vestiging/:id',
       name: 'Vestiging',
       component: Vestiging
-    },
-    {
-      path: '/vindvestiging',
-      name: 'VindVestiging',
-      component: VindVestiging
     }
   ]
 })
