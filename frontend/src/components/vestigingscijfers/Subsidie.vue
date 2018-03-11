@@ -4,7 +4,7 @@
 
 <script>
 import * as d3 from 'd3'
-import util from '@/services/util'
+import { readPaginatedData, nextAccessor} from '@/services/datareader'
 
 const API_HOST = process.env.API_HOST
 
@@ -23,7 +23,7 @@ export default {
   methods: {
     async setSubsidieData () {
       var url = API_HOST + `/onderwijs/api/toegewezen-subsidie/?vestiging=${this.id}&subsidie__jaar=2017`
-      this.subsidieData = await util.readPaginatedData(url)
+      this.subsidieData = await readPaginatedData(url, nextAccessor)
     },
     async drawSubsidieTabel () {
       var target = d3.select(this.$el)

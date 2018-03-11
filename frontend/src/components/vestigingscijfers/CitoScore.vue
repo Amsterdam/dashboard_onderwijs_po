@@ -4,7 +4,7 @@
 
 <script>
 import * as d3 from 'd3'
-import util from '@/services/util'
+import { readPaginatedData, nextAccessor} from '@/services/datareader'
 
 const API_HOST = process.env.API_HOST
 
@@ -23,7 +23,7 @@ export default {
   methods: {
     async setCitoScoreData () {
       var url = API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`
-      let tmp = await util.readPaginatedData(url)
+      let tmp = await readPaginatedData(url, nextAccessor)
       this.citoScoreData = tmp
     },
     async draw () {
