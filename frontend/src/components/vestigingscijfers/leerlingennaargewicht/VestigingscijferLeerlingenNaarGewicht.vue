@@ -29,22 +29,20 @@ export default {
     }
   },
   async mounted () {
-    if (this.id) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
-      let data = await readPaginatedData(url, nextAccessor)
-      this.data = data
+      if (this.id) {
+        let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
+        let data = await readPaginatedData(url, nextAccessor)
+        this.data = data
+      }
     }
   },
   watch: {
     id (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

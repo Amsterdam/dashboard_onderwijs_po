@@ -27,23 +27,23 @@ export default {
       this.citoScoreData = tmp
     },
     async draw () {
-      // remove graph first, then redraw
-      var target = d3.select(this.$el)
-      target.selectAll('*').remove()
+      if (this.citoScoreData) {
+        // remove graph first, then redraw
+        var target = d3.select(this.$el)
+        target.selectAll('*').remove()
 
-      target.append('div').append('h1')
-        .style('text-align', 'center')
-        .text(Math.round(this.citoScoreData[0].cet_gem))
-      target.append('div')
-        .style('text-align', 'right')
-        .text('A\'dams gem = ' + Math.round(this.citoScoreData[0].cet_gem_avg))
+        target.append('div').append('h1')
+          .style('text-align', 'center')
+          .text(Math.round(this.citoScoreData[0].cet_gem))
+        target.append('div')
+          .style('text-align', 'right')
+          .text('A\'dams gem = ' + Math.round(this.citoScoreData[0].cet_gem_avg))
+      }
     }
   },
   watch: {
     citoScoreData (to, from) {
-      if (to.length) {
-        this.draw()
-      }
+      this.draw()
     }
   }
 }

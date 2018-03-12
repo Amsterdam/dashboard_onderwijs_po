@@ -25,24 +25,22 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
-      let variables = ['VCRIMIN_I']
+      if (this.gebiedcode) {
+        // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
+        let variables = ['VCRIMIN_I']
 
-      let data = await getBbgaVariables(variables, [this.gebiedcode], years)
-      this.data = data
+        let data = await getBbgaVariables(variables, [this.gebiedcode], years)
+        this.data = data
+      }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

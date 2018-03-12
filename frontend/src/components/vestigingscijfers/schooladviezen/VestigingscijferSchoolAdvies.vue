@@ -29,23 +29,21 @@ export default {
     }
   },
   async mounted () {
-    if (this.id) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
+      if (this.id) {
+        let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
 
-      let data = await readData(url)
-      this.data = data
+        let data = await readData(url)
+        this.data = data
+      }
     }
   },
   watch: {
     id (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

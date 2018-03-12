@@ -29,30 +29,28 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      let variables = ['O_OPLPO_L_P', 'O_OPLPO_M_P', 'O_OPLPO_P']
-      let labelMapping = [
-        ['O_OPLPO_L_P', 'Laag'],
-        ['O_OPLPO_M_P', 'Midden'],
-        ['O_OPLPO_P', 'Hoog']
-      ]
+      if (this.gebiedcode) {
+        let variables = ['O_OPLPO_L_P', 'O_OPLPO_M_P', 'O_OPLPO_P']
+        let labelMapping = [
+          ['O_OPLPO_L_P', 'Laag'],
+          ['O_OPLPO_M_P', 'Midden'],
+          ['O_OPLPO_P', 'Hoog']
+        ]
 
-      let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
-      data = annotate(data, 'variabele', '_label', labelMapping)
-      // data = orderFacets(data, 'variabele', variables)
-      this.data = data
+        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+        data = annotate(data, 'variabele', '_label', labelMapping)
+        // data = orderFacets(data, 'variabele', variables)
+        this.data = data
+      }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

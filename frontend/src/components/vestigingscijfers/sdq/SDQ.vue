@@ -29,28 +29,26 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      let variables = ['OSDQ10_P']
-      let labelMapping = [
-        ['OSDQ10_P', 'SDQ-10']
-      ]
+      if (this.gebiedcode) {
+        let variables = ['OSDQ10_P']
+        let labelMapping = [
+          ['OSDQ10_P', 'SDQ-10']
+        ]
 
-      let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
-      data = annotate(data, 'variabele', '_label', labelMapping)
-      // data = orderFacets(data, 'variabele', variables)
-      this.data = data
+        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+        data = annotate(data, 'variabele', '_label', labelMapping)
+        // data = orderFacets(data, 'variabele', variables)
+        this.data = data
+      }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

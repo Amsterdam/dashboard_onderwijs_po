@@ -29,31 +29,29 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
-      let variables = ['LSOCKWAL_P', 'WZOKT_P', 'WZSAMEN_P']
-      let labelMapping = [
-        ['LSOCKWAL_P', 'Cohesie'],
-        ['WZOKT_P', 'Bij OKT'],
-        ['WZSAMEN_P', 'Samen doen']
-      ]
+      if (this.gebiedcode) {
+        // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
+        let variables = ['LSOCKWAL_P', 'WZOKT_P', 'WZSAMEN_P']
+        let labelMapping = [
+          ['LSOCKWAL_P', 'Cohesie'],
+          ['WZOKT_P', 'Bij OKT'],
+          ['WZSAMEN_P', 'Samen doen']
+        ]
 
-      let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
-      data = annotate(data, 'variabele', '_label', labelMapping)
-      // data = orderFacets(data, 'variabele', variables)
-      this.data = data
+        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+        data = annotate(data, 'variabele', '_label', labelMapping)
+        // data = orderFacets(data, 'variabele', variables)
+        this.data = data
+      }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }

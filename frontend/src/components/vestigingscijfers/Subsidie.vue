@@ -26,20 +26,20 @@ export default {
       this.subsidieData = await readPaginatedData(url, nextAccessor)
     },
     async drawSubsidieTabel () {
-      var target = d3.select(this.$el)
+      if (this.subsidieData) {
+        var target = d3.select(this.$el)
 
-      target.selectAll('div')
-        .data(this.subsidieData).enter()
-        .append('div')
-        .style('font-size', '12px')
-        .text(function (d, i) { return d.subsidie + ' ' + d.aantal })
+        target.selectAll('div')
+          .data(this.subsidieData).enter()
+          .append('div')
+          .style('font-size', '12px')
+          .text(function (d, i) { return d.subsidie + ' ' + d.aantal })
+      }
     }
   },
   watch: {
     subsidieData (to, from) {
-      if (to.length) {
-        this.drawSubsidieTabel()
-      }
+      this.drawSubsidieTabel()
     }
   }
 }

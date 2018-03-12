@@ -29,34 +29,32 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
-      let variables = ['BEVSUR_P', 'BEVANTIL_P', 'BEVTURK_P', 'BEVMAROK_P', 'BEVWEST_P', 'BEVOVNW_P', 'BEVAUTOCH_P']
-      let labelMapping = [
-        ['BEVSUR_P', 'Surinaams'],
-        ['BEVANTIL_P', 'Antilliaans'],
-        ['BEVTURK_P', 'Turks'],
-        ['BEVMAROK_P', 'Marrokaans'],
-        ['BEVOVNW_P', 'Niet West.'],
-        ['BEVWEST_P', 'Westers'],
-        ['BEVAUTOCH_P', 'Autochtoon']
-      ]
+      if (this.gebiedcode) {
+        let variables = ['BEVSUR_P', 'BEVANTIL_P', 'BEVTURK_P', 'BEVMAROK_P', 'BEVWEST_P', 'BEVOVNW_P', 'BEVAUTOCH_P']
+        let labelMapping = [
+          ['BEVSUR_P', 'Surinaams'],
+          ['BEVANTIL_P', 'Antilliaans'],
+          ['BEVTURK_P', 'Turks'],
+          ['BEVMAROK_P', 'Marrokaans'],
+          ['BEVOVNW_P', 'Niet West.'],
+          ['BEVWEST_P', 'Westers'],
+          ['BEVAUTOCH_P', 'Autochtoon']
+        ]
 
-      let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
-      data = annotate(data, 'variabele', '_label', labelMapping)
-      data = orderFacets(data, 'variabele', variables)
-      this.data = data
+        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+        data = annotate(data, 'variabele', '_label', labelMapping)
+        data = orderFacets(data, 'variabele', variables)
+        this.data = data
+      }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }
