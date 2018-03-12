@@ -1,4 +1,4 @@
-<!-- Type ahead find + data handling 
+<!-- Type ahead find + data handling
 Note that this component is single use only / project specific.
 -->
 <template>
