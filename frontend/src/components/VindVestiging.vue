@@ -1,4 +1,6 @@
-<!-- Type ahead find + data handling -->
+<!-- Type ahead find + data handling 
+Note that this component is single use only / project specific.
+-->
 <template>
     <div class="tt-dropdown-menu">
     <input type="text" class="typeahead form-control" placeholder="Zoek hier naar een vestiging">
