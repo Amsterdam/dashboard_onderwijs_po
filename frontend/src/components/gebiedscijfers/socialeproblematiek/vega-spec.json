@@ -6,7 +6,7 @@
   "facet": {
     "column": {
       "field": "_label",
-      "type": "ordinal",        
+      "type": "ordinal",
       "header": {
         "title": null
       }
@@ -14,7 +14,7 @@
   },
   "spec": {
     "layer": [{
-      "width": 65,
+      "width": 60,
       "mark": "bar",
       "encoding": {
         "x": {
@@ -54,7 +54,7 @@
         "y": {
           "field": "waarde",
           "type": "quantitative",
-          "axis": null  
+          "axis": null
         },
         "x": {
           "field": "gebiedcode15",

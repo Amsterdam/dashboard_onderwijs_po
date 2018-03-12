@@ -39,7 +39,7 @@ export default {
       let labelMapping = [
         ['IMINHH120_P', 'Minima'],
         ['IWWB_P', 'Bijstand'],
-        ['PWERKLBBV_P', 'Werkloosheid'],
+        ['PWERKLBBV_P', 'Werkloos'],
         ['BEVEENOUDERHH_P', 'Éénouder']
       ]
 

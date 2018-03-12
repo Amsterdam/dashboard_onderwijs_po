@@ -41,7 +41,7 @@ export default {
         ['BEVANTIL_P', 'Antilliaans'],
         ['BEVTURK_P', 'Turks'],
         ['BEVMAROK_P', 'Marrokaans'],
-        ['BEVOVNW_P', 'Niet-westers'],
+        ['BEVOVNW_P', 'Niet West.'],
         ['BEVWEST_P', 'Westers'],
         ['BEVAUTOCH_P', 'Autochtoon']
       ]

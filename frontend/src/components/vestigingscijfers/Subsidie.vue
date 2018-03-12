@@ -4,7 +4,7 @@
 
 <script>
 import * as d3 from 'd3'
-import { readPaginatedData, nextAccessor} from '@/services/datareader'
+import { readPaginatedData, nextAccessor } from '@/services/datareader'
 
 const API_HOST = process.env.API_HOST
 

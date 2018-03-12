@@ -6,7 +6,7 @@
     "facet": {
         "column": {
           "field": "advies",
-          "type": "nominal",        
+          "type": "nominal",
           "header": {
             "title": null
           }
@@ -14,7 +14,7 @@
       },
     "spec": {
         "layer": [{
-            "width": 96,
+            "width": 90,
             "mark": "bar",
             "encoding": {
               "x": {
@@ -57,9 +57,9 @@
               },
               "text": {
                 "field": "totaal",
-                "type": "quantitative"                  
+                "type": "quantitative"
               }
-            }            
+            }
         }
     ]
     },
