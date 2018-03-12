@@ -91,6 +91,7 @@ class SubsidieViewSet(viewsets.ReadOnlyModelViewSet):
         Subsidie.objects.all()
     )
     serializer_class = SubsidieSerializer
+    filter_fields = ('jaar',)
 
 
 class ToegewezenSubsidieViewSet(viewsets.ReadOnlyModelViewSet):

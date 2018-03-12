@@ -1,12 +1,22 @@
 <template>
-  <div></div>
+  <div>
+    <table v-if="allSubsidies.length">
+      <tbody>
+        <tr v-for="entry in allSubsidies" :key="entry.naam">
+          <td>
+            {{entry[0]}}
+          </td>
+          <td>
+            {{entry[1] ? entry[1] : 'Nee'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
-import * as d3 from 'd3'
-import { readPaginatedData, nextAccessor } from '@/services/datareader'
-
-const API_HOST = process.env.API_HOST
+import { getAllSubsidies } from '@/services/subsidiereader'
 
 export default {
   props: [
@@ -14,35 +24,26 @@ export default {
   ],
   data () {
     return {
-      'subsidieData': []
+      'allSubsidies': []
     }
   },
   async mounted () {
-    this.setSubsidieData()
+    this.getData()
   },
   methods: {
-    async setSubsidieData () {
-      var url = API_HOST + `/onderwijs/api/toegewezen-subsidie/?vestiging=${this.id}&subsidie__jaar=2017`
-      this.subsidieData = await readPaginatedData(url, nextAccessor)
-    },
-    async drawSubsidieTabel () {
-      if (this.subsidieData) {
-        var target = d3.select(this.$el)
-
-        target.selectAll('div')
-          .data(this.subsidieData).enter()
-          .append('div')
-          .style('font-size', '12px')
-          .text(function (d, i) { return d.subsidie + ' ' + d.aantal })
+    async getData () {
+      if (this.id) {
+        this.allSubsidies = await getAllSubsidies(2017, this.id)
       }
     }
   },
   watch: {
-    subsidieData (to, from) {
-      this.drawSubsidieTabel()
+    id (to, from) {
+      this.getData()
     }
   }
 }
+
 </script>
 
 <style>

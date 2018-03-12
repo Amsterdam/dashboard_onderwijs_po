@@ -1,10 +1,25 @@
 <template>
-  <div></div>
+  <div>
+    <h1 style="text-align: center">{{
+        this.citoScoreData !== null // we want to show 0 if it is present in data
+        ? this.citoScoreData.toLocaleString(
+          'nl-DU', { maximumFractionDigits: 1 }
+        )
+        : '...'
+      }}</h1>
+    <div style="text-align: right">A'dams gem = {{
+      this.citoScoreGem !== null
+      ? this.citoScoreGem.toLocaleString(
+          'nl-DU', { maximumFractionDigits: 1 }
+      )
+      : '...'
+      }}</div>
+  </div>
 </template>
 
 <script>
-import * as d3 from 'd3'
 import { readPaginatedData, nextAccessor } from '@/services/datareader'
+import { getBbgaVariables } from '@/services/bbgareader'
 
 const API_HOST = process.env.API_HOST
 
@@ -14,36 +29,19 @@ export default {
   ],
   data () {
     return {
-      'citoScoreData': []
+      'citoScoreData': null,
+      'citoScoreGem': null
     }
   },
   async mounted () {
-    this.setCitoScoreData()
+    this.getData()
   },
   methods: {
-    async setCitoScoreData () {
-      var url = API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`
-      let tmp = await readPaginatedData(url, nextAccessor)
-      this.citoScoreData = tmp
-    },
-    async draw () {
-      if (this.citoScoreData) {
-        // remove graph first, then redraw
-        var target = d3.select(this.$el)
-        target.selectAll('*').remove()
-
-        target.append('div').append('h1')
-          .style('text-align', 'center')
-          .text(Math.round(this.citoScoreData[0].cet_gem))
-        target.append('div')
-          .style('text-align', 'right')
-          .text('A\'dams gem = ' + Math.round(this.citoScoreData[0].cet_gem_avg))
-      }
-    }
-  },
-  watch: {
-    citoScoreData (to, from) {
-      this.draw()
+    async getData () {
+      let score = await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`, nextAccessor)
+      this.citoScoreData = score[0].cet_gem
+      let scoreGem = await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016])
+      this.citoScoreGem = scoreGem[0].waarde
     }
   }
 }
