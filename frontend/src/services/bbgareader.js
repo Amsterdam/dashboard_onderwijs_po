@@ -1,34 +1,24 @@
 import { readPaginatedData } from './datareader'
+import _ from 'lodash'
 
 // BBGA API handling:
 const API_URL = `https://api.data.amsterdam.nl/bbga/cijfers/`
 
-export async function getBbgaVariable (variable, areaCode, year) {
+export async function getBbgaVariableOld (variable, areaCode, year) {
   // grab BBGA data for one BBGA variable
-  let url = API_URL + `?gebiedcode15=${areaCode}&variabele=${variable}`
-  let results = await readPaginatedData(url)
-  return results
+  return readPaginatedData(API_URL + `?gebiedcode15=${areaCode}&variabele=${variable}`)
 }
 
 export async function getBbgaVariables (variables, areaCodes, years) {
   // grab a number of BBGA variables for given areas and years
-  let urls = []
+  let unflattened = variables.map(v => areaCodes.map(ac => readPaginatedData(
+    API_URL + `?gebiedcode15=${ac}&variabele=${v}`
+  )))
+  let awaited = await Promise.all(_.flattenDeep(unflattened))
+
   const yearsSet = new Set(years)
-
-  for (let v of variables) {
-    for (let gc of areaCodes) {
-      let url = API_URL + `?gebiedcode15=${gc}&variabele=${v}`
-      urls.push(url)
-    }
-  }
-
-  let promisedResultsArrays = urls.map(url => readPaginatedData(url))
-  let resultsArrays = await Promise.all(promisedResultsArrays)
-  let out = [].concat.apply([], resultsArrays)
-
-  out = out.filter(r => yearsSet.has(r.jaar))
-
-  return out
+  let out = _.flatten(awaited)
+  return out.filter(r => yearsSet.has(r.jaar))
 }
 
 export function annotate (data, sourceVar, injectedVar, valueMapping) {
