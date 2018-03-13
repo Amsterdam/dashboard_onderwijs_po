@@ -35,8 +35,7 @@ export default {
     async getData () {
       if (this.id) {
         let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
-        let data = await readPaginatedData(url, nextAccessor)
-        this.data = data
+        this.data = await readPaginatedData(url, nextAccessor)
       }
     }
   },

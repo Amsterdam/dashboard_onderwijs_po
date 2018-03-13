@@ -33,8 +33,7 @@ export default {
         // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
         let variables = ['VCRIMIN_I']
 
-        let data = await getBbgaVariables(variables, [this.gebiedcode], years)
-        this.data = data
+        this.data = await getBbgaVariables(variables, [this.gebiedcode], years)
       }
     }
   },

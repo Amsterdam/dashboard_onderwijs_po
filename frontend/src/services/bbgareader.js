@@ -1,4 +1,6 @@
 import { readPaginatedData } from './datareader'
+import { getNameMapping } from './gebieden'
+
 import _ from 'lodash'
 
 // BBGA API handling:
@@ -36,4 +38,12 @@ export function annotate (data, sourceVar, injectedVar, valueMapping) {
 export function orderFacets (data, sourceVar, values) {
   let valueMapping = values.map((d, i) => [d, i])
   return annotate(data, sourceVar, '_facetorder', valueMapping)
+}
+
+export async function translateAreaCodes (data) {
+  let nameMapping = await getNameMapping()
+  return data.map(d => {
+    d.gebiedcode15 = nameMapping.get(d.gebiedcode15)
+    return d
+  })
 }

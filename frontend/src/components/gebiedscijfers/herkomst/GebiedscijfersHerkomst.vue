@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getBbgaVariables, annotate, orderFacets } from '@/services/bbgareader'
+import { getBbgaVariables, annotate, orderFacets, translateAreaCodes } from '@/services/bbgareader'
 
 import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
@@ -47,8 +47,8 @@ export default {
 
         let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
         data = annotate(data, 'variabele', '_label', labelMapping)
-        data = orderFacets(data, 'variabele', variables)
-        this.data = data
+        data = await translateAreaCodes(data)
+        this.data = orderFacets(data, 'variabele', variables)
       }
     }
   },

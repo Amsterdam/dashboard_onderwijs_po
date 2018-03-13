@@ -14,7 +14,7 @@
   },
   "spec": {
     "layer": [{
-      "width": 60,
+      "width": 54,
       "mark": "bar",
       "encoding": {
         "x": {
@@ -36,7 +36,8 @@
           "field": "gebiedcode15",
           "type": "nominal",
           "legend": {
-            "title": null
+            "title": null,
+	    "orient": "bottom"
           },
           "scale": {
             "range": ["#3182bd", "#9ecae1"]

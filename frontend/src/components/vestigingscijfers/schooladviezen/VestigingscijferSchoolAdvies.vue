@@ -36,8 +36,7 @@ export default {
       if (this.id) {
         let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
 
-        let data = await readData(url)
-        this.data = data
+        this.data = await readData(url)
       }
     }
   },

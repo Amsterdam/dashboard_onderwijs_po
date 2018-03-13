@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="data" style="font-size:300%">{{data[0].waarde}}</div>
+    <div v-if="data" style="font-size:300%">{{data}}</div>
     <data-download-link :data="data" text="Download veiligheidsindex cijfers JSON" filename="veiligheids-index.json"></data-download-link>
   </div>
 </template>
@@ -25,26 +25,21 @@ export default {
     }
   },
   async mounted () {
-    if (this.gebiedcode) {
-      this.getData()
-    }
+    this.getData()
   },
   methods: {
     async getData () {
       if (this.gebiedcode) {
-        // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
         let variables = ['VVEILIGH_I']
 
         let data = await getBbgaVariables(variables, [this.gebiedcode], years)
-        this.data = data
+        this.data = data[0].waarde
       }
     }
   },
   watch: {
     gebiedcode (to, from) {
-      if (to) {
-        this.getData()
-      }
+      this.getData()
     }
   }
 }
