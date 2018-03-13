@@ -12,4 +12,4 @@ yes yes | python manage.py collectstatic
 cd /app/
 
 # Multiple static-maps cannot be passed via UWSGI_STATIC_MAP env. variable, hence:
-exec uwsgi --static-map /onderwijs/dash=/vue_static --static-map /onderwijs/static=/static
+exec uwsgi --static-map /onderwijs/dash/=/vue_static --static-map /onderwijs/static=/static
