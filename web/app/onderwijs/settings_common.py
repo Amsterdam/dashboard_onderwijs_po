@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'django_filters',
+    'datapunt_api',
     'rest_framework',
 ]
 

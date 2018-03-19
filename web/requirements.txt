@@ -22,5 +22,5 @@ jsonschema
 coreapi
 openpyxl
 
-#-e git+https://github.com/Amsterdam/objectstore.git#egg=datapunt-objectstore
 git+https://github.com/Amsterdam/objectstore.git#egg=datapunt-objectstore
+git+https://github.com/Amsterdam/drf_amsterdam.git#egg=drf_amsterdam
