@@ -3,7 +3,7 @@
     <header>
       <img class="ams-header__logo" src="../../static/logo-short.svg" height="45px">
     </header>
-    <span class="header-title"><b>TITEL</b></span>
+    <span class="header-title"><b>Dashboard onderwijs</b></span>
   </div>
 </template>
 

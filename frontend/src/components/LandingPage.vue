@@ -1,12 +1,5 @@
 <template>
   <div class="container-fluid">
-    <div class="row" style="height:1em"></div>
-    <div class="row">
-      <div class="col">
-        <vind-vestiging></vind-vestiging>
-      </div>
-    </div>
-    <div class="row" style="height:1em"></div>
     <div class="row">
       <div class="col">
         <vestigingen></vestigingen>
