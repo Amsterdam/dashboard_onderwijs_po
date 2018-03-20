@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <div class="contents-wrapper">
+      <div class="footer-wrapper">
         <div class="grid-container container_12 breakout-container">
           <div class="grid-zone grid_12 z-kolom1-4_1 breakout-zone hasbgcolor bgcolor_darkgrey footer">
             <ams-footer></ams-footer>

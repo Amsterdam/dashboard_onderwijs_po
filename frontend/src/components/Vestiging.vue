@@ -1,13 +1,15 @@
 <template>
   <div v-if="vestiging">
-    <h3>
-      {{ vestiging.naam }}
-      <span class="float-right small">
+    <div>
+      <div class="float-right small">
         {{ vestiging.brin6 }},
         {{ vestiging.adres.adres }}, {{ vestiging.adres.postcode }} {{ vestiging.adres.plaats }}
         ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
-      </span>
-    </h3>
+      </div>
+      <h3>
+        {{ vestiging.naam }}
+      </h3>
+    </div>
 
     <div class="zone-clear clear"></div>
 
@@ -18,6 +20,9 @@
         </li>
         <li :class="{ 'selected': selected === 'omgeving'}">
           <a href="javascript:void(0)" @click="show('omgeving')">De omgeving</a>
+        </li>
+        <li>
+          <router-link :to="{name: 'Vestigingen'}">Kies een andere school</router-link>
         </li>
       </ul>
     </div>

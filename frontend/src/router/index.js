@@ -11,6 +11,9 @@ console.log('process.env.API_HOST', process.env.API_HOST)
 export default new Router({
   // mode: 'history', // we should use this, but more server settings are needed
   base: process.env.ROUTER_BASE,
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  },
   routes: [
     {
       path: '/',
