@@ -9,7 +9,7 @@ import BootstrapVue from 'bootstrap-vue'
 import { mapActions } from 'vuex'
 
 import store from './store'
-import { readPaginatedData, nextAccessor } from './services/datareader'
+import { readPaginatedData } from './services/datareader'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -36,10 +36,10 @@ let vueApp = new Vue({
     }),
 
     async init () {
-      const url = API_HOST + '/onderwijs/api/vestigingen/'
+      const url = API_HOST + '/onderwijs/api/vestiging/'
       let vestigingen = this.$store.state.vestigingen
       if (!vestigingen.length) {
-        vestigingen = await readPaginatedData(url, nextAccessor)
+        vestigingen = await readPaginatedData(url)
         this.registerVestigingen(vestigingen)
       }
     }

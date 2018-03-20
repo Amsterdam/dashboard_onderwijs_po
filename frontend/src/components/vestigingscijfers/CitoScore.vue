@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { readPaginatedData, nextAccessor } from '@/services/datareader'
+import { readPaginatedData } from '@/services/datareader'
 import { getBbgaVariables } from '@/services/bbgareader'
 
 const API_HOST = process.env.API_HOST
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     async getData () {
-      let score = await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`, nextAccessor)
+      let score = await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`)
       this.citoScoreData = score[0].cet_gem
       let scoreGem = await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016])
       this.citoScoreGem = scoreGem[0].waarde
