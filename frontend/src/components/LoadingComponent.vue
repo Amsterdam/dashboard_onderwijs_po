@@ -51,22 +51,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import "~stijl/scss/ams-colorpalette";
-
-$progress-background: $ams-middengrijs;
-
+<style scoped>
 .progress-wrapper {
-  background: $progress-background !important;
-  border-color: $ams-donkergrijs;
+  background: #bebebe !important;
+  border-color: #767676;
 }
 
 .progress-indicator::before {
-  background-color: $progress-background !important;
+  background-color: #bebebe !important;
 }
 
 .progress-indicator::after {
-  background-color: $progress-background !important;
+  background-color: #bebebe !important;
 }
 .fade-enter-active {
   transition: opacity .2s ease-out;

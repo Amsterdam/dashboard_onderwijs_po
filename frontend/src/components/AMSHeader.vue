@@ -17,18 +17,18 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .ams-header {
   width: 100%;
   display: flex;
   flex-direction: row;
   padding: .5rem;
+}
 
-  .header-title {
-    margin-left: 1rem;
-    display: flex;
-    align-items: center;
-    font-size: 1.7rem;
-  }
+.ams-header .header-title {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
 }
 </style>
