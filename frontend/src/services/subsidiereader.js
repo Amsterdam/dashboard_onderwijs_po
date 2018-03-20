@@ -1,19 +1,17 @@
 // This module queries for known subsidies and for awarded subsidies
-import { readPaginatedData, nextAccessor } from './datareader'
+import { readPaginatedData } from './datareader'
 
 const API_HOST = process.env.API_HOST
 
 export async function getAvailableSubsidies (year) {
   return readPaginatedData(
-    API_HOST + `/onderwijs/api/subdsidie/?jaar=${year}`,
-    nextAccessor
+    API_HOST + `/onderwijs/api/subdsidie/?jaar=${year}`
   )
 }
 
 export async function getAwardedSubsidies (year, brin6) {
   return readPaginatedData(
-    API_HOST + `/onderwijs/api/toegewezen-subsidie/?jaar=${year}&vestiging=${brin6}`,
-    nextAccessor
+    API_HOST + `/onderwijs/api/toegewezen-subsidie/?jaar=${year}&vestiging=${brin6}`
   )
 }
 

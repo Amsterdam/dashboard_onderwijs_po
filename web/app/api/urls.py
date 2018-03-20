@@ -3,12 +3,12 @@ from api import views
 
 onderwijs_router = views.OnderwijsAPIRouter()
 onderwijs_router.register(
-    'vestigingen', views.VestigingViewSet, base_name='vestigingen'
+    'vestiging', views.VestigingViewSet, base_name='vestiging'
 )
 
 onderwijs_router.register(
     'schooladvies', views.SchoolAdviesViewSet,
-    base_name='school-advies'
+    base_name='schooladvies'
 )
 onderwijs_router.register(
     'leerling-naar-gewicht', views.LeerlingNaarGewichtViewSet,
@@ -26,8 +26,8 @@ onderwijs_router.register(
 )
 
 onderwijs_router.register(
-    'schoolwisselaars', views.SchoolWisselaarsViewSet,
-    base_name='schoolwisselaars'
+    'schoolwisselaar', views.SchoolWisselaarsViewSet,
+    base_name='schoolwisselaar'
 )
 
 onderwijs_router.register(

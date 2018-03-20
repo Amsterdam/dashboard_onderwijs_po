@@ -2,11 +2,7 @@ from rest_framework import serializers
 
 from dataset import models
 
-
-class AdresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Adres
-        exclude = ('id',)
+from datapunt_api.rest import HALSerializer
 
 
 class LeerlingNaarGewichtSerializer(serializers.ModelSerializer):
@@ -56,7 +52,15 @@ class SchoolWisselaarsSerializer(serializers.ModelSerializer):
         exclude = ('id', 'brin', 'vestigingsnummer')
 
 
-class VestigingSerializer(serializers.ModelSerializer):
+class AdresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Adres
+        exclude = ('id',)
+
+
+class VestigingSerializer(HALSerializer):
+    # Note: used both for list and detail views in viewset.
+    # Note: lookup_field defaults to model primary key (here: brin6)
     adres = AdresSerializer()
     leerling_naar_gewicht = LeerlingNaarGewichtSerializer(
         many=True, read_only=True)
@@ -67,7 +71,25 @@ class VestigingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Vestiging
-        exclude = ('_id',)
+        fields = (
+            '_links',
+            'brin6',
+            'adres',
+            'leerling_naar_gewicht',
+            'cito_scores',
+            'schooladvies_set',
+            'brin',
+            'lat',
+            'lon',
+            'grondslag',
+            'heeft_voorschool',
+            'leerlingen',
+            'naam',
+            'onderwijsconcept',
+            'schoolwijzer_url',
+            'vestigingsnummer',
+            'gebiedscode'
+        )
 
 
 class LeerlingLeraarRatioSerializer(serializers.ModelSerializer):

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { readPaginatedData, nextAccessor } from '@/services/datareader'
+import { readPaginatedData } from '@/services/datareader'
 
 import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
@@ -35,7 +35,7 @@ export default {
     async getData () {
       if (this.id) {
         let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
-        this.data = await readPaginatedData(url, nextAccessor)
+        this.data = await readPaginatedData(url)
       }
     }
   },

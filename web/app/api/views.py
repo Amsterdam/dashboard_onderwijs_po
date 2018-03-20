@@ -16,8 +16,13 @@ from api.serializers import LeerlingLeraarRatioSerializer
 
 from api.serializers import SchoolAdviesSerializer, LeerlingNaarGewichtSerializer
 
+from datapunt_api.rest import DatapuntViewSet, HALPagination
 
-class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
+
+class VestigingViewSet(DatapuntViewSet):
+    serializer_class = VestigingSerializer
+    serializer_detail_class = VestigingSerializer
+
     queryset = (
         Vestiging.objects
         .select_related('adres')
@@ -26,7 +31,6 @@ class VestigingViewSet(viewsets.ReadOnlyModelViewSet):
         .prefetch_related('leerling_naar_gewicht')
         .order_by('brin')
     )
-    serializer_class = VestigingSerializer
 
     filter_fields = ('brin6', 'naam', 'adres__stadsdeel')
 
@@ -48,6 +52,7 @@ class LeerlingNaarGewichtViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
         .order_by('id')
     )
+    pagination_class = HALPagination
     serializer_class = LeerlingNaarGewichtSerializer
     filter_fields = ('vestiging',)
 
@@ -60,11 +65,13 @@ class SchoolAdviesViewSet(viewsets.ReadOnlyModelViewSet):
     """
     # The filter is needed for SchoolAdviezen whose ForeignKey is null (we
     # cannot meaningfully display these).
+    pagination_class = HALPagination
     queryset = (
         SchoolAdvies.objects
         .filter(vestiging__isnull=False)
         .select_related('vestiging')
         .select_related('advies')
+        .order_by('id')
     )
     serializer_class = SchoolAdviesSerializer
     filter_fields = ('vestiging',)
@@ -82,14 +89,17 @@ class CitoScoresViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
         .order_by('id')
     )
+    pagination_class = HALPagination
     serializer_class = CitoScoresSerializer
     filter_fields = ('vestiging', 'jaar')
 
 
 class SubsidieViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = (
-        Subsidie.objects.all()
+        Subsidie.objects.all().
+        order_by('id')
     )
+    pagination_class = HALPagination
     serializer_class = SubsidieSerializer
     filter_fields = ('jaar',)
 
@@ -102,6 +112,7 @@ class ToegewezenSubsidieViewSet(viewsets.ReadOnlyModelViewSet):
         .filter(vestiging__isnull=False)
         .order_by('id')
     )
+    pagination_class = HALPagination
     serializer_class = ToegewezenSubsidieSerializer
     filter_fields = ('vestiging', 'subsidie__jaar')
 
@@ -111,13 +122,16 @@ class SchoolWisselaarsViewSet(viewsets.ReadOnlyModelViewSet):
         SchoolWisselaars.objects
         .select_related('vestiging')
         .filter(vestiging__isnull=False)
+        .order_by('id')
     )
+    pagination_class = HALPagination
     serializer_class = SchoolWisselaarsSerializer
     filter_fields = ('vestiging', 'jaar')
 
 
 class LeerlingLeraarRatioViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = LeerlingLeraarRatio.objects.all()
+    queryset = LeerlingLeraarRatio.objects.all().order_by('id')
+    pagination_class = HALPagination
     serializer_class = LeerlingLeraarRatioSerializer
     filter_fields = ('brin', 'jaar')
 
