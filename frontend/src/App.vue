@@ -1,24 +1,28 @@
 <template>
-  <div id="app" class="grid-container">
-    <ams-header>Header</ams-header>
+  <div id="app">
+    <div class="grid-container">
+      <ams-header>Header</ams-header>
 
-    <div class="grid-wrapper wrapper_12 contents-wrapper">
-      <div class="grid-container container_12 main-view">
-        <div class="grid-zone grid_12">
-          <router-view></router-view>
+      <div class="content">
+        <div class="grid-wrapper wrapper_12 contents-wrapper">
+          <div class="grid-container container_12 main-view">
+            <div class="grid-zone grid_12">
+              <router-view></router-view>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="contents-wrapper">
-      <div class="grid-container container_12 breakout-container">
-        <div class="grid-zone grid_12 z-kolom1-4_1 breakout-zone hasbgcolor bgcolor_darkgrey">
-          <ams-footer>Footer</ams-footer>
+      <div class="contents-wrapper">
+        <div class="grid-container container_12 breakout-container">
+          <div class="grid-zone grid_12 z-kolom1-4_1 breakout-zone hasbgcolor bgcolor_darkgrey footer">
+            <ams-footer></ams-footer>
+          </div>
         </div>
       </div>
-    </div>
 
-    <loading-component></loading-component>
+      <loading-component></loading-component>
+    </div>
   </div>
 </template>
 
@@ -38,5 +42,12 @@ export default {
 </script>
 
 <!-- Global styling -->
-<style>
+<style scoped>
+  .content {
+    min-height: calc(100vh - 473px);
+  }
+
+  .footer {
+    min-height: 412px;
+  }
 </style>

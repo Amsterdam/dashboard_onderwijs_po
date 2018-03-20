@@ -1,10 +1,9 @@
 <!-- Left column in original design, contains Vestiging specific data -->
 <template>
   <div id="vestigingscijfers">
-    <h3>De vestiging</h3>
     <div class="row mb-sm-3">
       <div class="col-md-12 col-lg-7">
-        <div class="card">
+        <div class="card std-height">
           <h5 class="card-header">Aantal leerlingen naar gewicht</h5>
           <div class="card-block">
             <leerlingen-naar-gewicht :id="id"></leerlingen-naar-gewicht>
@@ -12,10 +11,10 @@
         </div>
       </div>
       <div class="col-md-12 col-lg-5">
-        <div class="card">
-          <h5 class="card-header"></h5>
-          <div class="card-block">
-            tbd
+        <div class="card std-height">
+          <h5 class="card-header">TBD</h5>
+          <div class="card-block text-center">
+            TBD
           </div>
         </div>
       </div>
@@ -23,7 +22,7 @@
 
     <div class="row mb-sm-3">
       <div class="col-md-12 col-lg-7">
-        <div class="card">
+        <div class="card std-height">
           <h5 class="card-header">Schooladvies</h5>
           <div class="card-block">
             <school-advies :id="id"></school-advies>
@@ -31,7 +30,7 @@
         </div>
       </div>
       <div class="col-md-12 col-lg-5">
-        <div class="card">
+        <div class="card std-height">
           <h5 class="card-header">SDQ (Strengths and Difficulties Questionnaire)</h5>
           <div class="card-block">
             <sdq :gebiedcode="gebiedscode"></sdq>
@@ -86,4 +85,7 @@ export default {
 </script>
 
 <style scoped>
+  .std-height {
+    height: 100%;
+  }
 </style>

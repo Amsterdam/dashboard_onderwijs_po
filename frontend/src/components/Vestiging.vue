@@ -1,11 +1,16 @@
 <template>
   <div v-if="vestiging">
-    <h3>{{ vestiging.naam }}</h3>
+    <h3>
+      Vestiging:
+      {{ vestiging.naam }}
+      <span class="float-right small">
+        {{ vestiging.brin6 }},
+        {{ vestiging.adres.adres }}, {{ vestiging.adres.postcode }} {{ vestiging.adres.plaats }}
+        ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
+      </span>
+    </h3>
     <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
     <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
-  </div>
-  <div v-else>
-    Loading... {{id}}
   </div>
 </template>
 
@@ -46,6 +51,7 @@ export default {
     setVestiging () {
       this.vestiging = this.vestigingen.find(v => v.brin6 === this.id)
       if (this.vestiging) {
+        console.log('Vestiging', this.vestiging)
         this.gebiedscode = this.vestiging.gebiedscode
       }
     }
