@@ -1,7 +1,7 @@
 <!-- Left column in original design, contains Vestiging specific data -->
 <template>
   <div id="vestigingscijfers">
-    <div class="row mb-sm-3">
+    <div class="row">
       <div class="col-md-12 col-lg-7">
         <div class="card std-height">
           <h5 class="card-header">Aantal leerlingen naar gewicht</h5>
@@ -41,7 +41,7 @@
 
     <div class="row mb-sm-3">
       <div class="col-md-12 col-lg-7">
-        <div class="card">
+        <div class="card std-height">
           <h5 class="card-header">Lopende subsidies</h5>
           <div class="card-block">
             <subsidie :id="id"></subsidie>
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="col-md-12 col-lg-5">
-        <div class="card">
+        <div class="card std-height">
           <h5 class="card-header">Cito score</h5>
           <div class="card-block">
             <cito-score :id="id"></cito-score>

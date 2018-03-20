@@ -5,3 +5,9 @@
 
 @import "~stijl/scss/ams-colorpalette";
 @import "~stijl/scss/ams-breakpoints";
+
+@media screen and (min-width: 990px) {
+  .container_12 {
+    max-width: 960px !important;
+  }
+}

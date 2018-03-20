@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subsidies">
     <table v-if="allSubsidies.length" class="table table-sm table-striped table-bordered">
       <tbody>
         <tr v-for="entry in allSubsidies" :key="entry.naam">
@@ -47,4 +47,7 @@ export default {
 </script>
 
 <style scoped>
+  .subsidies {
+    margin-top: 10px;
+  }
 </style>

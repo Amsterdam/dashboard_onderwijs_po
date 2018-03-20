@@ -9,6 +9,8 @@
         ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
       </span>
     </h3>
+    <div class="clear"></div>
+
     <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
     <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
   </div>
@@ -51,7 +53,6 @@ export default {
     setVestiging () {
       this.vestiging = this.vestigingen.find(v => v.brin6 === this.id)
       if (this.vestiging) {
-        console.log('Vestiging', this.vestiging)
         this.gebiedscode = this.vestiging.gebiedscode
       }
     }
