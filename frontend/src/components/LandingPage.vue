@@ -9,12 +9,10 @@
 </template>
 
 <script>
-import VindVestiging from './VindVestiging.vue'
 import Vestigingen from './Vestigingen.vue'
 
 export default {
   components: {
-    'vind-vestiging': VindVestiging,
     'vestigingen': Vestigingen
   }
 }
