@@ -1,0 +1,80 @@
+$color-facebook: #3c5a99;
+$color-twitter: #1da1f2;
+$color-linkedin: #007bb6;
+$color-googleplus: #dd4b39;
+
+.link_share { // sass-lint:disable-line class-name-format
+  background-color: $color-darkgrey;
+  float: left;
+  height: 30px;
+  margin: 0 4px 10px 0;
+  width: 30px;
+
+  &:hover {
+    background-color: $color-red;
+  }
+
+  &.facebook {
+    background-image: url("#{$core-svg-path}delen/share-facebook.svg");
+
+    &:hover {
+      background-color: $color-facebook;
+    }
+  }
+
+  &.twitter {
+    background-image: url("#{$core-svg-path}delen/share-twitter.svg");
+
+    &:hover {
+      background-color: $color-twitter;
+    }
+  }
+
+  &.linkedin {
+    background-image: url("#{$core-svg-path}delen/share-linkedin.svg");
+
+    &:hover {
+      background-color: $color-linkedin;
+    }
+  }
+
+  &.google_plus { // sass-lint:disable-line class-name-format
+    background-image: url("#{$core-svg-path}delen/share-googleplus.svg");
+
+    &:hover {
+      background-color: $color-googleplus;
+    }
+  }
+
+  &.mail {
+    background-image: url("#{$core-svg-path}delen/share-mail.svg");
+  }
+
+  &.print {
+    background-image: url("#{$core-svg-path}delen/share-print.svg");
+  }
+
+  &.tamtam {
+    background-image: url("#{$core-svg-path}delen/share-tamtam.svg");
+  }
+
+  &.mijn_applicaties_btn { // sass-lint:disable-line class-name-format
+    background-image: url("#{$core-svg-path}delen/share-mijn-applicaties.svg");
+  }
+
+  &.isFav { // sass-lint:disable-line class-name-format
+    background-image: url("#{$core-svg-path}delen/share-mijn-fav.svg");
+  }
+
+  &.fluency {
+    background-image: url("#{$core-svg-path}delen/share-spreek.svg");
+  }
+
+  a {
+    direction: ltr;
+    display: inline-block;
+    height: 30px;
+    text-indent: -9999px;
+    width: 30px;
+  }
+}

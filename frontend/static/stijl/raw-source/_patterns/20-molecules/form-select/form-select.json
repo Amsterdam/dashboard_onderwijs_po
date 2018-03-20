@@ -1,0 +1,196 @@
+{
+  "formSelects" : [
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "select",
+      "inputLabelText": "Select",
+      "selectId": "select",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "select",
+      "inputLabelText": "Select",
+      "selectId": "select",
+      "required": true,
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht rij_ongeldig",
+      "inputLabelId": "selectOngeldig",
+      "inputLabelText": "Select ongeldig",
+      "selectId": "selectOngeldig",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_readonly",
+      "selectDisabled": true,
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "selectDisabled",
+      "inputLabelText": "Select disabled",
+      "selectId": "selectDisabled",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "select",
+      "inputLabelText": "Select met toelichting dicht",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationStatus": "closed",
+      "selectId": "select",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "select",
+      "inputLabelText": "Select met toelichting open",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationText": "Hier kunnen een paar regels help-tekst komen die je weer kunt inklappen.",
+      "inputExplanationStatus": "open",
+      "selectId": "select",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "select",
+      "inputLabelText": "Select met help tekst",
+      "inputHelpText": "Instructie tekst bij formulierveld",
+      "selectId": "select",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "selectie",
+      "inputStatus": "rij_verplicht",
+      "inputModifiers": "selectie_type_multiselect",
+      "inputLabelId": "select",
+      "inputLabelText": "Select met help tekst",
+      "multipleSelect": true,
+      "selectId": "select",
+      "options": [
+        {
+          "value": "Bouwvergunning"
+        },
+        {
+          "value": "Parkeervergunning"
+        },
+        {
+          "value": "Watervergunning"
+        },
+        {
+          "value": "Leegstandwet"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_display",
+      "inputLabelText": "Wat voor soort vergunning?",
+      "modeDisplay": true,
+      "modeDisplayValue": "Bouwvergunning"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "grote-knop",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-grote-knop",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-grote-knop",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "grote-knop",
+      "zoneModifiers": "hasbgcolor bgcolor_red",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-grote-knop",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-grote-knop",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<h2 class="{{ headerModifiers }}">
+  {{# headerLink }}
+  <a href="{{ headerLink }}">{{ headerText }}</a>
+  {{/ headerLink }}
+  {{^ headerLink }}
+    {{ headerText }}
+  {{/ headerLink }}
+</h2>

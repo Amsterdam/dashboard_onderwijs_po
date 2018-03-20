@@ -1,0 +1,6 @@
+<div class="invoer">
+  <textarea name="{{ textareaName }}" id="{{ textareaID }}" class="input" cols="10" rows="6" {{# inputDisabled}} disabled{{/ inputDisabled}}{{# inputReadonly }} readonly{{/ inputReadonly}}{{# modeDisplay }} hidden{{/ modeDisplay }}></textarea>
+  {{# modeDisplay }}
+    {{ modeDisplayValue }}
+  {{/ modeDisplay }}
+</div>

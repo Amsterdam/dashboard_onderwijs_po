@@ -1,0 +1,11 @@
+.toggle-filter {
+  @extend %toggle-base;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+
+  .caret {
+    height: 16px;
+    width: 16px;
+  }
+}

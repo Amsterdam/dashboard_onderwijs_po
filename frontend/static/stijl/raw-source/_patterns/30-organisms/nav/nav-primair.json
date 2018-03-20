@@ -1,0 +1,28 @@
+{
+  "toggleMainMenuAtom": {
+    "toggleMainMenuCollapseState": "expanded",
+    "toggleMainMenuTitle": "menu"
+  },
+  "toggleSearchAtom": {
+    "toggleSearchAriaExpanded": false,
+    "toggleSearchTitle": "zoeken"
+  },
+  "listItems": [
+    {
+      "listItemLabel": "Wonen"
+    },
+    {
+      "listItemLabel": "Werken"
+    },
+    {
+      "linkListItemModifier": "selected",
+      "listItemLabel": "Geselecteerd"
+    },
+    {
+      "listItemLabel": "Buurten"
+    },
+    {
+      "listItemLabel": "Bestuur en organisatie"
+    }
+  ]
+}

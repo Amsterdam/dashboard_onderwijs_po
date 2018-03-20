@@ -1,0 +1,54 @@
+{
+  "gridContainers": [
+    {
+      "containerAlias": "subhome",
+      "gridZones": [
+        {
+          "columns": 9,
+          "zoneAlias": "content",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok van het nieuwsartikel"
+                },
+                "inside": {
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan sagittis imperdiet. Maecenas lacinia metus vitae convallis sollicitudin. Morbi sit amet dictum neque. Sed nec iaculis ante, quis imperdiet magna. Duis a velit quis lectus tincidunt bibendum. Suspendisse molestie arcu id risus cursus malesuada. Aenean varius sem purus, pellentesque porta leo vehicula quis. Vestibulum lectus nibh, aliquet vitae lorem quis, fringilla egestas metus. Ut dapibus ultrices neque nec pretium."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Titel van blok van het nieuwsartikel"
+                },
+                "inside": {
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan sagittis imperdiet. Maecenas lacinia metus vitae convallis sollicitudin. Morbi sit amet dictum neque. Sed nec iaculis ante, quis imperdiet magna. Duis a velit quis lectus tincidunt bibendum. Suspendisse molestie arcu id risus cursus malesuada. Aenean varius sem purus, pellentesque porta leo vehicula quis. Vestibulum lectus nibh, aliquet vitae lorem quis, fringilla egestas metus. Ut dapibus ultrices neque nec pretium."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 3,
+          "zoneAlias": "sidebar",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Blok in zijbalk van het nieuwsartikel"
+                },
+                "inside": {
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan sagittis imperdiet. Maecenas lacinia metus vitae convallis sollicitudin. Morbi sit amet dictum neque. Sed nec iaculis ante, quis imperdiet magna. Duis a velit quis lectus tincidunt bibendum. Suspendisse molestie arcu id risus cursus malesuada. Aenean varius sem purus, pellentesque porta leo vehicula quis. Vestibulum lectus nibh, aliquet vitae lorem quis, fringilla egestas metus. Ut dapibus ultrices neque nec pretium."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

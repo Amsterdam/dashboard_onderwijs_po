@@ -1,0 +1,117 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "list-entry",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "blockModifiers": "hasbgcolor bgcolor_red",
+            "inside": {
+              "listEntryOrganisms": true,
+              "listEntries": [
+                {
+                  "listEntryTitle": "Shoppen in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Met een uitgebreid winkelaanbod, variërend van exclusieve winkels tot grote warenhuizen, kun je in Amsterdam naar hartenlust shoppen!",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "1 juli 2017"
+                    },
+                    {
+                      "metaDataLabel": "<a href=#>Laat meer zien over Amsterdam</a>"
+                    },
+                    {
+                      "metaDataLabel": "John Doe"
+                    }
+                  ]
+                },
+                {
+                  "listEntryTitle": "Buurten in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Elke Amsterdamse buurt heeft zijn eigen karakter en charme, en zijn eigen winkels, restaurants, cafés, musea en attracties. Neem eens de tijd om de verborgen parels in de Amsterdamse buurten te ontdekken.",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "5 mei 2017"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "inside": {
+              "listEntryOrganisms": true,
+              "listEntries": [
+                {
+                  "listEntryTitle": "Shoppen in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Met een uitgebreid winkelaanbod, variërend van exclusieve winkels tot grote warenhuizen, kun je in Amsterdam naar hartenlust shoppen!",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "1 juli 2017"
+                    },
+                    {
+                      "metaDataLabel": "<a href=#>Laat meer zien over Amsterdam</a>"
+                    },
+                    {
+                      "metaDataLabel": "John Doe"
+                    }
+                  ]
+                },
+                {
+                  "listEntryTitle": "Buurten in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Elke Amsterdamse buurt heeft zijn eigen karakter en charme, en zijn eigen winkels, restaurants, cafés, musea en attracties. Neem eens de tijd om de verborgen parels in de Amsterdamse buurten te ontdekken.",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "5 mei 2017"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "blockModifiers": "hasbgcolor bgcolor_darkblue",
+            "inside": {
+              "listEntryOrganisms": true,
+              "listEntries": [
+                {
+                  "listEntryTitle": "Shoppen in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Met een uitgebreid winkelaanbod, variërend van exclusieve winkels tot grote warenhuizen, kun je in Amsterdam naar hartenlust shoppen!",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "1 juli 2017"
+                    },
+                    {
+                      "metaDataLabel": "<a href=#>Laat meer zien over Amsterdam</a>"
+                    },
+                    {
+                      "metaDataLabel": "John Doe"
+                    }
+                  ]
+                },
+                {
+                  "listEntryTitle": "Buurten in Amsterdam",
+                  "listEntryLink": "#",
+                  "listEntrySummary": "Elke Amsterdamse buurt heeft zijn eigen karakter en charme, en zijn eigen winkels, restaurants, cafés, musea en attracties. Neem eens de tijd om de verborgen parels in de Amsterdamse buurten te ontdekken.",
+                  "metaData": [
+                    {
+                      "metaDataLabel": "5 mei 2017"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

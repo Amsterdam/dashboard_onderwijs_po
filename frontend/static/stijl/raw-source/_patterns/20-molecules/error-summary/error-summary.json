@@ -1,0 +1,17 @@
+{
+  "errorSummaryTitle": "Foutmelding formulier",
+  "errors": [
+    {
+      "errorEntry": "Veld 'e-mailadres' is niet of niet goed ingevuld",
+      "errorAnchor": "#"
+    },
+    {
+      "errorEntry": "Veld 'straatnaam' is niet of niet goed ingevuld",
+      "errorAnchor": "#"
+    },
+    {
+      "errorEntry": "Veld 'postcode' is niet of niet goed ingevuld",
+      "errorAnchor": "#"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "share-link": [
+    {
+      "socialName": "facebook",
+      "shareTitle": "Facebook"
+    },
+    {
+      "socialName": "twitter",
+      "shareTitle": "Twitter"
+    },
+    {
+      "socialName": "linkedin",
+      "shareTitle": "LinkedIn"
+    },
+    {
+      "socialName": "fluency",
+      "shareTitle": "Spreek"
+    },
+    {
+      "socialName": "google_plus",
+      "shareTitle": "Deel dit via Google+"
+    },
+    {
+      "socialName": "mail",
+      "shareTitle": "Mail deze pagina"
+    },
+    {
+      "socialName": "mijn_applicaties_btn",
+      "shareTitle": "Toevoegen aan mijn applicaties"
+    },
+    {
+      "socialName": "isFav",
+      "shareTitle": "Is favoriet"
+    },
+    {
+      "socialName": "print",
+      "shareTitle": "Print deze pagina"
+    },
+    {
+      "socialName": "tamtam",
+      "shareTitle": "Deel dit via TamTam"
+    }
+  ]
+}

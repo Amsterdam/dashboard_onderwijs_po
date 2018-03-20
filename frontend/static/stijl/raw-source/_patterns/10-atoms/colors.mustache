@@ -1,0 +1,14 @@
+{{# colorSets }}
+<h2> {{ setName }} </h2>
+<ul class="sg-colors">
+  {{# colors }}
+		<li>
+		<span class="sg-swatch" style="background: {{ colorValue }}"></span>
+		<span class="sg-label">
+			{{ colorName }} <br />
+			{{ colorValue }}
+		</span>
+	</li>
+  {{/ colors }}
+</ul>
+{{/ colorSets }}

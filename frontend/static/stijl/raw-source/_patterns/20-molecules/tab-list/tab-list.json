@@ -1,0 +1,17 @@
+{
+  "tabs": [
+    {
+      "tabUrl": "#",
+      "tabLabel": "Alles",
+      "tabSelected": true
+    },
+    {
+      "tabUrl": "#",
+      "tabLabel": "Clusterstaf Ruimte en Economie"
+    },
+    {
+      "tabUrl": "#",
+      "tabLabel": "Algemeen"
+    }
+  ]
+}

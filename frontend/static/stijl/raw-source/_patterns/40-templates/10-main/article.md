@@ -1,0 +1,5 @@
+---
+title: Nieuwsartikel
+state: complete
+---
+...

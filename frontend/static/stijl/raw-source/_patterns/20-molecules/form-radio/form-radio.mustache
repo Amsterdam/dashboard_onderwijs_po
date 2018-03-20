@@ -1,0 +1,20 @@
+{{# radioFieldsets }}
+  <fieldset class="rij {{ inputMode }} {{ inputType }} {{ inputStatus }}">
+    <div class="antwoorden checkboxen">
+      {{> atoms-input-label }}
+
+      {{# modeInput }}
+        {{# radios }}
+          {{> atoms-input-radio }}
+        {{/ radios }}
+      {{/ modeInput }}
+      {{# modeDisplay }}
+        <ul>
+          {{# radios }}
+            <li>{{ radioLabel }}</li>
+          {{/ radios }}
+        </ul>
+      {{/ modeDisplay }}
+    </div>
+  </fieldset>
+{{/ radioFieldsets }}

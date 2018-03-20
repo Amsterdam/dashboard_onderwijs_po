@@ -1,0 +1,10 @@
+<div class="pager">
+  {{# pagerItems }}
+    {{# pagerLink }}
+      <a class="{{ pagerModifiers }}" href="{{ pagerLink }}">{{ pagerLabel }}</a>
+    {{/ pagerLink }}
+    {{^ pagerLink }}
+      <span class="{{ pagerModifiers }}"><strong>{{ pagerLabel }}</strong></span>
+    {{/ pagerLink }}
+  {{/ pagerItems }}
+</div>

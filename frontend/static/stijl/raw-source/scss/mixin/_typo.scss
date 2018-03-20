@@ -1,0 +1,133 @@
+@mixin rich-content-styles {
+  h2,
+  h4,
+  p + p {
+    margin-top: 1em;
+  }
+
+  h3:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  a {
+    color: $color-darkblue;
+
+    &:active,
+    &:hover {
+      color: $color-red;
+    }
+
+    &:visited {
+      color: $color-purple;
+    }
+  }
+
+  ul:not(.links),
+  ol {
+    li {
+      margin-bottom: 6px;
+    }
+  }
+
+  ol {
+    list-style-position: inside;
+    margin: 10px 0;
+    padding-left: 0;
+  }
+
+  ul:not(.links) {
+    margin: 10px 16px;
+
+    li {
+      list-style: none;
+      margin-left: -16px;
+      padding-left: 18px;
+
+      &::before {
+        color: $color-text-darkgrey;
+        content: "\25A0";
+        display: block;
+        left: -18px;
+        max-height: 0;
+        max-width: 0;
+        position: relative;
+      }
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $avenirnextdemi;
+}
+
+h1 {
+  @include font(32px, 40px);
+}
+
+h2,
+h3 {
+  @include font(24px, 30px);
+}
+
+h4 {
+  @include font(20px, 28px);
+}
+
+a {
+  color: $color-text-darkgrey;
+
+  &:active,
+  &:hover {
+    color: $color-red;
+  }
+}
+
+@mixin richcontent-on-bg($color) {
+  ul:not(.links) {
+    li::before {
+      color: best-contrast-on($color);
+    }
+  }
+
+  #{$rich-content-class} {
+    a {
+      @if best-contrast-on($color) == #fff {
+        &,
+        &:active,
+        &:hover,
+        &:visited {
+          color: $color-white;
+        }
+      }
+      @else {
+        &:hover,
+        &:active {
+          color: $color-red;
+        }
+
+        &,
+        &:visited {
+          color: $color-black;
+        }
+      }
+    }
+  }
+}
+
+.formulier {
+  @include font-size(16px);
+}
+
+@each $name, $color in $colors {
+  .grid-zone.bgcolor_#{$name},
+  .footer-wrapper .bgcolor_#{$name} {
+    @include richcontent-on-bg($color);
+  }
+
+  .grid-blok.bgcolor_#{$name} .grid-edge {
+    @include richcontent-on-bg($color);
+  }
+}

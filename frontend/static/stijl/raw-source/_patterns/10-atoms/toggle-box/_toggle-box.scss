@@ -1,0 +1,120 @@
+* + div.ingeklapt,
+div.ingeklapt + * {
+  margin-top: 30px;
+}
+
+.ingeklapt {
+  .ingeklapt {
+    border: 0;
+  }
+
+  & > h2,
+  & > h3,
+  & > h4 {
+    line-height: 21px;
+    margin-top: 12px;
+
+    a {
+      background-position: 100% 50%;
+      background-repeat: no-repeat;
+      background-size: 11px 21px;
+      color: $color-black;
+      padding-right: 23px;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-red;
+      }
+    }
+
+    &.uitgeklapt {
+      a {
+        background-image: url("#{$core-svg-path}dropdown-open.svg");
+        background-size: 12px 7px;
+
+        &:hover {
+          background-image: url("#{$core-svg-path}dropdown-open-hover.svg");
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &.ingeklapt {
+      a {
+        background-image: url("#{$core-svg-path}dropdown-closed.svg");
+        background-size: 12px 7px;
+
+        &:hover {
+          background-image: url("#{$core-svg-path}dropdown-closed-hover.svg");
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .ingeklapt-body {
+    padding: 12px 0;
+
+    &.visually-hidden {
+      display: none;
+    }
+  }
+
+  &.has-title-border,
+  &.has-content-border {
+    h2,
+    h3,
+    h4 {
+      font-size: 1em;
+
+      a {
+        background-color: $color-lightgrey;
+        background-position: calc(100% - 17px) 50%;
+        color: $color-black;
+        display: block;
+        padding-bottom: 10px;
+        padding-top: 13px;
+
+        &:hover {
+          background-color: $color-grey;
+          color: $color-black;
+        }
+      }
+    }
+
+    h2 a,
+    h3 a,
+    h4 a,
+    .ingeklapt-body {
+      padding-left: 17px;
+      padding-right: 30px;
+    }
+  }
+
+  &.has-content-border {
+    .ingeklapt-body {
+      border: 2px solid $color-lightgrey;
+    }
+  }
+}
+
+@media screen and (max-width: 539px) {
+  .ingeklapt {
+    margin-bottom: 10px;
+
+    > h2,
+    > h3,
+    > h4 {
+      margin: 10px 0;
+    }
+
+    &.has-title-border,
+    &.has-content-border {
+      > h2,
+      > h3,
+      > h4 {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

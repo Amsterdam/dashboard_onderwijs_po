@@ -1,0 +1,130 @@
+{
+  "fieldsets": [
+    {
+      "inputType": "selectie_type_radio",
+      "radioFieldsetLabel": "Voor hen die aan 1 keuzeoptie genoeg hebben",
+      "radios": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "1",
+          "radioLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "2",
+          "radioLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "3",
+          "radioLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_radio",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationText": "Hier kunnen een paar regels help-tekst komen die je weer kunt inklappen.",
+      "inputExplanationStatus": "open",
+      "radioFieldsetLabel": "Voor hen die aan 1 keuzeoptie genoeg hebben",
+      "radios": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "1",
+          "radioLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "2",
+          "radioLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "3",
+          "radioLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_radio",
+      "inputHelpText": "Instructie tekst bij formulierveld",
+      "radioFieldsetLabel": "Voor hen die aan 1 keuzeoptie genoeg hebben",
+      "radios": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "1",
+          "radioLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "2",
+          "radioLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "3",
+          "radioLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_radio",
+      "inputHelpText": "Veld is niet goed ingevuld",
+      "inputStatus": "rij_verplicht rij_ongeldig",
+      "radioFieldsetLabel": "Voor hen die aan 1 keuzeoptie genoeg hebben",
+      "radios": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "1",
+          "radioLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "2",
+          "radioLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "radioId": "3",
+          "radioLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    }
+  ]
+}

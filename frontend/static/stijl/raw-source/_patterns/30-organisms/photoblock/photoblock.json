@@ -1,0 +1,36 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "gridBlocks": [
+        {
+          "photoBlockGridBlock": {
+            "columns": 3,
+            "photoBlockTitle": "Straatbeeld Magna Plaza",
+            "photoBlockLink": "#",
+            "photoBlockImage": "/images/assets/photoblock-image-one.png",
+            "photoBlockImageAlt": "Straatbeeld Magna Plaza"
+          }
+        },
+        {
+          "photoBlockGridBlock": {
+            "columns": 3,
+            "photoBlockTitle": "Overkapping van Centraal Station",
+            "photoBlockLink": "#",
+            "photoBlockImage": "/images/assets/photoblock-image-two.png",
+            "photoBlockImageAlt": "Overkapping van Centraal Station"
+          }
+        },
+        {
+          "photoBlockGridBlock": {
+            "columns": 3,
+            "photoBlockTitle": "Overkapping",
+            "photoBlockLink": "#",
+            "photoBlockImage": "/images/assets/photoblock-image-two.png",
+            "photoBlockImageAlt": "Overkapping"
+          }
+        }
+      ]
+    }
+  ]
+}

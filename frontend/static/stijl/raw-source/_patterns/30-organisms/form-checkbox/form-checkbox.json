@@ -1,0 +1,130 @@
+{
+  "fieldsets": [
+    {
+      "inputType": "selectie_type_checkbox",
+      "checkboxFieldsetLabel": "Voor hen die niet kunnen kiezen uit 1 optie",
+      "checkboxes": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "1",
+          "checkboxLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "2",
+          "checkboxLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "3",
+          "checkboxLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_checkbox",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationText": "Hier kunnen een paar regels help-tekst komen die je weer kunt inklappen.",
+      "inputExplanationStatus": "open",
+      "checkboxFieldsetLabel": "Voor hen die niet kunnen kiezen uit 1 optie",
+      "checkboxes": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "1",
+          "checkboxLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "2",
+          "checkboxLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "3",
+          "checkboxLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_checkbox",
+      "inputHelpText": "Instructie tekst bij formulierveld",
+      "checkboxFieldsetLabel": "Voor hen die niet kunnen kiezen uit 1 optie",
+      "checkboxes": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "1",
+          "checkboxLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "2",
+          "checkboxLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "3",
+          "checkboxLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    },
+    {
+      "inputType": "selectie_type_checkbox",
+      "inputHelpText": "Veld is niet goed ingevuld",
+      "inputStatus": "rij_verplicht rij_ongeldig",
+      "checkboxFieldsetLabel": "Voor hen die niet kunnen kiezen uit 1 optie",
+      "checkboxes": [
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "1",
+          "checkboxLabel": "Amsterdam Stadsdeel Centrum"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "2",
+          "checkboxLabel": "Amsterdam Stadsdeel Nieuw West"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Plat veld",
+          "checkboxId": "3",
+          "checkboxLabel": "Amsterdam Stadsdeel Noord"
+        }
+      ]
+    }
+  ]
+}

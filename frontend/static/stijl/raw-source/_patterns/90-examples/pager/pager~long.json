@@ -1,0 +1,37 @@
+{
+  "pagerItems": [
+    {
+      "pagerModifiers": "pager_nav vorige",
+      "pagerLabel": "vorige",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_step pagina",
+      "pagerLabel": "1",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_step huidige",
+      "pagerLabel": "2"
+    },
+    {
+      "pagerModifiers": "pager_step pagina",
+      "pagerLabel": "3",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_step puntjes",
+      "pagerLabel": "..."
+    },
+    {
+      "pagerModifiers": "pager_step pagina",
+      "pagerLabel": "121",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_nav volgende",
+      "pagerLabel": "volgende",
+      "pagerLink": "#"
+    }
+  ]
+}

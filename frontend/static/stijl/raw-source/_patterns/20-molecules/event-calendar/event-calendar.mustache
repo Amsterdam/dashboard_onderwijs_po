@@ -1,0 +1,41 @@
+<div class="calendar_holder">
+  <div class="calendar">
+    <div class="navigatie">
+      <div class="vorige"><a href="#">vorige</a></div>
+      <div class="volgende"><a href="#">volgende</a></div>
+      <div class="maand">{{ eventCalendarMonth }}</div>
+    </div>
+    <table class="kalender">
+      <caption>{{ eventCalendarCaption }}</caption>
+      <thead>
+        <tr class="">
+        <th class="weeknummer"></th>
+        {{# headWeekdays }}
+          <th class="weekday">{{ label }}</th>
+        {{/ headWeekdays }}
+        {{# headWeekend }}
+          <th class="weekend">{{ label }}</th>
+        {{/ headWeekend }}
+        </tr>
+      </thead>
+      <tbody>
+        {{# eventCalendarWeeks }}
+          <tr class="">
+            {{# eventCalendarDays }}
+              <td class="{{ daysModifiers }}">
+                {{# daysUrl }}
+                  <a id="{{ daysId }}" title="{{ daysTitle }}" href="{{ daysUrl }}">
+                    {{ daysLabel }}
+                  </a>
+                {{/ daysUrl }}
+                {{^ daysUrl }}
+                  {{ daysLabel }}
+                {{/ daysUrl }}
+              </td>
+            {{/ eventCalendarDays }}
+          </tr>
+        {{/ eventCalendarWeeks }}
+      </tbody>
+    </table>
+  </div>
+</div>

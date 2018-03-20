@@ -1,0 +1,18 @@
+{{# fieldsets }}
+  <fieldset class="rij {{ inputMode }} {{ inputType }} {{ inputStatus }} selectie {{# inputExplanationTitle }}rij_tooltip{{/ inputExplanationTitle }}">
+    <legend class="label"><span class="setlabel">{{ checkboxFieldsetLabel }}</span></legend>
+    {{# inputHelpText }}
+      {{> atoms-input-help }}
+    {{/ inputHelpText }}
+    <div class="invoer">
+      <div class="antwoorden">
+        {{# checkboxes }}
+          {{> atoms-input-checkbox }}
+        {{/ checkboxes }}
+      </div>
+    </div>
+    {{# inputExplanationTitle }}
+      {{> atoms-input-explanation }}
+    {{/ inputExplanationTitle }}
+  </fieldset>
+{{/ fieldsets }}

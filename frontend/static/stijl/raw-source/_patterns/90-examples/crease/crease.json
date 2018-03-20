@@ -1,0 +1,67 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "crease",
+      "gridBlocks": [
+        {
+          "creaseGridBlock": {
+            "columns": 3,
+            "blockModifiers": "hasbgcolor bgcolor_lightgrey",
+            "inside": {
+              "richContentTitleWithText": true
+            }
+          }
+        },
+        {
+          "creaseGridBlock": {
+            "columns": 3,
+            "blockModifiers": "hasbgcolor bgcolor_black",
+            "inside": {
+              "richContentTitleWithText": true
+            }
+          }
+        },
+        {
+          "creaseGridBlock": {
+            "columns": 3,
+            "blockModifiers": "hasbgcolor bgcolor_red",
+            "inside": {
+              "richContentTitleWithText": true
+            }
+          }
+        },
+        {
+          "creaseGridBlock" : {
+            "columns": 3,
+            "inside": {
+              "richContentTitleWithText": true
+            }
+          }
+        },
+        {
+          "creaseGridBlock" : {
+            "columns": 3,
+            "blockModifiers": "hasbgcolor bgcolor_lightgrey",
+            "inside": {
+              "creaseContentReadMore": true
+            },
+            "moreLink": false
+          }
+        },
+        {
+          "creaseGridBlock": {
+            "columns": 4,
+            "blockModifiers": "hasbgcolor bgcolor_red grid-rol-afbeelding",
+            "inside": {
+              "creaseWithImage": {
+                "creaseTitle": "Uw gegevens"
+              }
+            },
+            "moreLink": false
+          }
+        }
+      ]
+    }
+  ]
+}

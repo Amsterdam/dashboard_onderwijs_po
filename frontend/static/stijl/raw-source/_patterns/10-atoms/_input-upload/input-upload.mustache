@@ -1,0 +1,7 @@
+<div class="invoer">
+  <input name="{{ inputUploadName }}" id="{{ inputUploadId }}" type="file" required="" {{# inputDisabled}} disabled{{/ inputDisabled}}{{# inputReadonly }} readonly{{/ inputReadonly}}>
+  <label for="{{ inputUploadId }}" class="{{ inputUploadState }}">{{ inputUploadLabel }}</label>
+  {{# fileUploaded }}
+    <button type="button" class="deletefile action secondary-grey" title="Verwijder toegevoegd bestand">{{ inputUploadDeleteLabel }}</button>
+  {{/ fileUploaded }}
+</div>

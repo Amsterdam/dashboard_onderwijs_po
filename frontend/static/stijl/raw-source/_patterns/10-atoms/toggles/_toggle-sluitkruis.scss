@@ -1,0 +1,9 @@
+.sluitkruis {
+  @include getsprite(1, 1, 50px, "#{$core-sprites-path}sprite_buttons.png", -1000px, 0);
+  direction: ltr;
+  display: inline-block;
+  height: 21px;
+  margin: 11px 20px 0 0;
+  text-indent: -9999px;
+  width: 21px;
+}

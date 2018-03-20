@@ -1,0 +1,10 @@
+.pill {
+  @include font(14px, 22px);
+  background-color: $color-red;
+  border-radius: 11px;
+  color: $color-white;
+  display: inline-block;
+  height: 22px;
+  padding: 0 8px;
+  text-align: center;
+}

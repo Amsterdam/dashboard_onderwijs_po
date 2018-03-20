@@ -1,0 +1,24 @@
+<div class="{{ richContentClass }}">
+  <p>Dit is het pattern-lab van Platform Amsterdam. In deze 'living styleguide' worden de bouwstenen van de nieuwe webstijl van de <a href="https://www.amsterdam.nl" target="_blank">Gemeente Amsterdam</a> vastgelegd. Van de diverse bouwstenen is de benodigde markup direct over te nemen, en de styling van de componenten is op een herbruikbare manier opgezet.</p>
+  <p>De opzet van dit pattern-lab is gebaseerd op de principes uit <a href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>. <br/>
+  De indeling in atomen, moleculen, organismen, templates en pagina's is verder uitgebreid met een onderdeel waarin we het gebruikte grid vastleggen: <a href="/?p=viewall-baseline-all" target="_blank">het Baseline grid</a>, en een onderdeel specifiek voor <a href="/?p=viewall-examples-all" target="_blank">voorbeelden</a>.</p>
+  <h2>Atomic Design : De indeling toegelicht</h2>
+  <h3>1. Atomen</h3>
+  <p>Atomen zijn de kleinste herbruikbare bouwstenen van deze componentenbibliotheek.
+  Deze zullen zelden zelfstandig voorkomen, en krijgen hun specifieke styling vaak pas in de context van een groter geheel: zo heeft een zoekknop...
+  <pre>&lt;input type="submit" value="Zoeken"/&gt;</pre>
+  ... als zelfstandig atoom geen specifieke stijl, maar als deze als onderdeel van het organisme '<a href="/?p=organisms-header-search" target="_blank">Header search</a>' wordt ingezet, verschijnt de herkenbare rode knop met de witte loupe.</p>
+  <p><em>In dit pattern-lab zijn veel atomen om deze reden in de navigatie verborgen: alleen als de atomen ook zelfstandig styling hebben, worden ze gepresenteerd.</em></p>
+  <h3>2. Moleculen</h3>
+  <p>Moleculen zijn opgebouwd uit atomen, en de specifieke samenstelling voor hun doel geeft ze hun eigen styling.</p>
+  <p>Zo bestaat een molecuul <a href="/?p=molecules-sitelogo-subidentiteit" target="_blank">'Sitelogo subidentiteit'</a> uit de atomen 'Andreaskruizen' en de 'Sitetitel'. Tezamen vormen ze het herkenbare beeldmerk in de header van de website.</a>
+  <h3>3. Organismen</h3>
+  <p>Organismen zijn weer een 'groter' geheel, opgebouwd uit moleculen.
+  Organismen zijn al een stuk minder abstract, want deze worden heel specifiek voor een bepaalde functionaliteit in de website samengesteld en vormgegeven.
+  Zo is in wezen de <a href="/?p=organisms-nav-primair" target="_blank">primaire navigatie</a> een horizontale lijst, maar kent deze wel een heel specifieke vormgeving en functie.</p>
+  <h3>4. Templates</h3>
+  <p>Templates zijn samenstellingen van bouwstenen. In Platform Amsterdam kennen we heel duidelijk een indeling van pagina's in een <em>header</em>, <em>footer</em> en het gedeelte waar de daadwerkelijke inhoud in staat: <em>main</em>.</p>
+  <p>Veel van de bouwstenen krijgen pas in de context van zo'n template hun definitieve vorm, omdat ze daarmee 'op hun plaats' vallen.</p>
+  <h4>5. Pagina's</h4>
+  <p>In dit pattern-lab besteden we vooralsnog niet te veel aandacht aan het uiterlijk van de pagina als geheel, omdat deze logischerwijs volgt uit het grid en de daarop geplaatste <em>header</em>, <em>main</em> en <em>footer</em> secties.</p>
+</div>

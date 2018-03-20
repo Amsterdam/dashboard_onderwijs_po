@@ -1,0 +1,49 @@
+{
+  "clientName": "Gemeente Amsterdam",
+  "imgPath": "/images/",
+  "richContentClass": "rich-content",
+  "svg-src": "logos/andreas.svg",
+  "png-src": "logos/andreas.png",
+  "print-src": "logos/andreas-print.png",
+  "logoTextLine-1": "Gemeente",
+  "logoColorLine-1": "red",
+  "logoTextLine-2": "Amsterdam",
+  "logoColorLine-2": "red",
+  "columns": 12,
+  "listItemLink": "#Amsterdam",
+  "listItems": [
+    {
+      "linkListItemModifier": "selected",
+      "listItemLabel": "Belasting en heffingen"
+    },
+    {
+      "listItemLabel": "Wonen is een item met een lang label over twee regels"
+    },
+    {
+      "listItemLabel": "Veelgevraagd"
+    }
+  ],
+  "mainNavigationItems": [
+    {
+      "listItemLabel": "Wonen"
+    },
+    {
+      "listItemLabel": "Werken"
+    },
+    {
+      "linkListItemModifier": "selected",
+      "listItemLabel": "Geselecteerd"
+    },
+    {
+      "listItemLabel": "Buurten"
+    },
+    {
+      "listItemLabel": "Bestuur en organisatie"
+    }
+  ],
+  "submitLabel": "Zoeken",
+  "moreLink": {
+    "moreLinkLink" : "#",
+    "moreLinkLabel": "Meer"
+  }
+}

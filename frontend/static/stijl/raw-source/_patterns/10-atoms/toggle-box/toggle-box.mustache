@@ -1,0 +1,50 @@
+<div class="ingeklapt {{ borderModifiers }}">
+  <h3 class="{{ headerModifiers }}">
+    <a href="#" class="ingeklapt-toggle">{{ toggleBoxTitle }}</a>
+  </h3>
+  {{# toggleBoxBodyText }}
+    <div class="ingeklapt-body">
+      <p>{{ toggleBoxBodyText }}</p>
+    </div>
+  {{/ toggleBoxBodyText }}
+  {{# richContentWithParagraph }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-paragraph }}
+    </div>
+  {{/ richContentWithParagraph }}
+  {{# richContentWithHeadings }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-headings }}
+    </div>
+  {{/ richContentWithHeadings }}
+  {{# richContentWithFormatting }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-formatting }}
+    </div>
+  {{/ richContentWithFormatting }}
+  {{# richContentWithLinks }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-links }}
+    </div>
+  {{/ richContentWithLinks }}
+  {{# richContentWithNotification }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-notification }}
+    </div>
+  {{/ richContentWithNotification }}
+  {{# richContentWithBlockquote }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-blockquote }}
+    </div>
+  {{/ richContentWithBlockquote }}
+  {{# richContentWithCalltoaction }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-calltoaction }}
+    </div>
+  {{/ richContentWithCalltoaction }}
+  {{# richContentWithTable }}
+    <div class="ingeklapt-body">
+      {{> resources-rich-content-with-table }}
+    </div>
+  {{/ richContentWithTable }}
+</div>

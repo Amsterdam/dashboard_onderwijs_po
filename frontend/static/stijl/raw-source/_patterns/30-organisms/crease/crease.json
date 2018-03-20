@@ -1,0 +1,19 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "crease",
+      "gridBlocks": [
+        {
+          "creaseGridBlock" : {
+            "columns": 3,
+            "blockModifiers": "hasbgcolor bgcolor_lightgrey",
+            "inside": {
+              "richContentTitleWithText": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

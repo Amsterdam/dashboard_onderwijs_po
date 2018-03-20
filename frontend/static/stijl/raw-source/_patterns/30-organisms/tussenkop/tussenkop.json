@@ -1,0 +1,47 @@
+{
+  "fieldsets": [
+    {
+      "tussenkopContent": "Woonsituatie",
+      "formInputs": [
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Vraag 1",
+          "inputBoxId": "formInput"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Vraag 2",
+          "inputBoxId": "formInput"
+        }
+      ]
+    },
+    {
+      "tussenkopContent": "Woonsituatie",
+      "modeDisplay": true,
+      "formInputs": [
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Vraag 1",
+          "inputBoxId": "formInput"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Vraag 2",
+          "inputBoxId": "formInput"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "containerAlias": "columns",
+  "gridContainers": [
+    {
+      "zoneAlias": "columns",
+      "gridZones": [
+        {
+          "columns": 12,
+          "blockType": "type-columns",
+          "zoneTitle": "Zone met 4 koloms blokken",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Content in 4 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Lijst in 4 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Content in 3 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Lijst in 3 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Content in 2 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Lijst in 2 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Content in 1 kolom.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 12,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Lijst in 1 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "blockType": "type-columns",
+          "zoneTitle": "Zone met 3 koloms blokken",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Content in 4 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Lijst in 4 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Content in 3 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Lijst in 3 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Content in 2 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Lijst in 2 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Content in 1 kolom.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 9,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Lijst in 1 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "blockType": "type-columns",
+          "zoneTitle": "Zone met 2 koloms blokken",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Content in 4 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Lijst in 4 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Content in 3 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Lijst in 3 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Content in 2 kolommen.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Lijst in 2 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Content in 1 kolom.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Lijst in 1 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "blockType": "type-columns",
+          "zoneTitle": "Zone met 1 koloms blokken",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Content in 4 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-4",
+                "inside": {
+                  "content": "<strong>Lijst in 4 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Content in 3 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-3",
+                "inside": {
+                  "content": "<strong>Lijst in 3 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Content in 2 kolommen (not supported).</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-2",
+                "inside": {
+                  "content": "<strong>Lijst in 2 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Content in 1 kolom.</strong> De nieuwe aanlandingen worden grotendeels gefabriceerd op een andere locatie. Maar op locatie aan de Zamenhofstraat (Amsterdam Noord) en aan het Azartplein (Java-eiland) moeten wel palen in het water worden aangebracht. Om geluidsoverlast  te beperken, wordt er niet geheid, maar zullen de palen in de waterbodem worden getrild. Van 17 oktober tot 30 oktober worden deze werkzaamheden aan de zuidzijde (Azartplein) verricht. Aan de noordzijde (Zamenhofstraat) hoeft maar twee dagen getrild te worden, namelijk op 1 november en 8 november."
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "contentModifier": "has-multicol-1",
+                "inside": {
+                  "content": "<strong>Lijst in 1 kolommen.</strong> <ul class='links'><li><a href='#'>Nederlander worden</a></li><li><a href='#'>Nederlander worden door naturalisatie</a></li><li><a href='#'>Nederlander worden door optie</a></li><li><a href='#'>Ceremonie voor nieuwe Nederlanders</a></li><li><a href='#'>Erkenning en Nederlandse nationaliteit</a></li><li><a href='#'>Afstand doen van de Nederlandse nationaliteit</a></li><li><a href='#'>Wanneer krijgt een kind bij zijn of haar geboorte de Nederlandse nationaliteit?</a></li><li><a href='#'>Ik ben een Nederlandse vrouw en heb een kind gekregen met een buitenlandse man. Welke nationaliteit heeft ons kind?</a></li></ul>"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
