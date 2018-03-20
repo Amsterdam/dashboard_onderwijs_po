@@ -1,7 +1,6 @@
 <template>
   <div v-if="vestiging">
     <h3>
-      Vestiging:
       {{ vestiging.naam }}
       <span class="float-right small">
         {{ vestiging.brin6 }},
@@ -9,10 +8,29 @@
         ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
       </span>
     </h3>
-    <div class="clear"></div>
 
-    <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
-    <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
+    <div class="zone-clear clear"></div>
+
+    <div class="navigation">
+      <ul class="tabs">
+        <li :class="{ 'selected': selected === 'vestiging'}">
+          <a href="javascript:void(0)" @click="show('vestiging')">De vestiging</a>
+        </li>
+        <li :class="{ 'selected': selected === 'omgeving'}">
+          <a href="javascript:void(0)" @click="show('omgeving')">De omgeving</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="zone-clear clear"></div>
+
+    <div id="vestiging" v-show="selected === 'vestiging'">
+      <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
+    </div>
+
+    <div id="omgeving" v-show="selected === 'omgeving'">
+      <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
+    </div>
   </div>
 </template>
 
@@ -26,7 +44,8 @@ export default {
     return {
       id: this.$route.params.id,
       vestiging: null,
-      gebiedscode: null
+      gebiedscode: null,
+      selected: 'vestiging'
     }
   },
   components: {
@@ -55,6 +74,9 @@ export default {
       if (this.vestiging) {
         this.gebiedscode = this.vestiging.gebiedscode
       }
+    },
+    show (item) {
+      this.selected = item
     }
   },
   created () {
@@ -65,4 +87,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .navigation {
+    margin-left: -40px;
+  }
 </style>

@@ -11,3 +11,18 @@
     max-width: 960px !important;
   }
 }
+
+.std-height {
+  height: 100%;
+}
+
+.single-figure {
+  text-align: center;
+  font-size: 300%;
+  min-height: 150px;
+  padding-top: 60px;
+}
+
+.card:hover {
+  background-color: $ams-lichtgrijs !important;
+}

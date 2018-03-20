@@ -1,7 +1,8 @@
 <!-- Left column in original design, contains Vestiging specific data -->
 <template>
   <div id="vestigingscijfers">
-    <div class="row">
+    <!--<h3>De vestiging</h3>-->
+    <div class="row mb-sm-3">
       <div class="col-md-12 col-lg-7">
         <div class="card std-height">
           <h5 class="card-header">Aantal leerlingen naar gewicht</h5>
@@ -21,7 +22,7 @@
     </div>
 
     <div class="row mb-sm-3">
-      <div class="col-md-12 col-lg-7">
+      <div class="col-md-12 col-lg-7 card-hover">
         <div class="card std-height">
           <h5 class="card-header">Schooladvies</h5>
           <div class="card-block">
@@ -51,7 +52,7 @@
       <div class="col-md-12 col-lg-5">
         <div class="card std-height">
           <h5 class="card-header">Cito score</h5>
-          <div class="card-block">
+          <div class="card-block std-height">
             <cito-score :id="id"></cito-score>
           </div>
         </div>
@@ -85,7 +86,11 @@ export default {
 </script>
 
 <style scoped>
-  .std-height {
-    height: 100%;
+
+  .parent {
+  }
+
+  .child {
+    /*padding: 25% 5px;*/
   }
 </style>
