@@ -1,0 +1,52 @@
+{
+  "filters": [
+    {
+      "pills": [
+        {
+          "label": "23"
+        }
+      ],
+      "eraseFilter": true,
+      "buttonValue": "Wis filters",
+      "buttonType": "reset"
+    },
+    {
+      "checkboxId": "singleCheckbox",
+      "checkboxLabel": "Toon gemeentebrede resultaten",
+      "buttonValue": "Toon resultaten",
+      "buttonType": "primary",
+      "filter-modifier": "filters-open",
+      "pills": [
+        {
+          "label": "23"
+        }
+      ],
+      "formInputs": [
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Zoekterm",
+          "inputBoxId": "formInput"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Type",
+          "inputBoxId": "formInput"
+        },
+        {
+          "inputMode": "mode_input",
+          "inputType": "text",
+          "inputStatus": "rij_verplicht",
+          "inputLabelId": "formInput",
+          "inputLabelText": "Straal rondom postcode",
+          "inputBoxId": "formInput"
+        }
+      ]
+    }
+  ]
+}

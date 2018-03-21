@@ -1,0 +1,40 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "tile",
+      "gridBlocks": [
+        {
+          "tileGridBlock": {
+            "columns": 3,
+            "tileTitle": "Stap 1: Aankondigen",
+            "tileLink": "#",
+            "tileImage": "/images/assets/tile-image-one.jpg",
+            "tileImageAlt": "Stap 1: Aankondigen",
+            "tileSummary": "<span><p>Spreek een datum en een</p></span>",
+            "metaData": [
+              {
+                "metaDataLabel": "19 augustus 2017 - 27 augustus 2017"
+              }
+            ]
+          }
+        },
+        {
+          "tileGridBlock": {
+            "columns": 3,
+            "tileTitle": "Stap 2: Aanmelden",
+            "tileLink": "#",
+            "tileImage": "/images/assets/tile-image-two.jpg",
+            "tileImageAlt": "Stap 2: Aanmelden",
+            "tileSummary": "<span><p>Het huwelijk wordt</span></p>",
+            "metaData": [
+              {
+                "metaDataLabel": "19 augustus 2017 - 27 augustus 2017"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "superlinks",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink loketlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Bestuur en organisatie",
+              "headerModifiers": "afbeelding bestuur"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink contentfadelink selected",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "superlinks",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink hassuperlinkimg",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven",
+              "superlinkImg": "/images/assets/superlink-image.jpg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "superlinks",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 6,
+            "blockModifiers": "grid-superlink hassuperlinkimg",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven",
+              "superlinkImg": "/images/assets/superlink-image.jpg"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "superlinks",
+      "zoneModifiers": "hasbgcolor bgcolor_red",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink loketlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Bestuur en organisatie",
+              "headerModifiers": "afbeelding bestuur"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink contentfadelink selected",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "superlinks",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 6,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 6,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "superlinks zone_subnav",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Verhuizing doorgeven"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel",
+              "superlinkText": "Voor bedrijven en een subtitel en nog een hele lange regel en..."
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink loketlink",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Bestuur en organisatie",
+              "headerModifiers": "afbeelding bestuur"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-superlink contentfadelink selected",
+            "inside": {
+              "superLinkMolecule": true,
+              "headerLink": "#",
+              "headerText": "Actueel"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

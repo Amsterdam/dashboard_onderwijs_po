@@ -1,0 +1,43 @@
+{{# listEntries }}
+  <div class="grid-blok grid_6">
+    <div class="resultaat {{ listEntryModifiers }}">
+      <h2 class="link {{ listEntryPersonModifiers }}">
+        <a href="{{ listEntryLink }}">{{ listEntryTitle }}</a>
+      </h2>
+      {{# listEntryImage }}
+        <img src="{{ listEntryImage }}" alt="{{ listEntryImageAlt }}" />
+      {{/ listEntryImage }}
+      {{^ listEntryImage }}
+        <div class="empty-image"></div>
+      {{/ listEntryImage }}
+      <div class="holder">
+        <div class="tekst">
+          <div class="summary">
+            {{# person }}
+              <div class="data-row">
+                <div class="data-label">Telefoon intern</div>
+                <div class="data-value iprox-rich-content">
+                  <a href="#">{{ personTelephone }}</a>
+                </div>
+              </div>
+              <div class="data-row">
+                <div class="data-label">E-mail</div>
+                <div class="data-value iprox-rich-content">
+                  <a href="#">{{ personEmail }}</a>
+                </div>
+              </div>
+            {{/ person }}
+            {{^ person }}
+              <div>
+                <p>{{ listEntrySummary }}</p>
+              </div>
+            {{/ person }}
+          </div>
+        </div>
+        {{# metaData }}
+          <div class="meta">{{{ metaDataLabel }}}</div>
+        {{/ metaData }}
+      </div>
+    </div>
+  </div>
+{{/ listEntries }}

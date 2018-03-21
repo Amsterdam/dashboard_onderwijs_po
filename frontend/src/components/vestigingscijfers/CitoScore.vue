@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <h1 style="text-align: center">{{
+  <div class="cito-score">
+    <h1 class="single-figure">{{
         this.citoScoreData !== null // we want to show 0 if it is present in data
         ? this.citoScoreData.toLocaleString(
           'nl-DU', { maximumFractionDigits: 1 }
         )
         : '...'
-      }}</h1>
-    <div style="text-align: right">A'dams gem = {{
-      this.citoScoreGem !== null
-      ? this.citoScoreGem.toLocaleString(
-          'nl-DU', { maximumFractionDigits: 1 }
-      )
-      : '...'
-      }}</div>
+      }}
+    </h1>
+    <div class="average">
+      <div style="text-align: right">A'dams gem = {{
+        this.citoScoreGem !== null
+        ? this.citoScoreGem.toLocaleString(
+            'nl-DU', { maximumFractionDigits: 1 }
+        )
+        : '...'
+        }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -48,4 +52,16 @@ export default {
 </script>
 
 <style scoped>
+  .cito-score {
+    position: relative;
+    padding-top: 15%;
+    height: 100%;
+  }
+
+  .average div {
+    position: absolute;
+    margin-right: 5px;
+    bottom: 0;
+    right: 0;
+  }
 </style>

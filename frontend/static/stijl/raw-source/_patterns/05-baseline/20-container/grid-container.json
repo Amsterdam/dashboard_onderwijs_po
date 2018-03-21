@@ -1,0 +1,89 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "above",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockTitle": {
+              "text": "Een 3-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockTitle": {
+              "text": "Een 3-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockTitle": {
+              "text": "Een 3-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockTitle": {
+              "text": "Een 3-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "below",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 6,
+            "blockTitle": {
+              "text": "Een 6-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithHeadings": true
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockTitle": {
+              "text": "Een 3-koloms breed grid blok"
+            },
+            "inside": {
+              "richContentWithParagraph": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "gridWrappers": [
+    {
+      "columns": "12",
+      "wrapperAlias": "sitepad",
+      "gridContainers": [
+        {
+          "columns":"12",
+          "containerAlias": "sitepad",
+          "gridZones": [
+            {
+              "zoneAlias": "sitepad",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "type-sitepad",
+                    "inside": {
+                      "horizontalListMolecule": {
+                        "listItems": [
+                          {
+                            "listItemLabel": "Home"
+                          },
+                          {
+                            "listItemLabel": "Parent 1"
+                          },
+                          {
+                            "listItemLabel": "Parent 2 met een lange titel"
+                          },
+                          {
+                            "listItemLabel": "Parent 3"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "columns": "12",
+      "wrapperAlias": "content",
+      "gridContainers": [
+        {
+          "columns":"12",
+          "containerAlias": "content",
+          "gridZones": [
+            {
+              "zoneAlias": "title",
+              "gridBlocks": [
+                {
+                  "paginaTitleGridBlock": {
+                    "blockType": "grid-paginatitel",
+                    "headerText": "Header met kruimelpad"
+                  }
+                }
+              ]
+            },
+            {
+              "zoneAlias": "content",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "grid-pagina",
+                    "inside": {
+                      "richContentWithParagraph": true
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

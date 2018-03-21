@@ -1,0 +1,174 @@
+{
+  "gridWrappers": [
+    {
+      "wrapperAlias": "header",
+      "gridContainers": [
+        {
+          "containerAlias": "header-logo",
+          "gridZones": [
+            {
+              "zoneAlias": "logo",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "type-logo",
+                    "inside": {
+                      "logoMolecule": {
+                        "siteLink": "https://www.amsterdam.nl/vga",
+                        "alt": ""
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "containerAlias": "header-nav",
+          "containerModifiers": "breakout-container",
+          "gridZones": [
+            {
+              "zoneAlias": "nav"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wrapperAlias": "sitepad",
+      "gridContainers": [
+        {
+          "containerAlias": "sitepad",
+          "gridZones": [
+            {
+              "zoneAlias": "sitepad",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "type-sitepad",
+                    "inside": {
+                      "horizontalListMolecule": {
+                        "listItems": [
+                          {
+                            "listItemLabel": "Home"
+                          },
+                          {
+                            "listItemLabel": "Parent 1"
+                          },
+                          {
+                            "listItemLabel": "Parent 2 met een lange titel"
+                          },
+                          {
+                            "listItemLabel": "Parent 3"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wrapperAlias": "contents",
+      "gridContainers": [
+        {
+          "containerAlias": "main",
+          "gridZones": [
+            {
+              "zoneAlias": "title",
+              "gridBlockHelpers": [
+                {
+                  "blockType": "grid-paginatitel",
+                  "blockModifiers": "suffix_4",
+                  "columns": 8,
+                  "inside": {
+                    "articleTitle": {
+                      "headerText": "Bibliotheken",
+                      "headerSubtitle": "OBA Slotervaart",
+                      "source": {
+                        "headerDate": "31 mei 2017",
+                        "headerPoster": "John Doe"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "zoneAlias": "content",
+              "gridBlockHelpers": [
+                {
+                  "blockType": "grid-pagina",
+                  "blockModifiers": "suffix_4",
+                  "columns": 8,
+                  "inside": {
+                    "articleContent": true,
+                    "headerModifiers": "ingeklapt",
+                    "toggleBoxTitle": "Klik hier om mij open of dicht te klappen",
+                    "ingeklapt": true
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wrapperAlias": "footer",
+      "gridContainers": [
+        {
+          "containerAlias": "footer",
+          "containerModifiers": "grid-container container_12 grid-footer bgcolor_darkgrey breakout-container",
+          "gridZones": [
+            {
+              "zoneAlias": "footer",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "footer",
+                    "inside": {
+                      "content": "Footer"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "containerAlias": "below-footer",
+          "gridZones": [
+            {
+              "zoneAlias": "below-footer-nav",
+              "gridBlocks": [
+                {
+                  "defaultGridBlock": {
+                    "blockType": "type-nav-footer",
+                    "inside": {
+                      "horizontalListMolecule": {
+                        "listItems": [
+                          {
+                            "listItemLabel": "Colofon"
+                          },
+                          {
+                            "listItemLabel": "Proclaimer"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

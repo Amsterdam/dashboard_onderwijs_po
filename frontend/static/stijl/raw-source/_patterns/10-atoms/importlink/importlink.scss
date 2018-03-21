@@ -1,0 +1,24 @@
+.importLink, // sass-lint:disable-line class-name-format
+.download a {
+  text-decoration: none;
+
+  > span {
+    text-decoration: underline;
+  }
+
+  .sizespec {
+    color: $color-black;
+    text-decoration: none;
+
+    &::after {
+      background-image: url("#{$core-svg-path}icon-document.svg");
+      background-repeat: no-repeat;
+      content: "";
+      display: inline-block;
+      height: 20px;
+      margin-left: 5px;
+      vertical-align: middle;
+      width: 16px;
+    }
+  }
+}

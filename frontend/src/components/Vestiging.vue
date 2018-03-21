@@ -1,11 +1,41 @@
 <template>
   <div v-if="vestiging">
-    <h3>{{ vestiging.naam }}</h3>
-    <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
-    <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
-  </div>
-  <div v-else>
-    Loading... {{id}}
+    <div>
+      <div class="float-right small">
+        {{ vestiging.brin6 }},
+        {{ vestiging.adres.adres }}, {{ vestiging.adres.postcode }} {{ vestiging.adres.plaats }}
+        ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
+      </div>
+      <h3>
+        {{ vestiging.naam }}
+      </h3>
+    </div>
+
+    <div class="zone-clear clear"></div>
+
+    <div class="navigation">
+      <ul class="tabs">
+        <li :class="{ 'selected': selected === 'vestiging'}">
+          <a href="javascript:void(0)" @click="show('vestiging')">De vestiging</a>
+        </li>
+        <li :class="{ 'selected': selected === 'omgeving'}">
+          <a href="javascript:void(0)" @click="show('omgeving')">De omgeving</a>
+        </li>
+        <li>
+          <router-link :to="{name: 'Vestigingen'}">Kies een andere school</router-link>
+        </li>
+      </ul>
+    </div>
+
+    <div class="zone-clear clear"></div>
+
+    <div id="vestiging" v-show="selected === 'vestiging'">
+      <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
+    </div>
+
+    <div id="omgeving" v-show="selected === 'omgeving'">
+      <gebiedscijfers :gebiedscode="gebiedscode"></gebiedscijfers>
+    </div>
   </div>
 </template>
 
@@ -19,7 +49,8 @@ export default {
     return {
       id: this.$route.params.id,
       vestiging: null,
-      gebiedscode: null
+      gebiedscode: null,
+      selected: 'vestiging'
     }
   },
   components: {
@@ -48,6 +79,9 @@ export default {
       if (this.vestiging) {
         this.gebiedscode = this.vestiging.gebiedscode
       }
+    },
+    show (item) {
+      this.selected = item
     }
   },
   created () {
@@ -58,4 +92,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .navigation {
+    margin-left: -40px;
+  }
 </style>

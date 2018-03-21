@@ -1,0 +1,10 @@
+{
+  "inputBoxId": "dateField",
+  "previousText": "Vorige",
+  "nextText": "Next",
+  "month": "Januari",
+  "year": "2018",
+  "inputMode": "mode_input",
+  "inputType": "text",
+  "inputStatus": "valid"
+}

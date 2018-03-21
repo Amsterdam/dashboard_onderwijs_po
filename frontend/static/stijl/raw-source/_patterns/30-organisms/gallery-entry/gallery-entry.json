@@ -1,0 +1,27 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "gridBlocks": [
+        {
+          "galleryGridBlock": {
+            "columns": 3,
+            "galleryEntryTitle": "Alle restaurants in Amsterdam met een lange naam die een Michelinster verdienen",
+            "galleryEntryLink": "#",
+            "galleryEntryImage": "/images/assets/gallery-entry-image-one.jpg",
+            "galleryEntryImageAlt": "Alle restaurants in Amsterdam"
+          }
+        },
+        {
+          "galleryGridBlock": {
+            "columns": 3,
+            "galleryEntryTitle": "Culinaire festivals & evenementen",
+            "galleryEntryLink": "#",
+            "galleryEntryImage": "/images/assets/gallery-entry-image-two.jpg",
+            "galleryEntryImageAlt": "Culinaire festivals & evenementen"
+          }
+        }
+      ]
+    }
+  ]
+}

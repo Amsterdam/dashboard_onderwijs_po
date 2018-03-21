@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="data" style="font-size:300%">{{data[0].waarde}}</div>
+    <h1 v-if="data" class="single-figure">{{data[0].waarde}}</h1>
     <data-download-link :data="data" text="Download veiligheidsindex cijfers JSON" filename="veiligheids-index.json"></data-download-link>
   </div>
 </template>

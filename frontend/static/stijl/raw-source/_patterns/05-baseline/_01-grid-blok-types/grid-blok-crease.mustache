@@ -1,0 +1,16 @@
+<div class="grid-blok grid_{{ columns }} hascrease {{ blockType }} {{ blockModifiers }}">
+  <div class="grid-element">
+    <div class="grid-edge">
+      {{# blockTitle }}
+        {{> baseline-grid-blok-title }}
+      {{/ blockTitle }}
+      {{# inside }}
+        {{> baseline-grid-blok-inside }}
+      {{/ inside }}
+      {{# moreLink }}
+        {{> atoms-more-link }}
+      {{/ moreLink }}
+      {{> atoms-crease }}
+    </div>
+  </div>
+</div>

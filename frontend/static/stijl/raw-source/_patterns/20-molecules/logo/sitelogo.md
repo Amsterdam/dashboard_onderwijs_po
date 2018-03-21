@@ -1,0 +1,5 @@
+---
+title: Sitelogo
+state: complete
+---
+...

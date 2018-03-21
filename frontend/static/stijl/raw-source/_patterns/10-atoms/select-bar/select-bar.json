@@ -1,0 +1,13 @@
+{
+  "chooseText": "Kies uw stadsdeel:",
+  "selectables": [
+    { "selectBarOption": "Centrum"},
+    { "selectBarOption": "Nieuw-West"},
+    { "selectBarOption": "Noord"},
+    { "selectBarOption": "Oost"},
+    { "selectBarOption": "West"},
+    { "selectBarOption": "Westpoort"},
+    { "selectBarOption": "Zuid"},
+    { "selectBarOption": "Zuidoost"}
+  ]
+}

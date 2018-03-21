@@ -1,0 +1,93 @@
+{
+  "alias": "main",
+  "gridContainers": [
+    {
+      "gridZones": [
+        {
+          "alias": "above",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Een 3-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Een 3-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Een 3-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Een 3-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "alias": "below",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Een 6-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "inside": {
+                  "richContentWithHeadings": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 3,
+                "blockTitle": {
+                  "text": "Een 3-koloms breed grid blok"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

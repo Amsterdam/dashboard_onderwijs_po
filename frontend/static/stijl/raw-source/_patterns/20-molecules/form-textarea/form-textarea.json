@@ -1,0 +1,91 @@
+{
+  "formTextareas": [
+    {
+      "inputMode": "mode_input",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea",
+      "textareaId": "textarea"
+    },
+    {
+      "inputMode": "mode_input",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea",
+      "textareaId": "textarea",
+      "required": true
+    },
+    {
+      "inputMode": "mode_input",
+      "inputStatus": "rij_verplicht rij_ongeldig",
+      "inputLabelId": "textareaOngeldig",
+      "inputLabelText": "Textarea ongeldig",
+      "textareaId": "textareaOngeldig"
+    },
+    {
+      "inputMode": "mode_readonly",
+      "inputDisabled": true,
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textareaDisabled",
+      "inputLabelText": "Textarea disabled",
+      "textareaId": "textareaDisabled"
+    },
+    {
+      "inputMode": "mode_readonly",
+      "inputReadonly": true,
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textareaDisabled",
+      "inputLabelText": "Textarea readonly",
+      "textareaId": "textareaDisabled"
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea met toelichting dicht",
+      "textareaId": "textarea",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationStatus": "closed"
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea met toelichting open",
+      "textareaId": "textarea",
+      "inputExplanationTitle": "Toelichting",
+      "inputExplanationText": "Hier kunnen een paar regels help-tekst komen die je weer kunt inklappen.",
+      "inputExplanationStatus": "open"
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea met help tekst",
+      "textareaId": "textarea",
+      "inputHelpText": "Instructie tekst bij formulierveld"
+    },
+    {
+      "inputMode": "mode_input",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht rij_ongeldig",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Textarea met help tekst en ongeldig (Postcode)",
+      "textareaId": "textarea",
+      "inputHelpText": "Veld is niet goed ingevuld. Bijv. ABCD 12"
+    },
+    {
+      "inputMode": "mode_display",
+      "inputLabelId": "textarea",
+      "inputLabelText": "Samenvatting",
+      "textareaId": "textarea",
+      "modeDisplay": true,
+      "modeDisplayValue": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
+    }
+  ]
+}

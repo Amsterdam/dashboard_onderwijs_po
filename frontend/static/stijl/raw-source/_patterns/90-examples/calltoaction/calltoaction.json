@@ -1,0 +1,220 @@
+{
+  "containerAlias": "main",
+  "gridZones": [
+    {
+      "zoneAlias": "calltoactions",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "grijs",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "rood",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "wit",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "blauw",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "calltoactions",
+      "zoneModifiers": "hasbgcolor bgcolor_red",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "grijs",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "rood",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "wit",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "blauw",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "calltoactions",
+      "zoneModifiers": "hasbgcolor bgcolor_lightgrey",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "grijs",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "rood",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "wit",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "blauw",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "zoneAlias": "calltoactions",
+      "zoneModifiers": "hasbgcolor bgcolor_darkgrey",
+      "gridBlocks": [
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "grijs",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "rood",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "wit",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        },
+        {
+          "defaultGridBlock": {
+            "columns": 3,
+            "blockModifiers": "grid-calltoaction",
+            "inside": {
+              "callToActionAtom": true,
+              "callToActionLink": "#",
+              "callToActionColor": "blauw",
+              "callToActionText": "Ik wil een melding doen"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

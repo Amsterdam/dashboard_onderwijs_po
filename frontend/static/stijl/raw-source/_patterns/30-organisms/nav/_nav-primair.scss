@@ -1,0 +1,164 @@
+@media screen and (max-width: #{$grid-mq-medium}) {
+  .grid-blok.type-nav-primair {
+    float: none !important;
+  }
+}
+
+.type-nav-primair {
+  .grid-title {
+    max-height: $rowheight;
+  }
+
+  .toggle-search {
+    float: right;
+  }
+
+  @media screen and (min-width: #{$grid-mq-medium + 1}) {
+
+    .toggle-mainmenu {
+      display: none;
+    }
+
+    .toggle-search {
+      margin-right: -10px;
+    }
+  }
+
+  @media screen and (max-width: #{$grid-mq-medium}) {
+    background-color: $color-superlightgrey;
+    display: block;
+    height: $rowheight;
+    line-height: $rowheight;
+  }
+
+  .links {
+    > li {
+      line-height: $rowheight;
+
+      > a {
+        @include avenirnextmedium;
+        color: $color-superdarkgrey;
+        padding-left: 0;
+
+        &.mainmenu-megamenu {
+          cursor: default;
+        }
+      }
+    }
+
+    @media screen and (min-width: #{$grid-mq-medium} + 1) {
+      > li a {
+        background-image: none;
+        font-size: rem(18px);
+      }
+
+      &.secundair {
+        display: none;
+      }
+
+      ul {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: #{$grid-mq-medium}) {
+      background-color: $color-superlightgrey;
+      border-bottom: 4px solid $color-lightgrey;
+      margin: 0;
+      width: calc(100% - #{$rowheight});
+
+      &.secundair {
+        border-bottom-color: $color-black;
+      }
+
+      > li {
+        border-top: 1px solid $color-lightgrey;
+        float: none;
+        line-height: 1;
+        margin-left: 0;
+        margin-right: 0;
+
+        > a {
+          @include font-size(16);
+          background-image: none;
+          border-left: 8px solid transparent;
+          color: $color-superdarkgrey;
+          display: block;
+          padding: 14px 0 12px 7px;
+        }
+
+        .caret {
+          background-image: url("#{$core-sprites-path}sprite_bullets_small.png");
+          background-position: 0 -29800px;
+          background-repeat: no-repeat;
+          float: right;
+          height: 11px;
+          margin-right: 12px;
+          margin-top: 5px;
+          width: 11px;
+
+        }
+
+        &.expanded {
+          > a {
+            border-left: 8px solid $color-red;
+            color: $color-black;
+          }
+
+          .caret {
+            background-position: 0 -29200px;
+          }
+        }
+
+        ul {
+          border-bottom: 0;
+          width: 100%;
+        }
+
+        li {
+          background-color: $color-white;
+
+          span.sublisttitle,
+          a {
+            @include font-size(16);
+            border-left: 8px solid $color-lightgrey;
+            display: inline-block;
+          }
+
+          span.sublisttitle {
+            @include avenirnextdemi;
+            padding: 26px 0 12px 7px;
+          }
+
+          a {
+            background-image: url("#{$core-sprites-path}sprite_bullets_small.png");
+            background-position: 7px -1984px;
+            padding: 14px 0 12px 20px;
+          }
+
+          &.expanded {
+            > a {
+              background-position: 7px -3984px;
+              color: $color-red;
+            }
+          }
+        }
+      }
+
+      &.secundair {
+        li {
+          a {
+            @include avenirnextdemi;
+            color: $color-black;
+
+            &:hover {
+              color: $color-red;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include link-list-on-hover-underline;
+}

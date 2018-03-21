@@ -1,0 +1,70 @@
+// Sprites
+////
+.more-link {
+  @include avenirnextdemi;
+  display: inline-block;
+  margin: 10px 0 0;
+  padding-left: 15px;
+  text-decoration: none;
+
+  &,
+  &:visited {
+    background: url("#{$core-svg-path}caret-right-black.svg") no-repeat 0 5px;
+    color: $color-black;
+  }
+
+  &:active,
+  &:hover {
+    background: url("#{$core-svg-path}caret-right-red.svg") no-repeat 0 5px;
+    color: $color-red;
+    text-decoration: underline;
+  }
+}
+
+ul.links + .more-link {
+  margin: 0;
+}
+
+.grid-blok.hasbgcolor {
+  .more-link {
+    margin-left: 10px;
+  }
+}
+
+@mixin bigplus-on-bg($color) {
+  .more-link {
+    @if best-contrast-on($color) == #fff {
+      &,
+      &:active,
+      &:hover,
+      &:visited {
+        background-image: url("#{$core-svg-path}caret-right-white.svg");
+        color: best-contrast-on($color);
+      }
+    }
+    @else {
+      &:hover,
+      &:active {
+        background-image: url("#{$core-svg-path}caret-right-red.svg");
+        color: $color-red;
+      }
+
+      &,
+      &:visited {
+        background-image: url("#{$core-svg-path}caret-right-black.svg");
+        color: best-contrast-on($color);
+      }
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  .grid-zone.bgcolor_#{$name},
+  .footer-wrapper .bgcolor_#{$name} {
+    @include bigplus-on-bg($color);
+  }
+
+  .grid-blok.bgcolor_#{$name} .grid-edge {
+    @include bigplus-on-bg($color);
+  }
+}

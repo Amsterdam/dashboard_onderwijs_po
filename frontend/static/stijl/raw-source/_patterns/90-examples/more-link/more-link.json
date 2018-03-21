@@ -1,0 +1,16 @@
+{
+  "listItems": [
+    {
+      "listItemLabel": "Interne Link"
+    },
+    {
+      "listItemLabel": "Interne Link"
+    },
+    {
+      "listItemLabel": "Externe Link",
+      "listItemModifiers": "outsite"
+    }
+  ],
+  "moreLinkLink" : "#",
+  "moreLinkLabel": "Meer"
+}

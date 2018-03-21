@@ -1,0 +1,10 @@
+<div class="invoer">
+  <select id="{{ selectId }}" {{# selectDisabled}} disabled{{/ selectDisabled}}{{# selectReadonly }} readonly{{/ selectReadonly}} {{# multipleSelect }}multiple{{/ multipleSelect }}{{# modeDisplay }} hidden{{/ modeDisplay }}>
+    {{# options }}
+      <option>{{ value }}</option>
+    {{/ options }}
+  </select>
+  {{# modeDisplay }}
+    {{ modeDisplayValue }}
+  {{/ modeDisplay }}
+</div>

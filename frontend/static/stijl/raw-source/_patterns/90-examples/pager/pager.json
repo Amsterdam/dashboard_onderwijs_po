@@ -1,0 +1,27 @@
+{
+  "pagerItems": [
+    {
+      "pagerModifiers": "pager_step huidige",
+      "pagerLabel": "1"
+    },
+    {
+      "pagerModifiers": "pager_step pagina",
+      "pagerLabel": "2",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_step puntjes",
+      "pagerLabel": "..."
+    },
+    {
+      "pagerModifiers": "pager_step pagina",
+      "pagerLabel": "121",
+      "pagerLink": "#"
+    },
+    {
+      "pagerModifiers": "pager_nav volgende",
+      "pagerLabel": "volgende",
+      "pagerLink": "#"
+    }
+  ]
+}

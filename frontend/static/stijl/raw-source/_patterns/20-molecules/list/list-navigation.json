@@ -1,0 +1,11 @@
+{
+  "listPosition": "left",
+  "listItems": [
+    {
+      "listItemLabel": "Item 1"
+    },
+    {
+      "listItemLabel": "Item 2"
+    }
+  ]
+}

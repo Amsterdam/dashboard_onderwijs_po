@@ -1,0 +1,98 @@
+.links {
+  margin-left: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0 0 8px;
+
+    a {
+      @include avenirnextdemi;
+      display: inline-block;
+      padding: 0 0 0 15px;
+      text-decoration: none;
+
+      &,
+      &:visited {
+        background: url("#{$core-svg-path}caret-right-black.svg") no-repeat 0 5px;
+        color: $color-black;
+      }
+
+      &:active,
+      &:hover {
+        background: url("#{$core-svg-path}caret-right-red.svg") no-repeat 0 5px;
+        color: $color-red;
+        text-decoration: underline;
+      }
+
+      &.outsite {
+        background: url("#{$core-svg-path}external-link-black.svg") no-repeat 0 7px;
+        color: $color-black;
+
+        &:hover {
+          background-image: url("#{$core-svg-path}external-link-red.svg");
+          color: $color-red;
+        }
+      }
+    }
+  }
+}
+
+@mixin linklist-on-bg($color) {
+  .links {
+    li {
+      a {
+        @if best-contrast-on($color) == #fff {
+          &,
+          &:active,
+          &:hover,
+          &:visited {
+            background-image: url("#{$core-svg-path}caret-right-white.svg");
+            color: best-contrast-on($color);
+
+            span {
+              color: best-contrast-on($color);
+            }
+          }
+
+          &:hover {
+            text-decoration-color: best-contrast-on($color);
+          }
+        }
+        @else {
+          &:hover,
+          &:active {
+            background-image: url("#{$core-svg-path}caret-right-red.svg");
+
+            &,
+            span {
+              color: $color-red;
+            }
+          }
+
+          &,
+          &:visited {
+            background-image: url("#{$core-svg-path}caret-right-black.svg");
+
+            &,
+            span {
+              color: best-contrast-on($color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  .grid-zone.bgcolor_#{$name},
+  .footer-wrapper .bgcolor_#{$name} {
+    @include linklist-on-bg($color);
+  }
+
+  .grid-blok.bgcolor_#{$name} .grid-edge {
+    @include linklist-on-bg($color);
+  }
+}

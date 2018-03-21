@@ -1,0 +1,56 @@
+{
+  "radioFieldsets": [
+    {
+      "inputMode": "mode_input",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "formInput",
+      "inputLabelText": "Maak een keuze",
+      "modeInput": true,
+      "required": true,
+      "radios": [
+        {
+          "radioId": "1",
+          "radioName": "radioGroup1",
+          "radioLabel": "Man"
+        },
+        {
+          "radioId": "2",
+          "radioName": "radioGroup1",
+          "radioLabel": "Vrouw"
+        },
+        {
+          "radioId": "3",
+          "radioName": "radioGroup2",
+          "radioLabel": "Links"
+        },
+        {
+          "radioId": "4",
+          "radioName": "radioGroup2",
+          "radioLabel": "Rechts"
+        },
+        {
+          "radioDisabled": true,
+          "radioId": "5",
+          "radioLabel": "Radiobutton disabled"
+        }
+      ]
+    },
+    {
+      "inputMode": "mode_display",
+      "inputType": "text",
+      "inputStatus": "rij_verplicht",
+      "inputLabelId": "formInput",
+      "inputLabelText": "Maak een keuze",
+      "modeDisplay": true,
+      "radios": [
+        {
+          "radioLabel": "Man"
+        },
+        {
+          "radioLabel": "Rechts"
+        }
+      ]
+    }
+  ]
+}

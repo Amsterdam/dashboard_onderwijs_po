@@ -1,0 +1,171 @@
+{
+  "gridContainers": [
+    {
+      "containerAlias": "kolom1-4",
+      "containerModifiers": "breakout-container",
+      "containerTitle": "Paginatitel",
+      "gridZones": [
+        {
+          "columns": 12,
+          "zoneAlias": "kolom1-4_1",
+          "zoneModifiers": "breakout-zone hasbgcolor bgcolor_red",
+          "zoneTitle": "Zone met rode achtergrond",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 4,
+                "blockTitle": {
+                  "text": "Titel van blok 1"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 4,
+                "blockTitle": {
+                  "text": "Titel van blok 2"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 4,
+                "blockTitle": {
+                  "text": "Titel van blok 3"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "zoneAlias": "kolom1-4_2",
+          "zoneModifiers": "breakout-zone",
+          "zoneSeparator": true,
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 1"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 2"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "zoneAlias": "kolom1-4_3",
+          "zoneModifiers": "breakout-zone",
+          "zoneTitle": "Normale zone met titel",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 1"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 2"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "zoneAlias": "kolom1-4_4",
+          "zoneModifiers": "breakout-zone hasbgcolor bgcolor_lightgrey",
+          "zoneTitle": "Zone met achtergrond",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 1"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 2"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "columns": 12,
+          "zoneAlias": "kolom1-4_5",
+          "zoneModifiers": "breakout-zone",
+          "gridBlocks": [
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 1"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            },
+            {
+              "defaultGridBlock": {
+                "columns": 6,
+                "blockTitle": {
+                  "text": "Titel van blok 2"
+                },
+                "inside": {
+                  "richContentWithParagraph": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

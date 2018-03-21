@@ -1,0 +1,26 @@
+@import '../raw-source/scss/mixin/amsterdam-vars';
+
+$ams-geel:                $color-yellow;
+$ams-oranje:              $color-orange;
+$ams-rood:                $color-red;
+$ams-donkergroen:         $color-darkgreen;
+$ams-groen:               $color-green;
+$ams-paars:               $color-purple;
+$ams-magenta:             $color-magenta;
+$ams-donkerblauw:         $color-darkblue;
+$ams-blauw:               $color-lightblue;
+$ams-lichtgrijs:          $color-lightgrey;
+$ams-middengrijs:         $color-grey;
+$ams-donkergrijs:         $color-text-darkgrey;
+$ams-antraciet:           $color-mediumdarkgrey;
+$ams-wit:                 $color-white;
+$ams-zwart:               $color-black;
+
+$ams-body:                $color-mediumdarkgrey;
+$ams-footer:              $color-darkgrey;
+$ams-hint:                $ams-donkergrijs;
+$ams-form-field:          $color-grey;
+$ams-background-sidebars: $bodybg-grey;
+$ams-top-menu:            $color-superlightgrey;
+
+$ams-backdrop:            rgba(0,0,0,.5);

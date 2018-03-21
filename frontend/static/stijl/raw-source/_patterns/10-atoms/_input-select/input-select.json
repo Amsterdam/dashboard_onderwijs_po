@@ -1,0 +1,16 @@
+{
+  "options": [
+    {
+      "value": "Bouwvergunning"
+    },
+    {
+      "value": "Parkeervergunning"
+    },
+    {
+      "value": "Watervergunning"
+    },
+    {
+      "value": "Leegstandwet"
+    }
+  ]
+}

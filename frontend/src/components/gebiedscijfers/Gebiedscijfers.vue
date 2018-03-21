@@ -1,18 +1,18 @@
 <!-- Right column in original design, contains Gebieds specific data -->
 <template>
   <div>
-    <h3>De omgeving</h3>
+    <!--<h3>De omgeving</h3>-->
     <div class="row mb-sm-3">
-      <div class="col-sm-12 col-md-8">
-        <div class="card">
+      <div class="col-sm-12 col-lg-8">
+        <div class="card std-height">
           <h5 class="card-header">Opleiding</h5>
           <div class="card-block">
             <opleiding :gebiedcode="gebiedscode"></opleiding>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-4">
-        <div class="card">
+      <div class="col-sm-12 col-lg-4">
+        <div class="card std-height">
           <h5 class="card-header">Inkomen</h5>
           <div class="card-block">
             <inkomen :gebiedcode="gebiedscode"></inkomen>
@@ -21,16 +21,16 @@
       </div>
     </div>
     <div class="row mb-sm-3">
-      <div class="col-sm-12 col-md-8">
-        <div class="card">
+      <div class="col-sm-12 col-lg-8">
+        <div class="card std-height">
           <h5 class="card-header">Herkomst</h5>
           <div class="card-block">
             <herkomst :gebiedcode="gebiedscode"></herkomst>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-4">
-        <div class="card">
+      <div class="col-sm-12 col-lg-4">
+        <div class="card std-height">
           <h5 class="card-header">Sociale problematiek</h5>
           <div class="card-block">
             <sociale-problematiek :gebiedcode="gebiedscode"></sociale-problematiek>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="row mb-sm-3">
-      <div class="col-sm-12 col-md-8">
+      <div class="col-sm-12 col-lg-8">
         <div class="card">
           <h5 class="card-header">Veiligheidsindex</h5>
           <div class="card-block">
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-lg-4">
         <div class="card">
           <h5 class="card-header">Criminaliteitsindex</h5>
           <div class="card-block">

@@ -1,0 +1,211 @@
+@font-face {
+  font-family: "Avenir LT W01 65 Medium";
+  src: url("/fonts/AvenirMedium/212ab03d-5db2-4d6a-b94c-171cc702aa51.eot?#iefix");
+  src: url("/fonts/AvenirMedium/212ab03d-5db2-4d6a-b94c-171cc702aa51.eot?#iefix") format("eot"), url("/fonts/AvenirMedium/e4d36745-a861-4a49-aa17-6510e67429d3.woff2") format("woff2"), url("/fonts/AvenirMedium/2cac77ec-9bc0-4ee7-87e4-27650190744f.woff") format("woff"), url("/fonts/AvenirMedium/aaf11848-aac2-4d09-9a9c-aac5ff7b8ff4.ttf") format("truetype"), url("/fonts/AvenirMedium/294099f3-8d00-4676-afc5-5e9d8d43ad69.svg#294099f3-8d00-4676-afc5-5e9d8d43ad69") format("svg"); }
+
+@font-face {
+  font-family: "Avenir LT W01 85 Heavy";
+  src: url("/fonts/AvenirHeavy/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot?#iefix");
+  src: url("/fonts/AvenirHeavy/f61bf0f6-c193-4100-b940-12a1a01dcee5.eot?#iefix") format("eot"), url("/fonts/AvenirHeavy/65cde95a-ac33-4c65-8198-e37857968d1a.woff2") format("woff2"), url("/fonts/AvenirHeavy/7147ec3a-8ff8-4ec9-8c5c-bd1571dc6ae6.woff") format("woff"), url("/fonts/AvenirHeavy/d1dc54b2-878d-4693-8d6e-b442e99fef68.ttf") format("truetype"), url("/fonts/AvenirHeavy/731dd4d3-64da-427d-ba61-01575b3cf3f7.svg#731dd4d3-64da-427d-ba61-01575b3cf3f7") format("svg"); }
+
+@font-face {
+  font-family: "AvenirNextLTW01-Regular";
+  src: url("/fonts/AvenirNext/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix");
+  src: url("/fonts/AvenirNext/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("eot"), url("/fonts/AvenirNext/2cd55546-ec00-4af9-aeca-4a3cd186da53.woff2") format("woff2"), url("/fonts/AvenirNext/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff"), url("/fonts/AvenirNext/46cf1067-688d-4aab-b0f7-bd942af6efd8.ttf") format("truetype"), url("/fonts/AvenirNext/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f") format("svg"); }
+
+@font-face {
+  font-family: "Avenir Next LT W01 Demi";
+  src: url("/fonts/AvenirNextDemi/12d643f2-3899-49d5-a85b-ff430f5fad15.eot?#iefix");
+  src: url("/fonts/AvenirNextDemi/12d643f2-3899-49d5-a85b-ff430f5fad15.eot?#iefix") format("eot"), url("/fonts/AvenirNextDemi/aad99a1f-7917-4dd6-bbb5-b07cedbff64f.woff2") format("woff2"), url("/fonts/AvenirNextDemi/91b50bbb-9aa1-4d54-9159-ec6f19d14a7c.woff") format("woff"), url("/fonts/AvenirNextDemi/a0f4c2f9-8a42-4786-ad00-fce42b57b148.ttf") format("truetype"), url("/fonts/AvenirNextDemi/99affa9a-a5e9-4559-bd07-20cf0071852d.svg#99affa9a-a5e9-4559-bd07-20cf0071852d") format("svg"); }
+
+@font-face {
+  font-family: "AvenirNextLTW01-Medium";
+  src: url("/fonts/AvenirNextMedium/1a7c9181-cd24-4943-a9d9-d033189524e0.eot?#iefix");
+  src: url("/fonts/AvenirNextMedium/1a7c9181-cd24-4943-a9d9-d033189524e0.eot?#iefix") format("eot"), url("/fonts/AvenirNextMedium/627fbb5a-3bae-4cd9-b617-2f923e29d55e.woff2") format("woff2"), url("/fonts/AvenirNextMedium/f26faddb-86cc-4477-a253-1e1287684336.woff") format("woff"), url("/fonts/AvenirNextMedium/63a74598-733c-4d0c-bd91-b01bffcd6e69.ttf") format("truetype"), url("/fonts/AvenirNextMedium/a89d6ad1-a04f-4a8f-b140-e55478dbea80.svg#a89d6ad1-a04f-4a8f-b140-e55478dbea80") format("svg"); }
+
+.visuallyhidden,
+.tekstbrowser {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus,
+  .tekstbrowser.focusable:active,
+  .tekstbrowser.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto; }
+
+.visually {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+body {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: #434343;
+  font-family: "AvenirNextLTW01-Regular", verdana, sans-serif;
+  margin: 0; }
+  body * {
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box; }
+  body h1 a,
+  body h2 a,
+  body h3 a,
+  body h4 a,
+  body h5 a,
+  body h6 a {
+    color: #000;
+    text-decoration: none; }
+
+.sg-welcome .grid-pagina {
+  padding-bottom: 5em; }
+
+.sg-main {
+  background-color: #f3f3f3;
+  margin-top: -1em;
+  padding: 2rem 25px; }
+
+.sg-pattern-category > h2 {
+  font-family: "Avenir Next LT W01 Demi", arial, sans-serif;
+  font-size: 1em;
+  margin: 18px 0 14px; }
+  .sg-pattern-category > h2 > a {
+    color: #000; }
+
+.sg-pattern-example {
+  background-color: #fff;
+  border: 1px solid #bebebe;
+  border-radius: 6px;
+  padding: 5px 8px 15px; }
+  [id^="templates-"] .sg-pattern-example,
+  [id^="pages-"] .sg-pattern-example {
+    background-color: #e8e8e8; }
+  .sg-pattern-example::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.sg-colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important; }
+  .sg-colors li {
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+    margin: 0 .5em .5em 0;
+    max-width: 14em;
+    min-width: 5em;
+    padding: .3em; }
+
+.sg-swatch {
+  border-radius: 2px;
+  display: block;
+  height: 4em;
+  margin-bottom: .3em; }
+
+.sg-label {
+  font-size: 90%;
+  line-height: 1; }
+
+.sg-grid-explained .grid-container {
+  background-color: #ddd; }
+
+.sg-grid-explained .grid-zone {
+  background-color: #bebebe; }
+
+.sg-grid-explained .grid-blok {
+  background-color: #999; }
+
+.sg-grid-explained .grid-edge {
+  background-color: #767676; }
+
+.sg-tabs-list li {
+  margin-bottom: 0; }
+
+.grid-blok.hasbgcolor .grid-element .grid-edge {
+  float: left; }
+  .grid-blok.hasbgcolor .grid-element .grid-edge .grid-inside {
+    margin: 0 10px; }
+    .grid-blok.hasbgcolor .grid-element .grid-edge .grid-inside h2 {
+      margin: 18px 0 14px; }
+
+.z-superlinks,
+.z-grote-knop {
+  padding-bottom: 20px;
+  padding-top: 20px; }
+
+.loketlink .grid-edge .holder h2.afbeelding.bestuur {
+  background-image: url("/images/svg/superlink-loket-sprite.png"); }
+
+.loketlink .grid-edge:hover .holder h2.afbeelding.bestuur {
+  background-image: url("/images/svg/superlink-loket-sprite-active.png"); }
+
+.doorkijk {
+  width: calc(100% - 20px) !important; }
+
+.hascrease {
+  margin-bottom: 10px;
+  margin-right: 10px; }
+
+.contents-wrapper .grid-blok {
+  margin-bottom: 20px; }
+
+.contents-wrapper .grid-title h2 {
+  margin: 18px 0 14px; }
+
+.grid-blok.grid-foto {
+  margin-bottom: 20px; }
+
+.galerij {
+  margin-bottom: 20px; }
+  .galerij .resultaat h2 a,
+  .galerij .resultaat h3 a {
+    max-height: 60px; }
+  .galerij.has-date .resultaat:hover h2 a,
+  .galerij.has-date .resultaat:hover h3 a {
+    max-height: auto;
+    overflow: visible; }
+  .galerij.has-date .resultaat h2 a,
+  .galerij.has-date .resultaat h3 a {
+    max-height: 40px;
+    overflow: hidden; }
+
+#organisms-list-entry .resultaat,
+#organisms-list-entry-with-image .resultaat {
+  margin-bottom: 30px; }
+
+.grid-blok.grid-tegel {
+  margin-bottom: 20px; }
+
+.grid-below-footer {
+  background-color: #fff; }
+
+.z-columns {
+  border-bottom: 1px solid #666;
+  margin-bottom: 20px; }
+
+.ui-datepicker {
+  display: block; }
+
+.formulier-section + .formulier-section {
+  margin-top: 30px; }

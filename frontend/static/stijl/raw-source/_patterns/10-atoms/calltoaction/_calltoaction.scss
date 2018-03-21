@@ -1,0 +1,140 @@
+@mixin calltoaction($border-width) {
+  @include avenirnextdemi;
+  cursor: pointer;
+  display: inline-block;
+  margin: 6px 0;
+
+  &,
+  &:visited {
+    border-width: $border-width;
+    padding: (11px - $border-width) (15px - $border-width) (12px - $border-width);
+  }
+
+  &:active,
+  &:hover {
+    border-width: $border-width * 2;
+    padding: (11px - ($border-width * 2)) (15px - ($border-width * 2)) (12px - ($border-width * 2));
+    text-decoration: none !important;
+  }
+}
+
+.Calltoaction-rood a, // sass-lint:disable-line class-name-format
+a.Calltoaction-rood { // sass-lint:disable-line class-name-format
+  @include calltoaction(0);
+  text-decoration: none;
+
+  &,
+  span {
+    color: $color-white !important;
+  }
+
+  .sizespec {
+    &::after {
+      background-image: url("#{$core-svg-path}icon-document-white.svg");
+    }
+  }
+
+  &,
+  &:visited {
+    background-color: $color-red;
+  }
+
+  &:active,
+  &:hover {
+    background-color: darken($color-red, 10%);
+  }
+}
+
+.Calltoaction-blauw a, // sass-lint:disable-line class-name-format
+a.Calltoaction-blauw { // sass-lint:disable-line class-name-format
+  @include calltoaction(0);
+  text-decoration: none;
+
+  &,
+  span {
+    color: $color-white !important;
+  }
+
+  .sizespec {
+    &::after {
+      background-image: url("#{$core-svg-path}icon-document-white.svg");
+    }
+  }
+
+  &,
+  &:visited {
+    background-color: $color-darkblue;
+  }
+
+  &:active,
+  &:hover {
+    background-color: darken($color-darkblue, 10%);
+  }
+}
+
+.Calltoaction-wit a, // sass-lint:disable-line class-name-format
+a.Calltoaction-wit { // sass-lint:disable-line class-name-format
+  @include calltoaction(1px);
+  border-color: $color-darkblue;
+  border-style: solid;
+  text-decoration: none;
+
+  &,
+  span {
+    color: $color-darkblue !important;
+  }
+
+  .sizespec {
+    &::after {
+      background-image: url("#{$core-svg-path}icon-document-blue.svg");
+    }
+  }
+
+  &,
+  &:visited,
+  &:active,
+  &:hover {
+    background-color: $color-white;
+    color: $color-darkblue !important;
+  }
+}
+
+.Calltoaction-grijs a, // sass-lint:disable-line class-name-format
+a.Calltoaction-grijs { // sass-lint:disable-line class-name-format
+  @include calltoaction(0);
+  text-decoration: none;
+
+  &,
+  span {
+    color: $color-black !important;
+  }
+
+  &,
+  &:visited {
+    background-color: $color-lightgrey;
+  }
+
+  &:active,
+  &:hover {
+    background-color: darken($color-lightgrey, 10%);
+  }
+}
+
+* + a.Calltoaction-rood, // sass-lint:disable-line class-name-format
+a.Calltoaction-rood + *, // sass-lint:disable-line class-name-format
+* + a.Calltoaction-blauw, // sass-lint:disable-line class-name-format
+a.Calltoaction-blauw + *, // sass-lint:disable-line class-name-format
+* + a.Calltoaction-wit, // sass-lint:disable-line class-name-format
+a.Calltoaction-wit + *, // sass-lint:disable-line class-name-format
+* + a.Calltoaction-grijs, // sass-lint:disable-line class-name-format
+a.Calltoaction-grijs + *, // sass-lint:disable-line class-name-format
+* + .Calltoaction-rood a, // sass-lint:disable-line class-name-format
+.Calltoaction-rood a + *, // sass-lint:disable-line class-name-format
+* + .Calltoaction-blauw a, // sass-lint:disable-line class-name-format
+.Calltoaction-blauw a + *, // sass-lint:disable-line class-name-format
+* + .Calltoaction-wit a, // sass-lint:disable-line class-name-format
+.Calltoaction-wit a + *, // sass-lint:disable-line class-name-format
+* + .Calltoaction-grijs a, // sass-lint:disable-line class-name-format
+.Calltoaction-grijs a + * { // sass-lint:disable-line class-name-format
+  margin-top: 20px;
+}

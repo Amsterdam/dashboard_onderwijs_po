@@ -1,0 +1,45 @@
+<div class="grid-zone grid_{{ columns }} z-{{ zoneAlias }} {{ zoneModifiers }}">
+  {{# zoneTitle }}
+    <section>
+    <h1>{{ zoneTitle }}</h1>
+  {{/ zoneTitle }}
+  {{# gridBlocks }}
+    {{# defaultGridBlock }}
+      {{> baseline-grid-blok }}
+    {{/ defaultGridBlock }}
+    {{# paginaTitleGridBlock }}
+      {{> baseline-grid-blok-pagina-title }}
+    {{/ paginaTitleGridBlock }}
+    {{# creaseGridBlock }}
+      {{> baseline-grid-blok-crease }}
+    {{/ creaseGridBlock }}
+    {{# galleryGridBlock }}
+      {{> baseline-grid-blok-gallery }}
+    {{/ galleryGridBlock }}
+    {{# featuredGridBlock }}
+      {{> baseline-grid-blok-featured }}
+    {{/ featuredGridBlock }}
+    {{# photoBlockGridBlock }}
+      {{> baseline-grid-blok-photoblock }}
+    {{/ photoBlockGridBlock }}
+    {{# tileGridBlock }}
+      {{> baseline-grid-blok-tile }}
+    {{/ tileGridBlock }}
+    {{# colorsGridBlock }}
+      {{> baseline-grid-blok-colors }}
+    {{/ colorsGridBlock }}
+    {{# footerGridBlock }}
+      {{> baseline-grid-blok-footer }}
+    {{/ footerGridBlock }}
+  {{/ gridBlocks }}
+  {{# gridBlockHelpers }}
+    {{> baseline-grid-blok-helper }}
+  {{/ gridBlockHelpers }}
+  <div class="zone-clear clear"></div>
+  {{# zoneTitle }}
+    </section>
+  {{/ zoneTitle }}
+  {{# zoneSeparator }}
+    <hr class="zone-separator">
+  {{/ zoneSeparator }}
+</div>

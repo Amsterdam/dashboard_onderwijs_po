@@ -1,0 +1,12 @@
+<div class="letterrij">
+  {{# letters }}
+    <div class="letter {{ modifier }}">
+      {{# href }}
+        <a href="{{ href }}">{{ label }}</a>
+      {{/ href }}
+      {{^ href }}
+        <span>{{ label }}</span>
+      {{/ href }}
+    </div>
+  {{/ letters }}
+</div>

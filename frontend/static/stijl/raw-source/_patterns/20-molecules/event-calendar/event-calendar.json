@@ -1,0 +1,272 @@
+{
+  "eventCalendarMonth": "februari 2018",
+  "eventCalendarCaption": "februari",
+  "headWeekdays": [
+    { "label": "ma" },
+    { "label": "di" },
+    { "label": "wo" },
+    { "label": "do" },
+    { "label": "vr" }
+  ],
+  "headWeekend": [
+    { "label": "za" },
+    { "label": "zo" }
+  ],
+  "eventCalendarWeeks": [
+    {
+      "eventCalendarDays": [
+        {
+          "daysModifiers": "weeknummer",
+          "daysLabel": "5"
+        },
+        {
+          "daysModifiers": "weekdag anderemaand",
+          "daysLabel": "29"
+        },
+        {
+          "daysModifiers": "weekdag anderemaand",
+          "daysLabel": "30"
+        },
+        {
+          "daysModifiers": "weekdag anderemaand",
+          "daysLabel": "31"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "01",
+          "daysUrl": "#",
+          "daysId": "dag_20180201",
+          "daysTitle": "Toon evenementen op 1 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "02"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "03"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "04"
+        }
+      ]
+    },
+    {
+      "eventCalendarDays": [
+        {
+          "daysModifiers": "weeknummer",
+          "daysLabel": "6"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "05",
+          "daysUrl": "#",
+          "daysId": "dag_20180205",
+          "daysTitle": "Toon evenementen op 5 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "06",
+          "daysUrl": "#",
+          "daysId": "dag_20180206",
+          "daysTitle": "Toon evenementen op 6 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag selected",
+          "daysLabel": "07",
+          "daysUrl": "#",
+          "daysId": "dag_20180207",
+          "daysTitle": "Toon evenementen op 7 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "08",
+          "daysUrl": "#",
+          "daysId": "dag_20180208",
+          "daysTitle": "Toon evenementen op 8 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "09",
+          "daysUrl": "#",
+          "daysId": "dag_20180209",
+          "daysTitle": "Toon evenementen op 9 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "10",
+          "daysUrl": "#",
+          "daysId": "dag_20180210",
+          "daysTitle": "Toon evenementen op 10 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "11",
+          "daysUrl": "#",
+          "daysId": "dag_20180211",
+          "daysTitle": "Toon evenementen op 11 februari 2018"
+        }
+      ]
+    },
+    {
+      "eventCalendarDays": [
+        {
+          "daysModifiers": "weeknummer",
+          "daysLabel": "7"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "12",
+          "daysUrl": "#",
+          "daysId": "dag_20180212",
+          "daysTitle": "Toon evenementen op 12 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "13",
+          "daysUrl": "#",
+          "daysId": "dag_20180213",
+          "daysTitle": "Toon evenementen op 13 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "14",
+          "daysUrl": "#",
+          "daysId": "dag_20180214",
+          "daysTitle": "Toon evenementen op 14 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "15",
+          "daysUrl": "#",
+          "daysId": "dag_20180215",
+          "daysTitle": "Toon evenementen op 15 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "16",
+          "daysUrl": "#",
+          "daysId": "dag_20180216",
+          "daysTitle": "Toon evenementen op 16 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "17",
+          "daysUrl": "#",
+          "daysId": "dag_20180217",
+          "daysTitle": "Toon evenementen op 17 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "18",
+          "daysUrl": "#",
+          "daysId": "dag_20180218",
+          "daysTitle": "Toon evenementen op 18 februari 2018"
+        }
+      ]
+    },
+    {
+      "eventCalendarDays": [
+        {
+          "daysModifiers": "weeknummer",
+          "daysLabel": "8"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "19",
+          "daysUrl": "#",
+          "daysId": "dag_20180219",
+          "daysTitle": "Toon evenementen op 19 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "20",
+          "daysUrl": "#",
+          "daysId": "dag_20180220",
+          "daysTitle": "Toon evenementen op 20 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "21",
+          "daysUrl": "#",
+          "daysId": "dag_20180221",
+          "daysTitle": "Toon evenementen op 21 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "22",
+          "daysUrl": "#",
+          "daysId": "dag_20180222",
+          "daysTitle": "Toon evenementen op 22 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "23",
+          "daysUrl": "#",
+          "daysId": "dag_20180223",
+          "daysTitle": "Toon evenementen op 23 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "24",
+          "daysUrl": "#",
+          "daysId": "dag_20180224",
+          "daysTitle": "Toon evenementen op 24 februari 2018"
+        },
+        {
+          "daysModifiers": "weekend",
+          "daysLabel": "25",
+          "daysUrl": "#",
+          "daysId": "dag_20180225",
+          "daysTitle": "Toon evenementen op 25 februari 2018"
+        }
+      ]
+    },
+    {
+      "eventCalendarDays": [
+        {
+          "daysModifiers": "weeknummer",
+          "daysLabel": "9"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "26",
+          "daysUrl": "#",
+          "daysId": "dag_20180226",
+          "daysTitle": "Toon evenementen op 26 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "27",
+          "daysUrl": "#",
+          "daysId": "dag_20180227",
+          "daysTitle": "Toon evenementen op 27 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag",
+          "daysLabel": "28",
+          "daysUrl": "#",
+          "daysId": "dag_20180228",
+          "daysTitle": "Toon evenementen op 28 februari 2018"
+        },
+        {
+          "daysModifiers": "weekdag anderemaand",
+          "daysLabel": "01"
+        },
+        {
+          "daysModifiers": "weekdag anderemaand",
+          "daysLabel": "02"
+        },
+        {
+          "daysModifiers": "weekend anderemaand",
+          "daysLabel": "03"
+        },
+        {
+          "daysModifiers": "weekend anderemaand",
+          "daysLabel": "04"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<div class="resultaat">
+  <img src="{{ galleryEntryImage }}" alt="Taalletters">
+  <h2 class="link"><a href="{{ galleryEntryLink }}">{{ galleryEntryTitle }}</a></h2>
+  <div class="holder">
+    {{# galleryEntrySummary }}
+      <div class="tekst">
+        <div class="summary">
+          <p>{{ galleryEntrySummary }}</p>
+        </div>
+      </div>
+    {{/ galleryEntrySummary }}
+    {{# metaData }}
+      <div class="meta">
+        {{{ metaDataLabel }}}
+      </div>
+    {{/ metaData }}
+  </div>
+</div>

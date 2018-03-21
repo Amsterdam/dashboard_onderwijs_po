@@ -4,7 +4,7 @@
       <div class="grid-element">
         <h2 class="blok-titel">Colofon</h2>
         <p>
-        TITEL is gemaakt door OPDRACHTNEMER in opdracht van OPDRACHTGEVER.<br>
+        Dashboard onderwijs is gemaakt door OPDRACHTNEMER in opdracht van OPDRACHTGEVER.<br>
         Contact: <a href="mailto:OPDRACHTNEMER@amsterdam.nl">OPDRACHTNEMER@amsterdam.nl</a>
         </p>
       </div>
@@ -13,7 +13,7 @@
       <div class="grid-element">
         <h2 class="blok-titel">Disclaimer</h2>
         <p>
-        De inhoud van TITEL is met uiterste zorgvuldigheid tot stand gebracht.
+        De inhoud van dashboard onderwijs is met uiterste zorgvuldigheid tot stand gebracht.
         De inhoud wordt regelmatig gecontroleerd en geactualiseerd.
         OPDRACHTNEMER kan echter niet aansprakelijk worden gesteld voor de juistheid, volledigheid en actualiteit van de website.
         OPDRACHTNEMER kan in het bijzonder niet aansprakelijk worden gesteld voor eventuele schade of consequenties ontstaan door direct of indirect gebruik van de inhoud van de website.
@@ -50,5 +50,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style scoped>
 </style>

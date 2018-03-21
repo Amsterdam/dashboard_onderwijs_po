@@ -1,0 +1,35 @@
+.filter-button {
+  background-color: $color-white;
+  border: 1px solid $color-black;
+  display: inline-block;
+  height: 32px;
+  padding: 0 8px;
+  vertical-align: top;
+
+  .filter-label,
+  .filter-icon,
+  .filter-pill {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .filter-label {
+    @include avenirnextdemi;
+    @include font(16px, 21px);
+    padding-right: 9px;
+  }
+
+  .filter-icon {
+    background-image: url("#{$core-svg-path}filter-icon.svg");
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+    content: "";
+    height: 32px;
+    margin: 0 9px;
+    width: 24px;
+  }
+
+  .filter-pill {
+    padding-left: 9px;
+  }
+}
