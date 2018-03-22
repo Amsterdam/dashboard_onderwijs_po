@@ -7,12 +7,25 @@ FROM amsterdam/python
 # own containers and host them at different locations at a later date.
 
 # Build JavaScript app
-FROM node:8.1-alpine as builder
-  ARG NODE_ENV=development
-  WORKDIR /app
-  COPY /frontend/. /app/
-  RUN npm install && npm run build
+FROM node:8.9 as builder
+MAINTAINER datapunt.ois@amsterdam.nl
 
+RUN apt-get update && \
+    apt-get install -y git
+
+COPY /frontend/package.json /app/
+
+WORKDIR /app
+
+ENV PATH=./node_modules/.bin/:~/node_modules/.bin/:$PATH
+RUN git config --global url."https://".insteadOf git:// && \
+    git config --global url."https://github.com/".insteadOf git@github.com: && \
+    npm --production=false --unsafe-perm install && \
+    chmod -R u+x node_modules/.bin/
+
+COPY /frontend/. /app/
+
+RUN npm run build
 
 # Set up Django / static serving of JavaScript app
 FROM amsterdam/python

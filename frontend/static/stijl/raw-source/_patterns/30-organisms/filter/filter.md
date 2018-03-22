@@ -1,5 +1,0 @@
----
-title: Filter
-state: complete
----
-...

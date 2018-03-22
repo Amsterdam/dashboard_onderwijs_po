@@ -1,5 +1,0 @@
----
-title: Tile
-state: complete
----
-...

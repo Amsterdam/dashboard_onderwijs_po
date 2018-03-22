@@ -1,5 +1,0 @@
----
-title: Logoteksten
-state: complete
----
-...

@@ -1,5 +1,0 @@
----
-title: Andreaskruizen
-state: complete
----
-...

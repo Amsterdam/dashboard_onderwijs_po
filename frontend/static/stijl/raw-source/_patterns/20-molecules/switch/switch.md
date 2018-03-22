@@ -1,5 +1,0 @@
----
-title: Switch
-state: complete
----
-...

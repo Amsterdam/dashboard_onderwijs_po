@@ -1,5 +1,0 @@
----
-title: Featured
-state: complete
----
-...
