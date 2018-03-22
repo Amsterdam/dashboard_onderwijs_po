@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'leaflet/dist/leaflet.css'
 
-import '../static/stijl/css/ams-stijl.css'
+import 'stijl/css/ams-stijl.css'
 import '../static/app.css'
 
 Vue.use(VueAxios, axios)

@@ -1,9 +1,0 @@
-{
-  "inputButtons": [
-    {
-      "inputType": "submit",
-      "inputValue": "Doorgaan",
-      "inputModifiers": "primary"
-    }
-  ]
-}

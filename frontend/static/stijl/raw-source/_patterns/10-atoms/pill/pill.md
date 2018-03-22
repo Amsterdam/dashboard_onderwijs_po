@@ -1,5 +1,0 @@
----
-title: Pill
-state: inprogress
----
-...

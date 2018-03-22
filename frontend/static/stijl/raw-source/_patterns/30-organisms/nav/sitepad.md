@@ -1,5 +1,0 @@
----
-title: Sitepad
-state: complete
----
-...

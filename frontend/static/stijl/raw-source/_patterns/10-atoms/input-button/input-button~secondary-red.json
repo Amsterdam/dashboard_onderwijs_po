@@ -1,9 +1,0 @@
-{
-  "inputs": [
-    {
-      "inputType": "submit",
-      "inputValue": "Doorgaan",
-      "inputModifiers": "secundary-red"
-    }
-  ]
-}
