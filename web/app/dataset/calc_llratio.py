@@ -4,11 +4,13 @@ Given DUO and Schoolwijzer data, extract number of students and personel.
 # flake8: noqa
 import logging
 import pandas
+from requests.exceptions import HTTPError
 
 from django.db.models import Sum
 from dataset.models import Vestiging, LeerlingLeraarRatio
 
-_DATA_SET_URL = 'https://duo.nl/open_onderwijsdata/images/01.-po-personen-owtype-bestuur-brin-functie.csv'
+_DATA_SET_URL = 'https://duo.nl/open_onderwijsdata/images/01-po-personen-owtype-bestuur-brin-functie.csv'
+
 _N_PERSONEN_COLUMNS = {
     2011: "PERSONEN 2011",
     2012: "PERSONEN 2012",
@@ -43,7 +45,12 @@ def get_leerling_leraar_ratios(years):
     relevant_brins = Vestiging.objects.values_list('brin', flat=True).distinct()
 
     # Download and parse the relevant data:
-    duo_data = pandas.read_csv(_DATA_SET_URL, delimiter=';', decimal=',')
+    try:
+        duo_data = pandas.read_csv(_DATA_SET_URL, delimiter=';', decimal=',')
+    except:
+        logger.error('Problem accessing: %s', _DATA_SET_URL)
+        raise
+
     strip_column_names(duo_data)
     duo_data = duo_data[duo_data['BRIN NUMMER'].isin(relevant_brins)]
 
