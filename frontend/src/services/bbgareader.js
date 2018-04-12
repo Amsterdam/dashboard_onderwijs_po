@@ -6,11 +6,6 @@ import _ from 'lodash'
 // BBGA API handling:
 const API_URL = `https://api.data.amsterdam.nl/bbga/cijfers/`
 
-export async function getBbgaVariableOld (variable, areaCode, year) {
-  // grab BBGA data for one BBGA variable
-  return readPaginatedData(API_URL + `?gebiedcode15=${areaCode}&variabele=${variable}`)
-}
-
 export async function getBbgaVariables (variables, areaCodes, years) {
   // grab a number of BBGA variables for given areas and years
   let unflattened = variables.map(v => areaCodes.map(ac => readPaginatedData(

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import axios from 'axios'
 
 export const halNextAccessor = response => response.data._links.next.href
 export const nextAccessor = response => response.data.next
@@ -11,7 +11,7 @@ export const HTTPStatus = {
 
 async function get (url) {
   HTTPStatus.pending++
-  const result = Vue.axios.get(url)
+  const result = axios.get(url)
   result.then(() => {
     HTTPStatus.pending--
     HTTPStatus.success++

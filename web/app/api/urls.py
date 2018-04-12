@@ -21,7 +21,7 @@ onderwijs_router.register(
 )
 
 onderwijs_router.register(
-    'subdsidie', views.SubsidieViewSet,
+    'subsidie', views.SubsidieViewSet,
     base_name='subsidie'
 )
 

@@ -5,7 +5,7 @@ const API_HOST = process.env.API_HOST
 
 export async function getAvailableSubsidies (year) {
   return readPaginatedData(
-    API_HOST + `/onderwijs/api/subdsidie/?jaar=${year}`
+    API_HOST + `/onderwijs/api/subsidie/?jaar=${year}`
   )
 }
 
