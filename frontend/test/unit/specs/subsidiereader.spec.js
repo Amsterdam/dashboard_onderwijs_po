@@ -2,6 +2,7 @@ import { getAvailableSubsidies, getAwardedSubsidies, getAllSubsidies } from '@/s
 
 jest.mock('axios', () => ({
   get: jest.fn((url) => {
+
     const availableSubsidies = {
       data: {
         _links: {
@@ -18,7 +19,23 @@ jest.mock('axios', () => ({
         ]
       }
     }
-    
+
+    const noSubsidies = {
+      '_links': {
+        'self': {
+          "href":"http://127.0.0.1:8000/onderwijs/api/subsidie/?jaar=1900&format=json"
+        },
+        'next': {
+          'href': null
+        },
+        'previous': {
+          "href": null
+        }
+      },
+      'count': 0,
+      'results': []
+    }
+
     const awardedSubsidies = {
       data: {
         _links: {
@@ -41,16 +58,24 @@ jest.mock('axios', () => ({
 
     let data = null
     if (url.includes('/subsidie/')) {
-      data = availableSubsidies
+      if (url.includes('1900')) {
+        data = noSubsidies
+      } else {
+        data = availableSubsidies
+      }
     } else if (url.includes('toegewezen')) {
-      data = awardedSubsidies
+      if (url.includes('1900')) {
+        data = noSubsidies
+      } else {
+        data = awardedSubsidies
+      }
     }
 
     return Promise.resolve(data)
   })
 }))
 
-describe('getAvailableSubsidies', () => {
+describe('getAvailableSubsidies', async () => {
   it('should retrieve a JSON array of available subsidies', async () => {
     expect(
       await getAvailableSubsidies(2017)
@@ -59,9 +84,25 @@ describe('getAvailableSubsidies', () => {
       naam: 'TESTSUBSIDIE'
     }])
   })
+
+  it('should retrieve a JSON array of available subsidies', async () => {
+    expect(
+      await getAvailableSubsidies('2017')
+    ).toEqual([{
+      jaar: 2017,
+      naam: 'TESTSUBSIDIE'
+    }])
+  })
+
 })
 
-describe('getAwardedSubsidies', () => {
+describe('getAvailableSubsidies', async () => {
+  it('should retrieve a JSON array of available subsidies', async () => {
+    expect(await getAvailableSubsidies(1900)).toEqual([])
+  })
+})
+
+describe('getAwardedSubsidies', async () => {
   it('should retrieve a JSON array of awarded subsidies', async () => {
     expect(
       await getAwardedSubsidies(2017, '00AA00')
@@ -75,3 +116,8 @@ describe('getAwardedSubsidies', () => {
   })
 })
 
+describe('getAwardedSubsidies', async () => {
+  it('should retrieve a JSON array of awarded subsidies', async () => {
+    expect(await getAvailableSubsidies(1900, '00AA00')).toEqual([])
+  })
+})

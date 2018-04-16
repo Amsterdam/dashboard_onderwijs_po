@@ -48,6 +48,62 @@ describe('getBbgaVariables', () => {
   })
 })
 
+describe('getBbgaVariables', () => {
+  it('should return an empty array when 3 emtpy arrays are passed', async () => {
+    expect(
+      await getBbgaVariables([], [], [])
+    ).toEqual(
+      []
+    )
+  })
+})
+
+describe('getBbgaVariables', () => {
+  it('should return an empty array when 2 emtpy arrays are passed', async () => {
+    expect(
+      await getBbgaVariables(['FAKE'], [], [])
+    ).toEqual(
+      []
+    )
+
+    expect(
+      await getBbgaVariables([], ['B'], [])
+    ).toEqual(
+      []
+    )
+
+    expect(
+      await getBbgaVariables([], [], [2000])
+    ).toEqual(
+      []
+    )
+
+  })
+})
+
+describe('getBbgaVariables', () => {
+  it('should return an empty array when 2 emtpy arrays are passed', async () => {
+    try {
+      await getBbgaVariables(2000, [], [])
+    } catch (error) {
+      expect(error).toBeInstanceOf(TypeError)
+    }
+
+    try {
+      await getBbgaVariables(['FAKE'], 'B', [])
+    } catch (error) {
+      expect(error).toBeInstanceOf(TypeError)
+    }
+
+    try {
+      await getBbgaVariables(['FAKE'], ['B'], 2001)
+    } catch (error) {
+      expect(error).toBeInstanceOf(TypeError)
+    }
+  })
+})
+
+
 describe('annotate', () => {
   const source = [
     {
