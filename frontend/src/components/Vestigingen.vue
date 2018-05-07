@@ -1,19 +1,19 @@
 <template>
   <div>
-    <div class="rij mode_input text rij_verplicht">
-      <label for="formInput">Zoek een vestiging</label>
-      <div class="invoer">
-        <input v-model="filterText"
-               type="text"
-               id="formInput"
-               class="input"
-               placeholder="Zoektekst">
+    <hr>
+    <h3>Overzicht scholen Amsterdam</h3>
+    <div class="input-group mb-5">
+      <input v-model="filterText"
+             type="text"
+             id="formInput"
+             class="form-control"
+             placeholder="Typ hier vestiging of BRIN">
+      <div class="input-group-append">
+        <button class="btn btn-outline-dark" @click="clearFilter()">X</button>
       </div>
-
-      <button class="action primary" @click="clearFilter()">Clear</button>
     </div>
 
-    <table v-if="filteredVestigingen.length" class="table table-sm table-striped table-bordered">
+    <table v-if="filteredVestigingen.length" class="table table-sm">
       <thead>
         <tr>
           <th scope="col">School</th>
@@ -90,4 +90,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+* {
+  border-radius: 0 !important;
+}
 </style>
