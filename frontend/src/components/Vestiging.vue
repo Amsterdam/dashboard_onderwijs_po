@@ -1,28 +1,30 @@
 <template>
   <div v-if="vestiging">
+    <hr>
     <div>
+      <router-link :to="{ name: 'Vestigingen' }"> &lt; Terug naar zoekpagina</router-link>
+    </div>
+    <hr>
+    <div class="page-title-block">
+      <h3 class="d-inline">
+        {{ vestiging.naam }}
+      </h3>
       <div class="float-right small">
         {{ vestiging.brin6 }},
         {{ vestiging.adres.adres }}, {{ vestiging.adres.postcode }} {{ vestiging.adres.plaats }}
         ({{ vestiging.gebiedscode}}, {{ vestiging.adres.stadsdeel }})
       </div>
-      <h3>
-        {{ vestiging.naam }}
-      </h3>
     </div>
 
     <div class="zone-clear clear"></div>
 
     <div class="navigation">
-      <ul class="tabs">
-        <li :class="{ 'selected': selected === 'vestiging'}">
-          <a href="javascript:void(0)" @click="show('vestiging')">De vestiging</a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a :class="{ 'active': selected === 'vestiging', 'nav-link': true }" href="javascript:void(0)" @click="show('vestiging')">De vestiging</a>
         </li>
-        <li :class="{ 'selected': selected === 'omgeving'}">
-          <a href="javascript:void(0)" @click="show('omgeving')">De omgeving</a>
-        </li>
-        <li>
-          <router-link :to="{name: 'Vestigingen'}">Kies een andere school</router-link>
+        <li class="nav-item">
+          <a :class="{ 'active': selected === 'omgeving', 'nav-link': true }" href="javascript:void(0)" @click="show('omgeving')">De omgeving</a>
         </li>
       </ul>
     </div>
@@ -93,6 +95,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .navigation {
-    margin-left: -40px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  * {
+    border-radius: 0 !important;
+  }
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px
+  }
+
+  .page-title-block {
+    margin-top: 2rem
   }
 </style>

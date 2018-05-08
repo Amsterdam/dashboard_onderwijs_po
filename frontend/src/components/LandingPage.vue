@@ -1,9 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <vestigingen></vestigingen>
-      </div>
+  <div class="row">
+    <div class="col">
+      <vestigingen></vestigingen>
     </div>
   </div>
 </template>

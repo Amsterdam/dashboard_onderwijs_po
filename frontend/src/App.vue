@@ -1,13 +1,21 @@
 <template>
   <div id="app">
     <div class="grid-container">
-      <ams-header>Header</ams-header>
-
       <div class="content">
         <div class="grid-wrapper wrapper_12 contents-wrapper">
           <div class="grid-container container_12 main-view">
             <div class="grid-zone grid_12">
-              <router-view></router-view>
+              <ams-header>Header</ams-header>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-wrapper wrapper_12 contents-wrapper">
+          <div class="grid-container container_12 main-view">
+            <div class="grid-zone grid_12">
+                <div class="container-fluid">
+                  <router-view></router-view>
+                </div>
             </div>
           </div>
         </div>

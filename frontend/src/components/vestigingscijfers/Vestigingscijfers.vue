@@ -32,7 +32,7 @@
       </div>
       <div class="col-md-12 col-lg-5">
         <div class="card std-height">
-          <h5 class="card-header">SDQ (Strengths and Difficulties Questionnaire)</h5>
+          <h5 class="card-header">SDQ</h5>
           <div class="card-block">
             <sdq :gebiedcode="gebiedscode"></sdq>
           </div>
@@ -92,5 +92,9 @@ export default {
 
   .child {
     /*padding: 25% 5px;*/
+  }
+
+  .card {
+    border-radius: 0 !important;
   }
 </style>

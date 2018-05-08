@@ -1,20 +1,22 @@
 <template>
-  <div class="ams-header">
-    <header>
-      <img class="ams-header__logo" src="../../static/logo-short.svg" height="45px">
-    </header>
-    <span class="header-title"><b>Dashboard onderwijs</b></span>
+  <div class="container" style="padding:0em">
+    <div class="ams-header">
+      <header>
+        <router-link :to="{ name: 'Vestigingen' }">
+          <img class="ams-header__logo" src="../../static/logo-short.svg" height="45px">
+        </router-link>
+      </header>
+      <span class="header-title"><b>Dashboard primair onderwijs</b></span>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'AMSHeader',
   components: {
   }
 }
-
 </script>
 
 <style scoped>
@@ -22,7 +24,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: .5rem;
+  padding-left: 0rem;
 }
 
 .ams-header .header-title {
