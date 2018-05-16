@@ -19,7 +19,7 @@ export async function getBbgaVariables (variables, areaCodes, years) {
 }
 
 export function annotate (data, sourceVar, injectedVar, valueMapping) {
-  // use for labeling and facet order (i.e. inject extra property for Vega)
+  // use for labeling and ordering (i.e. inject extra properties for Vega)
   // valueMapping like: [[sourceValue, targetValue], ...]
   let m = new Map(valueMapping)
   return data.map(
@@ -30,9 +30,9 @@ export function annotate (data, sourceVar, injectedVar, valueMapping) {
   )
 }
 
-export function orderFacets (data, sourceVar, values) {
+export function order (data, sourceVar, values) {
   let valueMapping = values.map((d, i) => [d, i])
-  return annotate(data, sourceVar, '_facetorder', valueMapping)
+  return annotate(data, sourceVar, '_order', valueMapping)
 }
 
 export async function translateAreaCodes (data) {

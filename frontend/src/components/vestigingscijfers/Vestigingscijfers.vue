@@ -32,12 +32,20 @@
       </div>
       <div class="col-md-12 col-lg-5">
         <div class="card std-height">
+          <h5 class="card-header">Cito score</h5>
+          <div class="card-block std-height">
+            <cito-score :id="id"></cito-score>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-12 col-lg-5">
+        <div class="card std-height">
           <h5 class="card-header">SDQ</h5>
           <div class="card-block">
             <sdq :gebiedcode="gebiedscode"></sdq>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="row mb-sm-3">
@@ -46,14 +54,6 @@
           <h5 class="card-header">Lopende subsidies</h5>
           <div class="card-block">
             <subsidie :id="id"></subsidie>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 col-lg-5">
-        <div class="card std-height">
-          <h5 class="card-header">Cito score</h5>
-          <div class="card-block std-height">
-            <cito-score :id="id"></cito-score>
           </div>
         </div>
       </div>
@@ -68,7 +68,6 @@ import subsidie from './Subsidie'
 
 import leerlingenNaarGewicht from './leerlingennaargewicht/VestigingscijferLeerlingenNaarGewicht.vue'
 import schoolAdvies from './schooladviezen/VestigingscijferSchoolAdvies.vue'
-import sdq from './sdq/SDQ.vue'
 
 export default {
   props: [
@@ -79,8 +78,7 @@ export default {
     'leerlingen-naar-gewicht': leerlingenNaarGewicht,
     'school-advies': schoolAdvies,
     'cito-score': citoScore,
-    'subsidie': subsidie,
-    'sdq': sdq
+    'subsidie': subsidie
   }
 }
 </script>

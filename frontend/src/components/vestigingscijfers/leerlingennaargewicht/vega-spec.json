@@ -5,7 +5,7 @@
     },
     "facet": {
         "column": {
-          "field": "gewicht",
+          "field": "jaar",
           "type": "nominal",
           "header": {
             "title": null
@@ -14,11 +14,11 @@
       },
     "spec": {
         "layer": [{
-            "width": 90,
+            "width": 81,
             "mark": "bar",
             "encoding": {
               "x": {
-                "field": "jaar",
+                "field": "gewicht",
                 "type": "nominal",
                 "axis": null
               },
@@ -30,7 +30,7 @@
                 }
               },
               "color": {
-                "field": "jaar",
+                "field": "gewicht",
                 "type": "nominal",
                 "scale": {
                     "range": ["#3182bd", "#9ecae1", "#deebf7"]
@@ -46,7 +46,7 @@
             },
             "encoding": {
               "x": {
-                "field": "jaar",
+                "field": "gewicht",
                 "type": "nominal",
                 "axis": null
               },

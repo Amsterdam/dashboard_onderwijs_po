@@ -5,7 +5,7 @@
     },
     "facet": {
         "column": {
-          "field": "advies",
+          "field": "jaar",
           "type": "nominal",
           "header": {
             "title": null
@@ -14,11 +14,11 @@
       },
     "spec": {
         "layer": [{
-            "width": 90,
+            "width": 108,
             "mark": "bar",
             "encoding": {
               "x": {
-                "field": "jaar",
+                "field": "advies",
                 "type": "nominal",
                 "axis": null
               },
@@ -30,10 +30,10 @@
                 }
               },
               "color": {
-                "field": "jaar",
+                "field": "advies",
                 "type": "nominal",
                 "scale": {
-                    "range": ["#3182bd", "#9ecae1", "#deebf7"]
+                    "range": ["#bdc9e1", "#74a9cf", "#2b8cbe", "#045a8d"]
                 }
               }
             }
@@ -46,7 +46,7 @@
             },
             "encoding": {
               "x": {
-                "field": "jaar",
+                "field": "advies",
                 "type": "nominal",
                 "axis": null
               },
