@@ -7,6 +7,7 @@
 
 <script>
 import { readData } from '@/services/datareader'
+import { order } from '@/services/bbgareader'
 
 import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
@@ -36,7 +37,10 @@ export default {
       if (this.id) {
         let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
 
-        this.data = await readData(url)
+        let data = await readData(url)
+        order(data, 'advies', ['pro', 'vmbo b / k', 'vmbo g / t', 'havo / vwo'])
+
+        this.data = data
       }
     }
   },

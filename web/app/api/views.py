@@ -190,7 +190,7 @@ class AggregatedAdviesView(APIView):
 
             out.extend([
                 {
-                    'advies': 'vmbo b,k',
+                    'advies': 'vmbo b / k',
                     'totaal': vmbo_bk,
                     'jaar': jaar,
                     'vestiging': brin6
@@ -208,7 +208,7 @@ class AggregatedAdviesView(APIView):
                     'vestiging': brin6
                 },
                 {
-                    'advies': 'vmbo g,t',
+                    'advies': 'vmbo g / t',
                     'totaal': vmbo_gt,
                     'jaar': jaar,
                     'vestiging': brin6},
