@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <vega-spec-render :data="data" :vegaspec="vegaspec"></vega-spec-render>
-    <data-download-link :data="data" text="Download leerling naar gewicht JSON" filename="inkomen.json"></data-download-link>
+  <div v-bind:class="MISSING_DATA ? 'missing-data' : ''">
+    <vega-spec-render v-if="!MISSING_DATA" :data="data" :vegaspec="vegaspec"></vega-spec-render>
+    <template v-else>
+      Data is niet beschikbaar.
+    </template>
   </div>
 </template>
 
@@ -26,7 +28,8 @@ export default {
   data () {
     return {
       data: null,
-      vegaspec
+      vegaspec,
+      MISSING_DATA: false
     }
   },
   async mounted () {
@@ -36,11 +39,13 @@ export default {
     async getData () {
       if (this.id) {
         let url = API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`
-
-        let data = await readData(url)
-        order(data, 'advies', ['pro', 'vmbo b / k', 'vmbo g / t', 'havo / vwo'])
+        let data = order(await readData(url), 'advies', ['pro', 'vmbo b / k', 'vmbo g / t', 'havo / vwo'])
 
         this.data = data
+
+        if (!data.length) {
+          this.MISSING_DATA = true
+        }
       }
     }
   },
