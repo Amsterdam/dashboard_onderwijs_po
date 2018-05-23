@@ -24,6 +24,11 @@
         <tr v-for="vestiging in filteredVestigingen" :key="vestiging.brin6">
           <td>
             <router-link :to="{path: 'vestiging/' + vestiging.brin6}">{{vestiging.naam}}</router-link>
+            <div class="small">
+            {{ vestiging.adres.adres }}, {{ vestiging.adres.postcode }} {{ vestiging.adres.plaats }}
+            ({{ vestiging.adres.stadsdeel }})
+            </div>
+
           </td>
           <td>
             {{vestiging.brin6}}
