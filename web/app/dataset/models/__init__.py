@@ -8,6 +8,7 @@ from .cito_scores import CitoScores
 from .llratio import LeerlingLeraarRatio
 from .school_wisselaars import SchoolWisselaars
 from .subsidie import Subsidie, ToegewezenSubsidie
+from .data_summary import DataSummary
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
 logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)

@@ -40,6 +40,11 @@ onderwijs_router.register(
     base_name='leerling-leraar-ratio'
 )
 
+onderwijs_router.register(
+    'data-summary', views.DataSummaryViewSet,
+    base_name='data-summary'
+)
+
 urlpatterns = [
     url(r'^aggregated-advies/', views.AggregatedAdviesView.as_view()),
     url(r'^', include(onderwijs_router.urls)),
