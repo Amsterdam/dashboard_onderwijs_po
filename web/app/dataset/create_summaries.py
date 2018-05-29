@@ -1,7 +1,4 @@
 from collections import defaultdict
-from pprint import pprint
-
-from django.core.exceptions import ObjectDoesNotExist
 
 from dataset.models import DataSummary
 from dataset.models import Vestiging, CitoScores, LeerlingNaarGewicht
