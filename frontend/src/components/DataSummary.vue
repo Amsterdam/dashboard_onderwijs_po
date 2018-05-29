@@ -2,7 +2,7 @@
 <template>
   <div>
     <h1>Data beschikbaarheid per vestiging</h1>
-    <table class="table table-sm">
+    <table class="table table-sm table-responsive">
       <thead>
         <tr>
           <th>BRIN6</th>
