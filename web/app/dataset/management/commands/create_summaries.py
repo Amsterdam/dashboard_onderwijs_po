@@ -8,6 +8,7 @@ LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
 logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+
 class Command(BaseCommand):
     help = 'Summarize onderwijs data (what is present for which school).'
 
