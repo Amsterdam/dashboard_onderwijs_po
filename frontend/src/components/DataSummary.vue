@@ -41,15 +41,7 @@ import _ from 'lodash'
 const URL = process.env.API_HOST + '/onderwijs/api/data-summary/'
 const nYears = 4
 
-function getFullHeader (rows) {
-  let fullHeader = rows.reduce((header, currentRow, idx) => {
-    // console.log('voor _.merge', header)
-    let h = _.merge(header, currentRow.columns)
-    // console.log('na _.merge', h)
-    return h
-  }, {})
-  return fullHeader
-}
+let getFullHeader = (rows) => rows.reduce((header, currentRow) => _.merge(header, currentRow.columns), {})
 
 export default {
   data () {
@@ -79,15 +71,14 @@ export default {
         // sort the variables (aka. available datasets) alphabetically
         // then sort the entries per variabel numerically (in case of years) and convert to array
         // make sure the array does not contain the true values
-        let ordered = Object.entries(this.header)
+        this.ordered = Object.entries(this.header)
           .sort((a, b) => a[0] > b[0])
-          .map(d => ({
-            variable: d[0],
-            entries: Object.entries(d[1])
+          .map(([variable, entries]) => ({
+            variable,
+            entries: Object.entries(entries)
               .sort((a, b) => a[0] > b[0])
-              .map(d => d[0])
+              .map(([yearOrPresent, flag]) => yearOrPresent)
           }))
-        this.ordered = ordered
       }
     },
     async setData () {
@@ -100,7 +91,6 @@ export default {
     },
     header (to) {
       if (to) {
-        console.log('HEADER', to)
         this.setVariableOrder(to)
       }
     }

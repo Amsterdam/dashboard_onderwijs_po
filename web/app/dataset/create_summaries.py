@@ -39,11 +39,7 @@ def _create_with_brin6_data():
         for obj in objects:
             _key = '{}{:02d}'.format(obj.brin, obj.vestigingsnummer)
             summary = summaries[_key][model.__name__] if model.__name__ in summaries[_key] else {}
-
-            if is_yearly:
-                entry = {obj.jaar: True}
-            else:
-                entry = {'present': True}
+            entry = {obj.jaar: True} if is_yearly else {'present': True}
             summary.update(entry)
 
             summaries[_key][model.__name__] = summary
@@ -61,9 +57,6 @@ def _update_with_brin4_data():
     data_summaries = list(DataSummary.objects.all())
     for model in BRIN4_MODELS:
         is_yearly = hasattr(model, 'jaar')
-        print('Our model, {}, is yearly {}'.format(
-            model.__name__, is_yearly
-        ))
 
         for data_summary in data_summaries:
             model_instances = list(
@@ -76,10 +69,7 @@ def _update_with_brin4_data():
                 else {}
 
             for obj in model_instances:
-                if is_yearly:
-                    entry = {obj.jaar: True}
-                else:
-                    entry = {'present': True}
+                entry = {obj.jaar: True} if is_yearly else {'present': True}
                 s.update(entry)
 
             data_summary.columns[model.__name__] = s
