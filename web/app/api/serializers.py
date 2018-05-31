@@ -96,3 +96,9 @@ class LeerlingLeraarRatioSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.LeerlingLeraarRatio
         exclude = ('id',)
+
+
+class DataSummarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.DataSummary
+        exclude = ('id',)

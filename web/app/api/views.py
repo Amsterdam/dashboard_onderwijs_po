@@ -7,12 +7,12 @@ from rest_framework.response import Response
 
 from dataset.models import Vestiging, LeerlingNaarGewicht, CitoScores
 from dataset.models import SchoolAdvies, SchoolWisselaars, Subsidie, ToegewezenSubsidie
-from dataset.models import LeerlingLeraarRatio
+from dataset.models import LeerlingLeraarRatio, DataSummary
 from api.serializers import VestigingSerializer
 from api.serializers import CitoScoresSerializer
 from api.serializers import SchoolWisselaarsSerializer
 from api.serializers import SubsidieSerializer, ToegewezenSubsidieSerializer
-from api.serializers import LeerlingLeraarRatioSerializer
+from api.serializers import LeerlingLeraarRatioSerializer, DataSummarySerializer
 
 from api.serializers import SchoolAdviesSerializer, LeerlingNaarGewichtSerializer
 
@@ -215,3 +215,9 @@ class AggregatedAdviesView(APIView):
             ])
 
         return Response(out)
+
+
+class DataSummaryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = DataSummary.objects.all().order_by('row_key')
+    pagination_class = HALPagination
+    serializer_class = DataSummarySerializer

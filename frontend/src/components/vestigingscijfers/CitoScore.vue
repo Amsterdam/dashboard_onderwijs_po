@@ -1,5 +1,5 @@
 <template>
-  <div class="cito-score">
+  <div v-if="hasData">
     <h1 class="single-figure">{{
         this.citoScoreData !== null // we want to show 0 if it is present in data
         ? this.citoScoreData.toLocaleString(
@@ -9,7 +9,7 @@
       }}
     </h1>
     <div class="average">
-      <div style="text-align: right">A'dams gem = {{
+      <div style="text-align: right">Amsterdams gemiddelde: {{
         this.citoScoreGem !== null
         ? this.citoScoreGem.toLocaleString(
             'nl-DU', { maximumFractionDigits: 1 }
@@ -19,9 +19,15 @@
       </div>
     </div>
   </div>
+  <div v-else class="missing-data">
+    Data is niet beschikbaar.
+  </div>
+
 </template>
 
 <script>
+import _ from 'lodash'
+
 import { readPaginatedData } from '@/services/datareader'
 import { getBbgaVariables } from '@/services/bbgareader'
 
@@ -34,7 +40,9 @@ export default {
   data () {
     return {
       'citoScoreData': null,
-      'citoScoreGem': null
+      'citoScoreGem': null,
+      'isBusy': true,
+      'hasData': true // optimistic, assumption is we have or will get the data
     }
   },
   async mounted () {
@@ -42,10 +50,11 @@ export default {
   },
   methods: {
     async getData () {
-      let score = await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`)
-      this.citoScoreData = score[0].cet_gem
-      let scoreGem = await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016])
-      this.citoScoreGem = scoreGem[0].waarde
+      this.citoScoreData = _.get(await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`), '[0].cet_gem', null)
+      this.citoScoreGem = _.get(await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016]), '[0].waarde', null)
+
+      this.hasData = !(this.citoScoreData === null || this.citoScoreGem === null)
+      this.isBusy = false
     }
   }
 }

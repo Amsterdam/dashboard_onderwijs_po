@@ -22,7 +22,7 @@
     </div>
 
     <div class="row mb-sm-3">
-      <div class="col-md-12 col-lg-7 card-hover">
+      <div class="col-md-12 col-lg-7">
         <div class="card std-height">
           <h5 class="card-header">Schooladvies</h5>
           <div class="card-block">
@@ -33,19 +33,11 @@
       <div class="col-md-12 col-lg-5">
         <div class="card std-height">
           <h5 class="card-header">Cito score</h5>
-          <div class="card-block std-height">
+          <div class="card-block">
             <cito-score :id="id"></cito-score>
           </div>
         </div>
       </div>
-      <!-- <div class="col-md-12 col-lg-5">
-        <div class="card std-height">
-          <h5 class="card-header">SDQ</h5>
-          <div class="card-block">
-            <sdq :gebiedcode="gebiedscode"></sdq>
-          </div>
-        </div>
-      </div> -->
     </div>
 
     <div class="row mb-sm-3">

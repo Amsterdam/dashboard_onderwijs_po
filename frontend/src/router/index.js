@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import landingPage from '@/components/LandingPage'
 import Vestiging from '@/components/Vestiging'
+import DataSummary from '@/components/DataSummary'
 
 Vue.use(Router)
 
@@ -19,6 +20,7 @@ export default new Router({
       path: '/',
       redirect: 'Vestigingen'
     },
+    // These components need grid wrapper:
     {
       path: '/vestigingen',
       name: 'Vestigingen',
@@ -28,6 +30,12 @@ export default new Router({
       path: '/vestiging/:id',
       name: 'Vestiging',
       component: Vestiging
+    },
+    // This component should not get all the grid wrapper stuff:
+    {
+      path: '/summary/',
+      name: 'DataSummary',
+      component: DataSummary
     }
   ]
 })

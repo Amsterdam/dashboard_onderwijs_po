@@ -19,19 +19,19 @@
     "bootstrap-vue": "^2.0.0-rc.0",
     "corejs-typeahead": "^1.2.1",
     "d3": ">=5.0.0",
+    "hoek": ">=5.0.3",
     "leaflet": "^1.3.1",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "node-sass": "^4.8.1",
     "sass-loader": "^6.0.7",
     "stijl": "git+https://git@github.com/Amsterdam/stijl.git",
     "vega": "^3.3.1",
     "vega-embed": "^3.9.0",
-    "vega-lite": "^2.4.2",
+    "vega-lite": "^2.5.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.0.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "hoek": ">=5.0.3"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -34,3 +34,9 @@
   min-height: 150px;
   padding-top: 60px;
 }
+
+.missing-data {
+  padding-top: 15%;
+  height: 100%;
+  text-align: center
+}

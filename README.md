@@ -26,6 +26,7 @@ docker-compose build
 docker-compose up -d database
 docker-compose run --rm web python manage.py migrate
 docker-compose run --rm web python manage.py run_import
+docker-compose run --rm web python manage.py create_summaries
 docker-compose up web
 ```
 
