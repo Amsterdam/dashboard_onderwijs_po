@@ -33,6 +33,7 @@ dc run --rm importer python manage.py download_data
 dc run --rm importer python manage.py migrate
 dc run --rm importer python manage.py run_import
 dc run --rm importer python manage.py import_non_public
+dc run --rm importer python manage.py create_summaries
 dc run --rm importer python manage.py calc_aggregates
 
 echo "Running backups"
