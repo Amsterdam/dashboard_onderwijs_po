@@ -1,29 +1,28 @@
 <template>
-  <div v-if="!MISSING_DATA">
-    <template v-if="citoScoreData">
-      <h1 class="single-figure">{{
-          this.citoScoreData !== null // we want to show 0 if it is present in data
-          ? this.citoScoreData.toLocaleString(
+  <div v-if="hasData">
+    <h1 class="single-figure">{{
+        this.citoScoreData !== null // we want to show 0 if it is present in data
+        ? this.citoScoreData.toLocaleString(
+          'nl-DU', { maximumFractionDigits: 1 }
+        )
+        : '...'
+      }}
+    </h1>
+    <div class="average">
+      <div style="text-align: right">Amsterdams gemiddelde: {{
+        this.citoScoreGem !== null
+        ? this.citoScoreGem.toLocaleString(
             'nl-DU', { maximumFractionDigits: 1 }
-          )
-          : '...'
+        )
+        : '...'
         }}
-      </h1>
-      <div class="average">
-        <div style="text-align: right">Amsterdams gemiddelde: {{
-          this.citoScoreGem !== null
-          ? this.citoScoreGem.toLocaleString(
-              'nl-DU', { maximumFractionDigits: 1 }
-          )
-          : '...'
-          }}
-        </div>
       </div>
-    </template>
+    </div>
   </div>
   <div v-else class="missing-data">
-      Data is niet beschikbaar.
+    Data is niet beschikbaar.
   </div>
+
 </template>
 
 <script>
@@ -42,7 +41,8 @@ export default {
     return {
       'citoScoreData': null,
       'citoScoreGem': null,
-      'MISSING_DATA': false
+      'isBusy': true,
+      'hasData': true // optimistic, assumption is we have or will get the data
     }
   },
   async mounted () {
@@ -53,9 +53,8 @@ export default {
       this.citoScoreData = _.get(await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`), '[0].cet_gem', null)
       this.citoScoreGem = _.get(await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016]), '[0].waarde', null)
 
-      if (!this.citoScoreData) {
-        this.MISSING_DATA = true
-      }
+      this.hasData = !(this.citoScoreData === null || this.citoScoreGem === null)
+      this.isBusy = false
     }
   }
 }

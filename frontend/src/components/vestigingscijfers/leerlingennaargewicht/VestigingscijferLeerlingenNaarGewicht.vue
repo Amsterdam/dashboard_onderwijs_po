@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vega-spec-render v-if="!MISSING_DATA" :data="data" :vegaspec="vegaspec"></vega-spec-render>
+    <vega-spec-render v-if="hasData" :data="data" :vegaspec="vegaspec"></vega-spec-render>
     <div v-else class="missing-data">Data is niet beschikbaar.</div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     return {
       data: null,
       vegaspec,
-      MISSING_DATA: false
+      hasData: true
     }
   },
   async mounted () {
@@ -35,12 +35,8 @@ export default {
   methods: {
     async getData () {
       if (this.id) {
-        let url = API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`
-        this.data = await readPaginatedData(url)
-
-        if (!this.data.length) {
-          this.MISSING_DATA = true
-        }
+        this.data = await readPaginatedData(API_HOST + `/onderwijs/api/leerling-naar-gewicht/?vestiging=${this.id}`)
+        this.hasData = this.data.length
       }
     }
   },

@@ -12,6 +12,9 @@
         </tr>
       </tbody>
     </table>
+    <div v-else class="missing-data">
+      Geen subsidies.
+    </div>
   </div>
 </template>
 
