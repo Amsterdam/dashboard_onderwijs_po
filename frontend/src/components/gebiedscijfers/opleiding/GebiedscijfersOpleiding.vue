@@ -36,9 +36,9 @@ export default {
       if (this.gebiedcode) {
         let variables = ['O_OPLPO_L_P', 'O_OPLPO_M_P', 'O_OPLPO_P']
         let labelMapping = [
-          ['O_OPLPO_L_P', 'Laag'],
-          ['O_OPLPO_M_P', 'Midden'],
-          ['O_OPLPO_P', 'Hoog']
+          ['O_OPLPO_L_P', '0: Laag'],
+          ['O_OPLPO_M_P', '1: Midden'],
+          ['O_OPLPO_P', '2: Hoog']
         ]
 
         let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)

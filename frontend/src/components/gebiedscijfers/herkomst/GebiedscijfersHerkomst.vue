@@ -36,13 +36,13 @@ export default {
       if (this.gebiedcode) {
         let variables = ['BEVSUR_P', 'BEVANTIL_P', 'BEVTURK_P', 'BEVMAROK_P', 'BEVWEST_P', 'BEVOVNW_P', 'BEVAUTOCH_P']
         let labelMapping = [
-          ['BEVSUR_P', 'Surinaams'],
-          ['BEVANTIL_P', 'Antilliaans'],
-          ['BEVTURK_P', 'Turks'],
-          ['BEVMAROK_P', 'Marrokaans'],
-          ['BEVOVNW_P', 'Niet West.'],
-          ['BEVWEST_P', 'Westers'],
-          ['BEVAUTOCH_P', 'Autochtoon']
+          ['BEVSUR_P', '1: Surinaams'],
+          ['BEVANTIL_P', '2: Antilliaans'],
+          ['BEVTURK_P', '3: Turks'],
+          ['BEVMAROK_P', '4: Marrokaans'],
+          ['BEVOVNW_P', '5: Niet West.'],
+          ['BEVWEST_P', '6: Westers'],
+          ['BEVAUTOCH_P', '7: Autochtoon']
         ]
 
         let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
