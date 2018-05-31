@@ -36,10 +36,10 @@ export default {
       if (this.gebiedcode) {
         let variables = ['IMINHH120_P', 'IWWB_P', 'PWERKLBBV_P', 'BEVEENOUDERHH_P']
         let labelMapping = [
-          ['IMINHH120_P', 'Minima'],
-          ['IWWB_P', 'Bijstand'],
-          ['PWERKLBBV_P', 'Werkloos'],
-          ['BEVEENOUDERHH_P', 'Éénouder']
+          ['IMINHH120_P', '0: Minima'],
+          ['IWWB_P', '1: Bijstand'],
+          ['BEVEENOUDERHH_P', '2: Éénouder'],
+          ['PWERKLBBV_P', '3: Werkloos']
         ]
 
         let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)

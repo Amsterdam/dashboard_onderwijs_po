@@ -9,7 +9,6 @@
 
 <script>
 import { readData } from '@/services/datareader'
-import { order } from '@/services/bbgareader'
 
 import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
@@ -38,9 +37,8 @@ export default {
   methods: {
     async getData () {
       if (this.id) {
-        let data = await readData(API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`)
-        this.data = order(data, 'advies', ['pro', 'vmbo b / k', 'vmbo g / t', 'havo / vwo'])
-        this.hasData = data.length
+        this.data = await readData(API_HOST + `/onderwijs/api/aggregated-advies/?vestiging=${this.id}`)
+        this.hasData = this.data.length
       }
     }
   },
