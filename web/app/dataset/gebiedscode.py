@@ -6,11 +6,12 @@ import json
 import logging
 
 import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
 logging.basicConfig(format=LOG_FORMAT, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-
 
 logging.getLogger("chardet").setLevel(logging.WARNING)
 
@@ -22,15 +23,16 @@ def find_gebiedscode(lat, lon, adres, _type):
     """
     Find buurt_code or gebiedsgerichtwerken code given lat/lon and adress.
     """
-    buurt_codes = [_adres_to_gebiedscode(adres, _type=_type)]
-    buurt_codes.append(_lat_lon_to_gebiedscode(lat, lon, _type=_type))
+    with _get_session_with_retries() as s:
+        buurt_codes = [_adres_to_gebiedscode(s, adres, _type=_type)]
+        buurt_codes.append(_lat_lon_to_gebiedscode(s, lat, lon, _type=_type))
 
     if buurt_codes[0] is None and buurt_codes[1] is None:
-        print('!!! NO MATCH FOR :', adres)
-        print('->', buurt_codes)
+        raise NoAreaMatch()
     if buurt_codes[0] and buurt_codes[1] and buurt_codes[0] != buurt_codes[1]:
-        print('!!! TWO MATCHES  :', adres)
-        print('->', buurt_codes)
+        logger.info('Voor adres {} en (lat={}, lon={}) twee gebieden {}.'.format(
+            adres, lat, lon, buurt_codes
+        ))
 
     # Choose best code (based on addres, fallback is lat/lon):
     buurt_code = buurt_codes[0] if buurt_codes[0] else buurt_codes[1]
@@ -38,35 +40,64 @@ def find_gebiedscode(lat, lon, adres, _type):
     return buurt_code
 
 
-def _adres_to_gebiedscode(adres, _type):
+def _get_session_with_retries():
+    """
+    Get a requests Session that will retry some set number of times.
+    """
+    session = requests.Session()
+
+    retries = Retry(
+        total=5,
+        backoff_factor=0.1,
+        status_forcelist=[500, 502, 503, 504],
+        raise_on_status=True
+    )
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount('https://', adapter)
+    session.mount('http://', adapter)
+
+    return session
+
+
+def NoAreaMatch(Exception):
+    pass
+
+
+def _adres_to_gebiedscode(session, adres, _type):
     """
     Search BAG adresses to determine the buurt or gebiedsgerichtwerken code.
     """
     BAG_SEARCH_URL = 'https://api.data.amsterdam.nl/atlas/search/adres/'
     parameters = {'q': adres}
 
-    result = requests.get(BAG_SEARCH_URL, parameters)
-    assert result.status_code == 200
-    data = json.loads(result.text)
+    result = session.get(BAG_SEARCH_URL, params=parameters)
 
+    if result.status_code != 200:
+        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        return None
+
+    data = result.json()
     # For now use first match.
     if data['count']:
         uri = data['results'][0]['_links']['self']['href']
-        gebiedscode = _nummer_aanduiding_to_gebiedscode(uri, _type)
+        gebiedscode = _nummer_aanduiding_to_gebiedscode(session, uri, _type)
     else:
         gebiedscode = None
 
     return gebiedscode
 
 
-def _nummer_aanduiding_to_gebiedscode(uri, _type):
+def _nummer_aanduiding_to_gebiedscode(session, uri, _type):
     """
     buurt or gebiedsgerichtwerken code from nummeraanduiding instance endpoint.
     """
-    result = requests.get(uri)
-    assert result.status_code == 200
+    result = session.get(uri)
 
-    data = json.loads(result.text)
+    if result.status_code != 200:
+        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        return None
+
+    data = result.json()
     if 'detail' in data:
         gebiedscode = None
     else:
@@ -81,7 +112,7 @@ def _nummer_aanduiding_to_gebiedscode(uri, _type):
     return gebiedscode
 
 
-def _lat_lon_to_gebiedscode(lat, lon, _type):
+def _lat_lon_to_gebiedscode(session, lat, lon, _type):
     """
     Query Geo search API and BBGA for buurt or gebiedsgerichtwerken code.
     """
@@ -95,8 +126,13 @@ def _lat_lon_to_gebiedscode(lat, lon, _type):
         'lon': lon
     }
 
-    result = requests.get(GEOSEARCH_URL, parameters)
-    assert result.status_code == 200
+    result = session.get(GEOSEARCH_URL, params=parameters)
+    try:
+        assert result.status_code == 200
+    except AssertionError:
+        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        raise
+
     data = json.loads(result.text)
 
     # For now use first match.
@@ -112,14 +148,17 @@ def _lat_lon_to_gebiedscode(lat, lon, _type):
     return gebiedscode
 
 
-def _buurt_to_code(uri):
+def _buurt_to_code(session, uri):
     """
     Given buurt URI, return "volledige_code".
     """
-    result = requests.get(uri)
-    assert result.status_code == 200
+    result = session.get(uri)
+    if result.status_code != 200:
+        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        return None
 
-    data = json.loads(result.text)
+
+    data = result.json()
     if 'detail' in result:
         return None
     else:

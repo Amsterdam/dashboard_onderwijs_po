@@ -5,7 +5,7 @@ import logging
 import requests
 from jsonschema import validate
 from dataset.models import Vestiging, Adres
-from dataset.gebiedscode import find_gebiedscode, GEBIEDSGERICHT_WERKEN
+from dataset.gebiedscode import find_gebiedscode, GEBIEDSGERICHT_WERKEN, NoAreaMatch
 
 
 LOG_FORMAT = '%(asctime)-15s - %(name)s - %(message)s'
@@ -23,10 +23,11 @@ def _handle_vestiging(json_dict):
     adres = _handle_vestiging_adres(json_dict['adres'])
 
     if json_dict['vestigingsnummer'] is None:
-        print('Vestiging "{}" zonder vestigingsnummer wordt overgeslagen.'.format(
-            json_dict['naam']
+        logger.info(
+            'Vestiging "{}" zonder vestigingsnummer wordt overgeslagen.'.format(
+                json_dict['naam']
         ))
-        print('Vestiging "{}" heeft BRIN nummer: {}'.format(
+        logger.info('Vestiging "{}" heeft BRIN nummer: {}'.format(
             json_dict['naam'], json_dict['brin']
         ))
         return
@@ -70,9 +71,13 @@ def get_vestigingen():
 
     instances = []
     for entry in data['results']:
-        instances.append(_handle_vestiging(entry))
+        try:
+            instances.append(_handle_vestiging(entry))
+        except NoAreaMatch:
+            logger.info('Vestiging "{}" zonder gebiedscode wordt overgeslagen'.format(
+                entry['naam']
+            ))
 
     Vestiging.objects.bulk_create([x for x in instances if x is not None])
-    print('Number of vestigingen', len(data['results']))
-    print('  Number of vestigingen in DB', Vestiging.objects.count())
-
+    logger.info('Number of vestigingen {}'.format(len(data['results'])))
+    logger.info('  Number of vestigingen in DB {}'.format(Vestiging.objects.count()))
