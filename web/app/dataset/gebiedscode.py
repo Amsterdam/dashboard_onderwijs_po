@@ -73,7 +73,8 @@ def _adres_to_gebiedscode(session, adres, _type):
     result = session.get(BAG_SEARCH_URL, params=parameters)
 
     if result.status_code != 200:
-        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        logger.info('Got status code {} while accessing: {}'.format(
+            result.status_code, result.url))
         return None
 
     data = result.json()
@@ -94,7 +95,8 @@ def _nummer_aanduiding_to_gebiedscode(session, uri, _type):
     result = session.get(uri)
 
     if result.status_code != 200:
-        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        logger.info('Got status code {} while accessing: {}'.format(
+            result.status_code, result.url))
         return None
 
     data = result.json()
@@ -130,7 +132,8 @@ def _lat_lon_to_gebiedscode(session, lat, lon, _type):
     try:
         assert result.status_code == 200
     except AssertionError:
-        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        logger.info('Got status code {} while accessing: {}'.format(
+            result.status_code, result.url))
         raise
 
     data = json.loads(result.text)
@@ -154,9 +157,9 @@ def _buurt_to_code(session, uri):
     """
     result = session.get(uri)
     if result.status_code != 200:
-        logger.error('Got status code {} while accessing: {}'.format(result.status_code, result.url))
+        logger.info('Got status code {} while accessing: {}'.format(
+            result.status_code, result.url))
         return None
-
 
     data = result.json()
     if 'detail' in result:
