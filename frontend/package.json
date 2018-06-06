@@ -24,7 +24,7 @@
     "lodash": "^4.17.10",
     "node-sass": "^4.8.1",
     "sass-loader": "^6.0.7",
-    "stijl": "git+https://git@github.com/Amsterdam/stijl.git",
+    "stijl": "git+https://git@github.com/Amsterdam/stijl.git#5895e476606511dd35576c4d45bb18e431295d89",
     "vega": "^3.3.1",
     "vega-embed": "^3.9.0",
     "vega-lite": "^2.5.0",
