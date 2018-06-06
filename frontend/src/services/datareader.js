@@ -1,28 +1,66 @@
 import axios from 'axios'
 
-export const halNextAccessor = response => response.data._links.next.href
-export const nextAccessor = response => response.data.next
-
+/**
+ * Register HTTP status
+ * @type \{{pending: number, success: number, error: number}}
+ */
 export const HTTPStatus = {
-  pending: 0,
-  success: 0,
-  error: 0
+  pending: 0, // The number of pending HTTP requests
+  success: 0, // The number of successfully received responses
+  error: 0 // The number of error responses
 }
 
-async function get (url) {
-  HTTPStatus.pending++
-  const result = axios.get(url)
-  result.then(() => {
-    HTTPStatus.pending--
+/**
+ * Sleep a number of milliseconds
+ * Usage: await sleep(n)
+ * @param ms
+ * @returns {Promise<any>}
+ */
+function sleep (ms) {
+  return new Promise((resolve, reject) => { setTimeout(resolve, ms) })
+}
+
+/**
+ * Simple HTTP GET method for a given url
+ * @param url
+ * @param nTries optional parameter specifying the number of retries, default = 5
+ * @returns {Promise<*>}
+ */
+export async function get (url, headers = null, nTries = 5) {
+  let result
+  let nTry = 0
+  do {
+    try {
+      HTTPStatus.pending++ // Track pending requests
+      result = await (headers ? axios.get(url, { headers }) : axios.get(url))
+    } catch (error) {
+      console.error('Retry...', url)
+      nTry++
+      await sleep(nTry * 100) // small sleep before retry request
+    } finally {
+      HTTPStatus.pending--
+    }
+  } while (!result && nTry < nTries)
+
+  if (result) {
     HTTPStatus.success++
-  }, () => {
-    HTTPStatus.pending--
+    return result
+  } else {
+    // All retries have failed
+    console.error('Request failed', url)
     HTTPStatus.error++
-  })
-  return result
+    throw new Error('Request failed', url)
+  }
 }
 
-export async function readPaginatedData (url, nextAccessor = halNextAccessor) {
+/**
+ * Reads a sequence of responses from a HAL-Json endpoint
+ * The endpoint is asked for data until there is no more data available (next = null)
+ * A pagesize of 1000 is used to limit the number of successive requests
+ * @param url
+ * @returns {Promise<Array>}
+ */
+export async function readPaginatedData (url, headers = null) {
   let next = url
   let results = []
   let page = 1
@@ -31,8 +69,9 @@ export async function readPaginatedData (url, nextAccessor = halNextAccessor) {
   while (next) {
     try {
       const requestUrl = `${url}${concatParam}page=${page}&page_size=${pageSize}`
-      let response = await get(requestUrl)
-      next = nextAccessor(response)
+      // let response = await get(requestUrl)
+      let response = await (headers ? get(requestUrl, headers) : get(requestUrl))
+      next = response.data._links.next.href
       results = results.concat(response.data.results)
       page += 1
     } catch (e) {
@@ -42,7 +81,13 @@ export async function readPaginatedData (url, nextAccessor = halNextAccessor) {
   return results
 }
 
-export async function readData (url, resolve = d => d.data) {
-  let response = await get(url)
+/**
+ * Requests data from a given url, resolving to response.data (default) or any other optionally specified value
+ * @param url
+ * @param resolve
+ * @returns {Promise<*>}
+ */
+export async function readData (url, headers = null, resolve = d => d.data) {
+  let response = await (headers ? get(url, headers) : get(url))
   return resolve(response)
 }
