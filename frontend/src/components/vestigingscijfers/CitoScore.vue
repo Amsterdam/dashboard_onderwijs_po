@@ -9,12 +9,12 @@
       }}
     </h1>
     <div class="average">
-      <div style="text-align: right">Amsterdams gemiddelde: {{
+      <div style="text-align: right">Amsterdams gemiddelde{{
         this.citoScoreGem !== null
-        ? this.citoScoreGem.toLocaleString(
+        ? ' (' + bbgaYear + '): ' + this.citoScoreGem.toLocaleString(
             'nl-DU', { maximumFractionDigits: 1 }
         )
-        : '...'
+        : ': ...'
         }}
       </div>
     </div>
@@ -42,7 +42,8 @@ export default {
       'citoScoreData': null,
       'citoScoreGem': null,
       'isBusy': true,
-      'hasData': true // optimistic, assumption is we have or will get the data
+      'hasData': true, // optimistic, assumption is we have or will get the data
+      'year': null
     }
   },
   async mounted () {
@@ -51,7 +52,9 @@ export default {
   methods: {
     async getData () {
       this.citoScoreData = _.get(await readPaginatedData(API_HOST + `/onderwijs/api/cito-score/?vestiging=${this.id}&jaar=2016`), '[0].cet_gem', null)
-      this.citoScoreGem = _.get(await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], [2016]), '[0].waarde', null)
+      const data = await getBbgaVariables(['OCITOSCH_GEM'], ['STAD'], -1)
+      this.citoScoreGem = _.get(data, '[0].waarde', null)
+      this.bbgaYear = _.get(data, '[0].jaar', null)
 
       this.hasData = !(this.citoScoreData === null || this.citoScoreGem === null)
       this.isBusy = false

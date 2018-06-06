@@ -1,21 +1,14 @@
 <template>
   <div>
     <h1 v-if="data" class="single-figure">{{data[0].waarde}}</h1>
-    <data-download-link :data="data" text="Download veiligheidsindex cijfers JSON" filename="veiligheids-index.json"></data-download-link>
+    <div v-if="data && data.length" class="text-right small">Data uit {{data[0].jaar}}</div>
   </div>
 </template>
 
 <script>
 import { getBbgaVariables } from '@/services/bbgareader'
 
-import dataDownloadLink from '@/components/general/dataDownloadLink'
-
-let years = [2016] // TODO: make configurable (dev/prod) or latest data
-
 export default {
-  components: {
-    'data-download-link': dataDownloadLink
-  },
   props: [
     'gebiedcode'
   ],
@@ -33,7 +26,7 @@ export default {
         // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
         let variables = ['VCRIMIN_I']
 
-        this.data = await getBbgaVariables(variables, [this.gebiedcode], years)
+        this.data = await getBbgaVariables(variables, [this.gebiedcode], -1)
       }
     }
   },

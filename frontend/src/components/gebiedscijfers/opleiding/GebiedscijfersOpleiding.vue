@@ -1,22 +1,19 @@
 <template>
   <div>
     <vega-spec-render :data="data" :vegaspec="vegaspecOpleiding"></vega-spec-render>
-    <data-download-link :data="data" text="Download opleiding cijfers JSON" filename="opleiding.json"></data-download-link>
+    <div v-if="data && data.length" class="text-right small">{{ yearsRange }}</div>
   </div>
 </template>
 
 <script>
-import { getBbgaVariables, annotate, translateAreaCodes } from '@/services/bbgareader'
+import _ from 'lodash'
 
-import dataDownloadLink from '@/components/general/dataDownloadLink'
+import { getBbgaVariables, annotate, translateAreaCodes } from '@/services/bbgareader'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
 import vegaspecOpleiding from '@/components/gebiedscijfers/opleiding/vega-spec.json'
 
-let years = [2016] // TODO: make configurable (dev/prod) or latest data
-
 export default {
   components: {
-    'data-download-link': dataDownloadLink,
     'vega-spec-render': vegaSpecRenderer
   },
   props: [
@@ -41,11 +38,19 @@ export default {
           ['O_OPLPO_P', '2: Hoog']
         ]
 
-        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], years)
+        let data = await getBbgaVariables(variables, [this.gebiedcode, 'STAD'], -1)
         data = annotate(data, 'variabele', '_label', labelMapping)
         data = await translateAreaCodes(data)
         this.data = data
       }
+    }
+  },
+  computed: {
+    yearsRange () {
+      const begin = _.min(this.data.map(d => d.jaar))
+      const end = _.max(this.data.map(d => d.jaar))
+
+      return (begin === end) ? `Data uit ${begin}` : `Data uit ${begin}-${end}`
     }
   },
   watch: {

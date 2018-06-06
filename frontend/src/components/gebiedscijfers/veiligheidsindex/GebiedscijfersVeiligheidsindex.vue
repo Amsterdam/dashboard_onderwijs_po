@@ -1,27 +1,21 @@
 <template>
   <div>
-    <h1 v-if="data" class="single-figure">{{data}}</h1>
-    <data-download-link :data="data" text="Download veiligheidsindex cijfers JSON" filename="veiligheids-index.json"></data-download-link>
+    <h1 v-if="data" class="single-figure">{{data[0].waarde}}</h1>
+    <div v-if="data && data.length" class="text-right small">Data uit {{data[0].jaar}}</div>
   </div>
 </template>
 
 <script>
 import { getBbgaVariables } from '@/services/bbgareader'
 
-import dataDownloadLink from '@/components/general/dataDownloadLink'
-
-let years = [2016] // TODO: make configurable (dev/prod) or latest data
-
 export default {
-  components: {
-    'data-download-link': dataDownloadLink
-  },
   props: [
     'gebiedcode'
   ],
   data () {
     return {
-      data: null
+      data: null,
+      year: null
     }
   },
   async mounted () {
@@ -32,8 +26,7 @@ export default {
       if (this.gebiedcode) {
         let variables = ['VVEILIGH_I']
 
-        let data = await getBbgaVariables(variables, [this.gebiedcode], years)
-        this.data = data[0].waarde
+        this.data = await getBbgaVariables(variables, [this.gebiedcode], -1)
       }
     }
   },

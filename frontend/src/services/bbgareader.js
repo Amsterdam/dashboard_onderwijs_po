@@ -6,16 +6,14 @@ import _ from 'lodash'
 // BBGA API handling:
 const API_URL = `https://api.data.amsterdam.nl/bbga/cijfers/`
 
-export async function getBbgaVariables (variables, areaCodes, years) {
+export async function getBbgaVariables (variables, areaCodes, year) {
   // grab a number of BBGA variables for given areas and years
   let unflattened = variables.map(v => areaCodes.map(ac => readPaginatedData(
-    API_URL + `?gebiedcode15=${ac}&variabele=${v}`
+    API_URL + `?gebiedcode15=${ac}&variabele=${v}&jaar=${year}`
   )))
   let awaited = await Promise.all(_.flattenDeep(unflattened))
 
-  const yearsSet = new Set(years)
-  let out = _.flatten(awaited)
-  return out.filter(r => yearsSet.has(r.jaar))
+  return _.flatten(awaited)
 }
 
 export function annotate (data, sourceVar, injectedVar, valueMapping) {

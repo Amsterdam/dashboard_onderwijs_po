@@ -7,8 +7,6 @@
 
 <script>
 import { readPaginatedData } from '@/services/datareader'
-
-import dataDownloadLink from '@/components/general/dataDownloadLink'
 import vegaSpecRenderer from '@/components/general/vegaSpecRenderer'
 import vegaspec from './vega-spec.json'
 
@@ -16,7 +14,6 @@ let API_HOST = process.env.API_HOST
 
 export default {
   components: {
-    'data-download-link': dataDownloadLink,
     'vega-spec-render': vegaSpecRenderer
   },
   props: [
