@@ -1,35 +1,15 @@
 <template>
   <div id="app">
-    <div class="grid-container">
-      <div class="content">
-        <div class="grid-wrapper wrapper_12 contents-wrapper">
-          <div class="grid-container container_12 main-view">
-            <div class="grid-zone grid_12">
-              <ams-header>Header</ams-header>
-            </div>
-          </div>
-        </div>
+    <div class="container">
+      <ams-header>Header</ams-header>
+      <router-view></router-view>
+    </div>
 
-        <div class="grid-wrapper wrapper_12 contents-wrapper">
-          <div class="grid-container container_12 main-view">
-            <div class="grid-zone grid_12">
-                <div class="container-fluid">
-                  <router-view></router-view>
-                </div>
-            </div>
-          </div>
-        </div>
+    <loading-component></loading-component>
+    <div class="container-fluid">
+      <div class="row bg-darkgrey footer">
+        <ams-footer></ams-footer>
       </div>
-
-      <div class="footer-wrapper">
-        <div class="grid-container container_12 breakout-container">
-          <div class="grid-zone grid_12 z-kolom1-4_1 breakout-zone hasbgcolor bgcolor_darkgrey footer">
-            <ams-footer></ams-footer>
-          </div>
-        </div>
-      </div>
-
-      <loading-component></loading-component>
     </div>
   </div>
 </template>

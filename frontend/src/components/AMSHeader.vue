@@ -24,7 +24,8 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding-left: 0rem;
+  padding: .5rem;
+  margin-left: -25px;
 }
 
 .ams-header .header-title {

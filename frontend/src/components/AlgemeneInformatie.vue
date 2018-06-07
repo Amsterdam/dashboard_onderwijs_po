@@ -43,7 +43,7 @@ export default {
     'vestiging'
   ],
   mounted () {
-    console.log(this.vestiging)
+    // console.log(this.vestiging)
   }
 }
 </script>
