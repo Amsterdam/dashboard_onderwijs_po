@@ -21,6 +21,9 @@
     <div class="navigation">
       <ul class="nav nav-tabs">
         <li class="nav-item">
+          <a :class="{ 'active': selected === 'algemeen', 'nav-link': true }" href="javascript:void(0)" @click="show('algemeen')">Algemene Informatie</a>
+        </li>
+        <li class="nav-item">
           <a :class="{ 'active': selected === 'vestiging', 'nav-link': true }" href="javascript:void(0)" @click="show('vestiging')">De vestiging</a>
         </li>
         <li class="nav-item">
@@ -30,6 +33,9 @@
     </div>
 
     <div class="zone-clear clear"></div>
+    <div id="algemeen" v-show="selected === 'algemeen'">
+      <algemene-informatie :vestiging="vestiging"></algemene-informatie>
+    </div>
 
     <div id="vestiging" v-show="selected === 'vestiging'">
       <vestigingscijfers :id="id" :gebiedscode="gebiedscode"></vestigingscijfers>
@@ -45,6 +51,7 @@
 import { mapGetters } from 'vuex'
 import vestigingscijfers from './vestigingscijfers/Vestigingscijfers'
 import gebiedscijfers from './gebiedscijfers/Gebiedscijfers'
+import algemeneInformatie from './AlgemeneInformatie'
 
 export default {
   data () {
@@ -52,12 +59,13 @@ export default {
       id: this.$route.params.id,
       vestiging: null,
       gebiedscode: null,
-      selected: 'vestiging'
+      selected: 'algemeen'
     }
   },
   components: {
     'vestigingscijfers': vestigingscijfers,
-    'gebiedscijfers': gebiedscijfers
+    'gebiedscijfers': gebiedscijfers,
+    'algemene-informatie': algemeneInformatie
   },
   computed: {
     ...mapGetters([
