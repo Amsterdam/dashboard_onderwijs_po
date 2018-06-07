@@ -22,7 +22,7 @@
     <div class="row mb-sm-3">
       <div class="col-sm-12 col-lg-7">
         <div class="card std-height">
-          <h5 class="card-header">Herkomst</h5>
+          <h5 class="card-header">Migratieachtergrond</h5>
           <div class="card-block">
             <herkomst :gebiedcode="gebiedscode"></herkomst>
           </div>

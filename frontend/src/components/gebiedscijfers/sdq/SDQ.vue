@@ -47,7 +47,7 @@ export default {
       const begin = _.min(this.data.map(d => d.jaar))
       const end = _.max(this.data.map(d => d.jaar))
 
-      return (begin === end) ? `Data uit ${begin}` : `Data uit ${begin}-${end}`
+      return (begin === end) ? `Bron: BBGA peiljaar ${begin}` : `Bron: BBGA peiljaar ${begin} ${end}`
     }
   },
   watch: {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 v-if="data" class="single-figure">{{data[0].waarde}}</h1>
-    <div v-if="data && data.length" class="text-right small">Data uit {{data[0].jaar}}</div>
+    <div v-if="data && data.length" class="text-right small">Bron: BBGA peiljaar {{data[0].jaar}}</div>
   </div>
 </template>
 
