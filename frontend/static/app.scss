@@ -4,9 +4,12 @@ body {
   background-color: $ams-background-sidebars;
 }
 
-#app {
+.app-container {
   background-color: $ams-wit;
+  max-width: 1400px;
+}
 
+#app {
   .std-height {
     height: 100%;
   }

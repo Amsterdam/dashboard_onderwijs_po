@@ -8,9 +8,10 @@
              id="formInput"
              class="form-control"
              placeholder="Typ hier vestiging of BRIN">
-      <div class="input-group-append">
-        <button class="btn btn-outline-dark" @click="clearFilter()">X</button>
-      </div>
+      <a aria-expanded="true" href="#" class="toggle-search expanded" @click="clearFilter()" v-if="filterText.length">
+        <b class="caret" aria-hidden="true"></b>
+        <span class="toggle-text visually-hidden">Verwijder zoekterm</span>
+      </a>
     </div>
 
     <table v-if="filteredVestigingen.length" class="table table-sm">
@@ -95,7 +96,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  border-radius: 0 !important;
-}
+  * {
+    border-radius: 0 !important;
+  }
+
+  .visually-hidden {
+    display: none;
+  }
+
+  .form-control {
+    height: 44px;
+    max-width: calc(100% - 44px);
+  }
+
 </style>

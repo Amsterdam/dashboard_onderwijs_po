@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <div class="container">
-      <ams-header>Header</ams-header>
-      <router-view></router-view>
+    <div class="container app-container">
+      <div class="container">
+        <ams-header>Header</ams-header>
+        <router-view></router-view>
+      </div>
     </div>
-
-    <loading-component></loading-component>
     <div class="container-fluid">
       <div class="row bg-darkgrey footer">
         <ams-footer></ams-footer>
       </div>
     </div>
+    <loading-component></loading-component>
   </div>
 </template>
 
@@ -31,8 +32,9 @@ export default {
 
 <!-- Global styling -->
 <style scoped>
-  .content {
-    min-height: calc(100vh - 473px);
+  .app-container {
+    min-height: calc(100vh - 412px);
+    padding-bottom: 20px;
   }
 
   .footer {
