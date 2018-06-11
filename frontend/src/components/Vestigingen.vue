@@ -8,7 +8,7 @@
              id="formInput"
              class="form-control"
              placeholder="Typ hier vestiging of BRIN">
-      <a aria-expanded="true" href="#" class="toggle-search expanded" @click="clearFilter()" v-if="filterText.length">
+      <a href="#" class="toggle-search expanded" @click="clearFilter()" v-if="filterText.length" title="Verwijder zoekterm">
         <b class="caret" aria-hidden="true"></b>
         <span class="toggle-text visually-hidden">Verwijder zoekterm</span>
       </a>
