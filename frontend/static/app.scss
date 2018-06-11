@@ -6,21 +6,27 @@ body {
 
 #app {
   background-color: $ams-wit;
+
+  .std-height {
+    height: 100%;
+  }
+
+  .single-figure {
+    text-align: center;
+    font-size: 300%;
+    min-height: 150px;
+    padding-top: 60px;
+  }
+
+  .missing-data {
+    padding-top: 15%;
+    height: 100%;
+    text-align: center
+  }
+
+  .footer {
+    padding: 20px;
+  }
 }
 
-.std-height {
-  height: 100%;
-}
 
-.single-figure {
-  text-align: center;
-  font-size: 300%;
-  min-height: 150px;
-  padding-top: 60px;
-}
-
-.missing-data {
-  padding-top: 15%;
-  height: 100%;
-  text-align: center
-}
