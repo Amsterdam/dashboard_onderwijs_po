@@ -3,15 +3,26 @@
     <hr>
     <h3>Overzicht scholen Amsterdam</h3>
     <div class="input-group mb-5">
-      <input v-model="filterText"
-             type="text"
-             id="formInput"
-             class="form-control"
-             placeholder="Typ hier vestiging of BRIN">
-      <a href="#" class="toggle-search expanded" @click="clearFilter()" v-if="filterText.length" title="Verwijder zoekterm">
-        <b class="caret" aria-hidden="true"></b>
-        <span class="toggle-text visually-hidden">Verwijder zoekterm</span>
-      </a>
+        <div class="invoer">
+          <input
+            v-model="filterText"
+            type="text"
+            id="formInput"
+            class="input form-control"
+            placeholder="Typ hier vestiging of BRIN"
+          >
+          <button
+            type="button"
+            class="embed-search__clear"
+            title="Wis zoektekst"
+            @click="clearFilter()"
+            v-if="filterText.length"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 13.527l4.848 4.848 1.527-1.527L13.527 12l4.848-4.848-1.527-1.527-4.859 4.859-4.837-4.859-1.527 1.527L10.474 12l-4.849 4.848 1.527 1.527z"/>
+            </svg>
+          </button>
+        </div>
     </div>
 
     <table v-if="filteredVestigingen.length" class="table table-sm">
@@ -106,7 +117,9 @@ export default {
 
   .form-control {
     height: 44px;
-    max-width: calc(100% - 44px);
   }
 
+  .invoer {
+    width: 100%;
+  }
 </style>
