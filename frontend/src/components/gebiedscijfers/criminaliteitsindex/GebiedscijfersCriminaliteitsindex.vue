@@ -23,7 +23,6 @@ export default {
   methods: {
     async getData () {
       if (this.gebiedcode) {
-        // LBETROKKEN_R Betrokkenheid met de buurt is geen percentage, kan niet in dezelfde plot!
         let variables = ['VCRIMIN_I']
 
         this.data = await getBbgaVariables(variables, [this.gebiedcode], -1)
