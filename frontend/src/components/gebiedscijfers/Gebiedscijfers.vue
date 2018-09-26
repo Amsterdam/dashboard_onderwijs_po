@@ -3,66 +3,45 @@
   <div>
     <div class="row mb-sm-3">
       <div class="col-sm-12 col-lg-7">
-        <div class="card std-height">
-          <h5 class="card-header">Opleiding</h5>
-          <div class="card-block">
-            <opleiding :gebiedcode="gebiedscode"></opleiding>
-          </div>
-        </div>
+        <card-with-help title="Opleiding" :helpText="this.helpTexts.opleiding">
+          <opleiding :gebiedcode="gebiedscode"></opleiding>
+        </card-with-help>
       </div>
       <div class="col-sm-12 col-lg-5">
-        <div class="card std-height">
-          <h5 class="card-header">Inkomen</h5>
-          <div class="card-block">
-            <inkomen :gebiedcode="gebiedscode"></inkomen>
-          </div>
-        </div>
+        <card-with-help title="Inkomen" :helpText="this.helpTexts.inkomen">
+          <inkomen :gebiedcode="gebiedscode"></inkomen>
+        </card-with-help>
       </div>
     </div>
     <div class="row mb-sm-3">
       <div class="col-sm-12 col-lg-7">
-        <div class="card std-height">
-          <h5 class="card-header">Migratieachtergrond</h5>
-          <div class="card-block">
-            <herkomst :gebiedcode="gebiedscode"></herkomst>
-          </div>
-        </div>
+        <card-with-help title="Migratieachtergrond" :helpText="this.helpTexts.migratieAchtergrond">
+          <herkomst :gebiedcode="gebiedscode"></herkomst>
+        </card-with-help>
       </div>
       <div class="col-sm-12 col-lg-5">
-        <div class="card std-height">
-          <h5 class="card-header">Sociale problematiek</h5>
-          <div class="card-block">
-            <sociale-problematiek :gebiedcode="gebiedscode"></sociale-problematiek>
-          </div>
-        </div>
+        <card-with-help title="Sociale problematiek" :helpText="this.helpTexts.socialeProblematiek">
+          <sociale-problematiek :gebiedcode="gebiedscode"></sociale-problematiek>
+        </card-with-help>
       </div>
     </div>
     <div class="row mb-sm-3">
       <div class="col-sm-12 col-lg-7">
-        <div class="card">
-          <h5 class="card-header">Veiligheidsindex</h5>
-          <div class="card-block">
-            <veiligheidsindex :gebiedcode="gebiedscode"></veiligheidsindex>
-          </div>
-        </div>
+        <card-with-help title="Veiligheidsindex" :helpText="this.helpTexts.veiligheidsindex">
+          <veiligheidsindex :gebiedcode="gebiedscode"></veiligheidsindex>
+        </card-with-help>
       </div>
       <div class="col-sm-12 col-lg-5">
-        <div class="card">
-          <h5 class="card-header">Criminaliteitsindex</h5>
-          <div class="card-block">
-            <criminaliteitsindex :gebiedcode="gebiedscode"></criminaliteitsindex>
-          </div>
-        </div>
+        <card-with-help title="Criminaliteitsindex" :helpText="this.helpTexts.criminaliteitsindex">
+          <criminaliteitsindex :gebiedcode="gebiedscode"></criminaliteitsindex>
+        </card-with-help>
       </div>
     </div>
     <div class="row mb-sm-3">
       <div class="col-sm-12 col-lg-7">
-        <div class="card std-height">
-          <h5 class="card-header">SDQ</h5>
-          <div class="card-block">
-            <sdq :gebiedcode="gebiedscode"></sdq>
-          </div>
-        </div>
+        <card-with-help title="SDQ" :helpText="this.helpTexts.sdq">
+          <sdq :gebiedcode="gebiedscode"></sdq>
+        </card-with-help>
       </div>
     </div>
   </div>
@@ -78,11 +57,15 @@ import gebiedscijfersVeiligheidsindex from './veiligheidsindex/GebiedscijfersVei
 import gebiedscijfersCriminaliteitsindex from './criminaliteitsindex/GebiedscijfersCriminaliteitsindex.vue'
 import sdq from './sdq/SDQ.vue'
 
+import cardWithHelp from '../general/cardWithHelp.vue'
+import helpTexts from '../../../static/help-texts'
+
 export default {
   props: [
     'gebiedscode'
   ],
   components: {
+    'card-with-help': cardWithHelp,
     'herkomst': gebiedscijfersHerkomst,
     'opleiding': gebiedscijfersOpleiding,
     'inkomen': gebiedscijfersInkomen,
@@ -90,6 +73,11 @@ export default {
     'veiligheidsindex': gebiedscijfersVeiligheidsindex,
     'criminaliteitsindex': gebiedscijfersCriminaliteitsindex,
     'sdq': sdq
+  },
+  data () {
+    return {
+      helpTexts
+    }
   }
 }
 </script>
