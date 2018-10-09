@@ -1,0 +1,70 @@
+@import "~stijl/dist/scss/ams-colorpalette";
+@import "~stijl/dist/scss/ams-font";
+
+body {
+  background-color: $ams-background-sidebars;
+}
+
+.app-container {
+  background-color: $ams-wit;
+  max-width: 1400px;
+}
+
+#app {
+  .std-height {
+    height: 100%;
+  }
+
+  .single-figure {
+    text-align: center;
+    font-size: 300%;
+    min-height: 150px;
+    padding-top: 60px;
+  }
+
+  .missing-data {
+    padding-top: 15%;
+    height: 100%;
+    text-align: center
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .embed-search {
+    &__clear {
+      height: 34px;
+      width: 34px;
+      top: 5px;
+      right: 5px;
+    }
+  }
+
+  #formInput {
+    @include avenirheavy;
+    color: $ams-zwart;
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    &::placeholder {
+      @include avenirnext;
+    }
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      @include avenirnext;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      @include avenirnext;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      @include avenirnext;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      @include avenirnext;
+    }
+  }
+}
+
+

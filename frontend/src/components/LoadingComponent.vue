@@ -52,18 +52,6 @@ export default {
 </script>
 
 <style scoped>
-.progress-wrapper {
-  background: #bebebe !important;
-  border-color: #767676;
-}
-
-.progress-indicator::before {
-  background-color: #bebebe !important;
-}
-
-.progress-indicator::after {
-  background-color: #bebebe !important;
-}
 .fade-enter-active {
   transition: opacity .2s ease-out;
 }

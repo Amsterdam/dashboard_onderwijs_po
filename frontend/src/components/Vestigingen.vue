@@ -3,14 +3,26 @@
     <hr>
     <h3>Overzicht scholen Amsterdam</h3>
     <div class="input-group mb-5">
-      <input v-model="filterText"
-             type="text"
-             id="formInput"
-             class="form-control"
-             placeholder="Typ hier vestiging of BRIN">
-      <div class="input-group-append">
-        <button class="btn btn-outline-dark" @click="clearFilter()">X</button>
-      </div>
+        <div class="invoer">
+          <input
+            v-model="filterText"
+            type="text"
+            id="formInput"
+            class="input form-control"
+            placeholder="Typ hier vestiging of BRIN"
+          >
+          <button
+            type="button"
+            class="embed-search__clear"
+            title="Wis zoektekst"
+            @click="clearFilter()"
+            v-if="filterText.length"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 13.527l4.848 4.848 1.527-1.527L13.527 12l4.848-4.848-1.527-1.527-4.859 4.859-4.837-4.859-1.527 1.527L10.474 12l-4.849 4.848 1.527 1.527z"/>
+            </svg>
+          </button>
+        </div>
     </div>
 
     <table v-if="filteredVestigingen.length" class="table table-sm">
@@ -95,7 +107,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  border-radius: 0 !important;
-}
+  * {
+    border-radius: 0 !important;
+  }
+
+  .visually-hidden {
+    display: none;
+  }
+
+  .form-control {
+    height: 44px;
+  }
+
+  .invoer {
+    width: 100%;
+  }
 </style>

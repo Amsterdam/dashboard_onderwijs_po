@@ -1,0 +1,46 @@
+{
+  "leerlingenNaarGewicht": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "schoolAdvies": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "citoScore": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "lopendeSubsidies": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "opleiding": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "inkomen": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "migratieAchtergrond": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "socialeProblematiek": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "veiligheidsindex": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "criminaliteitsindex": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  },
+  "sdq": {
+    "title": "Title placeholder",
+    "body": "Body placeholder"
+  }  
+}
