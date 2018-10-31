@@ -10,7 +10,7 @@ dc() {
 	docker-compose -p onderwijs -f ${DIR}/docker-compose.yml $*
 }
 
-trap 'dc kill ; dc rm -f' EXIT
+trap 'dc kill ; dc down ; dc rm -f' EXIT
 
 # For database backups:
 rm -rf ${DIR}/backups
@@ -40,4 +40,5 @@ echo "Running backups"
 # these are still "old style"
 
 dc exec -T database backup-db.sh onderwijs
+docker-compose -p onderwijs down
 echo "Done"
